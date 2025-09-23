@@ -5,12 +5,12 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.yourorg"
+group = "com.engage"
 version = "0.1.0"
 
 android {
     namespace = "com.engage.designsystem"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -28,6 +28,14 @@ android {
             )
         }
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()   // optional, publishes sources.jar
+            withJavadocJar()   // optional, publishes javadoc.jar
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
