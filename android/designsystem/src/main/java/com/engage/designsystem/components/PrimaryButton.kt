@@ -2,6 +2,7 @@ package com.engage.designsystem.components
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,10 +36,13 @@ fun PrimaryButtonWithTheme(
         modifier = modifier,
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = DSColors.Primary,
-            contentColor = DSColors.OnPrimary
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
         )
     ) {
-        Text(text)
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelLarge
+        )
     }
 }

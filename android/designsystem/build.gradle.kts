@@ -2,7 +2,11 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("maven-publish")
 }
+
+group = "com.yourorg"
+version = "0.1.0"
 
 android {
     namespace = "com.engage.designsystem"
@@ -33,6 +37,19 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.engage"
+                artifactId = "designsystem"
+                version = project.version.toString()
+            }
+        }
     }
 }
 

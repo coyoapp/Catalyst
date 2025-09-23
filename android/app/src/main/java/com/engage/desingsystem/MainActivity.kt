@@ -19,6 +19,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.unit.dp
 import com.engage.designsystem.components.PrimaryButton
+import com.engage.designsystem.components.PrimaryButtonWithTheme
 import com.engage.designsystem.theme.EngageTheme
 
 class MainActivity : ComponentActivity() {
@@ -53,6 +54,11 @@ fun DemoScreen() {
 
                 PrimaryButton(
                     text = if (darkTheme) "Switch to Light" else "Switch to Dark",
+                    onClick = { darkTheme = !darkTheme }
+                )
+
+                PrimaryButtonWithTheme(
+                    text = if (darkTheme) "Themed to Light" else "Themed to Dark",
                     onClick = { darkTheme = !darkTheme }
                 )
             }
