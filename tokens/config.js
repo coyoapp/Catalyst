@@ -25,7 +25,7 @@ StyleDictionary.registerFormat({
         let swiftFile = `//\n// DSColors.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum DSColors {\n`;
 
         dictionary.allProperties.forEach(prop => {
-            const rgb = hexToRgb(prop.orginal.value);
+            const rgb = hexToRgb(prop.original.value);
             if (rgb) {
                 const r = (rgb.r / 255).toFixed(3);
                 const g = (rgb.g / 255).toFixed(3);
