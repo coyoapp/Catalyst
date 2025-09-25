@@ -1,9 +1,4 @@
-const StyleDictionary = require('style-dictionary');
-
-StyleDictionary.registerFileHeader({
-  name: 'cat/header',
-  fileHeader: () => ['Auto-generated file. Do not edit directly.']
-});
+const StyleDictionary = require('style-dictionary');  
 
 /**
  * Helper function to convert a hex color to an RGB object
@@ -17,6 +12,20 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
+
+// Add this new section to your config file
+StyleDictionary.registerTransformGroup({
+  name: 'ios-swift-custom',
+  transforms: [
+    'attribute/cti', 
+    'name/cti/camel', 
+    // We removed 'color/UIColor' from this list
+    'content/swift/literal', 
+    'asset/swift/literal', 
+    'size/swift/remToCGFloat', 
+    'font/swift/literal'
+  ]
+});
 
 // Custom formatter for SwiftUI
 StyleDictionary.registerFormat({
