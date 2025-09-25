@@ -27,9 +27,11 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm install
+        working-directory: ./tokens
 
       - name: 🎨 Build Design Tokens
         run: npx style-dictionary build
+        working-directory: ./tokens
 
       - name: ⬆️ Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5

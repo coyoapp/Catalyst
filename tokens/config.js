@@ -60,8 +60,7 @@ module.exports = {
   // We assume your JSON files are in a "tokens" folder.
   // Style Dictionary merges them before processing.
   source: [
-    'tokens/src/color/base-colors.json',
-    'tokens/src/color/colors.json'
+    'src/color/**/*.json' 
   ],
   platforms: {
     swift: {
