@@ -1,0 +1,22 @@
+{
+  "name": "design-system-tokens",
+  "version": "0.1.0",
+  "description": "Design tokens for Design System",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coyoapp/Design-System.git"
+  },
+  "files": [
+    "assets"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "style-dictionary build"
+  },
+  "devDependencies": {
+    "style-dictionary": "^3.9.2"
+  }
+}
