@@ -25,7 +25,7 @@ StyleDictionary.registerFormat({
         let swiftFile = `//\n// DSColors.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum DSColors {\n`;
 
         dictionary.allProperties.forEach(prop => {
-            const rgb = hexToRgb(prop.value);
+            const rgb = hexToRgb(prop.orginal.value);
             if (rgb) {
                 const r = (rgb.r / 255).toFixed(3);
                 const g = (rgb.g / 255).toFixed(3);
@@ -67,7 +67,7 @@ module.exports = {
       transformGroup: 'ios-swift',
       // Define your output path for the Swift project.
       // Make sure this path exists or the build might fail.
-      buildPath: '../iOS/DesignSystem/Sources/Tokens/Generated/',
+      buildPath: '../iOS/DesignSystem/Sources/DesignSystemKit/Tokens/Generated/',
       files: [{
         destination: 'DSColors.swift',
         format: 'swift/swiftui-colors',
