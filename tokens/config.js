@@ -1,4 +1,4 @@
-const StyleDictionary = require('style-dictionary-utils');
+const StyleDictionary = require('style-dictionary');
 
 StyleDictionary.registerFileHeader({
   name: 'cat/header',
