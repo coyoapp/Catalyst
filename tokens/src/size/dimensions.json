@@ -93,11 +93,11 @@
       "type": "borderWidth"
     },
     "default": {
-      "value": "{dimension.dimension-0-5}",
+      "value": "{dimension.dimension-1}",
       "type": "borderWidth"
     },
     "thick": {
-      "value": "{dimension.dimension-1}",
+      "value": "{dimension.dimension-1-5}",
       "type": "borderWidth"
     }
   },
