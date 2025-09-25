@@ -1,1 +1,39 @@
+name: Tokens
 
+on:
+  push:
+    branches:
+      - main
+      - token-to-project-design-generation
+    # paths:
+    #   - "tokens/**"
+  pull_request:
+    paths:
+      - "tokens/**"
+
+jobs:
+  build-tokens:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🎨 Build Design Tokens
+        run: npx style-dictionary build
+
+      - name: ⬆️ Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "CI: update tokens"
+          commit_user_name: GitHub Actions
+          commit_user_email: actions@github.com
