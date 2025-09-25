@@ -67,7 +67,7 @@ module.exports = {
       transformGroup: 'ios-swift',
       // Define your output path for the Swift project.
       // Make sure this path exists or the build might fail.
-      buildPath: '../iOS/DesignSystem/Sources/Tokens/Generated',
+      buildPath: '../iOS/DesignSystem/Sources/Tokens/Generated/',
       files: [{
         destination: 'DSColors.swift',
         format: 'swift/swiftui-colors',
