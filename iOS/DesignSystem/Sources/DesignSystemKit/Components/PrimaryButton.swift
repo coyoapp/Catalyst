@@ -40,13 +40,13 @@ public struct PrimaryButton: View {
         Button(action: action) {
             Text(title)
                 .font(DSTypography.default.title)
-                .foregroundColor(DSColors.textLight)
+                .foregroundColor(DSColorsLight.textLight)
                 .padding(.vertical, DSSpacing.md.rawValue)
                 .padding(.horizontal, DSSpacing.lg.rawValue)
                 .frame(maxWidth: .infinity)
         }
         
-        .background(DSColors.primary)
+        .background(DSColorsLight.primary)
         .cornerRadius(12)
     }
 }

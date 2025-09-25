@@ -8,7 +8,7 @@ public struct EngageTheme {
 
     public static var `default`: EngageTheme {
         EngageTheme(
-            colors: DSColors.self,
+            colors: DSColorsLight.self,
             typography: .default,
             spacing: DSSpacing.self,
             sizes: DSSizes.self

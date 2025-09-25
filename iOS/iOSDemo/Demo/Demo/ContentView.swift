@@ -37,9 +37,9 @@ struct ContentView: View {
             .padding()
         }
         
-        Text("TRY COLORS")
-            .background(DSColors.primary)
-            .foregroundColor(DSColors.textLight)
+        Text("TRY Generated Colors")
+            .background(DSColors.colorThemeDangerBg)
+            .foregroundColor(DSColors.colorThemeSecondaryTextActive)
         Text("TRY COLORS")
             .background(DSColorsDark.primary)
             .foregroundColor(DSColorsDark.textLight)

@@ -8,7 +8,7 @@ public protocol DSColorsProtocol {
     static var textLight: Color { get }
 }
 
-public enum DSColors: DSColorsProtocol {
+public enum DSColorsLight: DSColorsProtocol {
     public static let primary = Color(red: 0x0A/255, green: 0xBA/255, blue: 0xB5/255) // Tiffany blue
     public static let secondary = Color(red: 0x0F/255, green: 0xC6/255, blue: 0xCC/255) // Aqua-ish
     public static let background = Color(red: 0xE3/255, green: 0xE7/255, blue: 0xEA/255) // Light gray
