@@ -10,6 +10,6 @@ import CoreGraphics
 public enum DSBorderWidth {
     public static let borderWidthNone: CGFloat = 0
     public static let borderWidthThin: CGFloat = 2
-    public static let borderWidthDefault: CGFloat = 2
-    public static let borderWidthThick: CGFloat = 4
+    public static let borderWidthDefault: CGFloat = 4
+    public static let borderWidthThick: CGFloat = 6
 }
