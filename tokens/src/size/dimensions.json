@@ -89,7 +89,7 @@
       "type": "borderWidth"
     },
     "thin": {
-      "value": "{dimension.dimension-0-25}",
+      "value": "{dimension.dimension-0-5}",
       "type": "borderWidth"
     },
     "default": {
