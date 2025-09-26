@@ -1,7 +1,7 @@
 package com.engage.designsystem.tokens
 import androidx.compose.ui.unit.dp
 
-object DSSpacing {
+object DSSpacingTest {
     val xxxs = 2.dp
     val xxs = 4.dp
     val xs = 8.dp

@@ -3,7 +3,7 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
-object DSColors {
+object DSColorsTest {
     val PrimaryBlue = Color(0xFF0ABAB5)
     val SecondaryBlue = Color(0xFF0FC6CC)
     val Background = Color(0xFFE3E7EA)
@@ -20,7 +20,7 @@ object DSColors {
     val OnSurface = TextSecondary
 }
 
-val LightColors = lightColorScheme(
+val LightColorsTest = lightColorScheme(
     primary = DSColors.Primary,
     onPrimary = DSColors.OnPrimary,
     secondary = DSColors.Secondary,
@@ -31,7 +31,7 @@ val LightColors = lightColorScheme(
     onSurface = DSColors.OnSurface
 )
 
-object DSColorsDark {
+object DSColorsDarkTest {
     val PrimaryBlue = Color(0xFF0ABAB5)   // keep the same for brand identity
     val SecondaryBlue = Color(0xFF0FC6CC) // keep the same for brand identity
     val Background = Color(0xFF121212)    // dark gray, standard for dark theme
@@ -48,7 +48,7 @@ object DSColorsDark {
     val OnSurface = TextSecondary
 }
 
-val DarkColors = darkColorScheme(
+val DarkColorsTest = darkColorScheme(
     primary = DSColorsDark.Primary,
     onPrimary = DSColorsDark.OnPrimary,
     secondary = DSColorsDark.Secondary,

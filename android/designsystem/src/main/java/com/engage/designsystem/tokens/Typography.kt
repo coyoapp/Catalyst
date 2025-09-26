@@ -16,7 +16,7 @@ import com.engage.designsystem.R
 //)
 
 // There is one HaiiloFontFamily which is not correct but can make an example
-object DSTypography {
+object DSTypographyTest {
     val EngageTypography = Typography(
         displayLarge = TextStyle(
             fontFamily = FontFamily.SansSerif,
