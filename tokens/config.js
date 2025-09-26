@@ -98,6 +98,12 @@ StyleDictionary.registerFormat({
     formatter: function ({ dictionary }) {
         let swiftFile = `//\n// DSTypography.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum DSTypography {\n`;
 
+        const weightToStyle = {
+            "700": "Bold",
+            "600": "SemiBold",
+            "400": "Regular"
+        };
+        
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
             // The font/weight/swift transform already converted fontWeight to .bold, .regular etc.
