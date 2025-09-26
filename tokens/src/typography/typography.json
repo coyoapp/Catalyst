@@ -8,10 +8,10 @@
         "value": "{font.weight.bold}"
       },
       "fontSize": {
-        "value": "{dimension-8}"
+        "value": "{dimension.dimension-8}"
       },
       "lineHeight": {
-        "value": "{dimension-10}"
+        "value": "{dimension.dimension-10}"
       }
     },
     "h2": {
@@ -22,10 +22,10 @@
         "value": "{font.weight.semi-bold}"
       },
       "fontSize": {
-        "value": "{dimension-7}"
+        "value": "{dimension.dimension-7}"
       },
       "lineHeight": {
-        "value": "{dimension-9}"
+        "value": "{dimension.dimension-9}"
       }
     },
     "h3": {
@@ -36,10 +36,10 @@
         "value": "{font.weight.semi-bold}"
       },
       "fontSize": {
-        "value": "{dimension-6}"
+        "value": "{dimension.dimension-6}"
       },
       "lineHeight": {
-        "value": "{dimension-8}"
+        "value": "{dimension.dimension-8}"
       }
     },
     "h4": {
@@ -50,10 +50,10 @@
         "value": "{font.weight.semi-bold}"
       },
       "fontSize": {
-        "value": "{dimension-5}"
+        "value": "{dimension.dimension-5}"
       },
       "lineHeight": {
-        "value": "{dimension-7}"
+        "value": "{dimension.dimension-7}"
       }
     },
     "body1": {
@@ -64,10 +64,10 @@
         "value": "{font.weight.regular}"
       },
       "fontSize": {
-        "value": "{dimension-4}"
+        "value": "{dimension.dimension-4}"
       },
       "lineHeight": {
-        "value": "{dimension-6}"
+        "value": "{dimension.dimension-6}"
       }
     },
     "body2": {
@@ -78,10 +78,10 @@
         "value": "{font.weight.regular}"
       },
       "fontSize": {
-        "value": "{dimension-3-5}"
+        "value": "{dimension.dimension-3-5}"
       },
       "lineHeight": {
-        "value": "{dimension-5}"
+        "value": "{dimension.dimension-5}"
       }
     },
     "s1": {
@@ -92,10 +92,10 @@
         "value": "{font.weight.semi-bold}"
       },
       "fontSize": {
-        "value": "{dimension-4}"
+        "value": "{dimension.dimension-4}"
       },
       "lineHeight": {
-        "value": "{dimension-6}"
+        "value": "{dimension.dimension-6}"
       }
     },
     "s2": {
@@ -106,10 +106,10 @@
         "value": "{font.weight.semi-bold}"
       },
       "fontSize": {
-        "value": "{dimension-3-5}"
+        "value": "{dimension.dimension-3-5}"
       },
       "lineHeight": {
-        "value": "{dimension-5}"
+        "value": "{dimension.dimension-5}"
       }
     },
     "button": {
@@ -120,10 +120,10 @@
         "value": "{font.weight.semi-bold}"
       },
       "fontSize": {
-        "value": "{dimension-3-5}"
+        "value": "{dimension.dimension-3-5}"
       },
       "lineHeight": {
-        "value": "{dimension-5}"
+        "value": "{dimension.dimension-5}"
       }
     },
     "caption": {
@@ -134,10 +134,10 @@
         "value": "{font.weight.regular}"
       },
       "fontSize": {
-        "value": "{dimension-3}"
+        "value": "{dimension.dimension-3}"
       },
       "lineHeight": {
-        "value": "{dimension-4}"
+        "value": "{dimension.dimension-4}"
       }
     },
     "overline": {
@@ -148,10 +148,10 @@
         "value": "{font.weight.regular}"
       },
       "fontSize": {
-        "value": "{dimension-2-5}"
+        "value": "{dimension.dimension-2-5}"
       },
       "lineHeight": {
-        "value": "{dimension-4}"
+        "value": "{dimension.dimension-4}"
       }
     }
   }
