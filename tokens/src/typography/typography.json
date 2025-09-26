@@ -1,158 +1,103 @@
 {
   "typography": {
     "h1": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.bold}",
+        "fontSize": "{dimension.dimension-8}",
+        "lineHeight": "{dimension.dimension-10}"
       },
-      "fontWeight": {
-        "value": "{font.weight.bold}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-8}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-10}"
-      }
+      "type": "typography"
     },
     "h2": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.semi-bold}",
+        "fontSize": "{dimension.dimension-7}",
+        "lineHeight": "{dimension.dimension-9}"
       },
-      "fontWeight": {
-        "value": "{font.weight.semi-bold}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-7}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-9}"
-      }
+      "type": "typography"
     },
     "h3": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.semi-bold}",
+        "fontSize": "{dimension.dimension-6}",
+        "lineHeight": "{dimension.dimension-8}"
       },
-      "fontWeight": {
-        "value": "{font.weight.semi-bold}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-6}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-8}"
-      }
+      "type": "typography"
     },
     "h4": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.semi-bold}",
+        "fontSize": "{dimension.dimension-5}",
+        "lineHeight": "{dimension.dimension-7}"
       },
-      "fontWeight": {
-        "value": "{font.weight.semi-bold}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-5}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-7}"
-      }
+      "type": "typography"
     },
     "body1": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.regular}",
+        "fontSize": "{dimension.dimension-4}",
+        "lineHeight": "{dimension.dimension-6}"
       },
-      "fontWeight": {
-        "value": "{font.weight.regular}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-4}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-6}"
-      }
+      "type": "typography"
     },
     "body2": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.regular}",
+        "fontSize": "{dimension.dimension-3-5}",
+        "lineHeight": "{dimension.dimension-5}"
       },
-      "fontWeight": {
-        "value": "{font.weight.regular}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-3-5}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-5}"
-      }
+      "type": "typography"
     },
     "s1": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.semi-bold}",
+        "fontSize": "{dimension.dimension-4}",
+        "lineHeight": "{dimension.dimension-6}"
       },
-      "fontWeight": {
-        "value": "{font.weight.semi-bold}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-4}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-6}"
-      }
+      "type": "typography"
     },
     "s2": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.semi-bold}",
+        "fontSize": "{dimension.dimension-3-5}",
+        "lineHeight": "{dimension.dimension-5}"
       },
-      "fontWeight": {
-        "value": "{font.weight.semi-bold}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-3-5}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-5}"
-      }
+      "type": "typography"
     },
     "button": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.semi-bold}",
+        "fontSize": "{dimension.dimension-3-5}",
+        "lineHeight": "{dimension.dimension-5}"
       },
-      "fontWeight": {
-        "value": "{font.weight.semi-bold}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-3-5}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-5}"
-      }
+      "type": "typography"
     },
     "caption": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.regular}",
+        "fontSize": "{dimension.dimension-3}",
+        "lineHeight": "{dimension.dimension-4}"
       },
-      "fontWeight": {
-        "value": "{font.weight.regular}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-3}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-4}"
-      }
+      "type": "typography"
     },
     "overline": {
-      "fontFamily": {
-        "value": "{font.family.lato}"
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.regular}",
+        "fontSize": "{dimension.dimension-2-5}",
+        "lineHeight": "{dimension.dimension-4}"
       },
-      "fontWeight": {
-        "value": "{font.weight.regular}"
-      },
-      "fontSize": {
-        "value": "{dimension.dimension-2-5}"
-      },
-      "lineHeight": {
-        "value": "{dimension.dimension-4}"
-      }
+      "type": "typography"
     }
   }
 }
