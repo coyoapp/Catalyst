@@ -103,11 +103,14 @@ StyleDictionary.registerFormat({
             // The font/weight/swift transform already converted fontWeight to .bold, .regular etc.
             const weight = val.fontWeight;
             const size = parseFloat(val.fontSize);
+            // Look up the style (e.g., "Bold") from the fontWeight value ("700")
+            const style = weightToStyle[val.fontWeight] || "Regular";
+            const fontFamily = val.fontFamily.replace(/"/g, '');
+            // Construct the proper font name, e.g., "Lato-Bold"
+            const fontName = `${fontFamily}-${style}`;
             const propName = prop.path.slice(-1)[0].toUpperCase();
-            const fontName = val.fontFamily;
 
-
-            swiftFile += `    public static let ${prop.name} = Font.custom(${fontName}, size: ${size.toFixed(2)})\n`;
+            swiftFile += `    public static let ${prop.name} = Font.custom("${fontName}", size: ${size.toFixed(2)})\n`;
         });
 
         swiftFile += `}\n`;
