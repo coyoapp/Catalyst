@@ -196,10 +196,7 @@ module.exports = {
                 {
                     destination: 'DSTypography.swift',
                     format: 'swift/swiftui-typography',
-                    filter: {
-                        // This filters for your composite typography tokens
-                        type: 'typography'
-                    }
+                    filter: (token) => token.path[0] === 'typography'
                 }]
         },
         kotlin: {
@@ -253,9 +250,7 @@ module.exports = {
                 {
                     destination: 'DSTypography.kt',
                     format: 'kotlin/compose-typography',
-                    filter: {
-                        type: 'typography'
-                    }
+                    filter: (token) => token.path[0] === 'typography'
                 }
             ]
         }
