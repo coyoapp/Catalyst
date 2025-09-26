@@ -53,7 +53,7 @@ StyleDictionary.registerFormat({
     name: 'kotlin/compose-colors',
     formatter: function ({ dictionary, options }) {
         const { outputReferences } = options;
-        let kotlinFile = `//\n// DSColors.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.yourcompany.designsystem.generated\n\nimport androidx.compose.ui.graphics.Color\n\npublic object DSColors {\n`;
+        let kotlinFile = `//\n// DSColors.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.generated\n\nimport androidx.compose.ui.graphics.Color\n\npublic object DSColors {\n`;
 
         dictionary.allProperties.forEach(prop => {
             const composeColor = `0xFF${prop.value.substring(1).toUpperCase()}`;
@@ -84,7 +84,7 @@ StyleDictionary.registerFormat({
     name: 'kotlin/compose-dimensions',
     formatter: function ({ dictionary, file }) {
         const className = file.className;
-        let kotlinFile = `//\n// ${file.destination}\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.yourcompany.designsystem.generated\n\nimport androidx.compose.ui.unit.dp\n\npublic object ${className} {\n`;
+        let kotlinFile = `//\n// ${file.destination}\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.generated\n\nimport androidx.compose.ui.unit.dp\n\npublic object ${className} {\n`;
         dictionary.allProperties.forEach(prop => {
             kotlinFile += `    public val ${prop.name} = ${prop.value}.dp\n`;
         });
