@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum DSSizes {
+public enum DSSizesTest {
     // Text sizes
     public static let darkTitle = CGFloat(40)
     public static let darkBody = CGFloat(32)

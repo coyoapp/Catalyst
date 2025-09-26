@@ -3,15 +3,15 @@ import SwiftUI
 public struct EngageTheme {
     public let colors: DSColorsProtocol.Type
     public let typography: DSTypography
-    public let spacing: DSSpacing.Type
-    public let sizes: DSSizes.Type
+    public let spacing: DSSpacingTest.Type
+    public let sizes: DSSizesTest.Type
 
     public static var `default`: EngageTheme {
         EngageTheme(
             colors: DSColorsLight.self,
             typography: .default,
-            spacing: DSSpacing.self,
-            sizes: DSSizes.self
+            spacing: DSSpacingTest.self,
+            sizes: DSSizesTest.self
         )
     }
 }
@@ -49,8 +49,8 @@ public extension EngageTheme {
         EngageTheme(
             colors: DSColorsDark.self,
             typography: .dark,
-            spacing: DSSpacing.self,
-            sizes: DSSizes.self
+            spacing: DSSpacingTest.self,
+            sizes: DSSizesTest.self
         )
     }
 }

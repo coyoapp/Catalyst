@@ -7,9 +7,9 @@ public struct DSTypography {
 
     public static var `default`: DSTypography {
         DSTypography(
-            title: .system(size: DSSizes.primaryTitle, weight: .semibold),
-            body: .system(size: DSSizes.primaryBody, weight: .regular),
-            label: .system(size: DSSizes.primaryLabel, weight: .medium)
+            title: .system(size: DSSizesTest.primaryTitle, weight: .semibold),
+            body: .system(size: DSSizesTest.primaryBody, weight: .regular),
+            label: .system(size: DSSizesTest.primaryLabel, weight: .medium)
         )
     }
 }
@@ -17,17 +17,17 @@ public struct DSTypography {
 public extension DSTypography {
     static var secondary: DSTypography {
         DSTypography(
-            title: .system(size: DSSizes.secondaryTitle, weight: .heavy),
-            body: .system(size: DSSizes.secondaryBody, weight: .black),
-            label: .system(size: DSSizes.secondaryLabel, weight: .semibold)
+            title: .system(size: DSSizesTest.secondaryTitle, weight: .heavy),
+            body: .system(size: DSSizesTest.secondaryBody, weight: .black),
+            label: .system(size: DSSizesTest.secondaryLabel, weight: .semibold)
         )
     }
     
     static var dark: DSTypography {
         DSTypography(
-            title: .system(size: DSSizes.darkTitle, weight: .heavy),
-            body: .system(size: DSSizes.darkBody, weight: .black),
-            label: .system(size: DSSizes.darkLabel, weight: .semibold)
+            title: .system(size: DSSizesTest.darkTitle, weight: .heavy),
+            body: .system(size: DSSizesTest.darkBody, weight: .black),
+            label: .system(size: DSSizesTest.darkLabel, weight: .semibold)
         )
     }
 }

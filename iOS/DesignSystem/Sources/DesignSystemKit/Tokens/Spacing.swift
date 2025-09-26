@@ -1,6 +1,6 @@
 import Foundation
 
-public enum DSSpacing: CGFloat {
+public enum DSSpacingTest: CGFloat {
     case xs = 4
     case sm = 8
     case md = 12

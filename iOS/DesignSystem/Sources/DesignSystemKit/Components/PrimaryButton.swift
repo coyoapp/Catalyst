@@ -41,8 +41,8 @@ public struct PrimaryButton: View {
             Text(title)
                 .font(DSTypography.default.title)
                 .foregroundColor(DSColorsLight.textLight)
-                .padding(.vertical, DSSpacing.md.rawValue)
-                .padding(.horizontal, DSSpacing.lg.rawValue)
+                .padding(.vertical, DSSpacingTest.md.rawValue)
+                .padding(.horizontal, DSSpacingTest.lg.rawValue)
                 .frame(maxWidth: .infinity)
         }
         
