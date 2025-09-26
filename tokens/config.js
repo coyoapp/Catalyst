@@ -13,13 +13,14 @@ function hexToRgb(hex) {
     } : null;
 }
 
-// Add this new section to your config file
+// Style Dictionary will perform all the standard iOS transformations except for the one that converts the color to UIColor code.
+// Because of the transfowmation of Colors had issues with their formattings
 StyleDictionary.registerTransformGroup({
     name: 'ios-swift-custom',
     transforms: [
         'attribute/cti',
         'name/cti/camel',
-        // We removed 'color/UIColor' from this list
+        // 'color/UIColor' removed from this list
         'content/swift/literal',
         'asset/swift/literal',
         'size/swift/remToCGFloat',
@@ -65,7 +66,6 @@ StyleDictionary.registerFormat({
     }
 });
 
-// Add this formatter for Swift Dimensions (CGFloat)
 StyleDictionary.registerFormat({
     name: 'swift/swiftui-dimensions',
     formatter: function ({ dictionary, file }) {
@@ -79,7 +79,6 @@ StyleDictionary.registerFormat({
     }
 });
 
-// Add this formatter for Compose Dimensions (.dp)
 StyleDictionary.registerFormat({
     name: 'kotlin/compose-dimensions',
     formatter: function ({ dictionary, file }) {
@@ -94,8 +93,6 @@ StyleDictionary.registerFormat({
 });
 
 module.exports = {
-    // We assume your JSON files are in a "tokens" folder.
-    // Style Dictionary merges them before processing.
     source: [
         'src/color/**/*.json',
         'src/size/**/*.json'
@@ -103,8 +100,6 @@ module.exports = {
     platforms: {
         swift: {
             transformGroup: 'ios-swift-custom',
-            // Define your output path for the Swift project.
-            // Make sure this path exists or the build might fail.
             buildPath: '../iOS/DesignSystem/Sources/DesignSystemKit/Tokens/Generated/',
             files: [
                 // ✅ Colors    
@@ -154,8 +149,6 @@ module.exports = {
         },
         kotlin: {
             transformGroup: 'android',
-            // Define your output path for the Android project.
-            // Make sure this path exists.
             buildPath: '../android/designsystem/src/main/java/com/engage/designsystem/tokens/generated/',
             files: [
                 // ✅ Colors
@@ -183,7 +176,7 @@ module.exports = {
                         type: 'borderRadius'
                     }
                 },
-                // Border Width Dimensions
+                // ✅ Border Width Dimensions
                 {
                     destination: 'DSBorderWidth.kt',
                     format: 'kotlin/compose-dimensions',
@@ -192,7 +185,7 @@ module.exports = {
                         type: 'borderWidth'
                     }
                 },
-                // Sizing Dimensions
+                // ✅ Sizing Dimensions
                 {
                     destination: 'DSSizes.kt',
                     format: 'kotlin/compose-dimensions',
