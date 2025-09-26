@@ -21,14 +21,14 @@ object DSColorsTest {
 }
 
 val LightColorsTest = lightColorScheme(
-    primary = DSColors.Primary,
-    onPrimary = DSColors.OnPrimary,
-    secondary = DSColors.Secondary,
-    onSecondary = DSColors.OnSecondary,
-    background = DSColors.Background,
-    onBackground = DSColors.OnBackground,
-    surface = DSColors.Surface,
-    onSurface = DSColors.OnSurface
+    primary = DSColorsTest.Primary,
+    onPrimary = DSColorsTest.OnPrimary,
+    secondary = DSColorsTest.Secondary,
+    onSecondary = DSColorsTest.OnSecondary,
+    background = DSColorsTest.Background,
+    onBackground = DSColorsTest.OnBackground,
+    surface = DSColorsTest.Surface,
+    onSurface = DSColorsTest.OnSurface
 )
 
 object DSColorsDarkTest {
@@ -49,12 +49,12 @@ object DSColorsDarkTest {
 }
 
 val DarkColorsTest = darkColorScheme(
-    primary = DSColorsDark.Primary,
-    onPrimary = DSColorsDark.OnPrimary,
-    secondary = DSColorsDark.Secondary,
-    onSecondary = DSColorsDark.OnSecondary,
-    background = DSColorsDark.Background,
-    onBackground = DSColorsDark.OnBackground,
-    surface = DSColorsDark.Surface,
-    onSurface = DSColorsDark.OnSurface
+    primary = DSColorsDarkTest.Primary,
+    onPrimary = DSColorsDarkTest.OnPrimary,
+    secondary = DSColorsDarkTest.Secondary,
+    onSecondary = DSColorsDarkTest.OnSecondary,
+    background = DSColorsDarkTest.Background,
+    onBackground = DSColorsDarkTest.OnBackground,
+    surface = DSColorsDarkTest.Surface,
+    onSurface = DSColorsDarkTest.OnSurface
 )
