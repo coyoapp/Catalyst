@@ -1,0 +1,158 @@
+{
+  "typography": {
+    "h1": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.bold}"
+      },
+      "fontSize": {
+        "value": "{dimension.8}"
+      },
+      "lineHeight": {
+        "value": "{dimension.10}"
+      }
+    },
+    "h2": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.semi-bold}"
+      },
+      "fontSize": {
+        "value": "{dimension.7}"
+      },
+      "lineHeight": {
+        "value": "{dimension.9}"
+      }
+    },
+    "h3": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.semi-bold}"
+      },
+      "fontSize": {
+        "value": "{dimension.6}"
+      },
+      "lineHeight": {
+        "value": "{dimension.8}"
+      }
+    },
+    "h4": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.semi-bold}"
+      },
+      "fontSize": {
+        "value": "{dimension.5}"
+      },
+      "lineHeight": {
+        "value": "{dimension.7}"
+      }
+    },
+    "body1": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.regular}"
+      },
+      "fontSize": {
+        "value": "{dimension.4}"
+      },
+      "lineHeight": {
+        "value": "{dimension.6}"
+      }
+    },
+    "body2": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.regular}"
+      },
+      "fontSize": {
+        "value": "{dimension.3-5}"
+      },
+      "lineHeight": {
+        "value": "{dimension.5}"
+      }
+    },
+    "s1": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.semi-bold}"
+      },
+      "fontSize": {
+        "value": "{dimension.4}"
+      },
+      "lineHeight": {
+        "value": "{dimension.6}"
+      }
+    },
+    "s2": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.semi-bold}"
+      },
+      "fontSize": {
+        "value": "{dimension.3-5}"
+      },
+      "lineHeight": {
+        "value": "{dimension.5}"
+      }
+    },
+    "button": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.semi-bold}"
+      },
+      "fontSize": {
+        "value": "{dimension.3-5}"
+      },
+      "lineHeight": {
+        "value": "{dimension.5}"
+      }
+    },
+    "caption": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.regular}"
+      },
+      "fontSize": {
+        "value": "{dimension.3}"
+      },
+      "lineHeight": {
+        "value": "{dimension.4}"
+      }
+    },
+    "overline": {
+      "fontFamily": {
+        "value": "{font.family.lato}"
+      },
+      "fontWeight": {
+        "value": "{font.weight.regular}"
+      },
+      "fontSize": {
+        "value": "{dimension.2-5}"
+      },
+      "lineHeight": {
+        "value": "{dimension.4}"
+      }
+    }
+  }
+}

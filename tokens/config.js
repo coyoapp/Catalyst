@@ -92,10 +92,55 @@ StyleDictionary.registerFormat({
     }
 });
 
+// Formatter for SwiftUI Typography
+StyleDictionary.registerFormat({
+    name: 'swift/swiftui-typography',
+    formatter: function ({ dictionary }) {
+        let swiftFile = `//\n// DSTypography.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum DSTypography {\n`;
+
+        dictionary.allProperties.forEach(prop => {
+            const val = prop.value;
+            // The font/weight/swift transform already converted fontWeight to .bold, .regular etc.
+            const weight = val.fontWeight;
+            const size = parseFloat(val.fontSize);
+            const fontName = `${val.fontFamily}-${prop.name === 'h1' || prop.name === 'h2' || prop.name === 'h3' ? 'Bold' : 'Regular'}`.replace(/\s/g, '');
+
+
+            swiftFile += `    public static let ${prop.name} = Font.custom("${fontName}", size: ${size.toFixed(2)})\n`;
+        });
+
+        swiftFile += `}\n`;
+        return swiftFile;
+    }
+});
+
+
+// Formatter for Compose Typography
+StyleDictionary.registerFormat({
+    name: 'kotlin/compose-typography',
+    formatter: function ({ dictionary }) {
+        let kotlinFile = `//\n// DSTypography.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.tokens.generated\n\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.unit.sp\n\npublic object DSTypography {\n`;
+
+        dictionary.allProperties.forEach(prop => {
+            const val = prop.value;
+            kotlinFile += `    public val ${prop.name} = TextStyle(\n`;
+            kotlinFile += `        fontFamily = DSFontFamily.${val.fontFamily.toLowerCase()},\n`;
+            kotlinFile += `        fontWeight = FontWeight(${val.fontWeight}),\n`;
+            kotlinFile += `        fontSize = ${val.fontSize}.sp,\n`;
+            kotlinFile += `        lineHeight = ${val.lineHeight}.sp\n`;
+            kotlinFile += `    )\n\n`;
+        });
+
+        kotlinFile += `}\n`;
+        return kotlinFile;
+    }
+});
+
 module.exports = {
     source: [
         'src/color/**/*.json',
-        'src/size/**/*.json'
+        'src/size/**/*.json',
+        'src/typography/**/*.json'
     ],
     platforms: {
         swift: {
@@ -145,6 +190,15 @@ module.exports = {
                     filter: {
                         type: 'sizing'
                     }
+                },
+                // ✅ NEW: Typography Styles
+                {
+                    destination: 'DSTypography.swift',
+                    format: 'swift/swiftui-typography',
+                    filter: {
+                        // This filters for your composite typography tokens
+                        type: 'typography'
+                    }
                 }]
         },
         kotlin: {
@@ -193,7 +247,16 @@ module.exports = {
                     filter: {
                         type: 'sizing'
                     }
-                }]
+                },
+                // ✅ Typography Styles
+                {
+                    destination: 'DSTypography.kt',
+                    format: 'kotlin/compose-typography',
+                    filter: {
+                        type: 'typography'
+                    }
+                }
+            ]
         }
     }
 };
