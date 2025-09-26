@@ -103,10 +103,11 @@ StyleDictionary.registerFormat({
             // The font/weight/swift transform already converted fontWeight to .bold, .regular etc.
             const weight = val.fontWeight;
             const size = parseFloat(val.fontSize);
-            const fontName = `${val.fontFamily}-${prop.name === 'h1' || prop.name === 'h2' || prop.name === 'h3' ? 'Bold' : 'Regular'}`.replace(/\s/g, '');
+            const propName = prop.path.slice(-1)[0].toUpperCase();
+            const fontName = val.fontFamily;
 
 
-            swiftFile += `    public static let ${prop.name} = Font.custom("${fontName}", size: ${size.toFixed(2)})\n`;
+            swiftFile += `    public static let ${prop.name} = Font.custom(${fontName}, size: ${size.toFixed(2)})\n`;
         });
 
         swiftFile += `}\n`;

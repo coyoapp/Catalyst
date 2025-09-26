@@ -39,7 +39,7 @@ public struct PrimaryButton: View {
     public var body: some View {
         Button(action: action) {
             Text(title)
-                .font(DSTypography.default.title)
+                .font(DSTypographyTest.default.title)
                 .foregroundColor(DSColorsLight.textLight)
                 .padding(.vertical, DSSpacingTest.md.rawValue)
                 .padding(.horizontal, DSSpacingTest.lg.rawValue)

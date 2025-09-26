@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct EngageTheme {
     public let colors: DSColorsProtocol.Type
-    public let typography: DSTypography
+    public let typography: DSTypographyTest
     public let spacing: DSSpacingTest.Type
     public let sizes: DSSizesTest.Type
 
