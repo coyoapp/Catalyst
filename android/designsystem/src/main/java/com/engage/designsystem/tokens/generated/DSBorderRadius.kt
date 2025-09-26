@@ -4,7 +4,7 @@
 // Do not edit directly, this file is generated from design tokens
 //
 
-package com.engage.designsystem.generated
+package com.engage.designsystem.tokens.generated
 
 import androidx.compose.ui.unit.dp
 
