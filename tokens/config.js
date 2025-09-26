@@ -103,7 +103,7 @@ StyleDictionary.registerFormat({
             "600": "SemiBold",
             "400": "Regular"
         };
-        
+
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
             // The font/weight/swift transform already converted fontWeight to .bold, .regular etc.
@@ -114,7 +114,7 @@ StyleDictionary.registerFormat({
             const fontFamily = val.fontFamily.replace(/"/g, '');
             // Construct the proper font name, e.g., "Lato-Bold"
             const fontName = `${fontFamily}-${style}`;
-            const propName = prop.path.slice(-1)[0].toUpperCase();
+            const propName = prop.path.slice(-1)[0];
 
             swiftFile += `    public static let ${propName} = Font.custom("${fontName}", size: ${size.toFixed(2)})\n`;
         });
