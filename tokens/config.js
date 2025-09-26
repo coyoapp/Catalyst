@@ -138,6 +138,7 @@ StyleDictionary.registerFormat({
 
 module.exports = {
     source: [
+        'src/base-dimensions.json',
         'src/color/**/*.json',
         'src/size/**/*.json',
         'src/typography/**/*.json'
