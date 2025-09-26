@@ -110,7 +110,7 @@ StyleDictionary.registerFormat({
             const fontName = `${fontFamily}-${style}`;
             const propName = prop.path.slice(-1)[0].toUpperCase();
 
-            swiftFile += `    public static let ${prop.name} = Font.custom("${fontName}", size: ${size.toFixed(2)})\n`;
+            swiftFile += `    public static let ${propName} = Font.custom("${fontName}", size: ${size.toFixed(2)})\n`;
         });
 
         swiftFile += `}\n`;
