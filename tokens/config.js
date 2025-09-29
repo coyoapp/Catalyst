@@ -24,8 +24,7 @@ StyleDictionary.registerTransformGroup({
         'content/swift/literal',
         'asset/swift/literal',
         'size/swift/remToCGFloat',
-        'font/swift/literal',
-        'font/weight/swift'
+        'font/swift/literal'
     ]
 });
 
