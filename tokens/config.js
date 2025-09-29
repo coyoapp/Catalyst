@@ -99,18 +99,18 @@ StyleDictionary.registerFormat({
         let swiftFile = `//\n// DSTypography.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum DSTypography {\n`;
 
         const weightToStyle = {
-            700: "Bold",
-            600: "SemiBold",
-            400: "Regular"
+            "700": "Bold",
+            "600": "SemiBold",
+            "400": "Regular"
         };
 
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
             // The font/weight/swift transform already converted fontWeight to .bold, .regular etc.
-            const weight = val.fontWeight;
+            const weight = val.fontWeight.replace(/"/g, '');;
             const size = parseFloat(val.fontSize);
             // Look up the style (e.g., "Bold") from the fontWeight value ("700")
-            const style = weight || "Regular";
+            const style = weightToStyle[weight] || "Regular";
             const fontFamily = val.fontFamily.replace(/"/g, '');
             // Construct the proper font name, e.g., "Lato-Bold"
             const fontName = `${fontFamily}-${style}`;
