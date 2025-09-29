@@ -101,7 +101,11 @@ StyleDictionary.registerFormat({
         const weightToStyle = {
             700: "Bold",
             600: "SemiBold",
-            400: "Regular"
+            400: "Regular",
+
+            "700": "Bold",
+            "600": "SemiBold",
+            "400": "Regular"
         };
 
         dictionary.allProperties.forEach(prop => {
@@ -110,7 +114,7 @@ StyleDictionary.registerFormat({
             const weight = val.fontWeight;
             const size = parseFloat(val.fontSize);
             // Look up the style (e.g., "Bold") from the fontWeight value ("700")
-            const style = weightToStyle[val.fontWeight] || "Regular";
+            const style = weightToStyle[weight] || "Regular";
             const fontFamily = val.fontFamily.replace(/"/g, '');
             // Construct the proper font name, e.g., "Lato-Bold"
             const fontName = `${fontFamily}-${style}`;
