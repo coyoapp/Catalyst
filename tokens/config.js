@@ -24,7 +24,8 @@ StyleDictionary.registerTransformGroup({
         'content/swift/literal',
         'asset/swift/literal',
         'size/swift/remToCGFloat',
-        'font/swift/literal'
+        'font/swift/literal',
+        'font/weight/swift'
     ]
 });
 
@@ -102,10 +103,6 @@ StyleDictionary.registerFormat({
             700: "Bold",
             600: "SemiBold",
             400: "Regular",
-
-            "700": "Bold",
-            "600": "SemiBold",
-            "400": "Regular"
         };
 
         dictionary.allProperties.forEach(prop => {
