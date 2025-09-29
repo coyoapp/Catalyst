@@ -99,9 +99,9 @@ StyleDictionary.registerFormat({
         let swiftFile = `//\n// DSTypography.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum DSTypography {\n`;
 
         const weightToStyle = {
-            "bold": "Bold",
-            "semi-bold": "SemiBold",
-            "regular": "Regular"
+            700: "Bold",
+            600: "SemiBold",
+            400: "Regular"
         };
 
         dictionary.allProperties.forEach(prop => {
