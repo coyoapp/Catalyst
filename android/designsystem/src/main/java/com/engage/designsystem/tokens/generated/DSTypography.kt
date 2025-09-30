@@ -9,6 +9,7 @@ package com.engage.designsystem.tokens.generated
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.engage.designsystem.DSFontFamily
 
 public object DSTypography {
     public val typography_h1 = TextStyle(
