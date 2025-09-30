@@ -129,7 +129,7 @@ StyleDictionary.registerFormat({
 StyleDictionary.registerFormat({
     name: 'kotlin/compose-typography',
     formatter: function ({ dictionary }) {
-        let kotlinFile = `//\n// DSTypography.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.tokens.generated\n\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.unit.sp\n\npublic object DSTypography {\n`;
+        let kotlinFile = `//\n// DSTypography.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.tokens.generated\n\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.unit.sp\nimport com.engage.designsystem.DSFontFamily\n\npublic object DSTypography {\n`;
 
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
