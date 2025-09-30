@@ -133,7 +133,8 @@ StyleDictionary.registerFormat({
 
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
-            kotlinFile += `    public val ${prop.name} = TextStyle(\n`;
+            const propName = prop.path.slice(-1)[0];
+            kotlinFile += `    public val ${propName} = TextStyle(\n`;
             kotlinFile += `        fontFamily = DSFontFamily.${val.fontFamily.toLowerCase()},\n`;
             kotlinFile += `        fontWeight = FontWeight(${val.fontWeight}),\n`;
             kotlinFile += `        fontSize = ${val.fontSize}.sp,\n`;
