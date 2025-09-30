@@ -12,77 +12,77 @@ import androidx.compose.ui.unit.sp
 import com.engage.designsystem.DSFontFamily
 
 public object DSTypography {
-    public val typography_h1 = TextStyle(
+    public val h1 = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(700),
         fontSize = 32.sp,
         lineHeight = 40.sp
     )
 
-    public val typography_h2 = TextStyle(
+    public val h2 = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(600),
         fontSize = 28.sp,
         lineHeight = 36.sp
     )
 
-    public val typography_h3 = TextStyle(
+    public val h3 = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(600),
         fontSize = 24.sp,
         lineHeight = 32.sp
     )
 
-    public val typography_h4 = TextStyle(
+    public val h4 = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(600),
         fontSize = 20.sp,
         lineHeight = 28.sp
     )
 
-    public val typography_body1 = TextStyle(
+    public val body1 = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(400),
         fontSize = 16.sp,
         lineHeight = 24.sp
     )
 
-    public val typography_body2 = TextStyle(
+    public val body2 = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(400),
         fontSize = 14.sp,
         lineHeight = 20.sp
     )
 
-    public val typography_s1 = TextStyle(
+    public val s1 = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(600),
         fontSize = 16.sp,
         lineHeight = 24.sp
     )
 
-    public val typography_s2 = TextStyle(
+    public val s2 = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(600),
         fontSize = 14.sp,
         lineHeight = 20.sp
     )
 
-    public val typography_button = TextStyle(
+    public val button = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(600),
         fontSize = 14.sp,
         lineHeight = 20.sp
     )
 
-    public val typography_caption = TextStyle(
+    public val caption = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(400),
         fontSize = 12.sp,
         lineHeight = 16.sp
     )
 
-    public val typography_overline = TextStyle(
+    public val overline = TextStyle(
         fontFamily = DSFontFamily.lato,
         fontWeight = FontWeight(400),
         fontSize = 10.sp,
