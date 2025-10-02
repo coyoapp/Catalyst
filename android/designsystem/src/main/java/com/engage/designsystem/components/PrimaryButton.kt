@@ -6,7 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.engage.designsystem.tokens.DSColorsTest
+import com.engage.designsystem.tokens.generated.DSColors
 
 @Composable
 fun PrimaryButton(
@@ -18,8 +18,8 @@ fun PrimaryButton(
         modifier = modifier,
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = DSColorsTest.Primary,
-            contentColor = DSColorsTest.OnPrimary
+            containerColor = DSColors.color_theme_primary_bg,
+            contentColor = DSColors.color_theme_primary_text
         )
     ) {
         Text(text)

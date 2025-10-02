@@ -3,17 +3,15 @@ package com.engage.designsystem.theme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import com.engage.designsystem.tokens.DSTypographyTest.EngageTypography
-import com.engage.designsystem.tokens.DarkColorsTest
-import com.engage.designsystem.tokens.LightColorsTest
+import com.engage.designsystem.tokens.generated.DSColors
 
 @Composable
 fun EngageTheme(
     darkTheme: Boolean = false,
     content: @Composable () -> Unit
 ) {
-    val colors = if (darkTheme) DarkColorsTest else LightColorsTest
     MaterialTheme(
-        colorScheme = colors,
+//        colorScheme = colors, // Theme works with color schemes so wont be able to use DSColors directly
         typography = EngageTypography,
         content = content
     )
