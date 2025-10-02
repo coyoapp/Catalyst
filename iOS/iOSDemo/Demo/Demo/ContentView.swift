@@ -19,10 +19,10 @@ struct ContentView: View {
     var body: some View {
         
         EngageThemeProvider(theme: .dark) {
-            VStack(spacing: theme.spacing.md.rawValue) {
+            VStack(spacing: theme.spacing.spacingXs) {
                 Text("Design System Demo")
                     .font(theme.typography.title)
-                    .foregroundColor(theme.colors.primary)
+                    .foregroundColor(theme.colors.colorThemeDangerText)
                 
                 ThemedTextView()
                 
@@ -38,11 +38,11 @@ struct ContentView: View {
         }
         
         Text("TRY Generated Colors")
-            .background(DSColors.colorThemeDangerBg)
+            .background(DSColors.colorThemeInfoBg)
             .foregroundColor(DSColors.colorThemeSecondaryTextActive)
         Text("TRY COLORS")
-            .background(DSColorsDark.primary)
-            .foregroundColor(DSColorsDark.textLight)
+            .background(DSColors.colorThemeDangerBg)
+            .foregroundColor(DSColors.colorThemeDangerText)
     }
 
     private func addItem() {
@@ -65,10 +65,10 @@ struct ThemedTextView: View {
     @Environment(\.engageTheme) private var theme
     
     var body: some View {
-        VStack(spacing: theme.spacing.md.rawValue) {
+        VStack(spacing: theme.spacing.spacingXs) {
             Text("Design System Demo")
                 .font(theme.typography.title)
-                .foregroundColor(theme.colors.primary)
+                .foregroundColor(theme.colors.colorThemePrimaryText)
         }
     }
 }

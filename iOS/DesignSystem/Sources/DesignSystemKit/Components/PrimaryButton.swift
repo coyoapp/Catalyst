@@ -15,12 +15,12 @@ public struct PrimaryButtonWithTheme: View {
         Button(action: action) {
             Text("Theme: \(title)")
                 .font(theme.typography.title)
-                .foregroundColor(theme.colors.textLight)
-                .padding(theme.spacing.md.rawValue)
+                .foregroundColor(theme.colors.colorThemeDangerBg)
+                .padding(theme.spacing.spacingMd)
                 .frame(maxWidth: .infinity)
         }
         
-        .background(theme.colors.primary)
+        .background(theme.colors.colorThemeDangerBgActive)
         .cornerRadius(12)
     }
 }
@@ -40,13 +40,13 @@ public struct PrimaryButton: View {
         Button(action: action) {
             Text(title)
                 .font(DSTypographyTest.default.title)
-                .foregroundColor(DSColorsLight.textLight)
-                .padding(.vertical, DSSpacingTest.md.rawValue)
-                .padding(.horizontal, DSSpacingTest.lg.rawValue)
+                .foregroundColor(DSColors.colorThemeInfoText)
+                .padding(.vertical, DSSpacing.spacingMd)
+                .padding(.horizontal, DSSpacing.spacingLg)
                 .frame(maxWidth: .infinity)
         }
         
-        .background(DSColorsLight.primary)
+        .background(DSColors.colorThemeInfoBg)
         .cornerRadius(12)
     }
 }

@@ -1,17 +1,17 @@
 import SwiftUI
 
 public struct EngageTheme {
-    public let colors: DSColorsProtocol.Type
+    public let colors: DSColors.Type
     public let typography: DSTypographyTest
-    public let spacing: DSSpacingTest.Type
-    public let sizes: DSSizesTest.Type
+    public let spacing: DSSpacing.Type
+    public let sizes: DSSizes.Type
 
     public static var `default`: EngageTheme {
         EngageTheme(
-            colors: DSColorsLight.self,
+            colors: DSColors.self,
             typography: .default,
-            spacing: DSSpacingTest.self,
-            sizes: DSSizesTest.self
+            spacing: DSSpacing.self,
+            sizes: DSSizes.self
         )
     }
 }
@@ -47,10 +47,10 @@ public struct EngageThemeProvider<Content: View>: View {
 public extension EngageTheme {
     static var dark: EngageTheme {
         EngageTheme(
-            colors: DSColorsDark.self,
+            colors: DSColors.self,
             typography: .dark,
-            spacing: DSSpacingTest.self,
-            sizes: DSSizesTest.self
+            spacing: DSSpacing.self,
+            sizes: DSSizes.self
         )
     }
 }
