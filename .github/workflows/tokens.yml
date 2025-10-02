@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - main
-      - token-to-project-design-generation
-    # paths:
-    #   - "tokens/**"
+    paths:
+      - "tokens/**"
   pull_request:
     paths:
       - "tokens/**"
