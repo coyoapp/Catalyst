@@ -1,8 +1,8 @@
 import SwiftUI
 
 public struct EngageTheme {
-    public let colors: DSColorsProtocol.Type
-    public let typography: DSTypography
+    public let colors: DSColors.Type
+    public let typography: DSTypographyTest
     public let spacing: DSSpacing.Type
     public let sizes: DSSizes.Type
 
@@ -47,7 +47,7 @@ public struct EngageThemeProvider<Content: View>: View {
 public extension EngageTheme {
     static var dark: EngageTheme {
         EngageTheme(
-            colors: DSColorsDark.self,
+            colors: DSColors.self,
             typography: .dark,
             spacing: DSSpacing.self,
             sizes: DSSizes.self

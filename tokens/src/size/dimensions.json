@@ -1,0 +1,142 @@
+{
+  "border-radius": {
+    "none": {
+      "value": "{dimension.dimension-0}",
+      "type": "borderRadius"
+    },
+    "sm": {
+      "value": "{dimension.dimension-1}",
+      "type": "borderRadius"
+    },
+    "md": {
+      "value": "{dimension.dimension-2}",
+      "type": "borderRadius"
+    },
+    "lg": {
+      "value": "{dimension.dimension-3}",
+      "type": "borderRadius"
+    },
+    "xl": {
+      "value": "{dimension.dimension-4}",
+      "type": "borderRadius"
+    },
+    "2xl": {
+      "value": "{dimension.dimension-6}",
+      "type": "borderRadius"
+    },
+    "full": {
+      "value": "{dimension.dimension-999}",
+      "type": "borderRadius"
+    }
+  },
+  "spacing": {
+    "none": {
+      "value": "{dimension.dimension-0}",
+      "type": "spacing"
+    },
+    "xxs": {
+      "value": "{dimension.dimension-0-5}",
+      "type": "spacing"
+    },
+    "xs": {
+      "value": "{dimension.dimension-1}",
+      "type": "spacing"
+    },
+    "sm": {
+      "value": "{dimension.dimension-1-5}",
+      "type": "spacing"
+    },
+    "md": {
+      "value": "{dimension.dimension-2}",
+      "type": "spacing"
+    },
+    "lg": {
+      "value": "{dimension.dimension-3}",
+      "type": "spacing"
+    },
+    "xl": {
+      "value": "{dimension.dimension-4}",
+      "type": "spacing"
+    },
+    "2xl": {
+      "value": "{dimension.dimension-5}",
+      "type": "spacing"
+    },
+    "3xl": {
+      "value": "{dimension.dimension-6}",
+      "type": "spacing"
+    },
+    "4xl": {
+      "value": "{dimension.dimension-8}",
+      "type": "spacing"
+    },
+    "5xl": {
+      "value": "{dimension.dimension-10}",
+      "type": "spacing"
+    },
+    "6xl": {
+      "value": "{dimension.dimension-12}",
+      "type": "spacing"
+    },
+    "7xl": {
+      "value": "{dimension.dimension-14}",
+      "type": "spacing"
+    }
+  },
+  "border-width": {
+    "none": {
+      "value": "{dimension.dimension-0}",
+      "type": "borderWidth"
+    },
+    "thin": {
+      "value": "{dimension.dimension-0-5}",
+      "type": "borderWidth"
+    },
+    "default": {
+      "value": "{dimension.dimension-1}",
+      "type": "borderWidth"
+    },
+    "thick": {
+      "value": "{dimension.dimension-1-5}",
+      "type": "borderWidth"
+    }
+  },
+  "size": {
+    "xs": {
+      "value": "{dimension.dimension-3}",
+      "type": "sizing"
+    },
+    "sm": {
+      "value": "{dimension.dimension-4}",
+      "type": "sizing"
+    },
+    "md": {
+      "value": "{dimension.dimension-5}",
+      "type": "sizing"
+    },
+    "lg": {
+      "value": "{dimension.dimension-6}",
+      "type": "sizing"
+    },
+    "xl": {
+      "value": "{dimension.dimension-8}",
+      "type": "sizing"
+    },
+    "2xl": {
+      "value": "{dimension.dimension-10}",
+      "type": "sizing"
+    },
+    "3xl": {
+      "value": "{dimension.dimension-12}",
+      "type": "sizing"
+    },
+    "4xl": {
+      "value": "{dimension.dimension-14}",
+      "type": "sizing"
+    },
+    "5xl": {
+      "value": "{dimension.dimension-16}",
+      "type": "sizing"
+    }
+  }
+}
