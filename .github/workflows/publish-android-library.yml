@@ -1,0 +1,39 @@
+name: Publish Android Design System Library
+
+# This workflow runs whenever a tag is pushed
+on:
+  push:
+    branches:
+        -  CM-9595-publish-library
+    # tags:
+    #   - 'v*.*.*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: ⬇️ Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: ⚙️ Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: 📦 Publish to GitHub Packages
+        working-directory: ./android
+        env:
+          # The GITHUB_TOKEN is automatically provided by the runner
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # This command builds and publishes the :designsystem module.
+        # It overrides the hardcoded version with the name of the Git tag.
+        run: ./gradlew :designsystem:publish -Pversion=${{ github.ref_name }}
