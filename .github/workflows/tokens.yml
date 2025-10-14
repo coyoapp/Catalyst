@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - CM-9595-publish-library
     paths:
       - "tokens/**"
   pull_request:
