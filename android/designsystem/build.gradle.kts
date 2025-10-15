@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     // id("maven-publish")
-    id("com.github.jitpack") version "1.1"
 }
 
 group = "com.engage"
