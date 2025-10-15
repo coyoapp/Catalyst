@@ -29,7 +29,7 @@ jobs:
       - name: ✅ Verify library builds successfully
         working-directory: ./android
         # This command builds the library to ensure it's not broken
-        run: ./gradlew :designsystem:build
+        run: ./gradlew clean :designsystem:build
 
       - name: ✨ Create GitHub Release Page
         uses: softprops/action-gh-release@v1
