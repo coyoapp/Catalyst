@@ -7,7 +7,6 @@ on:
       version:
         description: 'The version to release'
         required: false
-        default: ${{ github.ref_name }} # Fallback to ref_name (branch or tag name) if not provided
 
   push:
     branches:
