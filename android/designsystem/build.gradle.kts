@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.engage"
-version = "0.1.0"
+version = project.properties["version"]?.toString() ?: "0.1.0"
 
 android {
     namespace = "com.engage.designsystem"
