@@ -41,24 +41,21 @@ jobs:
         working-directory: ./android
         run: ./gradlew :designsystem:assemble
 
-      - name: 🏷️ Create GitHub tag
-        run: |
-          # If version is not provided, use github.ref_name (branch/tag name) as version
-          VERSION=${{ github.event.inputs.version }}
-          if [[ -z "$VERSION" ]]; then
-            VERSION=${GITHUB_REF#refs/tags/}  # Fallback to tag name if no version input provided
-          fi
-          echo "Creating tag v$VERSION"
-          git tag -a "v$VERSION" -m "Release version v$VERSION"
-          git push origin "v$VERSION"
-
-      - name: 📦 Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: "v${{ github.event.inputs.version }}"
-          name: "Release version ${{ github.event.inputs.version }}"
-          body: |
-            Release notes for version ${{ github.event.inputs.version }}
+      - name: 📦 Publish to GitHub Packages
+        working-directory: ./android
         env:
           # The GITHUB_TOKEN is automatically provided by the runner
+          GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # 1. This is the correct command to build AND upload the library
+        # 2. It overrides the hardcoded version with the name of the Git tag
+        run: ./gradlew :designsystem:publish -Pversion=${{ github.ref_name }}
+
+      - name: ✨ Create GitHub Release Page (Optional)
+        uses: softprops/action-gh-release@v1
+        with:
+          # This creates a clean release page for humans to read release notes.
+          # The actual package is already in GitHub Packages.
+          tag_name: ${{ github.ref_name }}
+          name: "Release ${{ github.ref_name }}"
+          body: "Official release of the Design System, version ${{ github.ref_name }}."
