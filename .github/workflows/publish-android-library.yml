@@ -11,8 +11,8 @@ on:
   push:
     branches:
         -  CM-9595-publish-library
-    # tags:
-    #   - 'v*.*.*'
+    tags:
+      - 'v*.*.*'
 
 jobs:
   publish:
