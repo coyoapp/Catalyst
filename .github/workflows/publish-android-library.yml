@@ -2,6 +2,13 @@ name: Publish Android Design System Library
 
 # This workflow runs whenever a tag is pushed
 on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The version to release'
+        required: false
+        default: ${{ github.ref_name }} # Fallback to ref_name (branch or tag name) if not provided
+
   push:
     branches:
         -  CM-9595-publish-library
@@ -9,11 +16,8 @@ on:
     #   - 'v*.*.*'
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: ⬇️ Checkout Repository
@@ -25,15 +29,28 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: ⚙️ Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-
-      - name: 📦 Publish to GitHub Packages
+      - name: 📚 Build the library
         working-directory: ./android
+        run: ./gradlew :designsystem:assemble
+
+      - name: 🏷️ Create GitHub tag
+        run: |
+          # If version is not provided, use github.ref_name (branch/tag name) as version
+          VERSION=${{ github.event.inputs.version }}
+          if [[ -z "$VERSION" ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}  # Fallback to tag name if no version input provided
+          fi
+          echo "Creating tag v$VERSION"
+          git tag -a "v$VERSION" -m "Release version v$VERSION"
+          git push origin "v$VERSION"
+
+      - name: 📦 Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "v${{ github.event.inputs.version }}"
+          name: "Release version ${{ github.event.inputs.version }}"
+          body: |
+            Release notes for version ${{ github.event.inputs.version }}
         env:
           # The GITHUB_TOKEN is automatically provided by the runner
-          GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # This command builds and publishes the :designsystem module.
-        # It overrides the hardcoded version with the name of the Git tag.
-        run: ./gradlew :designsystem:publish -Pversion=${{ github.ref_name }}
