@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("maven-publish")
+    // id("maven-publish")
+    id("com.github.jitpack") version "1.1"
 }
 
 group = "com.engage"
@@ -48,28 +49,28 @@ android {
     }
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                groupId = "com.engage"
-                artifactId = "designsystem"
-                version = project.version.toString()
-            }
-        }
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/coyoapp/Design-System")
-                credentials {
-                    username = System.getenv("GITHUB_ACTOR") // For CI/CD
-                    password = System.getenv("GITHUB_TOKEN") // For CI/CD
-                }
-            }
-        }
-    }
-}
+// afterEvaluate {
+//     publishing {
+//         publications {
+//             create<MavenPublication>("release") {
+//                 from(components["release"])
+//                 groupId = "com.engage"
+//                 artifactId = "designsystem"
+//                 version = project.version.toString()
+//             }
+//         }
+//         repositories {
+//             maven {
+//                 name = "GitHubPackages"
+//                 url = uri("https://maven.pkg.github.com/coyoapp/Design-System")
+//                 credentials {
+//                     username = System.getenv("GITHUB_ACTOR") // For CI/CD
+//                     password = System.getenv("GITHUB_TOKEN") // For CI/CD
+//                 }
+//             }
+//         }
+//     }
+// }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
