@@ -15,14 +15,18 @@ on:
     #   - 'v*.*.*'
 
 jobs:
-  release:
+  publish:
     runs-on: ubuntu-latest
+    # Grant permission for the workflow to write to GitHub Packages
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: ⬇️ Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Git
+      - name: 🧑 Set up GitHub User
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
