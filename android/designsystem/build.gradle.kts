@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    // id("maven-publish")
 }
 
 group = "com.engage"
@@ -26,13 +25,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-    }
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()   // optional, publishes sources.jar
-            withJavadocJar()   // optional, publishes javadoc.jar
         }
     }
 
