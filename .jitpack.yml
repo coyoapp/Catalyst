@@ -1,0 +1,12 @@
+# Tells JitPack which Java version to use for the build
+jdk:
+  - openjdk17
+
+# Instructions for JitPack before building
+before_install:
+  # This command changes the directory into your /android folder
+  - cd android
+
+# The build command, now run from within the /android folder
+install:
+  - ./gradlew :designsystem:build -x lint
