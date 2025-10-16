@@ -5,7 +5,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.github.coyoapp"
+group = "com.engage"
 version = project.properties["version"]?.toString() ?: "0.1.0"
 
 android {
@@ -46,8 +46,8 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "com.github.coyoapp"
-                artifactId = "Design-System"
+                groupId = "com.engage"
+                artifactId = "designsystem"
                 version = project.version.toString()
             }
         }
