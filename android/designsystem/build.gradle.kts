@@ -2,9 +2,10 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("maven-publish")
 }
 
-group = "com.engage"
+group = "com.github.coyoapp"
 version = project.properties["version"]?.toString() ?: "0.1.0"
 
 android {
@@ -40,16 +41,16 @@ android {
     }
 }
 
-// afterEvaluate {
-//     publishing {
-//         publications {
-//             create<MavenPublication>("release") {
-//                 from(components["release"])
-//                 groupId = "com.engage"
-//                 artifactId = "designsystem"
-//                 version = project.version.toString()
-//             }
-//         }
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.coyoapp"
+                artifactId = "Design-System"
+                version = project.version.toString()
+            }
+        }
 //         repositories {
 //             maven {
 //                 name = "GitHubPackages"
@@ -60,8 +61,8 @@ android {
 //                 }
 //             }
 //         }
-//     }
-// }
+    }
+}
 
 dependencies {
     implementation(libs.androidx.core.ktx)
