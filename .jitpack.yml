@@ -9,4 +9,4 @@ before_install:
 
 # The build command, now run from within the /android folder
 install:
-  - ./gradlew :designsystem:build -x lint
+  - ./gradlew :designsystem:publishToMavenLocal
