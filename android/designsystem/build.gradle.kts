@@ -55,16 +55,6 @@ afterEvaluate {
                 version = project.version.toString()
             }
         }
-//         repositories {
-//             maven {
-//                 name = "GitHubPackages"
-//                 url = uri("https://maven.pkg.github.com/coyoapp/Design-System")
-//                 credentials {
-//                     username = System.getenv("GITHUB_ACTOR") // For CI/CD
-//                     password = System.getenv("GITHUB_TOKEN") // For CI/CD
-//                 }
-//             }
-//         }
     }
 }
 
