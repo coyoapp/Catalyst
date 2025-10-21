@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.engage"
-version = "0.1.0"
+version = project.properties["version"]?.toString() ?: "0.1.0"
 
 android {
     namespace = "com.engage.designsystem"
@@ -29,13 +29,6 @@ android {
         }
     }
 
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()   // optional, publishes sources.jar
-            withJavadocJar()   // optional, publishes javadoc.jar
-        }
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -45,6 +38,10 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+
+    publishing {
+        singleVariant("release")
     }
 }
 
