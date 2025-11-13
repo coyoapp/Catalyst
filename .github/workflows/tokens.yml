@@ -31,7 +31,7 @@ jobs:
         working-directory: ./tokens
 
       - name: 🎨 Build Design Tokens
-        run: pm run build
+        run: npm run build
         working-directory: ./tokens
 
       - name: ⬆️ Commit and Push Changes
