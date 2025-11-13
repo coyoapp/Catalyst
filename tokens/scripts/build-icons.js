@@ -8,9 +8,29 @@ const iconDir = path.resolve(__dirname, '../src/icons');
 const androidDir = path.resolve(__dirname, '../../android/designsystem/src/main/res/drawable');
 const iosDir = path.resolve(__dirname, '../../iOS/DesignSystem/Sources/DesignSystemKit/Resources/DSAssets.xcassets');
 
-if (!fs.existsSync(androidDir)) {
-    fs.mkdirSync(androidDir, { recursive: true });
+// SetUp Cleaning Part:
+if (fs.existsSync(androidDir)) {
+    console.log(`🧹 Removing existing Android Icons folder`);
+    fs.rmSync(androidDir, { recursive: true, force: true });
 }
+console.log(`🗂️ Android: Adding new empty assets folder`);
+fs.mkdirSync(androidDir, { recursive: true });
+
+if (fs.existsSync(iosDir)) {
+    console.log(`🧹 Removing existing iOS Icons folder`);
+    fs.rmSync(iosDir, { recursive: true, force: true });
+}
+console.log(`🗂️ iOS: Adding new empty assets folder`);
+fs.mkdirSync(iosDir, { recursive: true });
+
+console.log(`📂 iOS: Adding root Contents.json file for Asset Catalog`);
+const iosRootContents = {
+  info: { version: 1, author: "xcode" }
+};
+fs.writeFileSync(
+  path.join(iosDir, 'Contents.json'),
+  JSON.stringify(iosRootContents, null, 2)
+);
 
 fs.readdirSync(iconDir).forEach(file => {
     if (path.extname(file) === '.svg') {
