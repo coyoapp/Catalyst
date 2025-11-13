@@ -4,11 +4,12 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "tokens/**"
-  pull_request:
-    paths:
-      - "tokens/**"
+      - desing-token-icons
+  #   paths:
+  #     - "tokens/**"
+  # pull_request:
+  #   paths:
+  #     - "tokens/**"
 
 jobs:
   build-tokens:
@@ -30,7 +31,7 @@ jobs:
         working-directory: ./tokens
 
       - name: 🎨 Build Design Tokens
-        run: npx style-dictionary build
+        run: pm run build
         working-directory: ./tokens
 
       - name: ⬆️ Commit and Push Changes

@@ -49,8 +49,9 @@ struct ContentView: View {
         
         Image("reaction-appreciate", bundle: .designSystem)
             .resizable()
+            .renderingMode(.template)
+            .foregroundColor(Color.blue)
             .frame(width: 50, height: 50)
-            .foregroundStyle(Color.black)
             .padding()
         
         Text("TRY Generated Colors")
