@@ -16,11 +16,14 @@ import com.engage.designsystem.theme.EngageTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.engage.designsystem.components.PrimaryButton
 import com.engage.designsystem.components.PrimaryButtonWithTheme
 import com.engage.designsystem.theme.EngageTheme
 import com.engage.designsystem.tokens.generated.DSTypography
+import com.engage.designsystem.R
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +54,18 @@ fun DemoScreen() {
                 Text("Design System Demo", style = DSTypography.h1)
                 Text("This is body text using DS typography.", style = DSTypography.body1)
                 Text("This is a caption.", style = DSTypography.body2)
+
+                Icon(
+                    painter = painterResource(id = R.drawable.reaction_appreciate),
+                    contentDescription = "Appreciate",
+                    tint = Color.Unspecified
+                )
+
+                Icon(
+                    painter = painterResource(id = R.drawable.union),
+                    contentDescription = "Union",
+                    tint = Color.Unspecified
+                )
 
                 PrimaryButton(
                     text = if (darkTheme) "Switch to Light" else "Switch to Dark",

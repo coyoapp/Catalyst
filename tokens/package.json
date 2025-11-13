@@ -14,9 +14,12 @@
     "access": "public"
   },
   "scripts": {
-    "build": "style-dictionary build"
+    "build": "npm run build:tokens && npm run build:icons",
+    "build:tokens": "style-dictionary build",
+    "build:icons": "node scripts/build-icons.js"
   },
   "devDependencies": {
-    "style-dictionary": "^3.9.2"
+    "style-dictionary": "^3.9.2",
+    "svg2vectordrawable": "^2.9.1"
   }
 }

@@ -20,7 +20,10 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "DesignSystemKit",
-            path: "Sources/DesignSystemKit"
+            path: "Sources/DesignSystemKit",
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )
