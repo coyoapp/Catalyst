@@ -5,8 +5,8 @@ on:
     branches:
       - main
       - desing-token-icons
-  #   paths:
-  #     - "tokens/**"
+    paths:
+      - "tokens/**"
   # pull_request:
   #   paths:
   #     - "tokens/**"

@@ -41,6 +41,10 @@ struct ContentView: View {
                 .frame(width: 50, height: 50)
                 .foregroundStyle(Color.black)
             
+            Image("Avatar-2", bundle: .designSystem)
+                .resizable()
+                .frame(width: 50, height: 50)
+            
             Image("reaction-appreciate", bundle: .designSystem)
                 .resizable()
                 .frame(width: 25, height: 25)
