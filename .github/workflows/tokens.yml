@@ -4,12 +4,11 @@ on:
   push:
     branches:
       - main
-      - desing-token-icons
-    # paths:
-    #   - "tokens/**"
-  # pull_request:
-  #   paths:
-  #     - "tokens/**"
+    paths:
+      - "tokens/**"
+  pull_request:
+    paths:
+      - "tokens/**"
 
 jobs:
   build-tokens:
