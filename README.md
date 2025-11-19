@@ -14,6 +14,8 @@ This monorepo contains all components of the mobile design system pipeline:
 
 ## 🚀 Getting Started (Consuming the Libraries)
 {Insert Setup steps here}
+### iOS:
+PS: After adding the dependency or to receive any update in Design System Library `tuist fetch` has to be executed.
 
 ## 🏗️ Development Workflow (Contributing)
 

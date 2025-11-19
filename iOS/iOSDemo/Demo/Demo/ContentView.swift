@@ -35,7 +35,28 @@ struct ContentView: View {
                 }
             }
             .padding()
+            
+            Image("Union", bundle: .designSystem)
+                .resizable()
+                .frame(width: 50, height: 50)
+                .foregroundStyle(Color.black)
+            
+            Image("Avatar-2", bundle: .designSystem)
+                .resizable()
+                .frame(width: 50, height: 50)
+            
+            Image("reaction-appreciate", bundle: .designSystem)
+                .resizable()
+                .frame(width: 25, height: 25)
+                .background(DSColors.colorThemeDangerBg)
         }
+        
+        Image("reaction-appreciate", bundle: .designSystem)
+            .resizable()
+            .renderingMode(.template)
+            .foregroundColor(Color.blue)
+            .frame(width: 50, height: 50)
+            .padding()
         
         Text("TRY Generated Colors")
             .background(DSColors.colorThemeInfoBg)

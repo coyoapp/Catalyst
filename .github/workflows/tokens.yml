@@ -30,7 +30,7 @@ jobs:
         working-directory: ./tokens
 
       - name: 🎨 Build Design Tokens
-        run: npx style-dictionary build
+        run: npm run build
         working-directory: ./tokens
 
       - name: ⬆️ Commit and Push Changes
