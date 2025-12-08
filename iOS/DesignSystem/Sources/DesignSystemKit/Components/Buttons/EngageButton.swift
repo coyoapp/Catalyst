@@ -11,6 +11,7 @@ public struct EngageButton: View {
     let content: DSButtonContent
     let buttonSize: DSButtonSize
     let styleConfig: DSButtonStateStyleConfig?
+    let styleFont: Font?
     let stackSpacing: CGFloat?
     let padding: EdgeInsets?
     let action: () -> Void
@@ -18,11 +19,13 @@ public struct EngageButton: View {
     public init(_ content: DSButtonContent,
                 buttonSize: DSButtonSize = .small,
                 styleConfig: DSButtonStateStyleConfig? = DSTheme.Components.Buttons.Primary.filledConfig,
+                styleFont: Font? = DSTypography.s1,
                 stackSpacing: CGFloat? = nil,
                 padding: EdgeInsets? = nil, action: @escaping () -> Void) {
         self.content = content
         self.buttonSize = buttonSize
         self.styleConfig = styleConfig
+        self.styleFont = styleFont
         self.stackSpacing = stackSpacing
         self.padding = padding
         self.action = action
@@ -37,7 +40,7 @@ public struct EngageButton: View {
             .buttonStyle(
                 DSButtonStyle(
                     styleConfig: styleConfig ?? DSTheme.Components.Buttons.Primary.filledConfig,
-                    font: DSTypography.s1,
+                    font: styleFont ?? DSTypography.s1,
                     borderWidth: DSBorderWidth.borderWidthThin,
                     cornerRadius: DSBorderRadius.borderRadiusMd,
                     padding: padding ??  EdgeInsets(
