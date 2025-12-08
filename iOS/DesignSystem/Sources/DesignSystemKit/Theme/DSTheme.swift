@@ -424,7 +424,7 @@ public enum DSTheme {
                         ),
                         properties: DSStateProperties(
                             isUnderlined: false,
-                            hasSecondaryFocusRing: true,
+                            hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     hovered: .init(

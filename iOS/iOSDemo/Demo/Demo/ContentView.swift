@@ -19,8 +19,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             VStack {
-                Text("Some testing with buttons")
-                    .font(DSTypography.h2)
+                Text("Desig System Demo")
+                    .font(DSTypography.h1)
+                    .foregroundStyle(DSColors.colorThemeDangerText)
                 HStack {
                     EngageButton(
                         .iconText(icon: Image("icon-checkmark", bundle: .designSystem), text: "Button", placement: .trailing),
@@ -82,7 +83,7 @@ struct ContentView: View {
                 .frame(width: 150)
             }
             
-            HStack {
+            HStack(spacing: 50) {
                 EngageButton(
                     .icon(Image("icon-checkmark", bundle: .designSystem)),
                     buttonSize: .extraSmall,
@@ -108,18 +109,11 @@ struct ContentView: View {
                 }
                 .frame(width: 50)
             }
-            
-//            EngageButton(
-//                .iconText(icon: Image("reaction-recognize", bundle: .designSystem), text: "Recognition", placement: .leading),
-//                styleConfig: DSTheme.ThemeKudosButton.primaryColorConfig,
-//                padding: DSTheme.ThemeKudosButton.padding
-//            ) {
-//                print("Button tapped")
-//            }
-//            .frame(width: 109, height: 109)
         }
         
         ScrollView {
+            Text("Scroll View")
+                .font(DSTypography.body1)
             
             EngageKudosButton(
                 .iconText(icon: Image("reaction-appreciate", bundle: .designSystem), text: "Appreciation", placement: .top),
@@ -130,15 +124,9 @@ struct ContentView: View {
             
             HStack {
                 EngageButton(
-                    .iconText(icon: Image("icon-checkmark", bundle: .designSystem), text: "Button", placement: .leading),
-                    styleConfig: DSTheme.Components.Buttons.Primary.filledConfig
-                ) {
-                    print("Button tapped")
-                }
-                .frame(width: DSSizes.size5xl, height: DSSizes.size5xl)
-                
-                EngageButton(
-                    .icon(Image("icon-checkmark", bundle: .designSystem)),
+                    .iconText(
+                        icon: Image("icon-checkmark", bundle: .designSystem),
+                        text: "Button", placement: .leading),
                     styleConfig: DSTheme.Components.Buttons.Primary.filledConfig
                 ) {
                     print("Button tapped")
@@ -147,36 +135,19 @@ struct ContentView: View {
             
             
             EngageThemeProvider(theme: .dark) {
-//                VStack(spacing: theme.spacing.spacingXs) {
-//                    Text("Design System Demo")
-//                        .font(theme.typography.title)
-//                        .foregroundColor(theme.colors.colorThemeDangerText)
-//                    
-//                    ThemedTextView()
-//                    
-//                    PrimaryButton("Click Me") {
-//                        print("Button tapped")
-//                    }
-//                    
-//                    PrimaryButtonWithTheme("Click Me") {
-//                        print("Button tapped")
-//                    }
-//                }
-//                .padding()
-                
-//                Image("Union", bundle: .designSystem)
-//                    .resizable()
-//                    .frame(width: 50, height: 50)
-//                    .foregroundStyle(Color.black)
-//                
-//                Image("Avatar-2", bundle: .designSystem)
-//                    .resizable()
-//                    .frame(width: 50, height: 50)
-//                
-//                Image("reaction-appreciate", bundle: .designSystem)
-//                    .resizable()
-//                    .frame(width: 25, height: 25)
-//                    .background(DSColors.colorThemeDangerBg)
+                VStack(spacing: theme.spacing.spacingXs) {
+                    HStack {
+                        Image("Union", bundle: .designSystem)
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 40, height: 40)
+                        
+                        Text("ThemeProvider")
+                    }
+                    .font(DSTypography.h2)
+                    .foregroundColor(DSColors.colorThemeDangerText)
+                }
+                .padding()
                 
                 VStack {
                     EngageButton(
@@ -195,14 +166,12 @@ struct ContentView: View {
                     }
                 }
                 
-                
                 EngageButton(
                     .iconText(icon: Image("icon-checkmark", bundle: .designSystem), text: "Button Border", placement: .trailing),
-                    styleConfig: DSTheme.Components.Buttons.Primary.filledConfig
+                    styleConfig: DSTheme.Components.Buttons.Primary.borderConfig
                 ) {
                     print("Button tapped")
                 }
-                
                 
                 EngageButton(
                     .iconText(icon: Image("icon-checkmark", bundle: .designSystem), text: "Button Ghost", placement: .trailing),
@@ -218,28 +187,6 @@ struct ContentView: View {
                 .foregroundColor(Color.blue)
                 .frame(width: 50, height: 50)
                 .padding()
-            
-            Text("TRY Generated Colors")
-                .background(DSColors.colorThemeInfoBg)
-                .foregroundColor(DSColors.colorThemeSecondaryTextActive)
-            Text("TRY COLORS")
-                .background(DSColors.colorThemeDangerBg)
-                .foregroundColor(DSColors.colorThemeDangerText)
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
         }
     }
 }
