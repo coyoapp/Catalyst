@@ -267,7 +267,7 @@ public enum DSTheme {
                             ),
                             properties: DSStateProperties(
                                 isUnderlined: true,
-                                hasSecondaryFocusRing: true,
+                                hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         focused: .init(
@@ -277,7 +277,7 @@ public enum DSTheme {
                                 border: Color.clear
                             ),
                             properties: DSStateProperties(
-                                isUnderlined: true,
+                                isUnderlined: false,
                                 hasSecondaryFocusRing: true,
                                 scale: 1)
                         ),
@@ -481,8 +481,8 @@ public enum DSTheme {
                             border: Color.clear
                         ),
                         properties: DSStateProperties(
-                            isUnderlined: true,
-                            hasSecondaryFocusRing: true,
+                            isUnderlined: false,
+                            hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     hovered: .init(
