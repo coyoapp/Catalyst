@@ -1,5 +1,5 @@
 //
-// DSSizes.swift
+// CatSizes.swift
 //
 // Do not edit directly, this file is generated from design tokens
 //
@@ -7,7 +7,7 @@
 import Foundation
 import CoreGraphics
 
-public enum DSSizes {
+public enum CatSizes {
     public static let sizeXs: CGFloat = 12
     public static let sizeSm: CGFloat = 16
     public static let sizeMd: CGFloat = 20

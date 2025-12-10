@@ -1,5 +1,5 @@
 //
-// DSBorderRadius.swift
+// CatBorderRadius.swift
 //
 // Do not edit directly, this file is generated from design tokens
 //
@@ -7,7 +7,7 @@
 import Foundation
 import CoreGraphics
 
-public enum DSBorderRadius {
+public enum CatBorderRadius {
     public static let borderRadiusNone: CGFloat = 0
     public static let borderRadiusSm: CGFloat = 4
     public static let borderRadiusMd: CGFloat = 8

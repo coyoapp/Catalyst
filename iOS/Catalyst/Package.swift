@@ -4,23 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "DesignSystemKit",
+    name: "Catalyst",
     platforms: [
         .iOS(.v16) // or whatever minimum you support
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "DesignSystemKit",
-            targets: ["DesignSystemKit"]
+            name: "Catalyst",
+            targets: ["Catalyst"]
         )
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "DesignSystemKit",
-            path: "Sources/DesignSystemKit",
+            name: "Catalyst",
+            path: "Sources/Catalyst",
             resources: [
                 .process("Resources")
             ]

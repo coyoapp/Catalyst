@@ -6,7 +6,7 @@ const svg2vectordrawable = require('svg2vectordrawable');
 
 const iconDir = path.resolve(__dirname, '../src/icons');
 const androidDir = path.resolve(__dirname, '../../android/designsystem/src/main/res/drawable');
-const iosDir = path.resolve(__dirname, '../../iOS/DesignSystem/Sources/DesignSystemKit/Resources/DSAssets.xcassets');
+const iosDir = path.resolve(__dirname, '../../iOS/Catalyst/Sources/Catalyst/Resources/DSAssets.xcassets');
 
 // SetUp Cleaning Part:
 if (fs.existsSync(androidDir)) {

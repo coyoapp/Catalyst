@@ -1,5 +1,5 @@
 //
-// DSSpacing.swift
+// CatSpacing.swift
 //
 // Do not edit directly, this file is generated from design tokens
 //
@@ -7,7 +7,7 @@
 import Foundation
 import CoreGraphics
 
-public enum DSSpacing {
+public enum CatSpacing {
     public static let spacingNone: CGFloat = 0
     public static let spacingXxs: CGFloat = 2
     public static let spacingXs: CGFloat = 4

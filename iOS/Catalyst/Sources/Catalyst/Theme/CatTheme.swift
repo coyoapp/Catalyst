@@ -1,5 +1,5 @@
 //
-//  DSTheme.swift
+//  CatTheme.swift
 //  DesignSystemKit
 //
 //  Created by Efe Durmaz on 21.11.25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum DSTheme {
+public enum CatTheme {
     
     public enum AccentColorDarkenFactor: CGFloat {
         case hovered = 0.05
@@ -15,41 +15,41 @@ public enum DSTheme {
     }
     
     public enum ThemeKudosButton {
-        public static let primaryColorConfig = DSButtonStateStyleConfig(
+        public static let primaryColorConfig = CatButtonStateStyleConfig(
             normal: .init(
-                colorStyle: DSButtonStateColorStyle(
+                colorStyle: CatButtonStateColorStyle(
                     background: Color.clear,
-                    foreground: DSColors.colorThemePrimaryText,
-                    border: DSColors.colorThemeSecondaryBg)
+                    foreground: CatColors.colorThemePrimaryText,
+                    border: CatColors.colorThemeSecondaryBg)
             ),
             pressed: .init(
-                colorStyle: DSButtonStateColorStyle(
+                colorStyle: CatButtonStateColorStyle(
                     background: Color.clear.opacity(0.5),
-                    foreground: DSColors.colorThemePrimaryText.opacity(0.5),
-                    border: DSColors.colorThemeSecondaryBg.opacity(0.5),
+                    foreground: CatColors.colorThemePrimaryText.opacity(0.5),
+                    border: CatColors.colorThemeSecondaryBg.opacity(0.5),
                 )
             ),
             focused: .init(
-                colorStyle: DSButtonStateColorStyle(
+                colorStyle: CatButtonStateColorStyle(
                     background: Color.clear.opacity(0.5),
-                    foreground: DSColors.colorThemePrimaryText.opacity(0.5),
-                    border: DSColors.colorThemeSecondaryBg.opacity(0.5),
+                    foreground: CatColors.colorThemePrimaryText.opacity(0.5),
+                    border: CatColors.colorThemeSecondaryBg.opacity(0.5),
                 )
             ),
             disabled: .init(
-                colorStyle: DSButtonStateColorStyle(
-                    background: DSColors.colorThemePrimaryInvertedBgActive,
-                    foreground: DSColors.colorThemePrimaryInvertedFill,
-                    border: DSColors.colorThemeSecondaryBg
+                colorStyle: CatButtonStateColorStyle(
+                    background: CatColors.colorThemePrimaryInvertedBgActive,
+                    foreground: CatColors.colorThemePrimaryInvertedFill,
+                    border: CatColors.colorThemeSecondaryBg
                 )
             )
         )
         
         public static let padding = EdgeInsets(
-            top: DSSpacing.spacing3xl,
-            leading: DSSpacing.spacingMd,
-            bottom: DSSpacing.spacing3xl,
-            trailing: DSSpacing.spacingMd
+            top: CatSpacing.spacing3xl,
+            leading: CatSpacing.spacingMd,
+            bottom: CatSpacing.spacing3xl,
+            trailing: CatSpacing.spacingMd
         )
     }
     
@@ -59,55 +59,55 @@ public enum DSTheme {
         public enum Buttons {
             // ACCENT COLOR BUTTON CONFIG
             public enum Accent {
-                public static func filledConfig(accentColor: Color) -> DSButtonStateStyleConfig {
-                    DSButtonStateStyleConfig(
+                public static func filledConfig(accentColor: Color) -> CatButtonStateStyleConfig {
+                    CatButtonStateStyleConfig(
                         normal: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: accentColor,
-                                foreground: DSColors.colorThemePrimaryFill,
+                                foreground: CatColors.colorThemePrimaryFill,
                                 border: Color.clear),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         hovered: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: accentColor.darken(by: AccentColorDarkenFactor.hovered.rawValue),
-                                foreground: DSColors.colorThemePrimaryFillHover,
+                                foreground: CatColors.colorThemePrimaryFillHover,
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         pressed: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: accentColor.darken(by: AccentColorDarkenFactor.pressed.rawValue),
-                                foreground: DSColors.colorThemePrimaryFillActive,
+                                foreground: CatColors.colorThemePrimaryFillActive,
                                 border: Color.clear),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         focused: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: accentColor,
-                                foreground: DSColors.colorThemePrimaryFill,
+                                foreground: CatColors.colorThemePrimaryFill,
                                 border: Color.clear),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: true,
                                 scale: 1)
                         ),
                         disabled: .init(
-                            colorStyle: DSButtonStateColorStyle(
-                                background: DSColors.colorUiBackgroundMuted,
-                                foreground: DSColors.colorUiFontMuted,
+                            colorStyle: CatButtonStateColorStyle(
+                                background: CatColors.colorUiBackgroundMuted,
+                                foreground: CatColors.colorUiFontMuted,
                                 border: Color.clear),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
@@ -115,59 +115,59 @@ public enum DSTheme {
                     )
                 }
                 // TODO: ASK BACKGROUND AND BORDER COLOR Configs
-                public static func borderConfig(accentColor: Color)  -> DSButtonStateStyleConfig {
-                    DSButtonStateStyleConfig(
+                public static func borderConfig(accentColor: Color)  -> CatButtonStateStyleConfig {
+                    CatButtonStateStyleConfig(
                         normal: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
                                 foreground: accentColor,
                                 border: accentColor
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         hovered: .init(
-                            colorStyle: DSButtonStateColorStyle(
-                                background: DSColors.colorThemePrimaryBgHover,
+                            colorStyle: CatButtonStateColorStyle(
+                                background: CatColors.colorThemePrimaryBgHover,
                                 foreground: accentColor,
                                 border: accentColor.darken(by: AccentColorDarkenFactor.hovered.rawValue)
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         pressed: .init(
-                            colorStyle: DSButtonStateColorStyle(
-                                background: DSColors.colorThemePrimaryBgActive,
+                            colorStyle: CatButtonStateColorStyle(
+                                background: CatColors.colorThemePrimaryBgActive,
                                 foreground: accentColor,
                                 border: accentColor.darken(by: AccentColorDarkenFactor.pressed.rawValue)
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         focused: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
                                 foreground: accentColor,
                                 border: accentColor
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: true,
                                 scale: 1)
                         ),
                         disabled: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
-                                foreground: DSColors.colorUiFontMuted,
-                                border: DSColors.colorUiFontMuted
+                                foreground: CatColors.colorUiFontMuted,
+                                border: CatColors.colorUiFontMuted
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
@@ -175,59 +175,59 @@ public enum DSTheme {
                     )
                 }
                 
-                public static func ghostConfig(accentColor: Color) -> DSButtonStateStyleConfig {
-                    DSButtonStateStyleConfig(
+                public static func ghostConfig(accentColor: Color) -> CatButtonStateStyleConfig {
+                    CatButtonStateStyleConfig(
                         normal: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
                                 foreground: accentColor,
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         hovered: .init(
-                            colorStyle: DSButtonStateColorStyle(
-                                background: DSColors.colorThemePrimaryBgHover,
+                            colorStyle: CatButtonStateColorStyle(
+                                background: CatColors.colorThemePrimaryBgHover,
                                 foreground: accentColor,
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: true,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         pressed: .init(
-                            colorStyle: DSButtonStateColorStyle(
-                                background: DSColors.colorThemePrimaryBgActive,
+                            colorStyle: CatButtonStateColorStyle(
+                                background: CatColors.colorThemePrimaryBgActive,
                                 foreground: accentColor,
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         focused: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
                                 foreground: accentColor,
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: true,
                                 scale: 1)
                         ),
                         disabled: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
-                                foreground: DSColors.colorUiFontMuted,
+                                foreground: CatColors.colorUiFontMuted,
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
@@ -235,59 +235,59 @@ public enum DSTheme {
                     )
                 }
                 
-                public static func linkConfig(accentColor: Color) -> DSButtonStateStyleConfig {
-                    DSButtonStateStyleConfig(
+                public static func linkConfig(accentColor: Color) -> CatButtonStateStyleConfig {
+                    CatButtonStateStyleConfig(
                         normal: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
                                 foreground: accentColor,
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         hovered: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
                                 foreground: accentColor.darken(by: AccentColorDarkenFactor.hovered.rawValue),
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: true,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         pressed: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
                                 foreground: accentColor.darken(by: AccentColorDarkenFactor.pressed.rawValue),
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: true,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
                         ),
                         focused: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
                                 foreground: accentColor,
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: true,
                                 scale: 1)
                         ),
                         disabled: .init(
-                            colorStyle: DSButtonStateColorStyle(
+                            colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
-                                foreground: DSColors.colorUiFontMuted,
+                                foreground: CatColors.colorUiFontMuted,
                                 border: Color.clear
                             ),
-                            properties: DSStateProperties(
+                            properties: CatStateProperties(
                                 isUnderlined: false,
                                 hasSecondaryFocusRing: false,
                                 scale: 1)
@@ -299,232 +299,232 @@ public enum DSTheme {
             
             public enum Primary {
                 // FILLED BUTTON CONFIG
-                public static let filledConfig = DSButtonStateStyleConfig(
+                public static let filledConfig = CatButtonStateStyleConfig(
                     normal: .init(
-                        colorStyle: DSButtonStateColorStyle(
-                            background: DSColors.colorThemePrimaryBg,
-                            foreground: DSColors.colorThemePrimaryFill,
+                        colorStyle: CatButtonStateColorStyle(
+                            background: CatColors.colorThemePrimaryBg,
+                            foreground: CatColors.colorThemePrimaryFill,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     hovered: .init(
-                        colorStyle: DSButtonStateColorStyle(
-                            background: DSColors.colorThemePrimaryBgHover,
-                            foreground: DSColors.colorThemePrimaryFillHover,
+                        colorStyle: CatButtonStateColorStyle(
+                            background: CatColors.colorThemePrimaryBgHover,
+                            foreground: CatColors.colorThemePrimaryFillHover,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     pressed: .init(
-                        colorStyle: DSButtonStateColorStyle(
-                            background: DSColors.colorThemePrimaryBgActive,
-                            foreground: DSColors.colorThemePrimaryFillActive,
+                        colorStyle: CatButtonStateColorStyle(
+                            background: CatColors.colorThemePrimaryBgActive,
+                            foreground: CatColors.colorThemePrimaryFillActive,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     focused: .init(
-                        colorStyle: DSButtonStateColorStyle(
-                            background: DSColors.colorThemePrimaryBg,
-                            foreground: DSColors.colorThemePrimaryFill,
+                        colorStyle: CatButtonStateColorStyle(
+                            background: CatColors.colorThemePrimaryBg,
+                            foreground: CatColors.colorThemePrimaryFill,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: true,
                             scale: 1)
                     ),
                     disabled: .init(
-                        colorStyle: DSButtonStateColorStyle(
-                            background: DSColors.colorUiBackgroundMuted,
-                            foreground: DSColors.colorUiFontMuted,
+                        colorStyle: CatButtonStateColorStyle(
+                            background: CatColors.colorUiBackgroundMuted,
+                            foreground: CatColors.colorUiFontMuted,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     )
                 )
                 
-                public static let borderConfig = DSButtonStateStyleConfig(
+                public static let borderConfig = CatButtonStateStyleConfig(
                     normal: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorThemePrimaryText,
-                            border: DSColors.colorThemePrimaryBg
+                            foreground: CatColors.colorThemePrimaryText,
+                            border: CatColors.colorThemePrimaryBg
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     hovered: .init(
-                        colorStyle: DSButtonStateColorStyle(
-                            background: DSColors.colorThemePrimaryBgHover,
-                            foreground: DSColors.colorThemePrimaryText,
-                            border: DSColors.colorThemePrimaryBg
+                        colorStyle: CatButtonStateColorStyle(
+                            background: CatColors.colorThemePrimaryBgHover,
+                            foreground: CatColors.colorThemePrimaryText,
+                            border: CatColors.colorThemePrimaryBg
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     pressed: .init(
-                        colorStyle: DSButtonStateColorStyle(
-                            background: DSColors.colorThemePrimaryBgActive,
-                            foreground: DSColors.colorThemePrimaryText,
-                            border: DSColors.colorThemePrimaryBg
+                        colorStyle: CatButtonStateColorStyle(
+                            background: CatColors.colorThemePrimaryBgActive,
+                            foreground: CatColors.colorThemePrimaryText,
+                            border: CatColors.colorThemePrimaryBg
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     focused: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorThemePrimaryText,
-                            border: DSColors.colorThemePrimaryBg
+                            foreground: CatColors.colorThemePrimaryText,
+                            border: CatColors.colorThemePrimaryBg
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: true,
                             scale: 1)
                     ),
                     disabled: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorUiFontMuted,
-                            border: DSColors.colorUiFontMuted
+                            foreground: CatColors.colorUiFontMuted,
+                            border: CatColors.colorUiFontMuted
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     )
                 )
                 
-                public static let ghostConfig = DSButtonStateStyleConfig(
+                public static let ghostConfig = CatButtonStateStyleConfig(
                     normal: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorThemePrimaryText,
+                            foreground: CatColors.colorThemePrimaryText,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     hovered: .init(
-                        colorStyle: DSButtonStateColorStyle(
-                            background: DSColors.colorThemePrimaryBgHover,
-                            foreground: DSColors.colorThemePrimaryText,
+                        colorStyle: CatButtonStateColorStyle(
+                            background: CatColors.colorThemePrimaryBgHover,
+                            foreground: CatColors.colorThemePrimaryText,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     pressed: .init(
-                        colorStyle: DSButtonStateColorStyle(
-                            background: DSColors.colorThemePrimaryBgActive,
-                            foreground: DSColors.colorThemePrimaryText,
+                        colorStyle: CatButtonStateColorStyle(
+                            background: CatColors.colorThemePrimaryBgActive,
+                            foreground: CatColors.colorThemePrimaryText,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     focused: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorThemePrimaryText,
+                            foreground: CatColors.colorThemePrimaryText,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: true,
                             scale: 1)
                     ),
                     disabled: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorUiFontMuted,
+                            foreground: CatColors.colorUiFontMuted,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     )
                 )
                 
-                public static let linkConfig = DSButtonStateStyleConfig(
+                public static let linkConfig = CatButtonStateStyleConfig(
                     normal: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorThemePrimaryText,
+                            foreground: CatColors.colorThemePrimaryText,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     hovered: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorThemePrimaryText,
+                            foreground: CatColors.colorThemePrimaryText,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: true,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     pressed: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorThemePrimaryText,
+                            foreground: CatColors.colorThemePrimaryText,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: true,
                             hasSecondaryFocusRing: false,
                             scale: 1)
                     ),
                     focused: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorThemePrimaryText,
+                            foreground: CatColors.colorThemePrimaryText,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: true,
                             scale: 1)
                     ),
                     disabled: .init(
-                        colorStyle: DSButtonStateColorStyle(
+                        colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: DSColors.colorUiFontMuted,
+                            foreground: CatColors.colorUiFontMuted,
                             border: Color.clear
                         ),
-                        properties: DSStateProperties(
+                        properties: CatStateProperties(
                             isUnderlined: false,
                             hasSecondaryFocusRing: false,
                             scale: 1)

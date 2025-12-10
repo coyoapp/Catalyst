@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - Button Properties
 
-public struct DSButtonStateColorStyle: Sendable {
+public struct CatButtonStateColorStyle: Sendable {
     let background: Color
     let foreground: Color
     let border: Color
@@ -22,7 +22,7 @@ public struct DSButtonStateColorStyle: Sendable {
 }
 
 // The Visual Properties, "toggles" for structural changes.
-public struct DSStateProperties: Sendable {
+public struct CatStateProperties: Sendable {
     let isUnderlined: Bool?
     let hasSecondaryFocusRing: Bool?
     let scale: CGFloat? // e.g., 0.95 on press
@@ -38,32 +38,32 @@ public struct DSStateProperties: Sendable {
     }
 }
 
-public struct DSButtonStateStyle: Sendable {
-    public let colorStyle: DSButtonStateColorStyle
-    public let properties: DSStateProperties?
+public struct CatButtonStateStyle: Sendable {
+    public let colorStyle: CatButtonStateColorStyle
+    public let properties: CatStateProperties?
     
-    public init(colorStyle: DSButtonStateColorStyle,
-                properties: DSStateProperties? = nil) {
+    public init(colorStyle: CatButtonStateColorStyle,
+                properties: CatStateProperties? = nil) {
         self.colorStyle = colorStyle
         self.properties = properties
     }
 }
 
-public struct DSButtonStateStyleConfig: Sendable {
-    let normal: DSButtonStateStyle
-    let hovered: DSButtonStateStyle?
-    let pressed: DSButtonStateStyle
-    let focused: DSButtonStateStyle
-    let disabled: DSButtonStateStyle
-    let loading: DSButtonStateStyle?
+public struct CatButtonStateStyleConfig: Sendable {
+    let normal: CatButtonStateStyle
+    let hovered: CatButtonStateStyle?
+    let pressed: CatButtonStateStyle
+    let focused: CatButtonStateStyle
+    let disabled: CatButtonStateStyle
+    let loading: CatButtonStateStyle?
     
     public init(
-        normal: DSButtonStateStyle,
-        hovered: DSButtonStateStyle? = nil,
-        pressed: DSButtonStateStyle,
-        focused: DSButtonStateStyle,
-        disabled: DSButtonStateStyle,
-        loading: DSButtonStateStyle? = nil
+        normal: CatButtonStateStyle,
+        hovered: CatButtonStateStyle? = nil,
+        pressed: CatButtonStateStyle,
+        focused: CatButtonStateStyle,
+        disabled: CatButtonStateStyle,
+        loading: CatButtonStateStyle? = nil
     ) {
         self.normal = normal
         self.hovered = hovered
@@ -74,21 +74,21 @@ public struct DSButtonStateStyleConfig: Sendable {
     }
 }
 
-public enum DSButtonSize {
+public enum CatButtonSize {
     case extraSmall
     case small
     case medium
     
     var height: CGFloat {
         switch self {
-        case .extraSmall: return DSSpacing.spacing4xl
-        case .small: return DSSpacing.spacing5xl
-        case .medium: return DSSpacing.spacing6xl
+        case .extraSmall: return CatSpacing.spacing4xl
+        case .small: return CatSpacing.spacing5xl
+        case .medium: return CatSpacing.spacing6xl
         }
     }
 }
 
-public enum DSButtonContent {
+public enum CatButtonContent {
     case text(String)
     case icon(Image)
     case iconText(icon: Image, text: String, placement: Placement)
@@ -103,9 +103,9 @@ public enum DSButtonContent {
 
 // MARK: - Button styling
 
-public struct DSButtonStyle: ButtonStyle {
+public struct CatButtonStyle: ButtonStyle {
     
-    let styleConfig: DSButtonStateStyleConfig
+    let styleConfig: CatButtonStateStyleConfig
     let font: Font
     let borderWidth: CGFloat
     let cornerRadius: CGFloat
@@ -133,9 +133,9 @@ public struct DSButtonStyle: ButtonStyle {
                     if (state.properties?.hasSecondaryFocusRing == true) {
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(
-                                DSColors.colorUiBorderFocus,
-                                lineWidth: DSBorderWidth.borderWidthThin)
-                            .padding(-DSSpacing.spacingXxs)
+                                CatColors.colorUiBorderFocus,
+                                lineWidth: CatBorderWidth.borderWidthThin)
+                            .padding(-CatSpacing.spacingXxs)
                     }
                 }
             )
@@ -147,7 +147,7 @@ public struct DSButtonStyle: ButtonStyle {
             .contentShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
     
-    private func resolveState(isPressed: Bool) -> DSButtonStateStyle {
+    private func resolveState(isPressed: Bool) -> CatButtonStateStyle {
         guard isEnabled else { return styleConfig.disabled }
         if isLoading { return styleConfig.loading ?? styleConfig.normal }
         else if isPressed { return styleConfig.pressed }
@@ -160,19 +160,19 @@ public struct DSButtonStyle: ButtonStyle {
 }
 
 // MARK: - Button Layout
-public struct DSButton: View {
+public struct CatButtonBuilder: View {
     
-    let content: DSButtonContent
+    let content: CatButtonContent
     let action: () -> Void
-    let buttonSize: DSButtonSize
+    let buttonSize: CatButtonSize
     let iconSize: CGSize?
     let stackSpacing: CGFloat?
     
     public init(
-        content: DSButtonContent,
-        buttonSize: DSButtonSize = .small,
-        iconSize: CGSize? = CGSize(width: DSSizes.sizeSm, height: DSSizes.sizeSm),
-        stackSpacing: CGFloat? = DSSpacing.spacingMd,
+        content: CatButtonContent,
+        buttonSize: CatButtonSize = .small,
+        iconSize: CGSize? = CGSize(width: CatSizes.sizeSm, height: CatSizes.sizeSm),
+        stackSpacing: CGFloat? = CatSpacing.spacingMd,
         action: @escaping () -> Void
     ) {
         self.content = content
@@ -228,6 +228,6 @@ public struct DSButton: View {
         icon.resizable()
             .renderingMode(.template)
             .scaledToFit()
-            .frame(width: iconSize?.width ?? DSSizes.sizeSm, height: iconSize?.height ?? DSSizes.sizeSm)
+            .frame(width: iconSize?.width ?? CatSizes.sizeSm, height: iconSize?.height ?? CatSizes.sizeSm)
     }
 }

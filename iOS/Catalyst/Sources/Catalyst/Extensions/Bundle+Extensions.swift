@@ -5,7 +5,7 @@ import Foundation
 
 public extension Bundle {
     /// A helper to access the design system's resource bundle.
-    static var designSystem: Bundle {
+    static var catalyst: Bundle {
         return Bundle.module
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4CA49AC52E815D1E00A8CDAB /* DesignSystemKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4CA49AC42E815D1E00A8CDAB /* DesignSystemKit */; };
+		4CD7F4002EE9C62700AFDA16 /* Catalyst in Frameworks */ = {isa = PBXBuildFile; productRef = 4CD7F3FF2EE9C62700AFDA16 /* Catalyst */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CA49AC52E815D1E00A8CDAB /* DesignSystemKit in Frameworks */,
+				4CD7F4002EE9C62700AFDA16 /* Catalyst in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +125,7 @@
 			);
 			name = Demo;
 			packageProductDependencies = (
-				4CA49AC42E815D1E00A8CDAB /* DesignSystemKit */,
+				4CD7F3FF2EE9C62700AFDA16 /* Catalyst */,
 			);
 			productName = Demo;
 			productReference = 4CCEEA412E7C1CB30087F5DE /* Demo.app */;
@@ -210,7 +210,7 @@
 			mainGroup = 4CCEEA382E7C1CB30087F5DE;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				4CA49AC32E815A8900A8CDAB /* XCLocalSwiftPackageReference "../../DesignSystem" */,
+				4C4660212EE9A8FD00233083 /* XCLocalSwiftPackageReference "../../Catalyst" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4CCEEA422E7C1CB30087F5DE /* Products */;
@@ -612,17 +612,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		4CA49AC32E815A8900A8CDAB /* XCLocalSwiftPackageReference "../../DesignSystem" */ = {
+		4C4660212EE9A8FD00233083 /* XCLocalSwiftPackageReference "../../Catalyst" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../DesignSystem;
+			relativePath = ../../Catalyst;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4CA49AC42E815D1E00A8CDAB /* DesignSystemKit */ = {
+		4CD7F3FF2EE9C62700AFDA16 /* Catalyst */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4CA49AC32E815A8900A8CDAB /* XCLocalSwiftPackageReference "../../DesignSystem" */;
-			productName = DesignSystemKit;
+			package = 4C4660212EE9A8FD00233083 /* XCLocalSwiftPackageReference "../../Catalyst" */;
+			productName = Catalyst;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

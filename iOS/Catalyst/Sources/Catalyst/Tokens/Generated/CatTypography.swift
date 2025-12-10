@@ -1,12 +1,12 @@
 //
-// DSTypography.swift
+// CatTypography.swift
 //
 // Do not edit directly, this file is generated from design tokens
 //
 
 import SwiftUI
 
-public enum DSTypography {
+public enum CatTypography {
     public static let h1 = Font.custom("Lato-Bold", size: 32.00)
     public static let h2 = Font.custom("Lato-SemiBold", size: 28.00)
     public static let h3 = Font.custom("Lato-SemiBold", size: 24.00)

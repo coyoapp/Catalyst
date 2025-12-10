@@ -1,12 +1,12 @@
 //
-// DSColors.swift
+// CatColors.swift
 //
 // Do not edit directly, this file is generated from design tokens
 //
 
 import SwiftUI
 
-public enum DSColors {
+public enum CatColors {
     public static let colorThemePrimaryBg = Color(red: 0.000, green: 0.506, blue: 0.580) // #008194
     public static let colorThemePrimaryBgHover = Color(red: 0.004, green: 0.451, blue: 0.518) // #017384
     public static let colorThemePrimaryBgActive = Color(red: 0.008, green: 0.388, blue: 0.443) // #026371
