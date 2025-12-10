@@ -1,4 +1,4 @@
-# Design-System
+# Catalyst Mobile Design System
 
 Design System is single source of truth for native iOS and Android. It contains the platform-agnostic design tokens and the automated pipelines that generate and publish native libraries.
 
