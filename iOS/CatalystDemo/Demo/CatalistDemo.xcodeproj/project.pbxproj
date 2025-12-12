@@ -28,9 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4CCEEA412E7C1CB30087F5DE /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CCEEA512E7C1CB40087F5DE /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CCEEA5B2E7C1CB40087F5DE /* DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CCEEA412E7C1CB30087F5DE /* CatalistDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatalistDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CCEEA512E7C1CB40087F5DE /* CatalistDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatalistDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CCEEA5B2E7C1CB40087F5DE /* CatalistDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatalistDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -91,9 +91,9 @@
 		4CCEEA422E7C1CB30087F5DE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4CCEEA412E7C1CB30087F5DE /* Demo.app */,
-				4CCEEA512E7C1CB40087F5DE /* DemoTests.xctest */,
-				4CCEEA5B2E7C1CB40087F5DE /* DemoUITests.xctest */,
+				4CCEEA412E7C1CB30087F5DE /* CatalistDemo.app */,
+				4CCEEA512E7C1CB40087F5DE /* CatalistDemoTests.xctest */,
+				4CCEEA5B2E7C1CB40087F5DE /* CatalistDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4CCEEA402E7C1CB30087F5DE /* Demo */ = {
+		4CCEEA402E7C1CB30087F5DE /* CatalistDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4CCEEA652E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildConfigurationList = 4CCEEA652E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "CatalistDemo" */;
 			buildPhases = (
 				4CCEEA3D2E7C1CB30087F5DE /* Sources */,
 				4CCEEA3E2E7C1CB30087F5DE /* Frameworks */,
@@ -123,17 +123,17 @@
 			fileSystemSynchronizedGroups = (
 				4CCEEA432E7C1CB30087F5DE /* Demo */,
 			);
-			name = Demo;
+			name = CatalistDemo;
 			packageProductDependencies = (
 				4CD7F3FF2EE9C62700AFDA16 /* Catalyst */,
 			);
 			productName = Demo;
-			productReference = 4CCEEA412E7C1CB30087F5DE /* Demo.app */;
+			productReference = 4CCEEA412E7C1CB30087F5DE /* CatalistDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4CCEEA502E7C1CB40087F5DE /* DemoTests */ = {
+		4CCEEA502E7C1CB40087F5DE /* CatalistDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4CCEEA682E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "DemoTests" */;
+			buildConfigurationList = 4CCEEA682E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "CatalistDemoTests" */;
 			buildPhases = (
 				4CCEEA4D2E7C1CB40087F5DE /* Sources */,
 				4CCEEA4E2E7C1CB40087F5DE /* Frameworks */,
@@ -147,16 +147,16 @@
 			fileSystemSynchronizedGroups = (
 				4CCEEA542E7C1CB40087F5DE /* DemoTests */,
 			);
-			name = DemoTests;
+			name = CatalistDemoTests;
 			packageProductDependencies = (
 			);
 			productName = DemoTests;
-			productReference = 4CCEEA512E7C1CB40087F5DE /* DemoTests.xctest */;
+			productReference = 4CCEEA512E7C1CB40087F5DE /* CatalistDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4CCEEA5A2E7C1CB40087F5DE /* DemoUITests */ = {
+		4CCEEA5A2E7C1CB40087F5DE /* CatalistDemoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4CCEEA6B2E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "DemoUITests" */;
+			buildConfigurationList = 4CCEEA6B2E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "CatalistDemoUITests" */;
 			buildPhases = (
 				4CCEEA572E7C1CB40087F5DE /* Sources */,
 				4CCEEA582E7C1CB40087F5DE /* Frameworks */,
@@ -170,11 +170,11 @@
 			fileSystemSynchronizedGroups = (
 				4CCEEA5E2E7C1CB40087F5DE /* DemoUITests */,
 			);
-			name = DemoUITests;
+			name = CatalistDemoUITests;
 			packageProductDependencies = (
 			);
 			productName = DemoUITests;
-			productReference = 4CCEEA5B2E7C1CB40087F5DE /* DemoUITests.xctest */;
+			productReference = 4CCEEA5B2E7C1CB40087F5DE /* CatalistDemoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -200,7 +200,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4CCEEA3C2E7C1CB30087F5DE /* Build configuration list for PBXProject "Demo" */;
+			buildConfigurationList = 4CCEEA3C2E7C1CB30087F5DE /* Build configuration list for PBXProject "CatalistDemo" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -217,9 +217,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4CCEEA402E7C1CB30087F5DE /* Demo */,
-				4CCEEA502E7C1CB40087F5DE /* DemoTests */,
-				4CCEEA5A2E7C1CB40087F5DE /* DemoUITests */,
+				4CCEEA402E7C1CB30087F5DE /* CatalistDemo */,
+				4CCEEA502E7C1CB40087F5DE /* CatalistDemoTests */,
+				4CCEEA5A2E7C1CB40087F5DE /* CatalistDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -275,12 +275,12 @@
 /* Begin PBXTargetDependency section */
 		4CCEEA532E7C1CB40087F5DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4CCEEA402E7C1CB30087F5DE /* Demo */;
+			target = 4CCEEA402E7C1CB30087F5DE /* CatalistDemo */;
 			targetProxy = 4CCEEA522E7C1CB40087F5DE /* PBXContainerItemProxy */;
 		};
 		4CCEEA5D2E7C1CB40087F5DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4CCEEA402E7C1CB30087F5DE /* Demo */;
+			target = 4CCEEA402E7C1CB30087F5DE /* CatalistDemo */;
 			targetProxy = 4CCEEA5C2E7C1CB40087F5DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -414,6 +414,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Catalyst;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -453,6 +454,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Catalyst;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -498,7 +500,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Demo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatalistDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CatalistDemo";
 				XROS_DEPLOYMENT_TARGET = 2.4;
 			};
 			name = Debug;
@@ -521,7 +523,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Demo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CatalistDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CatalistDemo";
 				XROS_DEPLOYMENT_TARGET = 2.4;
 			};
 			name = Release;
@@ -573,7 +575,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4CCEEA3C2E7C1CB30087F5DE /* Build configuration list for PBXProject "Demo" */ = {
+		4CCEEA3C2E7C1CB30087F5DE /* Build configuration list for PBXProject "CatalistDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CCEEA632E7C1CB40087F5DE /* Debug */,
@@ -582,7 +584,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4CCEEA652E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "Demo" */ = {
+		4CCEEA652E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "CatalistDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CCEEA662E7C1CB40087F5DE /* Debug */,
@@ -591,7 +593,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4CCEEA682E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
+		4CCEEA682E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "CatalistDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CCEEA692E7C1CB40087F5DE /* Debug */,
@@ -600,7 +602,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4CCEEA6B2E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "DemoUITests" */ = {
+		4CCEEA6B2E7C1CB40087F5DE /* Build configuration list for PBXNativeTarget "CatalistDemoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CCEEA6C2E7C1CB40087F5DE /* Debug */,

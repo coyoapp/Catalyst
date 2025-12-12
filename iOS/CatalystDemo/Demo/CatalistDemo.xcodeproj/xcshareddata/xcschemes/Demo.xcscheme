@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4CCEEA402E7C1CB30087F5DE"
-               BuildableName = "Demo.app"
-               BlueprintName = "Demo"
-               ReferencedContainer = "container:Demo.xcodeproj">
+               BuildableName = "CatalistDemo.app"
+               BlueprintName = "CatalistDemo"
+               ReferencedContainer = "container:CatalistDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,9 +36,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4CCEEA502E7C1CB40087F5DE"
-               BuildableName = "DemoTests.xctest"
-               BlueprintName = "DemoTests"
-               ReferencedContainer = "container:Demo.xcodeproj">
+               BuildableName = "CatalistDemoTests.xctest"
+               BlueprintName = "CatalistDemoTests"
+               ReferencedContainer = "container:CatalistDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4CCEEA5A2E7C1CB40087F5DE"
-               BuildableName = "DemoUITests.xctest"
-               BlueprintName = "DemoUITests"
-               ReferencedContainer = "container:Demo.xcodeproj">
+               BuildableName = "CatalistDemoUITests.xctest"
+               BlueprintName = "CatalistDemoUITests"
+               ReferencedContainer = "container:CatalistDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4CCEEA402E7C1CB30087F5DE"
-            BuildableName = "Demo.app"
-            BlueprintName = "Demo"
-            ReferencedContainer = "container:Demo.xcodeproj">
+            BuildableName = "CatalistDemo.app"
+            BlueprintName = "CatalistDemo"
+            ReferencedContainer = "container:CatalistDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -86,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4CCEEA402E7C1CB30087F5DE"
-            BuildableName = "Demo.app"
-            BlueprintName = "Demo"
-            ReferencedContainer = "container:Demo.xcodeproj">
+            BuildableName = "CatalistDemo.app"
+            BlueprintName = "CatalistDemo"
+            ReferencedContainer = "container:CatalistDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
