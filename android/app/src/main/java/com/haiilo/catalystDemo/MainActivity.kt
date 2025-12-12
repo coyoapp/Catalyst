@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.haiilo.catalyst.components.PrimaryButton
-import com.haiilo.catalyst.theme.EngageTheme
+import com.haiilo.catalyst.theme.CatTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 fun DemoScreen() {
     var darkTheme by remember { mutableStateOf(false) }
 
-    EngageTheme(darkTheme = darkTheme) {
+    CatTheme(darkTheme = darkTheme) {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background

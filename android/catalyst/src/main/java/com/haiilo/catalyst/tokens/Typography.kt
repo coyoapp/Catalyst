@@ -2,11 +2,9 @@ package com.haiilo.catalyst.tokens
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.haiilo.catalyst.R
 
 //private val HaiiloFontFamily = FontFamily(
 //    Font(R.font.light, FontWeight.W300),
@@ -17,8 +15,8 @@ import com.haiilo.catalyst.R
 
 // There is one HaiiloFontFamily which is not correct but can make an example
 // TODO: We need a refactoring when we work on Theme similar to the iOS
-object DSTypographyTest {
-    val EngageTypography = Typography(
+object CatTypographyTest {
+    val CatTypography = Typography(
         displayLarge = TextStyle(
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold,
