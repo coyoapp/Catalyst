@@ -54,7 +54,7 @@ StyleDictionary.registerFormat({
     name: 'kotlin/compose-colors',
     formatter: function ({ dictionary, options }) {
         const { outputReferences } = options;
-        let kotlinFile = `//\n// CatColors.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.tokens.generated\n\nimport androidx.compose.ui.graphics.Color\n\npublic object CatColors {\n`;
+        let kotlinFile = `//\n// CatColors.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.haiilo.catalyst.tokens.generated\n\nimport androidx.compose.ui.graphics.Color\n\npublic object CatColors {\n`;
 
         dictionary.allProperties.forEach(prop => {
             const composeColor = `0xFF${prop.value.substring(1).toUpperCase()}`;
@@ -83,7 +83,7 @@ StyleDictionary.registerFormat({
     name: 'kotlin/compose-dimensions',
     formatter: function ({ dictionary, file }) {
         const className = file.className;
-        let kotlinFile = `//\n// ${file.destination}\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.tokens.generated\n\nimport androidx.compose.ui.unit.dp\n\npublic object ${className} {\n`;
+        let kotlinFile = `//\n// ${file.destination}\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.haiilo.catalyst.tokens.generated\n\nimport androidx.compose.ui.unit.dp\n\npublic object ${className} {\n`;
         dictionary.allProperties.forEach(prop => {
             kotlinFile += `    public val ${prop.name} = ${prop.value}.dp\n`;
         });
@@ -131,7 +131,7 @@ StyleDictionary.registerFormat({
 StyleDictionary.registerFormat({
     name: 'kotlin/compose-typography',
     formatter: function ({ dictionary }) {
-        let kotlinFile = `//\n// CatTypography.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.tokens.generated\n\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.unit.sp\nimport com.engage.designsystem.CatFontFamily\n\npublic object CatTypography {\n`;
+        let kotlinFile = `//\n// CatTypography.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.haiilo.catalyst.tokens.generated\n\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.unit.sp\nimport com.haiilo.catalyst.CatFontFamily\n\npublic object CatTypography {\n`;
 
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
@@ -216,7 +216,7 @@ module.exports = {
         },
         kotlin: {
             transformGroup: 'android',
-            buildPath: '../android/designsystem/src/main/java/com/engage/designsystem/tokens/generated/',
+            buildPath: '../android/catalyst/src/main/java/com/haiilo/catalyst/tokens/generated/',
             files: [
                 // ✅ Colors
                 {
