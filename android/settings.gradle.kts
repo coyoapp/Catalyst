@@ -21,6 +21,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "DesingSystem"
+rootProject.name = "Catalyst"
 include(":app")
-include(":designsystem")
+include(":catalyst")

@@ -11,19 +11,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.engage.designsystem.components.PrimaryButton
-import com.engage.designsystem.theme.EngageTheme
+import com.haiilo.catalyst.components.PrimaryButton
+import com.haiilo.catalyst.theme.EngageTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.engage.designsystem.components.PrimaryButton
-import com.engage.designsystem.components.PrimaryButtonWithTheme
-import com.engage.designsystem.theme.EngageTheme
-import com.engage.designsystem.tokens.generated.DSTypography
-import com.engage.designsystem.R
+import com.haiilo.catalyst.components.PrimaryButton
+import com.haiilo.catalyst.components.PrimaryButtonWithTheme
+import com.haiilo.catalyst.theme.EngageTheme
+import com.haiilo.catalyst.tokens.generated.DSTypography
+import com.haiilo.catalyst.R
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
