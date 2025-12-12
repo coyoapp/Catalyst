@@ -1,11 +1,11 @@
 {
-  "name": "design-system-tokens",
+  "name": "catalyst-tokens",
   "version": "0.1.0",
-  "description": "Design tokens for Design System",
+  "description": "Design tokens for Catalyst",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coyoapp/Design-System.git"
+    "url": "git+https://github.com/coyoapp/Catalyst.git"
   },
   "files": [
     "assets"

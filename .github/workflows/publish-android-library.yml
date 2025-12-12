@@ -29,12 +29,11 @@ jobs:
       - name: ✅ Verify library builds successfully
         working-directory: ./android
         # This command builds the library to ensure it's not broken
-        run: ./gradlew clean :designsystem:build
+        run: ./gradlew clean :catalyst:build
 
       - name: ✨ Create GitHub Release Page
         uses: softprops/action-gh-release@v1
         with:
-          # This creates a nice release page for your tag
           tag_name: ${{ github.ref_name }}
           name: "Release ${{ github.ref_name }}"
-          body: "Official release of the Design System, version ${{ github.ref_name }}."
+          body: "Official release of the Catalyst, version ${{ github.ref_name }}."

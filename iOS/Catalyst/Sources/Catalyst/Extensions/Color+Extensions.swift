@@ -1,6 +1,6 @@
 //
 //  Color+Extensions.swift
-//  DesignSystemKit
+//  Catalyst
 //
 //  Created by Efe Durmaz on 04.12.25.
 //

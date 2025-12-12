@@ -1,6 +1,6 @@
 //
-//  EngageButton.swift
-//  DesignSystemKit
+//  CatButton.swift
+//  Catalyst
 //
 //  Created by Efe Durmaz on 24.11.25.
 //
