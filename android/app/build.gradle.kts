@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.haiilo.catalystDemo"
+    namespace = "com.haiilo.catalystdemo"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.haiilo.catalystDemo"
+        applicationId = "com.haiilo.catalystdemo"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

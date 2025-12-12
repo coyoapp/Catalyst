@@ -1,4 +1,4 @@
-package com.haiilo.catalystDemo
+package com.haiilo.catalystdemo
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

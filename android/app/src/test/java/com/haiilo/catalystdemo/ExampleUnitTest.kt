@@ -1,4 +1,4 @@
-package com.haiilo.catalystDemo
+package com.haiilo.catalystdemo
 
 import org.junit.Test
 
