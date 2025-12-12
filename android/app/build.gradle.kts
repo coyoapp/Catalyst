@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.engage.desingsystem"
+    namespace = "com.haiilo.catalystDemo"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.engage.desingsystem"
+        applicationId = "com.haiilo.catalystDemo"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
