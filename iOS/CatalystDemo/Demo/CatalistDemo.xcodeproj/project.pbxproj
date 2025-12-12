@@ -34,19 +34,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4CCEEA432E7C1CB30087F5DE /* Demo */ = {
+		4CCEEA432E7C1CB30087F5DE /* CatalystDemo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Demo;
+			path = CatalystDemo;
 			sourceTree = "<group>";
 		};
-		4CCEEA542E7C1CB40087F5DE /* DemoTests */ = {
+		4CCEEA542E7C1CB40087F5DE /* CatalystDemoTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = DemoTests;
+			path = CatalystDemoTests;
 			sourceTree = "<group>";
 		};
-		4CCEEA5E2E7C1CB40087F5DE /* DemoUITests */ = {
+		4CCEEA5E2E7C1CB40087F5DE /* CatalystDemoUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = DemoUITests;
+			path = CatalystDemoUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -80,9 +80,9 @@
 		4CCEEA382E7C1CB30087F5DE = {
 			isa = PBXGroup;
 			children = (
-				4CCEEA432E7C1CB30087F5DE /* Demo */,
-				4CCEEA542E7C1CB40087F5DE /* DemoTests */,
-				4CCEEA5E2E7C1CB40087F5DE /* DemoUITests */,
+				4CCEEA432E7C1CB30087F5DE /* CatalystDemo */,
+				4CCEEA542E7C1CB40087F5DE /* CatalystDemoTests */,
+				4CCEEA5E2E7C1CB40087F5DE /* CatalystDemoUITests */,
 				4CCEEA8D2E7C22D10087F5DE /* Frameworks */,
 				4CCEEA422E7C1CB30087F5DE /* Products */,
 			);
@@ -121,7 +121,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				4CCEEA432E7C1CB30087F5DE /* Demo */,
+				4CCEEA432E7C1CB30087F5DE /* CatalystDemo */,
 			);
 			name = CatalistDemo;
 			packageProductDependencies = (
@@ -145,7 +145,7 @@
 				4CCEEA532E7C1CB40087F5DE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				4CCEEA542E7C1CB40087F5DE /* DemoTests */,
+				4CCEEA542E7C1CB40087F5DE /* CatalystDemoTests */,
 			);
 			name = CatalistDemoTests;
 			packageProductDependencies = (
@@ -168,7 +168,7 @@
 				4CCEEA5D2E7C1CB40087F5DE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				4CCEEA5E2E7C1CB40087F5DE /* DemoUITests */,
+				4CCEEA5E2E7C1CB40087F5DE /* CatalystDemoUITests */,
 			);
 			name = CatalistDemoUITests;
 			packageProductDependencies = (
@@ -407,7 +407,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CatalystDemo/Demo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2X628G8H7L;
@@ -447,7 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CatalystDemo/Demo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2X628G8H7L;
