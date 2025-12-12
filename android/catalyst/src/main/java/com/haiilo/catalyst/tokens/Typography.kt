@@ -16,6 +16,7 @@ import com.haiilo.catalyst.R
 //)
 
 // There is one HaiiloFontFamily which is not correct but can make an example
+// TODO: We need a refactoring when we work on Theme similar to the iOS
 object DSTypographyTest {
     val EngageTypography = Typography(
         displayLarge = TextStyle(

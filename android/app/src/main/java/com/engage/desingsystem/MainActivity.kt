@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.dp
 import com.haiilo.catalyst.components.PrimaryButton
 import com.haiilo.catalyst.components.PrimaryButtonWithTheme
 import com.haiilo.catalyst.theme.EngageTheme
-import com.haiilo.catalyst.tokens.generated.DSTypography
 import com.haiilo.catalyst.R
+import com.haiilo.catalyst.tokens.generated.CatTypography
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,9 +51,9 @@ fun DemoScreen() {
                     .fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Text("Design System Demo", style = DSTypography.h1)
-                Text("This is body text using DS typography.", style = DSTypography.body1)
-                Text("This is a caption.", style = DSTypography.body2)
+                Text("Design System Demo", style = CatTypography.h1)
+                Text("This is body text using DS typography.", style = CatTypography.body1)
+                Text("This is a caption.", style = CatTypography.body2)
 
                 Icon(
                     painter = painterResource(id = R.drawable.reaction_appreciate),

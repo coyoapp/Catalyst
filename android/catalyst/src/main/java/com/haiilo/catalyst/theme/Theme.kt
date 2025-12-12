@@ -3,7 +3,7 @@ package com.haiilo.catalyst.theme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import com.haiilo.catalyst.tokens.DSTypographyTest.EngageTypography
-import com.haiilo.catalyst.tokens.generated.DSColors
+import com.haiilo.catalyst.tokens.generated.CatColors
 
 @Composable
 fun EngageTheme(
