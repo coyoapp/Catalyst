@@ -81,9 +81,9 @@ public enum CatButtonSize {
     
     var height: CGFloat {
         switch self {
-        case .extraSmall: return CatSpacing.spacing4xl
-        case .small: return CatSpacing.spacing5xl
-        case .medium: return CatSpacing.spacing6xl
+        case .extraSmall: return CatSizes.sizeXl
+        case .small: return CatSizes.size2xl
+        case .medium: return CatSizes.size3xl
         }
     }
 }
