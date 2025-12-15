@@ -33,7 +33,6 @@ public struct CatButton: View {
     
     public var body: some View {
         CatButtonBuilder(content: content,
-                 buttonSize: buttonSize,
                  iconSize: .init(width: CatSizes.sizeLg, height: CatSizes.sizeLg),
                  stackSpacing: stackSpacing,
                  action: action)
@@ -48,7 +47,8 @@ public struct CatButton: View {
                         leading: CatSpacing.spacingXl,
                         bottom: CatSpacing.spacingLg,
                         trailing: CatSpacing.spacingXl
-                    )
+                    ),
+                    buttonSize: buttonSize
                 )
             )
     }
@@ -76,7 +76,8 @@ public struct EngageKudosButton: View {
                         leading: CatSpacing.spacingMd,
                         bottom: CatSpacing.spacing3xl,
                         trailing: CatSpacing.spacingMd
-                    )
+                    ),
+                    buttonSize: .custom(150)
                 )
             )
             .padding(CatSpacing.spacingMd)

@@ -78,12 +78,14 @@ public enum CatButtonSize {
     case extraSmall
     case small
     case medium
+    case custom(CGFloat)
     
     var height: CGFloat {
         switch self {
         case .extraSmall: return CatSizes.sizeXl
         case .small: return CatSizes.size2xl
         case .medium: return CatSizes.size3xl
+        case .custom(let height): return height
         }
     }
 }
@@ -110,6 +112,7 @@ public struct CatButtonStyle: ButtonStyle {
     let borderWidth: CGFloat
     let cornerRadius: CGFloat
     let padding: EdgeInsets
+    let buttonSize: CatButtonSize
     
     var isLoading: Bool = false
     @State var isHovered: Bool = false
@@ -122,6 +125,10 @@ public struct CatButtonStyle: ButtonStyle {
         configuration.label
             .font(font)
             .padding(padding)
+            .frame(minWidth: 44,
+                   maxWidth: .infinity
+            )
+            .frame(height: buttonSize.height)
             .underline(state.properties?.isUnderlined == true)
             .background(state.colorStyle.background)
             .foregroundStyle(state.colorStyle.foreground)
@@ -164,19 +171,16 @@ public struct CatButtonBuilder: View {
     
     let content: CatButtonContent
     let action: () -> Void
-    let buttonSize: CatButtonSize
     let iconSize: CGSize?
     let stackSpacing: CGFloat?
     
     public init(
         content: CatButtonContent,
-        buttonSize: CatButtonSize = .small,
         iconSize: CGSize? = CGSize(width: CatSizes.sizeSm, height: CatSizes.sizeSm),
         stackSpacing: CGFloat? = CatSpacing.spacingMd,
         action: @escaping () -> Void
     ) {
         self.content = content
-        self.buttonSize = buttonSize
         self.iconSize = iconSize
         self.action = action
         self.stackSpacing = stackSpacing
@@ -185,10 +189,6 @@ public struct CatButtonBuilder: View {
     public var body: some View {
         Button(action: action) {
             buildContent()
-                .frame(minWidth: 44,
-                       maxWidth: .infinity
-                )
-                .frame(height: buttonSize.height)
         }
     }
     @ViewBuilder

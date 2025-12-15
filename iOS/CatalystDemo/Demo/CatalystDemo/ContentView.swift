@@ -18,12 +18,13 @@ struct ContentView: View {
     var body: some View {
         VStack {
             VStack {
-                Text("Desig System Demo")
+                Text("Catalyst Demo")
                     .font(CatTypography.h1)
                     .foregroundStyle(CatColors.colorThemeDangerText)
                 VStack(alignment: .leading) {
                     Text("Filled Config with Fonts: h1, h2 and h3")
                         .font(CatTypography.body1)
+                        .padding(.top, 5)
                     HStack {
                         CatButton(
                             .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
@@ -56,6 +57,7 @@ struct ContentView: View {
                 VStack(alignment: .leading) {
                     Text("Border Config with Fonts: h4, body1, body2")
                         .font(CatTypography.body1)
+                        .padding(.top, 5)
                     HStack {
                         CatButton(
                             .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
@@ -76,7 +78,7 @@ struct ContentView: View {
                         }
                         
                         CatButton(
-                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
+                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Disabled", placement: .trailing),
                             buttonSize: .extraSmall,
                             styleConfig: CatTheme.Components.Buttons.Primary.borderConfig,
                             styleFont: CatTypography.body2
@@ -90,6 +92,7 @@ struct ContentView: View {
                 VStack(alignment: .leading) {
                     Text("Link Config with Fonts: s1, s2 & default (s1)")
                         .font(CatTypography.body1)
+                        .padding(.top, 5)
                     HStack {
                         CatButton(
                             .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .leading),
@@ -112,7 +115,7 @@ struct ContentView: View {
                         .frame(width: 150)
                         
                         CatButton(
-                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .leading),
+                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Disabled", placement: .leading),
                             buttonSize: .extraSmall,
                             styleConfig: CatTheme.Components.Buttons.Primary.linkConfig
                         ) {
@@ -129,6 +132,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 Text("Ghost Config with Fonts: button, caption & overline")
                     .font(CatTypography.body1)
+                    .padding(.top, 5)
                 HStack {
                     CatButton(
                         .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .leading),
@@ -151,7 +155,7 @@ struct ContentView: View {
                     .frame(width: 150)
                     
                     CatButton(
-                        .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .leading),
+                        .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Disabled", placement: .leading),
                         buttonSize: .extraSmall,
                         styleConfig: CatTheme.Components.Buttons.Primary.ghostConfig,
                         styleFont: CatTypography.overline
@@ -163,6 +167,9 @@ struct ContentView: View {
                 }
             }
             
+            Text("Dafult setup")
+                .font(CatTypography.body1)
+                .padding(.top, 5)
             CatButton(
                 .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Default Button", placement: .leading),
                 styleConfig: CatTheme.Components.Buttons.Primary.filledConfig,
@@ -171,6 +178,9 @@ struct ContentView: View {
             }
             .frame(width: 175)
             
+            Text("Buttons with accent color")
+                .font(CatTypography.body1)
+                .padding(.top, 5)
             HStack(spacing: 50) {
                 CatButton(
                     .icon(Image("icon-checkmark", bundle: .catalyst)),
@@ -183,6 +193,7 @@ struct ContentView: View {
                 
                 CatButton(
                     .icon(Image("icon-checkmark", bundle: .catalyst)),
+                    buttonSize: .small,
                     styleConfig: CatTheme.Components.Buttons.Accent.borderConfig(accentColor: .red)
                 ) {
                     print("Button tapped")
@@ -191,6 +202,7 @@ struct ContentView: View {
                 
                 CatButton(
                     .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Link", placement: .trailing),
+                    buttonSize: .medium,
                     styleConfig: CatTheme.Components.Buttons.Accent.linkConfig(accentColor: .red)
                 ) {
                     print("Button tapped")
@@ -208,7 +220,7 @@ struct ContentView: View {
             ) {
                 print("Button tapped")
             }
-            .frame(width: 150, height: 150)
+            .frame(width: 150)
             
             HStack {
                 CatButton(
