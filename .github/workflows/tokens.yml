@@ -1,14 +1,8 @@
 name: Tokens
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "tokens/**"
   pull_request:
-    paths:
-      - "tokens/**"
+    types: opened
 
 jobs:
   build-tokens:

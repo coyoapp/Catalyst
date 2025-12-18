@@ -32,7 +32,7 @@ StyleDictionary.registerTransformGroup({
 StyleDictionary.registerFormat({
     name: 'swift/swiftui-colors',
     formatter: function ({ dictionary }) {
-        let swiftFile = `//\n// DSColors.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum DSColors {\n`;
+        let swiftFile = `//\n// CatColors.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum CatColors {\n`;
 
         dictionary.allProperties.forEach(prop => {
             const rgb = hexToRgb(prop.value);
@@ -54,7 +54,7 @@ StyleDictionary.registerFormat({
     name: 'kotlin/compose-colors',
     formatter: function ({ dictionary, options }) {
         const { outputReferences } = options;
-        let kotlinFile = `//\n// DSColors.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.tokens.generated\n\nimport androidx.compose.ui.graphics.Color\n\npublic object DSColors {\n`;
+        let kotlinFile = `//\n// CatColors.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.haiilo.catalyst.tokens.generated\n\nimport androidx.compose.ui.graphics.Color\n\npublic object CatColors {\n`;
 
         dictionary.allProperties.forEach(prop => {
             const composeColor = `0xFF${prop.value.substring(1).toUpperCase()}`;
@@ -83,7 +83,7 @@ StyleDictionary.registerFormat({
     name: 'kotlin/compose-dimensions',
     formatter: function ({ dictionary, file }) {
         const className = file.className;
-        let kotlinFile = `//\n// ${file.destination}\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.tokens.generated\n\nimport androidx.compose.ui.unit.dp\n\npublic object ${className} {\n`;
+        let kotlinFile = `//\n// ${file.destination}\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.haiilo.catalyst.tokens.generated\n\nimport androidx.compose.ui.unit.dp\n\npublic object ${className} {\n`;
         dictionary.allProperties.forEach(prop => {
             kotlinFile += `    public val ${prop.name} = ${prop.value}.dp\n`;
         });
@@ -96,7 +96,7 @@ StyleDictionary.registerFormat({
 StyleDictionary.registerFormat({
     name: 'swift/swiftui-typography',
     formatter: function ({ dictionary }) {
-        let swiftFile = `//\n// DSTypography.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum DSTypography {\n`;
+        let swiftFile = `//\n// CatTypography.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum CatTypography {\n`;
 
         const weightToStyle = {
             "700": "Bold",
@@ -131,13 +131,13 @@ StyleDictionary.registerFormat({
 StyleDictionary.registerFormat({
     name: 'kotlin/compose-typography',
     formatter: function ({ dictionary }) {
-        let kotlinFile = `//\n// DSTypography.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.engage.designsystem.tokens.generated\n\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.unit.sp\nimport com.engage.designsystem.DSFontFamily\n\npublic object DSTypography {\n`;
+        let kotlinFile = `//\n// CatTypography.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.haiilo.catalyst.tokens.generated\n\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.unit.sp\nimport com.haiilo.catalyst.CatFontFamily\n\npublic object CatTypography {\n`;
 
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
             const propName = prop.path.slice(-1)[0];
             kotlinFile += `    public val ${propName} = TextStyle(\n`;
-            kotlinFile += `        fontFamily = DSFontFamily.${val.fontFamily.toLowerCase()},\n`;
+            kotlinFile += `        fontFamily = CatFontFamily.${val.fontFamily.toLowerCase()},\n`;
             kotlinFile += `        fontWeight = FontWeight(${val.fontWeight}),\n`;
             kotlinFile += `        fontSize = ${val.fontSize}.sp,\n`;
             kotlinFile += `        lineHeight = ${val.lineHeight}.sp\n`;
@@ -159,11 +159,11 @@ module.exports = {
     platforms: {
         swift: {
             transformGroup: 'ios-swift-custom',
-            buildPath: '../iOS/DesignSystem/Sources/DesignSystemKit/Tokens/Generated/',
+            buildPath: '../iOS/Catalyst/Sources/Catalyst/Tokens/Generated/',
             files: [
                 // ✅ Colors    
                 {
-                    destination: 'DSColors.swift',
+                    destination: 'CatColors.swift',
                     format: 'swift/swiftui-colors',
                     // This filter ensures we only include the semantic UI/theme tokens,
                     // not the raw base palette colors.
@@ -171,43 +171,43 @@ module.exports = {
                 },
                 // ✅ Spacing Dimensions
                 {
-                    destination: 'DSSpacing.swift',
+                    destination: 'CatSpacing.swift',
                     format: 'swift/swiftui-dimensions',
-                    className: 'DSSpacing',
+                    className: 'CatSpacing',
                     filter: {
                         type: 'spacing'
                     }
                 },
                 // ✅ Border Radius Dimensions
                 {
-                    destination: 'DSBorderRadius.swift',
+                    destination: 'CatBorderRadius.swift',
                     format: 'swift/swiftui-dimensions',
-                    className: 'DSBorderRadius',
+                    className: 'CatBorderRadius',
                     filter: {
                         type: 'borderRadius'
                     }
                 },
                 // ✅ Border Width Dimensions
                 {
-                    destination: 'DSBorderWidth.swift',
+                    destination: 'CatBorderWidth.swift',
                     format: 'swift/swiftui-dimensions',
-                    className: 'DSBorderWidth',
+                    className: 'CatBorderWidth',
                     filter: {
                         type: 'borderWidth'
                     }
                 },
                 // ✅ Sizing Dimensions
                 {
-                    destination: 'DSSizes.swift',
+                    destination: 'CatSizes.swift',
                     format: 'swift/swiftui-dimensions',
-                    className: 'DSSizes',
+                    className: 'CatSizes',
                     filter: {
                         type: 'sizing'
                     }
                 },
                 // ✅ NEW: Typography Styles
                 {
-                    destination: 'DSTypography.swift',
+                    destination: 'CatTypography.swift',
                     format: 'swift/swiftui-typography',
                     filter: {
                         type: 'typography'
@@ -216,54 +216,54 @@ module.exports = {
         },
         kotlin: {
             transformGroup: 'android',
-            buildPath: '../android/designsystem/src/main/java/com/engage/designsystem/tokens/generated/',
+            buildPath: '../android/catalyst/src/main/java/com/haiilo/catalyst/tokens/generated/',
             files: [
                 // ✅ Colors
                 {
-                    destination: 'DSColors.kt',
+                    destination: 'CatColors.kt',
                     format: 'kotlin/compose-colors',
                     // Same filter for Android to keep the output clean.
                     filter: (token) => token.path[1] === 'theme' || token.path[1] === 'ui'
                 },
                 // ✅ Spacing Dimensions
                 {
-                    destination: 'DSSpacing.kt',
+                    destination: 'CatSpacing.kt',
                     format: 'kotlin/compose-dimensions',
-                    className: 'DSSpacing',
+                    className: 'CatSpacing',
                     filter: {
                         type: 'spacing'
                     }
                 },
                 // ✅ Border Radius Dimensions
                 {
-                    destination: 'DSBorderRadius.kt',
+                    destination: 'CatBorderRadius.kt',
                     format: 'kotlin/compose-dimensions',
-                    className: 'DSBorderRadius',
+                    className: 'CatBorderRadius',
                     filter: {
                         type: 'borderRadius'
                     }
                 },
                 // ✅ Border Width Dimensions
                 {
-                    destination: 'DSBorderWidth.kt',
+                    destination: 'CatBorderWidth.kt',
                     format: 'kotlin/compose-dimensions',
-                    className: 'DSBorderWidth',
+                    className: 'CatBorderWidth',
                     filter: {
                         type: 'borderWidth'
                     }
                 },
                 // ✅ Sizing Dimensions
                 {
-                    destination: 'DSSizes.kt',
+                    destination: 'CatSizes.kt',
                     format: 'kotlin/compose-dimensions',
-                    className: 'DSSizes',
+                    className: 'CatSizes',
                     filter: {
                         type: 'sizing'
                     }
                 },
                 // ✅ Typography Styles
                 {
-                    destination: 'DSTypography.kt',
+                    destination: 'CatTypography.kt',
                     format: 'kotlin/compose-typography',
                     filter: {
                         type: 'typography'

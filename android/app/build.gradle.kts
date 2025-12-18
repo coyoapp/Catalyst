@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.engage.desingsystem"
+    namespace = "com.haiilo.catalystdemo"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.engage.desingsystem"
+        applicationId = "com.haiilo.catalystdemo"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -41,7 +41,7 @@ android {
 
 dependencies {
 
-    implementation(project(":designsystem"))
+    implementation(project(":catalyst"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
