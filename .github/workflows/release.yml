@@ -19,3 +19,5 @@ jobs:
         id: release
         with:
           config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          target-branch: add-release-changelog
