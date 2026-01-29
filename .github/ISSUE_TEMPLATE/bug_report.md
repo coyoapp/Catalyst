@@ -23,7 +23,7 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots, screen recordings to help explain your problem.
 
-**Desktop (please complete the following information):**
+**Please complete the following information:**
  - Platform: [e.g. iOS, Android or both]
  - OS vesion: [e.g. iOS 26 or Android 14]
  - Library Version: [e.g. 1.0.1]
