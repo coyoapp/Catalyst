@@ -106,7 +106,6 @@ public enum CatButtonContent {
 // MARK: - Button styling
 
 public struct CatButtonStyle: ButtonStyle {
-    
     let styleConfig: CatButtonStateStyleConfig
     let font: Font
     let borderWidth: CGFloat
@@ -137,7 +136,7 @@ public struct CatButtonStyle: ButtonStyle {
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .overlay(
                 Group {
-                    if (state.properties?.hasSecondaryFocusRing == true) {
+                    if state.properties?.hasSecondaryFocusRing == true {
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(
                                 CatColors.colorUiBorderFocus,
@@ -156,19 +155,21 @@ public struct CatButtonStyle: ButtonStyle {
     
     private func resolveState(isPressed: Bool) -> CatButtonStateStyle {
         guard isEnabled else { return styleConfig.disabled }
-        if isLoading { return styleConfig.loading ?? styleConfig.normal }
-        else if isPressed { return styleConfig.pressed }
-        else if isHovered, let hovered = styleConfig.hovered {
+        if isLoading {
+            return styleConfig.loading ?? styleConfig.normal
+        } else if isPressed {
+            return styleConfig.pressed
+        } else if isHovered, let hovered = styleConfig.hovered {
             return hovered
+        } else if isFocused {
+            return styleConfig.focused
+        } else { return styleConfig.normal
         }
-        else if isFocused { return styleConfig.focused }
-        else { return styleConfig.normal }
     }
 }
 
 // MARK: - Button Layout
 public struct CatButtonBuilder: View {
-    
     let content: CatButtonContent
     let action: () -> Void
     let iconSize: CGSize?
@@ -191,6 +192,7 @@ public struct CatButtonBuilder: View {
             buildContent()
         }
     }
+    
     @ViewBuilder
     private func buildContent() -> some View {
         switch content {

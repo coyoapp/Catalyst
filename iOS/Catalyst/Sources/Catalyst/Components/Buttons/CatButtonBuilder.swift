@@ -21,7 +21,8 @@ public struct CatButton: View {
                 styleConfig: CatButtonStateStyleConfig? = CatTheme.Components.Buttons.Primary.filledConfig,
                 styleFont: Font? = CatTypography.s1,
                 stackSpacing: CGFloat? = nil,
-                padding: EdgeInsets? = nil, action: @escaping () -> Void) {
+                padding: EdgeInsets? = nil,
+                action: @escaping () -> Void) {
         self.content = content
         self.buttonSize = buttonSize
         self.styleConfig = styleConfig
@@ -32,25 +33,27 @@ public struct CatButton: View {
     }
     
     public var body: some View {
-        CatButtonBuilder(content: content,
-                 iconSize: .init(width: CatSizes.sizeLg, height: CatSizes.sizeLg),
-                 stackSpacing: stackSpacing,
-                 action: action)
-            .buttonStyle(
-                CatButtonStyle(
-                    styleConfig: styleConfig ?? CatTheme.Components.Buttons.Primary.filledConfig,
-                    font: styleFont ?? CatTypography.s1,
-                    borderWidth: CatBorderWidth.borderWidthThin,
-                    cornerRadius: CatBorderRadius.borderRadiusMd,
-                    padding: padding ??  EdgeInsets(
-                        top: CatSpacing.spacingLg,
-                        leading: CatSpacing.spacingXl,
-                        bottom: CatSpacing.spacingLg,
-                        trailing: CatSpacing.spacingXl
-                    ),
-                    buttonSize: buttonSize
-                )
+        CatButtonBuilder(
+            content: content,
+            iconSize: .init(width: CatSizes.sizeLg, height: CatSizes.sizeLg),
+            stackSpacing: stackSpacing,
+            action: action
+        )
+        .buttonStyle(
+            CatButtonStyle(
+                styleConfig: styleConfig ?? CatTheme.Components.Buttons.Primary.filledConfig,
+                font: styleFont ?? CatTypography.s1,
+                borderWidth: CatBorderWidth.borderWidthThin,
+                cornerRadius: CatBorderRadius.borderRadiusMd,
+                padding: padding ?? EdgeInsets(
+                    top: CatSpacing.spacingLg,
+                    leading: CatSpacing.spacingXl,
+                    bottom: CatSpacing.spacingLg,
+                    trailing: CatSpacing.spacingXl
+                ),
+                buttonSize: buttonSize
             )
+        )
     }
 }
 
