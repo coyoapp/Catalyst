@@ -15,7 +15,7 @@ jobs:
       - name: Run SwiftLint
         uses: norio-nomura/action-swiftlint@master
         with:
-          args: --config iOS/.swiftlint.yml
+          args: --config .swiftlint.yml
         env:
           WORKING_DIRECTORY: iOS 
 
