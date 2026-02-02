@@ -8,7 +8,6 @@
 import SwiftUI
 
 public enum CatTheme {
-    
     public enum AccentColorDarkenFactor: CGFloat {
         case hovered = 0.05
         case pressed = 0.11
@@ -55,7 +54,6 @@ public enum CatTheme {
     
     // MARK: - COMPONENTS
     public enum Components {
-        
         public enum Buttons {
             // ACCENT COLOR BUTTON CONFIG
             public enum Accent {
@@ -115,7 +113,7 @@ public enum CatTheme {
                     )
                 }
                 // TODO: ASK BACKGROUND AND BORDER COLOR Configs
-                public static func borderConfig(accentColor: Color)  -> CatButtonStateStyleConfig {
+                public static func borderConfig(accentColor: Color) -> CatButtonStateStyleConfig {
                     CatButtonStateStyleConfig(
                         normal: .init(
                             colorStyle: CatButtonStateColorStyle(
@@ -293,7 +291,6 @@ public enum CatTheme {
                                 scale: 1)
                         )
                     )
-                    
                 }
             }
             
@@ -534,4 +531,3 @@ public enum CatTheme {
         }
     }
 }
-

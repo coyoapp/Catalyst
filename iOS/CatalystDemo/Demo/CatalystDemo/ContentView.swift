@@ -27,9 +27,11 @@ struct ContentView: View {
                         .padding(.top, 5)
                     HStack {
                         CatButton(
-                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
+                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst),
+                                      text: "Button",
+                                      placement: .trailing),
                             buttonSize: .medium,
-                            styleConfig:  CatTheme.Components.Buttons.Primary.filledConfig,
+                            styleConfig: CatTheme.Components.Buttons.Primary.filledConfig,
                             styleFont: CatTypography.h1
                         ) {
                             print("Button tapped")
@@ -226,13 +228,14 @@ struct ContentView: View {
                 CatButton(
                     .iconText(
                         icon: Image("icon-checkmark", bundle: .catalyst),
-                        text: "Button", placement: .leading),
+                        text: "Button",
+                        placement: .leading
+                    ),
                     styleConfig: CatTheme.Components.Buttons.Primary.filledConfig
                 ) {
                     print("Button tapped")
                 }
             }
-            
             
             VStack {
                 HStack {

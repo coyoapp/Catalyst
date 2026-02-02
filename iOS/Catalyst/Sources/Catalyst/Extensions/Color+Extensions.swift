@@ -8,7 +8,6 @@
 import SwiftUI
 
 public extension Color {
-    
     /// Returns a darker version of the color.
     /// - Parameter percentage: Value between 0...1 (0.2 = 20% darker)
     func darken(by percentage: CGFloat) -> Color {

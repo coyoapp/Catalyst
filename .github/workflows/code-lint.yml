@@ -1,0 +1,25 @@
+name: Code Lint
+
+on:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+      - reopened
+      - synchronize
+
+jobs:
+  swift-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run SwiftLint
+        uses: norio-nomura/action-swiftlint@master
+        with:
+          args: --config .swiftlint.yml
+        env:
+          WORKING_DIRECTORY: iOS 
+
+  # Add here Android and Tokens Lint jobs
