@@ -7,7 +7,7 @@ import com.haiilo.catalyst.tokens.CatTypographyTest.CatTypography
 @Composable
 fun CatTheme(
     darkTheme: Boolean = false,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     MaterialTheme(
 //        colorScheme = colors, // Theme works with color schemes so wont be able to use DSColors directly
@@ -15,5 +15,3 @@ fun CatTheme(
         content = content
     )
 }
-
-
