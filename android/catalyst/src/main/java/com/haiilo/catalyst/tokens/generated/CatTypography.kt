@@ -88,4 +88,5 @@ public object CatTypography {
         fontSize = 10.sp,
         lineHeight = 16.sp
     )
+
 }
