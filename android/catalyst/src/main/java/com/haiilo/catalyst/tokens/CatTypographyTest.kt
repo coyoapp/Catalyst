@@ -6,13 +6,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-//private val HaiiloFontFamily = FontFamily(
-//    Font(R.font.light, FontWeight.W300),
-//    Font(R.font.regular, FontWeight.W400),
-//    Font(R.font.semibold, FontWeight.W500),
-//    Font(R.font.bold, FontWeight.W600)
-//)
-
 // There is one HaiiloFontFamily which is not correct but can make an example
 // TODO: We need a refactoring when we work on Theme similar to the iOS
 object CatTypographyTest {

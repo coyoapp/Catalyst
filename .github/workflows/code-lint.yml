@@ -22,4 +22,20 @@ jobs:
         env:
           WORKING_DIRECTORY: iOS 
 
-  # Add here Android and Tokens Lint jobs
+  android-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          
+      - name: Run ktlint
+        working-directory: ./android
+        run: ./gradlew ktlintCheck
+
+  # Add here Tokens Lint jobs

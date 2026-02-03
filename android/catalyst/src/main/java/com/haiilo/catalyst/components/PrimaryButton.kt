@@ -12,7 +12,7 @@ import com.haiilo.catalyst.tokens.generated.CatColors
 fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Button(
         modifier = modifier,
@@ -30,7 +30,7 @@ fun PrimaryButton(
 fun PrimaryButtonWithTheme(
     text: String,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Button(
         modifier = modifier,
