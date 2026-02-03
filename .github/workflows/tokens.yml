@@ -2,7 +2,11 @@ name: Tokens
 
 on:
   pull_request:
-    types: opened
+    types: 
+      - opened
+      - ready_for_review
+      - reopened
+      - synchronize
 
 jobs:
   build-tokens:
