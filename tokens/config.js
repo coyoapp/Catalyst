@@ -141,7 +141,7 @@ StyleDictionary.registerFormat({
             kotlinFile += `        fontWeight = FontWeight(${val.fontWeight}),\n`;
             kotlinFile += `        fontSize = ${val.fontSize}.sp,\n`;
             kotlinFile += `        lineHeight = ${val.lineHeight}.sp\n`;
-            kotlinFile += `    )\n\n`;
+            kotlinFile += `    )\n`;
         });
 
         kotlinFile += `}\n`;
