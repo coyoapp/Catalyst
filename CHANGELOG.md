@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/coyoapp/Catalyst/compare/v0.2.0...v0.2.1) (2026-02-06)
+
+
+### Bug Fixes
+
+* **swift version:** swift version lowered to 5.7 ([#20](https://github.com/coyoapp/Catalyst/issues/20)) ([8d72114](https://github.com/coyoapp/Catalyst/commit/8d72114f68d24acf35a39ba9969d2e26de89de30))
+
 ## [0.2.0](https://github.com/coyoapp/Catalyst/compare/v0.1.14...v0.2.0) (2026-02-05)
 
 
