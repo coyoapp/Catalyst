@@ -25,14 +25,14 @@ public enum CatTheme {
                 colorStyle: CatButtonStateColorStyle(
                     background: Color.clear.opacity(0.5),
                     foreground: CatColors.colorThemePrimaryText.opacity(0.5),
-                    border: CatColors.colorThemeSecondaryBg.opacity(0.5),
+                    border: CatColors.colorThemeSecondaryBg.opacity(0.5)
                 )
             ),
             focused: .init(
                 colorStyle: CatButtonStateColorStyle(
                     background: Color.clear.opacity(0.5),
                     foreground: CatColors.colorThemePrimaryText.opacity(0.5),
-                    border: CatColors.colorThemeSecondaryBg.opacity(0.5),
+                    border: CatColors.colorThemeSecondaryBg.opacity(0.5)
                 )
             ),
             disabled: .init(
