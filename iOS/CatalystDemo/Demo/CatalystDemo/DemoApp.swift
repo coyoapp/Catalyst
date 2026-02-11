@@ -5,11 +5,16 @@
 //  Created by Efe Durmaz on 18.09.25.
 //
 
+import Catalyst
 import SwiftUI
 import SwiftData
 
 @main
 struct DemoApp: App {
+    init() {
+        CatFontRegistrar.registerFonts()
+    }
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self
