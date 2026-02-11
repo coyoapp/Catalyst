@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/coyoapp/Catalyst/compare/v0.2.1...v0.2.2) (2026-02-11)
+
+
+### Bug Fixes
+
+* **ci:** manual trigger to release added ([#23](https://github.com/coyoapp/Catalyst/issues/23)) ([ecf3c7e](https://github.com/coyoapp/Catalyst/commit/ecf3c7e3350ffec27012878f8120c32183eb89b8))
+
 ## [0.2.1](https://github.com/coyoapp/Catalyst/compare/v0.2.0...v0.2.1) (2026-02-06)
 
 
