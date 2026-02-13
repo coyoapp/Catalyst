@@ -12,7 +12,7 @@ import SwiftData
 @main
 struct DemoApp: App {
     init() {
-        CatFontRegistrar.registerFonts()
+        CatTheme.configure()
     }
 
     var sharedModelContainer: ModelContainer = {
