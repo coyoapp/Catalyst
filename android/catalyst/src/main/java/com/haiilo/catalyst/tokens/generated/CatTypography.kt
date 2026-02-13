@@ -40,30 +40,36 @@ public object CatTypography {
         fontFamily = CatFontFamily.lato,
         fontWeight = FontWeight(400),
         fontSize = 16.sp,
-        lineHeight = 24.sp
+        lineHeight = 22.sp
     )
     public val body2 = TextStyle(
         fontFamily = CatFontFamily.lato,
         fontWeight = FontWeight(400),
         fontSize = 14.sp,
-        lineHeight = 20.sp
+        lineHeight = 18.sp
     )
     public val s1 = TextStyle(
         fontFamily = CatFontFamily.lato,
         fontWeight = FontWeight(600),
         fontSize = 16.sp,
-        lineHeight = 24.sp
+        lineHeight = 22.sp
     )
     public val s2 = TextStyle(
         fontFamily = CatFontFamily.lato,
         fontWeight = FontWeight(600),
         fontSize = 14.sp,
-        lineHeight = 20.sp
+        lineHeight = 18.sp
     )
-    public val button = TextStyle(
+    public val button1 = TextStyle(
         fontFamily = CatFontFamily.lato,
         fontWeight = FontWeight(600),
-        fontSize = 14.sp,
+        fontSize = 16.sp,
+        lineHeight = 20.sp
+    )
+    public val button2 = TextStyle(
+        fontFamily = CatFontFamily.lato,
+        fontWeight = FontWeight(400),
+        fontSize = 16.sp,
         lineHeight = 20.sp
     )
     public val caption = TextStyle(

@@ -41,7 +41,7 @@
         "fontFamily": "{font.family.lato}",
         "fontWeight": "{font.weight.regular}",
         "fontSize": "{dimension.dimension-4}",
-        "lineHeight": "{dimension.dimension-6}"
+        "lineHeight": "{dimension.dimension-5-5}"
       },
       "type": "typography"
     },
@@ -50,7 +50,7 @@
         "fontFamily": "{font.family.lato}",
         "fontWeight": "{font.weight.regular}",
         "fontSize": "{dimension.dimension-3-5}",
-        "lineHeight": "{dimension.dimension-5}"
+        "lineHeight": "{dimension.dimension-4-5}"
       },
       "type": "typography"
     },
@@ -59,7 +59,7 @@
         "fontFamily": "{font.family.lato}",
         "fontWeight": "{font.weight.semi-bold}",
         "fontSize": "{dimension.dimension-4}",
-        "lineHeight": "{dimension.dimension-6}"
+        "lineHeight": "{dimension.dimension-5-5}"
       },
       "type": "typography"
     },
@@ -68,15 +68,24 @@
         "fontFamily": "{font.family.lato}",
         "fontWeight": "{font.weight.semi-bold}",
         "fontSize": "{dimension.dimension-3-5}",
+        "lineHeight": "{dimension.dimension-4-5}"
+      },
+      "type": "typography"
+    },
+    "button1": {
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.semi-bold}",
+        "fontSize": "{dimension.dimension-4}",
         "lineHeight": "{dimension.dimension-5}"
       },
       "type": "typography"
     },
-    "button": {
+    "button2": {
       "value": {
         "fontFamily": "{font.family.lato}",
-        "fontWeight": "{font.weight.semi-bold}",
-        "fontSize": "{dimension.dimension-3-5}",
+        "fontWeight": "{font.weight.regular}",
+        "fontSize": "{dimension.dimension-4}",
         "lineHeight": "{dimension.dimension-5}"
       },
       "type": "typography"
