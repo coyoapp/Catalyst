@@ -140,7 +140,7 @@ struct ContentView: View {
                         .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .leading),
                         buttonSize: .small,
                         styleConfig: CatTheme.Components.Buttons.Primary.ghostConfig,
-                        styleFont: CatTypography.button
+                        styleFont: CatTypography.button1
                     ) {
                         print("Button tapped")
                     }

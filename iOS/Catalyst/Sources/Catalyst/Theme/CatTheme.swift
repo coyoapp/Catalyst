@@ -8,6 +8,11 @@
 import SwiftUI
 
 public enum CatTheme {
+    /// Call once during app startup to register Catalyst bundled fonts.
+    public static func configure() {
+        CatFontRegistrar.registerFonts()
+    }
+
     public enum AccentColorDarkenFactor: CGFloat {
         case hovered = 0.05
         case pressed = 0.11

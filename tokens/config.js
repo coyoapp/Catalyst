@@ -100,7 +100,7 @@ StyleDictionary.registerFormat({
 
         const weightToStyle = {
             "700": "Bold",
-            "600": "SemiBold",
+            "600": "Semibold",
             "500": "Medium",
             "400": "Regular",
             "300": "Light"
