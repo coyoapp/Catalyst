@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/coyoapp/Catalyst/compare/v0.2.2...v0.2.3) (2026-02-16)
+
+
+### Bug Fixes
+
+* **tokens:** Typograph font registration and applying fixes ([#25](https://github.com/coyoapp/Catalyst/issues/25)) ([4c76102](https://github.com/coyoapp/Catalyst/commit/4c76102bf132e9a8e2dce73ce9261bd2186e56f1))
+
 ## [0.2.2](https://github.com/coyoapp/Catalyst/compare/v0.2.1...v0.2.2) (2026-02-11)
 
 
