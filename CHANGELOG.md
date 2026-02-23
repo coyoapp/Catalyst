@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/coyoapp/Catalyst/compare/v0.2.3...v0.2.4) (2026-02-23)
+
+
+### Bug Fixes
+
+* **colorTokens:** Rework on Color Tokens (Preps: theme and button components) ([#27](https://github.com/coyoapp/Catalyst/issues/27)) ([b0f76fa](https://github.com/coyoapp/Catalyst/commit/b0f76fa1112e6c039425e7c2f6a5e14d3618a699))
+
 ## [0.2.3](https://github.com/coyoapp/Catalyst/compare/v0.2.2...v0.2.3) (2026-02-16)
 
 
