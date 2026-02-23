@@ -354,7 +354,7 @@
           "value": "{color.base.neutral.100}",
           "type": "color"
         },
-        "default": {
+        "regular": {
           "value": "{color.base.neutral.200}",
           "type": "color"
         },

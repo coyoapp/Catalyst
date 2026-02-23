@@ -23,28 +23,28 @@ public enum CatTheme {
             normal: .init(
                 colorStyle: CatButtonStateColorStyle(
                     background: Color.clear,
-                    foreground: CatColors.colorThemePrimaryText,
-                    border: CatColors.colorThemeSecondaryBg)
+                    foreground: CatColors.Theme.Primary.text,
+                    border: CatColors.Theme.Secondary.bg)
             ),
             pressed: .init(
                 colorStyle: CatButtonStateColorStyle(
                     background: Color.clear.opacity(0.5),
-                    foreground: CatColors.colorThemePrimaryText.opacity(0.5),
-                    border: CatColors.colorThemeSecondaryBg.opacity(0.5)
+                    foreground: CatColors.Theme.Primary.text.opacity(0.5),
+                    border: CatColors.Theme.Secondary.bg.opacity(0.5)
                 )
             ),
             focused: .init(
                 colorStyle: CatButtonStateColorStyle(
                     background: Color.clear.opacity(0.5),
-                    foreground: CatColors.colorThemePrimaryText.opacity(0.5),
-                    border: CatColors.colorThemeSecondaryBg.opacity(0.5)
+                    foreground: CatColors.Theme.Primary.text.opacity(0.5),
+                    border: CatColors.Theme.Secondary.bg.opacity(0.5)
                 )
             ),
             disabled: .init(
                 colorStyle: CatButtonStateColorStyle(
-                    background: CatColors.colorThemePrimaryInvertedBgActive,
-                    foreground: CatColors.colorThemePrimaryInvertedFill,
-                    border: CatColors.colorThemeSecondaryBg
+                    background: CatColors.Theme.PrimaryInverted.bgActive,
+                    foreground: CatColors.Theme.PrimaryInverted.fill,
+                    border: CatColors.Theme.Secondary.bg
                 )
             )
         )
@@ -67,7 +67,7 @@ public enum CatTheme {
                         normal: .init(
                             colorStyle: CatButtonStateColorStyle(
                                 background: accentColor,
-                                foreground: CatColors.colorThemePrimaryFill,
+                                foreground: CatColors.Theme.Primary.fill,
                                 border: Color.clear),
                             properties: CatStateProperties(
                                 isUnderlined: false,
@@ -77,7 +77,7 @@ public enum CatTheme {
                         hovered: .init(
                             colorStyle: CatButtonStateColorStyle(
                                 background: accentColor.darken(by: AccentColorDarkenFactor.hovered.rawValue),
-                                foreground: CatColors.colorThemePrimaryFillHover,
+                                foreground: CatColors.Theme.Primary.fillHover,
                                 border: Color.clear
                             ),
                             properties: CatStateProperties(
@@ -88,7 +88,7 @@ public enum CatTheme {
                         pressed: .init(
                             colorStyle: CatButtonStateColorStyle(
                                 background: accentColor.darken(by: AccentColorDarkenFactor.pressed.rawValue),
-                                foreground: CatColors.colorThemePrimaryFillActive,
+                                foreground: CatColors.Theme.Primary.fillActive,
                                 border: Color.clear),
                             properties: CatStateProperties(
                                 isUnderlined: false,
@@ -98,7 +98,7 @@ public enum CatTheme {
                         focused: .init(
                             colorStyle: CatButtonStateColorStyle(
                                 background: accentColor,
-                                foreground: CatColors.colorThemePrimaryFill,
+                                foreground: CatColors.Theme.Primary.fill,
                                 border: Color.clear),
                             properties: CatStateProperties(
                                 isUnderlined: false,
@@ -107,8 +107,8 @@ public enum CatTheme {
                         ),
                         disabled: .init(
                             colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.colorUiBackgroundMuted,
-                                foreground: CatColors.colorUiFontMuted,
+                                background: CatColors.Ui.Background.muted,
+                                foreground: CatColors.Ui.Font.muted,
                                 border: Color.clear),
                             properties: CatStateProperties(
                                 isUnderlined: false,
@@ -133,7 +133,7 @@ public enum CatTheme {
                         ),
                         hovered: .init(
                             colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.colorThemePrimaryBgHover,
+                                background: CatColors.Theme.Primary.bgHover,
                                 foreground: accentColor,
                                 border: accentColor.darken(by: AccentColorDarkenFactor.hovered.rawValue)
                             ),
@@ -144,7 +144,7 @@ public enum CatTheme {
                         ),
                         pressed: .init(
                             colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.colorThemePrimaryBgActive,
+                                background: CatColors.Theme.Primary.bgActive,
                                 foreground: accentColor,
                                 border: accentColor.darken(by: AccentColorDarkenFactor.pressed.rawValue)
                             ),
@@ -167,8 +167,8 @@ public enum CatTheme {
                         disabled: .init(
                             colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
-                                foreground: CatColors.colorUiFontMuted,
-                                border: CatColors.colorUiFontMuted
+                                foreground: CatColors.Ui.Font.muted,
+                                border: CatColors.Ui.Font.muted
                             ),
                             properties: CatStateProperties(
                                 isUnderlined: false,
@@ -193,7 +193,7 @@ public enum CatTheme {
                         ),
                         hovered: .init(
                             colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.colorThemePrimaryBgHover,
+                                background: CatColors.Theme.Primary.bgHover,
                                 foreground: accentColor,
                                 border: Color.clear
                             ),
@@ -204,7 +204,7 @@ public enum CatTheme {
                         ),
                         pressed: .init(
                             colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.colorThemePrimaryBgActive,
+                                background: CatColors.Theme.Primary.bgActive,
                                 foreground: accentColor,
                                 border: Color.clear
                             ),
@@ -227,7 +227,7 @@ public enum CatTheme {
                         disabled: .init(
                             colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
-                                foreground: CatColors.colorUiFontMuted,
+                                foreground: CatColors.Ui.Font.muted,
                                 border: Color.clear
                             ),
                             properties: CatStateProperties(
@@ -287,7 +287,7 @@ public enum CatTheme {
                         disabled: .init(
                             colorStyle: CatButtonStateColorStyle(
                                 background: Color.clear,
-                                foreground: CatColors.colorUiFontMuted,
+                                foreground: CatColors.Ui.Font.muted,
                                 border: Color.clear
                             ),
                             properties: CatStateProperties(
@@ -304,8 +304,8 @@ public enum CatTheme {
                 public static let filledConfig = CatButtonStateStyleConfig(
                     normal: .init(
                         colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.colorThemePrimaryBg,
-                            foreground: CatColors.colorThemePrimaryFill,
+                            background: CatColors.Theme.Primary.bg,
+                            foreground: CatColors.Theme.Primary.fill,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -315,8 +315,8 @@ public enum CatTheme {
                     ),
                     hovered: .init(
                         colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.colorThemePrimaryBgHover,
-                            foreground: CatColors.colorThemePrimaryFillHover,
+                            background: CatColors.Theme.Primary.bgHover,
+                            foreground: CatColors.Theme.Primary.fillHover,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -326,8 +326,8 @@ public enum CatTheme {
                     ),
                     pressed: .init(
                         colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.colorThemePrimaryBgActive,
-                            foreground: CatColors.colorThemePrimaryFillActive,
+                            background: CatColors.Theme.Primary.bgActive,
+                            foreground: CatColors.Theme.Primary.fillActive,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -337,8 +337,8 @@ public enum CatTheme {
                     ),
                     focused: .init(
                         colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.colorThemePrimaryBg,
-                            foreground: CatColors.colorThemePrimaryFill,
+                            background: CatColors.Theme.Primary.bg,
+                            foreground: CatColors.Theme.Primary.fill,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -348,8 +348,8 @@ public enum CatTheme {
                     ),
                     disabled: .init(
                         colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.colorUiBackgroundMuted,
-                            foreground: CatColors.colorUiFontMuted,
+                            background: CatColors.Ui.Background.muted,
+                            foreground: CatColors.Ui.Font.muted,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -363,8 +363,8 @@ public enum CatTheme {
                     normal: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorThemePrimaryText,
-                            border: CatColors.colorThemePrimaryBg
+                            foreground: CatColors.Theme.Primary.text,
+                            border: CatColors.Theme.Primary.bg
                         ),
                         properties: CatStateProperties(
                             isUnderlined: false,
@@ -373,9 +373,9 @@ public enum CatTheme {
                     ),
                     hovered: .init(
                         colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.colorThemePrimaryBgHover,
-                            foreground: CatColors.colorThemePrimaryText,
-                            border: CatColors.colorThemePrimaryBg
+                            background: CatColors.Theme.Primary.bgHover,
+                            foreground: CatColors.Theme.Primary.text,
+                            border: CatColors.Theme.Primary.bg
                         ),
                         properties: CatStateProperties(
                             isUnderlined: false,
@@ -384,9 +384,9 @@ public enum CatTheme {
                     ),
                     pressed: .init(
                         colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.colorThemePrimaryBgActive,
-                            foreground: CatColors.colorThemePrimaryText,
-                            border: CatColors.colorThemePrimaryBg
+                            background: CatColors.Theme.Primary.bgActive,
+                            foreground: CatColors.Theme.Primary.text,
+                            border: CatColors.Theme.Primary.bg
                         ),
                         properties: CatStateProperties(
                             isUnderlined: false,
@@ -396,8 +396,8 @@ public enum CatTheme {
                     focused: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorThemePrimaryText,
-                            border: CatColors.colorThemePrimaryBg
+                            foreground: CatColors.Theme.Primary.text,
+                            border: CatColors.Theme.Primary.bg
                         ),
                         properties: CatStateProperties(
                             isUnderlined: false,
@@ -407,8 +407,8 @@ public enum CatTheme {
                     disabled: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorUiFontMuted,
-                            border: CatColors.colorUiFontMuted
+                            foreground: CatColors.Ui.Font.muted,
+                            border: CatColors.Ui.Font.muted
                         ),
                         properties: CatStateProperties(
                             isUnderlined: false,
@@ -421,7 +421,7 @@ public enum CatTheme {
                     normal: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorThemePrimaryText,
+                            foreground: CatColors.Theme.Primary.text,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -431,8 +431,8 @@ public enum CatTheme {
                     ),
                     hovered: .init(
                         colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.colorThemePrimaryBgHover,
-                            foreground: CatColors.colorThemePrimaryText,
+                            background: CatColors.Theme.Primary.bgHover,
+                            foreground: CatColors.Theme.Primary.text,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -442,8 +442,8 @@ public enum CatTheme {
                     ),
                     pressed: .init(
                         colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.colorThemePrimaryBgActive,
-                            foreground: CatColors.colorThemePrimaryText,
+                            background: CatColors.Theme.Primary.bgActive,
+                            foreground: CatColors.Theme.Primary.text,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -454,7 +454,7 @@ public enum CatTheme {
                     focused: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorThemePrimaryText,
+                            foreground: CatColors.Theme.Primary.text,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -465,7 +465,7 @@ public enum CatTheme {
                     disabled: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorUiFontMuted,
+                            foreground: CatColors.Ui.Font.muted,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -479,7 +479,7 @@ public enum CatTheme {
                     normal: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorThemePrimaryText,
+                            foreground: CatColors.Theme.Primary.text,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -490,7 +490,7 @@ public enum CatTheme {
                     hovered: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorThemePrimaryText,
+                            foreground: CatColors.Theme.Primary.text,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -501,7 +501,7 @@ public enum CatTheme {
                     pressed: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorThemePrimaryText,
+                            foreground: CatColors.Theme.Primary.text,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -512,7 +512,7 @@ public enum CatTheme {
                     focused: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorThemePrimaryText,
+                            foreground: CatColors.Theme.Primary.text,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(
@@ -523,7 +523,7 @@ public enum CatTheme {
                     disabled: .init(
                         colorStyle: CatButtonStateColorStyle(
                             background: Color.clear,
-                            foreground: CatColors.colorUiFontMuted,
+                            foreground: CatColors.Ui.Font.muted,
                             border: Color.clear
                         ),
                         properties: CatStateProperties(

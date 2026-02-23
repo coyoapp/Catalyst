@@ -13,6 +13,109 @@ function hexToRgb(hex) {
     } : null;
 }
 
+function buildColorTree(properties) {
+    const root = {};
+    const sortedProperties = [...properties].sort((a, b) => a.path.join('.').localeCompare(b.path.join('.')));
+
+    sortedProperties.forEach((prop) => {
+        // We want CatColors.theme.* and CatColors.ui.*, so drop "color".
+        const pathSegments = prop.path.slice(1);
+        let current = root;
+
+        pathSegments.forEach((segment, index) => {
+            const isLeaf = index === pathSegments.length - 1;
+            if (isLeaf) {
+                current[segment] = { token: prop };
+                return;
+            }
+
+            if (!current[segment]) {
+                current[segment] = {};
+            }
+            current = current[segment];
+        });
+    });
+
+    return root;
+}
+
+function toSwiftColorLiteral(hex) {
+    const rgb = hexToRgb(hex);
+    if (!rgb) {
+        return null;
+    }
+
+    const r = (rgb.r / 255).toFixed(3);
+    const g = (rgb.g / 255).toFixed(3);
+    const b = (rgb.b / 255).toFixed(3);
+    return `Color(red: ${r}, green: ${g}, blue: ${b})`;
+}
+
+function buildSwiftColorNodes(node, indent) {
+    let swift = '';
+    Object.keys(node).forEach((key) => {
+        const child = node[key];
+        if (child.token) {
+            const colorLiteral = toSwiftColorLiteral(child.token.value);
+            if (colorLiteral) {
+                swift += `${indent}public static let ${key} = ${colorLiteral} // ${child.token.value}\n`;
+            }
+            return;
+        }
+
+        swift += `${indent}public enum ${toPascalCase(key)} {\n`;
+        swift += buildSwiftColorNodes(child, `${indent}    `);
+        swift += `${indent}}\n`;
+    });
+
+    return swift;
+}
+
+function toPascalCase(value) {
+    if (!value || typeof value !== 'string') {
+        return value;
+    }
+
+    return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function toComposeArgb(hex) {
+    const normalized = hex.replace('#', '').toUpperCase();
+    if (normalized.length === 6) {
+        return `0xFF${normalized}`;
+    }
+    if (normalized.length === 8) {
+        return `0x${normalized}`;
+    }
+    throw new Error(`Unsupported color format for Compose: ${hex}`);
+}
+
+function buildKotlinColorNodes(node, indent) {
+    let kotlin = '';
+    const keys = Object.keys(node);
+    keys.forEach((key, index) => {
+        const child = node[key];
+        if (child.token) {
+            const composeColor = toComposeArgb(child.token.value);
+            kotlin += `${indent}public val ${key} = Color(${composeColor})\n`;
+        } else {
+            kotlin += `${indent}public object ${toPascalCase(key)} {\n`;
+            kotlin += buildKotlinColorNodes(child, `${indent}    `);
+            kotlin += `${indent}}\n`;
+        }
+
+        if (index < keys.length - 1) {
+            const nextChild = node[keys[index + 1]];
+            const hasObjectBoundary = !child.token || !nextChild.token;
+            if (hasObjectBoundary) {
+                kotlin += `\n`;
+            }
+        }
+    });
+
+    return kotlin;
+}
+
 // Style Dictionary will perform all the standard iOS transformations except for the one that converts the color to UIColor code.
 // Because of the transfowmation of Colors had issues with their formattings
 StyleDictionary.registerTransformGroup({
@@ -33,17 +136,8 @@ StyleDictionary.registerFormat({
     name: 'swift/swiftui-colors',
     formatter: function ({ dictionary }) {
         let swiftFile = `//\n// CatColors.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum CatColors {\n`;
-
-        dictionary.allProperties.forEach(prop => {
-            const rgb = hexToRgb(prop.value);
-            if (rgb) {
-                const r = (rgb.r / 255).toFixed(3);
-                const g = (rgb.g / 255).toFixed(3);
-                const b = (rgb.b / 255).toFixed(3);
-                swiftFile += `    public static let ${prop.name} = Color(red: ${r}, green: ${g}, blue: ${b}) // ${prop.value}\n`;
-            }
-        });
-
+        const tree = buildColorTree(dictionary.allProperties);
+        swiftFile += buildSwiftColorNodes(tree, '    ');
         swiftFile += `}\n`;
         return swiftFile;
     }
@@ -52,15 +146,10 @@ StyleDictionary.registerFormat({
 // Custom formatter for Jetpack Compose
 StyleDictionary.registerFormat({
     name: 'kotlin/compose-colors',
-    formatter: function ({ dictionary, options }) {
-        const { outputReferences } = options;
+    formatter: function ({ dictionary }) {
         let kotlinFile = `//\n// CatColors.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.haiilo.catalyst.tokens.generated\n\nimport androidx.compose.ui.graphics.Color\n\npublic object CatColors {\n`;
-
-        dictionary.allProperties.forEach(prop => {
-            const composeColor = `0xFF${prop.value.substring(1).toUpperCase()}`;
-            kotlinFile += `    public val ${prop.name} = Color(${composeColor})\n`;
-        });
-
+        const tree = buildColorTree(dictionary.allProperties);
+        kotlinFile += buildKotlinColorNodes(tree, '    ');
         kotlinFile += `}\n`;
         return kotlinFile;
     }
