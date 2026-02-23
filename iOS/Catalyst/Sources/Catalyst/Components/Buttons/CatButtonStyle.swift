@@ -139,7 +139,7 @@ public struct CatButtonStyle: ButtonStyle {
                     if state.properties?.hasSecondaryFocusRing == true {
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(
-                                CatColors.colorUiBorderFocus,
+                                CatColors.ui.border.focus,
                                 lineWidth: CatBorderWidth.borderWidthThin)
                             .padding(-CatSpacing.spacingXxs)
                     }
