@@ -71,17 +71,36 @@ function buildSwiftColorNodes(node, indent) {
     return swift;
 }
 
+function toPascalCase(value) {
+    if (!value || typeof value !== 'string') {
+        return value;
+    }
+
+    return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function toComposeArgb(hex) {
+    const normalized = hex.replace('#', '').toUpperCase();
+    if (normalized.length === 6) {
+        return `0xFF${normalized}`;
+    }
+    if (normalized.length === 8) {
+        return `0x${normalized}`;
+    }
+    throw new Error(`Unsupported color format for Compose: ${hex}`);
+}
+
 function buildKotlinColorNodes(node, indent) {
     let kotlin = '';
     Object.keys(node).forEach((key) => {
         const child = node[key];
         if (child.token) {
-            const composeColor = `0xFF${child.token.value.substring(1).toUpperCase()}`;
+            const composeColor = toComposeArgb(child.token.value);
             kotlin += `${indent}public val ${key} = Color(${composeColor})\n`;
             return;
         }
 
-        kotlin += `${indent}public object ${key} {\n`;
+        kotlin += `${indent}public object ${toPascalCase(key)} {\n`;
         kotlin += buildKotlinColorNodes(child, `${indent}    `);
         kotlin += `${indent}}\n`;
     });

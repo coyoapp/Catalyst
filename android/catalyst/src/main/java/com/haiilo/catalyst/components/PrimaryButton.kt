@@ -18,8 +18,8 @@ fun PrimaryButton(
         modifier = modifier,
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = CatColors.theme.primary.bg,
-            contentColor = CatColors.theme.primary.text
+            containerColor = CatColors.Theme.Primary.bg,
+            contentColor = CatColors.Theme.Primary.text
         )
     ) {
         Text(text)
