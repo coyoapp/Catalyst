@@ -21,6 +21,7 @@ public object CatColors {
             public val textActive = Color(0xFFAE2A0A)
             public val textHover = Color(0xFFC22E0B)
         }
+
         public object Info {
             public val bg = Color(0xFF0073E6)
             public val bgActive = Color(0xFF0060DF)
@@ -32,6 +33,7 @@ public object CatColors {
             public val textActive = Color(0xFF0060DF)
             public val textHover = Color(0xFF006BE3)
         }
+
         public object Primary {
             public val bg = Color(0xFF008194)
             public val bgActive = Color(0xFF026371)
@@ -43,6 +45,7 @@ public object CatColors {
             public val textActive = Color(0xFF026371)
             public val textHover = Color(0xFF017384)
         }
+
         public object PrimaryInverted {
             public val bg = Color(0xFF93B4F2)
             public val bgActive = Color(0xFF93B4F2)
@@ -54,6 +57,7 @@ public object CatColors {
             public val textActive = Color(0xFF93B4F2)
             public val textHover = Color(0xFF93B4F2)
         }
+
         public object Secondary {
             public val bg = Color(0xFF697687)
             public val bgActive = Color(0xFF697687)
@@ -65,6 +69,7 @@ public object CatColors {
             public val textActive = Color(0xFF000000)
             public val textHover = Color(0xFF000000)
         }
+
         public object SecondaryInverted {
             public val bg = Color(0xFF697687)
             public val bgActive = Color(0xFF697687)
@@ -76,6 +81,7 @@ public object CatColors {
             public val textActive = Color(0xFFFFFFFF)
             public val textHover = Color(0xFFFFFFFF)
         }
+
         public object Success {
             public val bg = Color(0xFF008458)
             public val bgActive = Color(0xFF006946)
@@ -87,6 +93,7 @@ public object CatColors {
             public val textActive = Color(0xFF006946)
             public val textHover = Color(0xFF00754E)
         }
+
         public object Warning {
             public val bg = Color(0xFFFFCE80)
             public val bgActive = Color(0xFFFFDEA8)
@@ -99,6 +106,7 @@ public object CatColors {
             public val textHover = Color(0xFF9F6100)
         }
     }
+
     public object Ui {
         public object Background {
             public val backdrop = Color(0xFF1B1F26)
@@ -112,6 +120,7 @@ public object CatColors {
             public val surfaceInverted = Color(0xFF1B1F26)
             public val tooltip = Color(0xFF000000)
         }
+
         public object Border {
             public val dark = Color(0xFFD7DBE0)
             public val focus = Color(0xFF0071FF)
@@ -119,6 +128,7 @@ public object CatColors {
             public val quote = Color(0xFF697687)
             public val regular = Color(0xFFEBECF0)
         }
+
         public object Font {
             public val body = Color(0xFF000000)
             public val bodyInverted = Color(0xFFFFFFFF)

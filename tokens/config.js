@@ -63,7 +63,7 @@ function buildSwiftColorNodes(node, indent) {
             return;
         }
 
-        swift += `${indent}public enum ${key} {\n`;
+        swift += `${indent}public enum ${toPascalCase(key)} {\n`;
         swift += buildSwiftColorNodes(child, `${indent}    `);
         swift += `${indent}}\n`;
     });
@@ -92,17 +92,25 @@ function toComposeArgb(hex) {
 
 function buildKotlinColorNodes(node, indent) {
     let kotlin = '';
-    Object.keys(node).forEach((key) => {
+    const keys = Object.keys(node);
+    keys.forEach((key, index) => {
         const child = node[key];
         if (child.token) {
             const composeColor = toComposeArgb(child.token.value);
             kotlin += `${indent}public val ${key} = Color(${composeColor})\n`;
-            return;
+        } else {
+            kotlin += `${indent}public object ${toPascalCase(key)} {\n`;
+            kotlin += buildKotlinColorNodes(child, `${indent}    `);
+            kotlin += `${indent}}\n`;
         }
 
-        kotlin += `${indent}public object ${toPascalCase(key)} {\n`;
-        kotlin += buildKotlinColorNodes(child, `${indent}    `);
-        kotlin += `${indent}}\n`;
+        if (index < keys.length - 1) {
+            const nextChild = node[keys[index + 1]];
+            const hasObjectBoundary = !child.token || !nextChild.token;
+            if (hasObjectBoundary) {
+                kotlin += `\n`;
+            }
+        }
     });
 
     return kotlin;

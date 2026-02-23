@@ -20,7 +20,7 @@ struct ContentView: View {
             VStack {
                 Text("Catalyst Demo")
                     .font(CatTypography.h1)
-                    .foregroundStyle(CatColors.theme.danger.text)
+                    .foregroundStyle(CatColors.Theme.Danger.text)
                 VStack(alignment: .leading) {
                     Text("Filled Config with Fonts: h1, h2 and h3")
                         .font(CatTypography.body1)
@@ -247,7 +247,7 @@ struct ContentView: View {
                     Text("ThemeProvider")
                 }
                 .font(CatTypography.h2)
-                .foregroundColor(CatColors.theme.danger.text)
+                .foregroundColor(CatColors.Theme.Danger.text)
             }
             .padding()
             
