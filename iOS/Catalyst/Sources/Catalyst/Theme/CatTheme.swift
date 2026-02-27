@@ -8,8 +8,20 @@
 import SwiftUI
 
 public enum CatTheme {
-    /// Call once during app startup to register Catalyst bundled fonts.
-    public static func configure() {
+    // MARK: - Theme Type
+    /// Represents the available Catalyst themes.
+    /// Currently only `.primaryHaiilo` is supported; additional cases can be added in future releases.
+    public enum ThemeType {
+        case primaryHaiilo
+    }
+    
+    /// The theme that was selected during `configure(theme:)`. Defaults to `.primary`.
+    public static private(set) var current: ThemeType = .primaryHaiilo
+    
+    // MARK: - Configuration
+    /// - Parameter theme: The theme to activate. Defaults to `.primaryHaiilo`.
+    public static func configure(theme: ThemeType = .primaryHaiilo) {
+        current = theme
         CatFontRegistrar.registerFonts()
     }
 

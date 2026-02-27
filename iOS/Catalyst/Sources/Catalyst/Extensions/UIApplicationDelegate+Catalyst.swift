@@ -8,8 +8,9 @@
 import UIKit
 
 public extension UIApplicationDelegate {
-    // Call from `application(_:didFinishLaunchingWithOptions:)` to register Catalyst resources
-    func configureCatalyst() {
-        CatTheme.configure()
+    /// Call from `application(_:didFinishLaunchingWithOptions:)` to bootstrap Catalyst.
+    /// - Parameter theme: The theme to activate. Defaults to `.primaryHaiilo`.
+    func configureCatalyst(theme: CatTheme.ThemeType = .primaryHaiilo) {
+        CatTheme.configure(theme: theme)
     }
 }
