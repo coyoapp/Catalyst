@@ -19,6 +19,12 @@ public enum CatTheme {
     public static private(set) var current: ThemeType = .primaryHaiilo
     
     // MARK: - Configuration
+    /// Bootstrap entry point for host apps.
+    ///
+    /// Use this in `AppDelegate` / app startup to register Catalyst fonts and set the default theme
+    /// for non-SwiftUI entry points. SwiftUI-based apps should use `.catalystTheme(_:)` on the
+    /// root view to drive runtime theme switching; `configure()` remains the place to ensure fonts
+    /// are registered exactly once at launch.
     /// - Parameter theme: The theme to activate. Defaults to `.primaryHaiilo`.
     public static func configure(theme: ThemeType = .primaryHaiilo) {
         current = theme
