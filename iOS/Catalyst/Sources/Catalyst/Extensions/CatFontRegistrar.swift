@@ -18,7 +18,14 @@ public enum CatFontRegistrar {
         guard !fontURLs.isEmpty else { return }
 
         for url in fontURLs {
-            CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
+            var cfError: Unmanaged<CFError>?
+            CTFontManagerRegisterFontsForURL(url as CFURL, .process, &cfError)
+            if let error = cfError?.takeRetainedValue() {
+                let code = CFErrorGetCode(error)
+                if code != Int(CTFontManagerError.alreadyRegistered.rawValue) {
+                    assertionFailure("Failed to register font: \(url.lastPathComponent)")
+                }
+            }
         }
         didRegister = true
     }
@@ -41,6 +48,7 @@ public enum CatFontRegistrar {
                 }
             }
         }
-        return Array(urls)
+        let normalized = urls.map { $0.resolvingSymlinksInPath().standardizedFileURL }
+        return Array(Set(normalized))
     }
 }
