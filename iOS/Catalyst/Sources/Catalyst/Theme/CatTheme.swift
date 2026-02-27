@@ -15,7 +15,7 @@ public enum CatTheme {
         case primaryHaiilo
     }
     
-    /// The theme that was selected during `configure(theme:)`. Defaults to `.primary`.
+    /// The theme that was selected during `configure(theme:)`. Defaults to `.primaryHaiilo`.
     public static private(set) var current: ThemeType = .primaryHaiilo
     
     // MARK: - Configuration

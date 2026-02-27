@@ -11,6 +11,8 @@ import SwiftData
 
 @main
 struct DemoApp: App {
+    @State private var theme: CatTheme.ThemeType = .primaryHaiilo
+
     init() {
         CatTheme.configure()
     }
@@ -31,6 +33,7 @@ struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .catalystTheme(theme)
         }
         .modelContainer(sharedModelContainer)
     }
