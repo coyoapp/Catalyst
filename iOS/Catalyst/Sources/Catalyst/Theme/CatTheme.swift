@@ -16,7 +16,7 @@ public enum CatTheme {
     }
     
     /// The theme that was selected during `configure(theme:)`. Defaults to `.primaryHaiilo`.
-    public static private(set) var current: ThemeType = .primaryHaiilo
+    public private(set) static var current: ThemeType = .primaryHaiilo
     
     // MARK: - Configuration
     /// Bootstrap entry point for host apps.
