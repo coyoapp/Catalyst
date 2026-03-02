@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/coyoapp/Catalyst/compare/v0.2.4...v0.3.0) (2026-02-27)
+
+
+### Features
+
+* **theme:** Register with default theme ([#29](https://github.com/coyoapp/Catalyst/issues/29)) ([def143d](https://github.com/coyoapp/Catalyst/commit/def143d8ca5402fb2dbe69e20151f69f791ff8e7))
+
 ## [0.2.4](https://github.com/coyoapp/Catalyst/compare/v0.2.3...v0.2.4) (2026-02-23)
 
 
