@@ -8,3 +8,7 @@ tokens/node_modules
 # Tuist-generated files (created when this package is used as a local dependency)
 iOS/Catalyst/Catalyst.xcodeproj/
 iOS/Catalyst/Derived/
+
+scripts/agents/node_modules
+scripts/agents/.env
+scripts/agents/output/*/
