@@ -4,3 +4,6 @@ iOS/Catalyst/.build/
 .DS_Store
 *.iml
 tokens/node_modules
+scripts/agents/node_modules
+scripts/agents/.env
+scripts/agents/output/*/

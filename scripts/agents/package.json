@@ -1,0 +1,22 @@
+{
+  "name": "catalyst-agents",
+  "version": "1.0.0",
+  "description": "Agent scripts for scaffolding and auditing Catalyst Design System components",
+  "type": "module",
+  "scripts": {
+    "spec-template": "node spec-template-agent.js",
+    "spec-validate": "node spec-validate-agent.js",
+    "research": "node research-agent.js",
+    "audit": "node token-audit-agent.js",
+    "scaffold": "node scaffold-agent.js",
+    "review": "node review-agent.js",
+    "run": "node orchestrator.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "handlebars": "^4.7.8",
+    "openai": "^4.40.0"
+  }
+}
