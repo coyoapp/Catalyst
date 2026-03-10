@@ -38,6 +38,7 @@ public struct CatStateProperties: Sendable {
     }
 }
 
+// Combined State Control over CatButtonStateColorStyle & CatButtonStateColorStyle will be provided to CatButtonStateStyleConfig
 public struct CatButtonStateStyle: Sendable {
     public let colorStyle: CatButtonStateColorStyle
     public let properties: CatStateProperties?

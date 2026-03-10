@@ -15,14 +15,27 @@ public struct CatButton: View {
     let stackSpacing: CGFloat?
     let padding: EdgeInsets?
     let action: () -> Void
-    
-    public init(_ content: CatButtonContent,
-                buttonSize: CatButtonSize = .small,
-                styleConfig: CatButtonStateStyleConfig? = CatTheme.Components.Buttons.Primary.filledConfig,
-                styleFont: Font? = CatTypography.s1,
-                stackSpacing: CGFloat? = nil,
-                padding: EdgeInsets? = nil,
-                action: @escaping () -> Void) {
+
+    /// Creates a `CatButton`.
+    ///
+    /// - Parameters:
+    ///   - content: The button's visual content (text, icon, or icon+text).
+    ///   - buttonSize: The sizing preset for the button.
+    ///   - styleConfig: An explicit style config. When `nil` (the default), the button resolves its
+    ///     appearance from the `\.catButtonConfig` environment value set by `.catButtonConfig(variant:color:)`.
+    ///   - styleFont: Overrides the default button label font.
+    ///   - stackSpacing: Overrides the spacing between icon and label.
+    ///   - padding: Overrides the default internal padding.
+    ///   - action: The closure invoked when the button is tapped.
+    public init(
+        _ content: CatButtonContent,
+        buttonSize: CatButtonSize = .medium,
+        styleConfig: CatButtonStateStyleConfig? = nil,
+        styleFont: Font? = nil,
+        stackSpacing: CGFloat? = nil,
+        padding: EdgeInsets? = nil,
+        action: @escaping () -> Void
+    ) {
         self.content = content
         self.buttonSize = buttonSize
         self.styleConfig = styleConfig
@@ -31,7 +44,20 @@ public struct CatButton: View {
         self.padding = padding
         self.action = action
     }
-    
+
+    /// The active button config from the environment. Used when no explicit `styleConfig` is passed.
+    @Environment(\.catButtonConfig) private var buttonConfig
+    /// The active Catalyst theme from the environment. Passed through to the palette registry
+    /// so a `.catalystTheme(.dark)` modifier higher in the hierarchy is respected automatically.
+    @Environment(\.catalystTheme) private var theme
+
+    /// Resolves the style config: explicit `styleConfig` wins; otherwise falls back to the
+    /// environment's `CatButtonConfig` (variant + color) resolved via `CatTheme.buttonConfig`,
+    /// using the environment theme so `.catalystTheme()` propagates correctly.
+    private var resolvedStyleConfig: CatButtonStateStyleConfig {
+        styleConfig ?? CatTheme.buttonConfig(variant: buttonConfig.variant, color: buttonConfig.color, theme: theme)
+    }
+
     public var body: some View {
         CatButtonBuilder(
             content: content,
@@ -41,8 +67,8 @@ public struct CatButton: View {
         )
         .buttonStyle(
             CatButtonStyle(
-                styleConfig: styleConfig ?? CatTheme.Components.Buttons.Primary.filledConfig,
-                font: styleFont ?? CatTypography.s1,
+                styleConfig: resolvedStyleConfig,
+                font: styleFont ?? (buttonConfig.variant == .filled ? CatTypography.button1 : CatTypography.button2),
                 borderWidth: CatBorderWidth.borderWidthThin,
                 cornerRadius: CatBorderRadius.borderRadiusMd,
                 padding: padding ?? EdgeInsets(
