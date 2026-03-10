@@ -68,7 +68,12 @@ public struct CatButton: View {
         .buttonStyle(
             CatButtonStyle(
                 styleConfig: resolvedStyleConfig,
-                font: styleFont ?? (buttonConfig.variant == .filled ? CatTypography.button1 : CatTypography.button2),
+                font: styleFont ?? {
+                    switch buttonConfig.variant {
+                    case .filled: return CatTypography.button1
+                    case .outlined, .text, .link: return CatTypography.button2
+                    }
+                }(),
                 borderWidth: CatBorderWidth.borderWidthThin,
                 cornerRadius: CatBorderRadius.borderRadiusMd,
                 padding: padding ?? EdgeInsets(
@@ -96,7 +101,7 @@ public struct EngageKudosButton: View {
         CatButtonBuilder(content: content, iconSize: .init(width: CatSizes.sizeXl, height: CatSizes.sizeXl), action: action)
             .buttonStyle(
                 CatButtonStyle(
-                    styleConfig: CatTheme.Components.Buttons.Primary.filledConfig,
+                    styleConfig: CatTheme.Components.Buttons.Accent.filledConfig(accentColor: .red),
                     font: CatTypography.body1,
                     borderWidth: CatBorderWidth.borderWidthThin,
                     cornerRadius: CatBorderRadius.borderRadiusSm,

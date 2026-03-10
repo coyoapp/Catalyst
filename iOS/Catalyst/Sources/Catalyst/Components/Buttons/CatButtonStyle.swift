@@ -204,15 +204,17 @@ public struct CatButtonBuilder: View {
         case .iconText(let icon, let title, let placement):
             switch placement {
             case .leading:
-                HStack(spacing: stackSpacing) {
+                HStack(alignment: .center, spacing: stackSpacing) {
                     iconView(icon)
                     Text(title)
                 }
+                .multilineTextAlignment(.center)
             case .trailing:
-                HStack(spacing: stackSpacing) {
+                HStack(alignment: .center, spacing: stackSpacing) {
                     Text(title)
                     iconView(icon)
                 }
+                .multilineTextAlignment(.center)
             case .top:
                 VStack(spacing: stackSpacing) {
                     iconView(icon)

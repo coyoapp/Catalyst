@@ -29,7 +29,17 @@ struct ContentView: View {
                         VStack {
                             CatButton(
                                 .iconText(icon: Image("icon-checkmark", bundle: .catalyst),
-                                          text: "primary",
+                                          text: "Button",
+                                          placement: .leading),
+                                buttonSize: .medium,
+                            ) {
+                                print("Button tapped")
+                            }
+                            .catButtonConfig(variant: .filled, color: .primary)
+                            
+                            CatButton(
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst),
+                                          text: "Primary",
                                           placement: .trailing),
                                 buttonSize: .medium,
                             ) {
@@ -39,7 +49,7 @@ struct ContentView: View {
                             
                             CatButton(
                                 .iconText(icon: Image("icon-checkmark", bundle: .catalyst),
-                                          text: "secondary",
+                                          text: "Secondary",
                                           placement: .trailing),
                                 buttonSize: .medium,
                             ) {
@@ -48,7 +58,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .filled, color: .secondary)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "danger", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Danger", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -56,7 +66,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .filled, color: .danger)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "success", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Success", placement: .trailing),
                                 buttonSize: .medium
                             ) {
                                 print("Button tapped")
@@ -64,7 +74,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .filled, color: .success)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "warning", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Warning", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -72,7 +82,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .filled, color: .warning)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "info", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Info", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -80,7 +90,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .filled, color: .info)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "primaryInverted", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "PrimaryInverted", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -88,7 +98,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .outlined, color: .primaryInverted)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "secondaryInverted", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "SecondaryInverted", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -106,7 +116,6 @@ struct ContentView: View {
                         .padding(.horizontal)
                     }
 
-                    
                     VStack(alignment: .leading) {
                         Text("Outlined button set with catButtonConfig")
                             .font(CatTypography.body1)
@@ -114,7 +123,17 @@ struct ContentView: View {
                         VStack {
                             CatButton(
                                 .iconText(icon: Image("icon-checkmark", bundle: .catalyst),
-                                          text: "primary",
+                                          text: "Button",
+                                          placement: .leading),
+                                buttonSize: .medium,
+                            ) {
+                                print("Button tapped")
+                            }
+                            .catButtonConfig(variant: .outlined, color: .primary)
+                            
+                            CatButton(
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst),
+                                          text: "Primary",
                                           placement: .trailing),
                                 buttonSize: .medium,
                             ) {
@@ -124,7 +143,7 @@ struct ContentView: View {
                             
                             CatButton(
                                 .iconText(icon: Image("icon-checkmark", bundle: .catalyst),
-                                          text: "secondary",
+                                          text: "Secondary",
                                           placement: .trailing),
                                 buttonSize: .medium,
                             ) {
@@ -133,7 +152,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .outlined, color: .secondary)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "danger", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Danger", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -141,7 +160,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .outlined, color: .danger)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "success", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Success", placement: .trailing),
                                 buttonSize: .medium
                             ) {
                                 print("Button tapped")
@@ -149,7 +168,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .outlined, color: .success)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "warning", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Warning", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -157,7 +176,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .outlined, color: .warning)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "info", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Info", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -165,7 +184,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .outlined, color: .info)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "primaryInverted", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "PrimaryInverted", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -173,7 +192,7 @@ struct ContentView: View {
                             .catButtonConfig(variant: .outlined, color: .primaryInverted)
                             
                             CatButton(
-                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "secondaryInverted", placement: .trailing),
+                                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "SecondaryInverted", placement: .trailing),
                                 buttonSize: .medium,
                             ) {
                                 print("Button tapped")
@@ -191,240 +210,38 @@ struct ContentView: View {
                         .padding(.horizontal)
                     }
                 }
-                
-//                VStack(alignment: .leading) {
-//                    Text("Border Config with Fonts: h4, body1, body2")
-//                        .font(CatTypography.body1)
-//                        .padding(.top, 5)
-//                    HStack {
-//                        CatButton(
-//                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
-//                            buttonSize: .medium,
-//                            styleConfig: CatTheme.Components.Buttons.Primary.borderConfig,
-//                            styleFont: CatTypography.h4
-//                        ) {
-//                            print("Button tapped")
-//                        }
-//                        
-//                        CatButton(
-//                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
-//                            buttonSize: .small,
-//                            styleConfig: CatTheme.Components.Buttons.Primary.borderConfig,
-//                            styleFont: CatTypography.body1
-//                        ) {
-//                            print("Button tapped")
-//                        }
-//                        
-//                        CatButton(
-//                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Disabled", placement: .trailing),
-//                            buttonSize: .extraSmall,
-//                            styleConfig: CatTheme.Components.Buttons.Primary.borderConfig,
-//                            styleFont: CatTypography.body2
-//                        ) {
-//                            print("Button tapped")
-//                        }
-//                        .disabled(true)
-//                    }
-//                }
-                
-//                VStack(alignment: .leading) {
-//                    Text("Link Config with Fonts: s1, s2 & default (s1)")
-//                        .font(CatTypography.body1)
-//                        .padding(.top, 5)
-//                    HStack {
-//                        CatButton(
-//                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .leading),
-//                            buttonSize: .small,
-//                            styleConfig: CatTheme.Components.Buttons.Primary.linkConfig,
-//                            styleFont: CatTypography.s1
-//                        ) {
-//                            print("Button tapped")
-//                        }
-//                        .frame(width: 150)
-//                        
-//                        CatButton(
-//                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .leading),
-//                            buttonSize: .extraSmall,
-//                            styleConfig: CatTheme.Components.Buttons.Primary.linkConfig,
-//                            styleFont: CatTypography.s2
-//                        ) {
-//                            print("Button tapped")
-//                        }
-//                        .frame(width: 150)
-//                        
-//                        CatButton(
-//                            .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Disabled", placement: .leading),
-//                            buttonSize: .extraSmall,
-//                            styleConfig: CatTheme.Components.Buttons.Primary.linkConfig
-//                        ) {
-//                            print("Button tapped")
-//                        }
-//                        .frame(width: 150)
-//                        .disabled(true)
-//                        
-//                    }
-//                    
-//                }
             }
-//            
-//            VStack(alignment: .leading) {
-//                Text("Ghost Config with Fonts: button, caption & overline")
-//                    .font(CatTypography.body1)
-//                    .padding(.top, 5)
-//                HStack {
-//                    CatButton(
-//                        .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .leading),
-//                        buttonSize: .small,
-//                        styleConfig: CatTheme.Components.Buttons.Primary.ghostConfig,
-//                        styleFont: CatTypography.button1
-//                    ) {
-//                        print("Button tapped")
-//                    }
-//                    .frame(width: 150)
-//                    
-//                    CatButton(
-//                        .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .leading),
-//                        buttonSize: .extraSmall,
-//                        styleConfig: CatTheme.Components.Buttons.Primary.ghostConfig,
-//                        styleFont: CatTypography.caption
-//                    ) {
-//                        print("Button tapped")
-//                    }
-//                    .frame(width: 150)
-//                    
-//                    CatButton(
-//                        .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Disabled", placement: .leading),
-//                        buttonSize: .extraSmall,
-//                        styleConfig: CatTheme.Components.Buttons.Primary.ghostConfig,
-//                        styleFont: CatTypography.overline
-//                    ) {
-//                        print("Button tapped")
-//                    }
-//                    .frame(width: 150)
-//                    .disabled(true)
-//                }
-//            }
-//            
-//            Text("Dafult setup")
-//                .font(CatTypography.body1)
-//                .padding(.top, 5)
-//            CatButton(
-//                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Default Button", placement: .leading),
-//                styleConfig: CatTheme.Components.Buttons.Primary.filledConfig,
-//            ) {
-//                print("Button tapped")
-//            }
-//            .frame(width: 175)
-//            
-//            Text("Buttons with accent color")
-//                .font(CatTypography.body1)
-//                .padding(.top, 5)
-//            HStack(spacing: 50) {
-//                CatButton(
-//                    .icon(Image("icon-checkmark", bundle: .catalyst)),
-//                    buttonSize: .extraSmall,
-//                    styleConfig: CatTheme.Components.Buttons.Accent.filledConfig(accentColor: .red)
-//                ) {
-//                    print("Button tapped")
-//                }
-//                .frame(width: 50)
-//                
-//                CatButton(
-//                    .icon(Image("icon-checkmark", bundle: .catalyst)),
-//                    buttonSize: .small,
-//                    styleConfig: CatTheme.Components.Buttons.Accent.borderConfig(accentColor: .red)
-//                ) {
-//                    print("Button tapped")
-//                }
-//                .frame(width: 50)
-//                
-//                CatButton(
-//                    .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Link", placement: .trailing),
-//                    buttonSize: .medium,
-//                    styleConfig: CatTheme.Components.Buttons.Accent.linkConfig(accentColor: .red)
-//                ) {
-//                    print("Button tapped")
-//                }
-//                .frame(width: 100)
-//            }
+            
+            Text("Buttons with accent color with old Styling")
+                .font(CatTypography.caption)
+            CatButton(
+                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
+                buttonSize: .extraSmall,
+                styleConfig: CatTheme.Components.Buttons.Accent.filledConfig(accentColor: .red)
+            ) {
+                print("Button tapped")
+            }
+            .padding(.horizontal)
         }
         
-//        ScrollView {
-//            Text("Scroll View")
-//                .font(CatTypography.body1)
-//            
-//            EngageKudosButton(
-//                .iconText(icon: Image("reaction-appreciate", bundle: .catalyst), text: "Appreciation", placement: .top),
-//            ) {
-//                print("Button tapped")
-//            }
-//            .frame(width: 150)
-//            
-//            HStack {
-//                CatButton(
-//                    .iconText(
-//                        icon: Image("icon-checkmark", bundle: .catalyst),
-//                        text: "Button",
-//                        placement: .leading
-//                    ),
-//                    styleConfig: CatTheme.Components.Buttons.Primary.filledConfig
-//                ) {
-//                    print("Button tapped")
-//                }
-//            }
-//            
-//            VStack {
-//                HStack {
-//                    Image("Union", bundle: .catalyst)
-//                        .resizable()
-//                        .renderingMode(.template)
-//                        .frame(width: 40, height: 40)
-//                    
-//                    Text("ThemeProvider")
-//                }
-//                .font(CatTypography.h2)
-//                .foregroundColor(CatColors.Theme.Danger.text)
-//            }
-//            .padding()
-//            
-//            VStack {
-//                CatButton(
-//                    .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
-//                    styleConfig: CatTheme.Components.Buttons.Primary.ghostConfig,
-//                    padding: EdgeInsets(top: CatSpacing.spacingLg, leading: CatSpacing.spacingXl, bottom: CatSpacing.spacingLg, trailing: CatSpacing.spacingXl)
-//                ) {
-//                    print("Button tapped")
-//                }
-//                
-//                CatButton(
-//                    .icon(Image("icon-checkmark", bundle: .catalyst)),
-//                    styleConfig: CatTheme.Components.Buttons.Primary.filledConfig
-//                ) {
-//                    print("Button tapped")
-//                }
-//            }
-//            
-//            CatButton(
-//                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button Border", placement: .trailing),
-//                styleConfig: CatTheme.Components.Buttons.Primary.borderConfig
-//            ) {
-//                print("Button tapped")
-//            }
-//            
-//            CatButton(
-//                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button Ghost", placement: .trailing),
-//                styleConfig: CatTheme.Components.Buttons.Primary.ghostConfig
-//            ) {
-//                print("Button tapped")
-//            }
-//        }
+        VStack {
+            HStack {
+                Image("Union", bundle: .catalyst)
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 40, height: 40)
+                    .font(CatTypography.h2)
+                    .foregroundColor(CatColors.Theme.Danger.text)
+                
+                Image("reaction-appreciate", bundle: .catalyst)
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(Color.blue)
+                    .frame(width: 50, height: 50)
+            }
+        }
+        .padding()
         
-//        Image("reaction-appreciate", bundle: .catalyst)
-//            .resizable()
-//            .renderingMode(.template)
-//            .foregroundColor(Color.blue)
-//            .frame(width: 50, height: 50)
-//            .padding()
     }
 }
 
