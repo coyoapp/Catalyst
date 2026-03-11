@@ -61,23 +61,26 @@ sealed class CatButtonSize {
     data object Large : CatButtonSize()
 
     /** Arbitrary height; caller supplies horizontal padding via [horizontalPadding]. */
-    data class Custom(val height: Dp, val horizontalPadding: Dp = CatSpacing.spacing_xl) : CatButtonSize()
+    data class Custom(
+        val height: Dp,
+        val horizontalPadding: Dp = CatSpacing.spacing_xl,
+    ) : CatButtonSize()
 
     /** Total button height from design tokens. */
     val heightDp: Dp
         get() = when (this) {
-            is Small  -> CatSpacing.spacing_4xl  // 32 dp
-            is Medium -> CatSpacing.spacing_5xl  // 40 dp
-            is Large  -> CatSpacing.spacing_6xl  // 48 dp
+            is Small -> CatSpacing.spacing_4xl // 32 dp
+            is Medium -> CatSpacing.spacing_5xl // 40 dp
+            is Large -> CatSpacing.spacing_6xl // 48 dp
             is Custom -> height
         }
 
     /** Horizontal (start + end) content padding from design tokens. */
     val horizontalPaddingDp: Dp
         get() = when (this) {
-            is Small  -> CatSpacing.spacing_md   // 8 dp
-            is Medium -> CatSpacing.spacing_xl   // 16 dp
-            is Large  -> CatSpacing.spacing_xl   // 16 dp
+            is Small -> CatSpacing.spacing_md // 8 dp
+            is Medium -> CatSpacing.spacing_xl // 16 dp
+            is Large -> CatSpacing.spacing_xl // 16 dp
             is Custom -> horizontalPadding
         }
 }
@@ -100,7 +103,10 @@ sealed class CatButtonContent {
     data class TextOnly(val text: String) : CatButtonContent()
 
     /** Icon-only button. */
-    data class IconOnly(val painter: Painter, val contentDescription: String? = null) : CatButtonContent()
+    data class IconOnly(
+        val painter: Painter,
+        val contentDescription: String? = null,
+    ) : CatButtonContent()
 
     /** Button with both an icon and a text label. */
     data class IconText(

@@ -139,7 +139,7 @@ fun CatButton(
     // -----------------------------------------------------------------------
     val containerModifier = modifier
         .defaultMinSize(minWidth = 44.dp)
-        .height(size.heightDp)                         // exact height from token
+        .height(size.heightDp) // exact height from token
         .clip(shape)
         .background(color = backgroundColor, shape = shape)
         .then(
@@ -195,7 +195,6 @@ private fun ButtonContentLayout(
     textStyle: TextStyle,
 ) {
     when (content) {
-
         is CatButtonContent.TextOnly -> {
             Text(
                 text = content.text,
@@ -208,7 +207,7 @@ private fun ButtonContentLayout(
             Icon(
                 painter = content.painter,
                 contentDescription = content.contentDescription,
-                modifier = Modifier.size(CatSizes.size_lg),  // 24 dp
+                modifier = Modifier.size(CatSizes.size_lg), // 24 dp
                 tint = foregroundColor,
             )
         }
@@ -222,7 +221,7 @@ private fun ButtonContentLayout(
                     Icon(
                         painter = content.painter,
                         contentDescription = content.iconContentDescription,
-                        modifier = Modifier.size(CatSizes.size_lg),  // 24 dp
+                        modifier = Modifier.size(CatSizes.size_lg), // 24 dp
                         tint = foregroundColor,
                     )
                 }
@@ -237,13 +236,13 @@ private fun ButtonContentLayout(
                 when (content.placement) {
                     CatButtonPlacement.Leading -> {
                         icon()
-                        Spacer(Modifier.width(CatSpacing.spacing_xs))  // 4 dp — Figma spacingXs
+                        Spacer(Modifier.width(CatSpacing.spacing_xs)) // 4 dp
                         label()
                     }
 
                     CatButtonPlacement.Trailing -> {
                         label()
-                        Spacer(Modifier.width(CatSpacing.spacing_xs))  // 4 dp
+                        Spacer(Modifier.width(CatSpacing.spacing_xs)) // 4 dp
                         icon()
                     }
                 }
