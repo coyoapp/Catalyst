@@ -11,13 +11,10 @@ public enum CatTheme {
     // MARK: - Theme Type
     /// Represents the available Catalyst themes.
     /// Currently only `.primaryHaiilo` is supported; additional cases can be added in future releases.
-    public enum ThemeType {
+    public enum ThemeType: Hashable {
         case primaryHaiilo
     }
-    
-    /// The theme that was selected during `configure(theme:)`. Defaults to `.primaryHaiilo`.
-    public private(set) static var current: ThemeType = .primaryHaiilo
-    
+
     // MARK: - Configuration
     /// Bootstrap entry point for host apps.
     ///
@@ -30,527 +27,52 @@ public enum CatTheme {
         current = theme
         CatFontRegistrar.registerFonts()
     }
+    
+    /// The theme that was selected during `configure(theme:)`. Defaults to `.primaryHaiilo`.
+    public private(set) static var current: ThemeType = .primaryHaiilo
 
+    public enum ButtonVariant: Hashable {
+        case filled
+        case outlined
+        case text
+        case link
+    }
+
+    public enum ColorConfig: Hashable {
+        case danger
+        case info
+        case primary
+        case primaryInverted
+        case secondary
+        case secondaryInverted
+        case success
+        case warning
+
+        /// Returns the `CatColorPalette` for this color role under the given theme.
+        ///
+        /// Resolved via `CatColorPalette.registry`. If the requested theme has no entry for
+        /// this color (e.g. a new `ColorConfig` case was added but the registry wasn't updated),
+        /// it falls back to the `.primaryHaiilo` palette for the same color rather than crashing.
+        ///
+        /// ```swift
+        /// let palette = CatTheme.ColorConfig.danger.palette(for: .primaryHaiilo)
+        /// button.backgroundColor = palette.bg    // always the right bg, right theme
+        /// ```
+        public func palette(for theme: ThemeType = .primaryHaiilo) -> CatColorPalette {
+            // 1. Exact match for the requested theme + color.
+            if let palette = CatColorPalette.registry[theme]?[self] { return palette }
+            // 2. Requested theme exists but is missing this color — use primary as a safe stand-in.
+            if let palette = CatColorPalette.registry[theme]?[.primary] { return palette }
+            // 3. Ultimate fallback: primaryHaiilo primary. Registry is always required to have this.
+            guard let palette = CatColorPalette.registry[.primaryHaiilo]?[.primary] else {
+                fatalError("CatColorPalette.registry must always contain a .primaryHaiilo/.primary entry.")
+            }
+            return palette
+        }
+    }
+    
     public enum AccentColorDarkenFactor: CGFloat {
         case hovered = 0.05
         case pressed = 0.11
-    }
-    
-    public enum ThemeKudosButton {
-        public static let primaryColorConfig = CatButtonStateStyleConfig(
-            normal: .init(
-                colorStyle: CatButtonStateColorStyle(
-                    background: Color.clear,
-                    foreground: CatColors.Theme.Primary.text,
-                    border: CatColors.Theme.Secondary.bg)
-            ),
-            pressed: .init(
-                colorStyle: CatButtonStateColorStyle(
-                    background: Color.clear.opacity(0.5),
-                    foreground: CatColors.Theme.Primary.text.opacity(0.5),
-                    border: CatColors.Theme.Secondary.bg.opacity(0.5)
-                )
-            ),
-            focused: .init(
-                colorStyle: CatButtonStateColorStyle(
-                    background: Color.clear.opacity(0.5),
-                    foreground: CatColors.Theme.Primary.text.opacity(0.5),
-                    border: CatColors.Theme.Secondary.bg.opacity(0.5)
-                )
-            ),
-            disabled: .init(
-                colorStyle: CatButtonStateColorStyle(
-                    background: CatColors.Theme.PrimaryInverted.bgActive,
-                    foreground: CatColors.Theme.PrimaryInverted.fill,
-                    border: CatColors.Theme.Secondary.bg
-                )
-            )
-        )
-        
-        public static let padding = EdgeInsets(
-            top: CatSpacing.spacing3xl,
-            leading: CatSpacing.spacingMd,
-            bottom: CatSpacing.spacing3xl,
-            trailing: CatSpacing.spacingMd
-        )
-    }
-    
-    // MARK: - COMPONENTS
-    public enum Components {
-        public enum Buttons {
-            // ACCENT COLOR BUTTON CONFIG
-            public enum Accent {
-                public static func filledConfig(accentColor: Color) -> CatButtonStateStyleConfig {
-                    CatButtonStateStyleConfig(
-                        normal: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: accentColor,
-                                foreground: CatColors.Theme.Primary.fill,
-                                border: Color.clear),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        hovered: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: accentColor.darken(by: AccentColorDarkenFactor.hovered.rawValue),
-                                foreground: CatColors.Theme.Primary.fillHover,
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        pressed: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: accentColor.darken(by: AccentColorDarkenFactor.pressed.rawValue),
-                                foreground: CatColors.Theme.Primary.fillActive,
-                                border: Color.clear),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        focused: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: accentColor,
-                                foreground: CatColors.Theme.Primary.fill,
-                                border: Color.clear),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: true,
-                                scale: 1)
-                        ),
-                        disabled: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.Ui.Background.muted,
-                                foreground: CatColors.Ui.Font.muted,
-                                border: Color.clear),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        )
-                    )
-                }
-                // TODO: ASK BACKGROUND AND BORDER COLOR Configs
-                public static func borderConfig(accentColor: Color) -> CatButtonStateStyleConfig {
-                    CatButtonStateStyleConfig(
-                        normal: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: accentColor,
-                                border: accentColor
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        hovered: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.Theme.Primary.bgHover,
-                                foreground: accentColor,
-                                border: accentColor.darken(by: AccentColorDarkenFactor.hovered.rawValue)
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        pressed: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.Theme.Primary.bgActive,
-                                foreground: accentColor,
-                                border: accentColor.darken(by: AccentColorDarkenFactor.pressed.rawValue)
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        focused: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: accentColor,
-                                border: accentColor
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: true,
-                                scale: 1)
-                        ),
-                        disabled: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: CatColors.Ui.Font.muted,
-                                border: CatColors.Ui.Font.muted
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        )
-                    )
-                }
-                
-                public static func ghostConfig(accentColor: Color) -> CatButtonStateStyleConfig {
-                    CatButtonStateStyleConfig(
-                        normal: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: accentColor,
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        hovered: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.Theme.Primary.bgHover,
-                                foreground: accentColor,
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: true,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        pressed: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: CatColors.Theme.Primary.bgActive,
-                                foreground: accentColor,
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        focused: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: accentColor,
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: true,
-                                scale: 1)
-                        ),
-                        disabled: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: CatColors.Ui.Font.muted,
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        )
-                    )
-                }
-                
-                public static func linkConfig(accentColor: Color) -> CatButtonStateStyleConfig {
-                    CatButtonStateStyleConfig(
-                        normal: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: accentColor,
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        hovered: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: accentColor.darken(by: AccentColorDarkenFactor.hovered.rawValue),
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: true,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        pressed: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: accentColor.darken(by: AccentColorDarkenFactor.pressed.rawValue),
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: true,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        ),
-                        focused: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: accentColor,
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: true,
-                                scale: 1)
-                        ),
-                        disabled: .init(
-                            colorStyle: CatButtonStateColorStyle(
-                                background: Color.clear,
-                                foreground: CatColors.Ui.Font.muted,
-                                border: Color.clear
-                            ),
-                            properties: CatStateProperties(
-                                isUnderlined: false,
-                                hasSecondaryFocusRing: false,
-                                scale: 1)
-                        )
-                    )
-                }
-            }
-            
-            public enum Primary {
-                // FILLED BUTTON CONFIG
-                public static let filledConfig = CatButtonStateStyleConfig(
-                    normal: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.Theme.Primary.bg,
-                            foreground: CatColors.Theme.Primary.fill,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    hovered: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.Theme.Primary.bgHover,
-                            foreground: CatColors.Theme.Primary.fillHover,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    pressed: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.Theme.Primary.bgActive,
-                            foreground: CatColors.Theme.Primary.fillActive,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    focused: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.Theme.Primary.bg,
-                            foreground: CatColors.Theme.Primary.fill,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: true,
-                            scale: 1)
-                    ),
-                    disabled: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.Ui.Background.muted,
-                            foreground: CatColors.Ui.Font.muted,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    )
-                )
-                
-                public static let borderConfig = CatButtonStateStyleConfig(
-                    normal: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: CatColors.Theme.Primary.bg
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    hovered: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.Theme.Primary.bgHover,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: CatColors.Theme.Primary.bg
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    pressed: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.Theme.Primary.bgActive,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: CatColors.Theme.Primary.bg
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    focused: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: CatColors.Theme.Primary.bg
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: true,
-                            scale: 1)
-                    ),
-                    disabled: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Ui.Font.muted,
-                            border: CatColors.Ui.Font.muted
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    )
-                )
-                
-                public static let ghostConfig = CatButtonStateStyleConfig(
-                    normal: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    hovered: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.Theme.Primary.bgHover,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    pressed: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: CatColors.Theme.Primary.bgActive,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    focused: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: true,
-                            scale: 1)
-                    ),
-                    disabled: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Ui.Font.muted,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    )
-                )
-                
-                public static let linkConfig = CatButtonStateStyleConfig(
-                    normal: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    hovered: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: true,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    pressed: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: true,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    ),
-                    focused: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Theme.Primary.text,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: true,
-                            scale: 1)
-                    ),
-                    disabled: .init(
-                        colorStyle: CatButtonStateColorStyle(
-                            background: Color.clear,
-                            foreground: CatColors.Ui.Font.muted,
-                            border: Color.clear
-                        ),
-                        properties: CatStateProperties(
-                            isUnderlined: false,
-                            hasSecondaryFocusRing: false,
-                            scale: 1)
-                    )
-                )
-            }
-        }
     }
 }
