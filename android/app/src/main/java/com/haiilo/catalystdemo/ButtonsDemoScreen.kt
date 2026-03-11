@@ -22,8 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
-import com.haiilo.catalyst.tokens.generated.CatColors
 import com.haiilo.catalyst.R
 import com.haiilo.catalyst.components.buttons.CatButton
 import com.haiilo.catalyst.components.buttons.CatButtonColor
@@ -33,6 +31,7 @@ import com.haiilo.catalyst.components.buttons.CatButtonSize
 import com.haiilo.catalyst.components.buttons.CatButtonVariant
 import com.haiilo.catalyst.components.buttons.ProvideCatButtonConfig
 import com.haiilo.catalyst.theme.CatTheme
+import com.haiilo.catalyst.tokens.generated.CatColors
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
 
