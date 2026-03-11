@@ -42,9 +42,9 @@ enum class CatButtonColor {
 //
 // Values sourced directly from Figma "Variables" annotations per button size:
 //
-//   Small  → height = spacing4Xl (32 dp)  hPadding = spacingMd  (8 dp)
-//   Medium → height = spacing5Xl (40 dp)  hPadding = spacingXl  (16 dp)
-//   Large  → height = spacing6Xl (48 dp)  hPadding = spacingXl  (16 dp)
+//   XSmall → height = spacing4Xl (32 dp)  hPadding = spacingMd  (8 dp)
+//   Small  → height = spacing5Xl (40 dp)  hPadding = spacingXl  (16 dp)
+//   Medium → height = spacing6Xl (48 dp)  hPadding = spacingXl  (16 dp)
 //
 // Vertical padding (spacingLg = 12 dp) and icon-text gap (spacingXs = 4 dp)
 // are the same across all sizes.
@@ -52,13 +52,13 @@ enum class CatButtonColor {
 
 sealed class CatButtonSize {
     /** 32 dp tall, 8 dp horizontal padding. */
-    data object Small : CatButtonSize()
+    data object XSmall : CatButtonSize()
 
     /** 40 dp tall, 16 dp horizontal padding (default). */
-    data object Medium : CatButtonSize()
+    data object Small : CatButtonSize()
 
     /** 48 dp tall, 16 dp horizontal padding. */
-    data object Large : CatButtonSize()
+    data object Medium : CatButtonSize()
 
     /** Arbitrary height; caller supplies horizontal padding via [horizontalPadding]. */
     data class Custom(
@@ -69,18 +69,18 @@ sealed class CatButtonSize {
     /** Total button height from design tokens. */
     val heightDp: Dp
         get() = when (this) {
-            is Small -> CatSpacing.spacing_4xl // 32 dp
-            is Medium -> CatSpacing.spacing_5xl // 40 dp
-            is Large -> CatSpacing.spacing_6xl // 48 dp
+            is XSmall -> CatSpacing.spacing_4xl // 32 dp
+            is Small -> CatSpacing.spacing_5xl // 40 dp
+            is Medium -> CatSpacing.spacing_6xl // 48 dp
             is Custom -> height
         }
 
     /** Horizontal (start + end) content padding from design tokens. */
     val horizontalPaddingDp: Dp
         get() = when (this) {
-            is Small -> CatSpacing.spacing_md // 8 dp
+            is XSmall -> CatSpacing.spacing_md // 8 dp
+            is Small -> CatSpacing.spacing_xl // 16 dp
             is Medium -> CatSpacing.spacing_xl // 16 dp
-            is Large -> CatSpacing.spacing_xl // 16 dp
             is Custom -> horizontalPadding
         }
 }

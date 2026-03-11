@@ -59,7 +59,7 @@ import com.haiilo.catalyst.tokens.generated.CatTypography
  * @param modifier    Modifier applied to the outer container.
  * @param variant     Visual shape override. Null reads from [LocalCatButtonConfig].
  * @param color Semantic color role override. Null reads from [LocalCatButtonConfig].
- * @param size        Controls height and horizontal padding. Defaults to [CatButtonSize.Medium].
+ * @param size        Controls height and horizontal padding. Defaults to [CatButtonSize.Small].
  * @param enabled     When false the button is shown in the disabled state and ignores taps.
  * @param style       Full state-style override. When non-null, [variant]/[color] are
  *                    ignored for styling.
@@ -71,7 +71,7 @@ fun CatButton(
     modifier: Modifier = Modifier,
     variant: CatButtonVariant? = null,
     color: CatButtonColor? = null,
-    size: CatButtonSize = CatButtonSize.Medium,
+    size: CatButtonSize = CatButtonSize.Small,
     enabled: Boolean = true,
     style: CatButtonState? = null,
 ) {

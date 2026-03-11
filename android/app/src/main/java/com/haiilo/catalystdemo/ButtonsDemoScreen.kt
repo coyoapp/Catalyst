@@ -132,13 +132,20 @@ fun ButtonsDemoScreen(onBack: () -> Unit) {
                 Divider()
 
                 // ---------------------------------------------------------------
-                // 5. Sizes — Small (32dp), Medium (40dp), Large (48dp)
+                // 5. Sizes — XSmall (32dp), Small (40dp), Medium (48dp)
                 // ---------------------------------------------------------------
                 SectionHeader("Sizes")
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(CatSpacing.spacing_md),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
+                    CatButton(
+                        content = CatButtonContent.TextOnly("XSmall"),
+                        onClick = {},
+                        variant = CatButtonVariant.Filled,
+                        color = CatButtonColor.Primary,
+                        size = CatButtonSize.XSmall,
+                    )
                     CatButton(
                         content = CatButtonContent.TextOnly("Small"),
                         onClick = {},
@@ -152,13 +159,6 @@ fun ButtonsDemoScreen(onBack: () -> Unit) {
                         variant = CatButtonVariant.Filled,
                         color = CatButtonColor.Primary,
                         size = CatButtonSize.Medium,
-                    )
-                    CatButton(
-                        content = CatButtonContent.TextOnly("Large"),
-                        onClick = {},
-                        variant = CatButtonVariant.Filled,
-                        color = CatButtonColor.Primary,
-                        size = CatButtonSize.Large,
                     )
                 }
 
@@ -237,7 +237,7 @@ fun ButtonsDemoScreen(onBack: () -> Unit) {
                         onClick = {},
                         variant = CatButtonVariant.Filled,
                         color = CatButtonColor.Primary,
-                        size = CatButtonSize.Medium,
+                        size = CatButtonSize.Small,
                     )
                     CatButton(
                         content = CatButtonContent.IconOnly(
@@ -247,7 +247,7 @@ fun ButtonsDemoScreen(onBack: () -> Unit) {
                         onClick = {},
                         variant = CatButtonVariant.Outlined,
                         color = CatButtonColor.Danger,
-                        size = CatButtonSize.Medium,
+                        size = CatButtonSize.Small,
                     )
                     CatButton(
                         content = CatButtonContent.IconOnly(
@@ -257,7 +257,7 @@ fun ButtonsDemoScreen(onBack: () -> Unit) {
                         onClick = {},
                         variant = CatButtonVariant.Text,
                         color = CatButtonColor.Success,
-                        size = CatButtonSize.Small,
+                        size = CatButtonSize.XSmall,
                     )
                 }
 
