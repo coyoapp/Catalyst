@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/coyoapp/Catalyst/compare/v0.3.0...v0.4.0) (2026-03-11)
+
+
+### Features
+
+* **components:** iOS button configurations provider added ([#32](https://github.com/coyoapp/Catalyst/issues/32)) ([dd42e9c](https://github.com/coyoapp/Catalyst/commit/dd42e9cc97c33e0df3bd110e4d64a5d77df35a96))
+
 ## [0.3.0](https://github.com/coyoapp/Catalyst/compare/v0.2.4...v0.3.0) (2026-02-27)
 
 
