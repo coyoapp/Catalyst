@@ -45,7 +45,6 @@ extension CatColorPalette {
     /// ```
     static let registry: [CatTheme.ThemeType: [CatTheme.ColorConfig: CatColorPalette]] = [
         .primaryHaiilo: [
-            .accent: .init(CatColors.Theme.Primary.self),
             .danger: .init(CatColors.Theme.Danger.self),
             .info: .init(CatColors.Theme.Info.self),
             .primary: .init(CatColors.Theme.Primary.self),
@@ -98,6 +97,35 @@ extension CatColorPalette {
             text: T.text,
             textHover: T.textHover,
             textActive: T.textActive
+        )
+    }
+
+    /// Derives all 9 palette slots from a single arbitrary accent `Color`.
+    ///
+    /// This powers the whitelabeling path: clients pass one `Color` via
+    /// `.catalystAccentColor(_:)` and every button variant (`.filled`, `.outlined`,
+    /// `.text`, `.link`) automatically picks up correct hover/pressed states.
+    ///
+    /// - `bg` slots — used by the `.filled` variant background. Darkened on interaction
+    ///   using `AccentColorDarkenFactor`.
+    /// - `fill` slots — foreground *inside* a filled button. Kept white because accent
+    ///   backgrounds are assumed to be dark enough to require white text (mirrors the
+    ///   existing `Components.Buttons.Accent.filledConfig` behavior).
+    /// - `text` slots — used by `.outlined`, `.text`, and `.link` variant foregrounds.
+    ///   Normal state uses the accent color directly; hover/pressed darken it.
+    init(accentColor: Color) {
+        let hoverFactor  = CatTheme.AccentColorDarkenFactor.hovered.rawValue
+        let activeFactor = CatTheme.AccentColorDarkenFactor.pressed.rawValue
+        self.init(
+            bg:          accentColor,
+            bgHover:     accentColor.darken(by: hoverFactor),
+            bgActive:    accentColor.darken(by: activeFactor),
+            fill:        Color.white,
+            fillHover:   Color.white,
+            fillActive:  Color.white,
+            text:        accentColor,
+            textHover:   accentColor.darken(by: hoverFactor),
+            textActive:  accentColor.darken(by: activeFactor)
         )
     }
 }

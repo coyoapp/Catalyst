@@ -83,3 +83,50 @@ public extension View {
         environment(\.catButtonConfig, CatButtonConfig(variant: variant, color: color))
     }
 }
+
+// MARK: - Accent color environment
+
+private struct CatAccentPaletteEnvironmentKey: EnvironmentKey {
+    static let defaultValue: CatColorPalette? = nil
+}
+
+public extension EnvironmentValues {
+    /// An optional `CatColorPalette` derived from a custom brand/accent color.
+    ///
+    /// When present, it overrides the `.primary` palette in `CatTheme.buttonConfig` so that
+    /// all `CatButton` views using `color: .primary` (the default) render in the client's
+    /// brand color. Buttons using other color roles (`.danger`, `.secondary`, etc.) are
+    /// unaffected. Set via `.catalystAccentColor(_:)`.
+    var catalystAccentPalette: CatColorPalette? {
+        get { self[CatAccentPaletteEnvironmentKey.self] }
+        set { self[CatAccentPaletteEnvironmentKey.self] = newValue }
+    }
+}
+
+public extension View {
+    /// Injects a custom brand/accent color into this subtree.
+    ///
+    /// All `CatButton` views that use the default `color: .primary` role will render using
+    /// this color across all four variants (`.filled`, `.outlined`, `.text`, `.link`).
+    /// Hover and pressed states are derived automatically via `CatTheme.AccentColorDarkenFactor`.
+    /// Buttons using other color roles (`.danger`, `.secondary`, etc.) are unaffected.
+    ///
+    /// ```swift
+    /// // Whitelabeling — set once at the root, every primary button picks it up:
+    /// ContentView()
+    ///     .catalystAccentColor(client.brandColor)
+    ///
+    /// // Mixed usage — some buttons use the brand color, others don't:
+    /// VStack {
+    ///     CatButton(.text("Confirm")) { }           // .primary by default → brand color
+    ///     CatButton(.text("Delete")) { }
+    ///         .catButtonConfig(variant: .filled, color: .danger)  // unaffected
+    /// }
+    /// .catalystAccentColor(brandColor)
+    /// ```
+    ///
+    /// - Parameter color: The brand `Color` to use as the primary palette base.
+    func catalystAccentColor(_ color: Color) -> some View {
+        environment(\.catalystAccentPalette, CatColorPalette(accentColor: color))
+    }
+}

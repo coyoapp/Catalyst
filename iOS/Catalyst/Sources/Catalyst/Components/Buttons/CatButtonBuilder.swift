@@ -50,12 +50,21 @@ public struct CatButton: View {
     /// The active Catalyst theme from the environment. Passed through to the palette registry
     /// so a `.catalystTheme(.dark)` modifier higher in the hierarchy is respected automatically.
     @Environment(\.catalystTheme) private var theme
+    /// An optional accent palette injected via `.catalystAccentColor(_:)`. When present and the
+    /// button's color role is `.primary` (the default), this palette overrides the registry entry
+    /// so the button renders in the client's brand color across all variants.
+    @Environment(\.catalystAccentPalette) private var accentPalette
 
     /// Resolves the style config: explicit `styleConfig` wins; otherwise falls back to the
     /// environment's `CatButtonConfig` (variant + color) resolved via `CatTheme.buttonConfig`,
     /// using the environment theme so `.catalystTheme()` propagates correctly.
     private var resolvedStyleConfig: CatButtonStateStyleConfig {
-        styleConfig ?? CatTheme.buttonConfig(variant: buttonConfig.variant, color: buttonConfig.color, theme: theme)
+        styleConfig ?? CatTheme.buttonConfig(
+            variant: buttonConfig.variant,
+            color: buttonConfig.color,
+            theme: theme,
+            accentPalette: accentPalette
+        )
     }
 
     public var body: some View {

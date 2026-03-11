@@ -21,14 +21,24 @@ public extension CatTheme {
     ///   - variant: The visual shape of the button (`.filled`, `.outlined`, `.text`, `.link`).
     ///   - color: The semantic color role from `CatColors.Theme` (`.primary`, `.danger`, etc.).
     ///   - theme: The active theme. Defaults to `CatTheme.current`. Pass explicitly if needed.
+    ///   - accentPalette: An optional pre-resolved `CatColorPalette` injected via
+    ///     `.catalystAccentColor(_:)`. When non-nil and `color == .primary`, this palette is used
+    ///     instead of the registry entry, enabling per-subtree whitelabeling of primary buttons.
+    ///     Buttons using other color roles are unaffected.
     /// - Returns: A fully-resolved `CatButtonStateStyleConfig` for all interaction states.
     static func buttonConfig(
         variant: ButtonVariant = .filled,
         color: ColorConfig = .primary,
-        theme: ThemeType = CatTheme.current
+        theme: ThemeType = CatTheme.current,
+        accentPalette: CatColorPalette? = nil
     ) -> CatButtonStateStyleConfig {
 
-        let p = color.palette(for: theme)
+        let p: CatColorPalette
+        if color == .primary, let injected = accentPalette {
+            p = injected
+        } else {
+            p = color.palette(for: theme)
+        }
 
         // Shared disabled states — always muted regardless of variant/color.
         let disabledState = CatButtonStateStyle(
