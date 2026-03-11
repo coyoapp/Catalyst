@@ -17,6 +17,12 @@ This monorepo contains all components of the mobile design system pipeline:
 ### iOS:
 PS: After adding the dependency or to receive any update in Design System Library `tuist fetch` has to be executed.
 
+## 📖 Component Documentation
+
+| Platform | Component | Docs |
+|----------|-----------|------|
+| iOS | Button | [docs/ios/button.md](./docs/ios/button.md) |
+
 ## 🏗️ Development Workflow (Contributing)
 
 This repository uses Style Dictionary to automatically generate native Swift and Kotlin code from the JSON tokens in the `/tokens` directory.

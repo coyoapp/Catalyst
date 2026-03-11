@@ -10,7 +10,6 @@ import SwiftUI
 public struct CatButton: View {
     let content: CatButtonContent
     let buttonSize: CatButtonSize
-    let styleConfig: CatButtonStateStyleConfig?
     let styleFont: Font?
     let stackSpacing: CGFloat?
     let padding: EdgeInsets?
@@ -21,8 +20,6 @@ public struct CatButton: View {
     /// - Parameters:
     ///   - content: The button's visual content (text, icon, or icon+text).
     ///   - buttonSize: The sizing preset for the button.
-    ///   - styleConfig: An explicit style config. When `nil` (the default), the button resolves its
-    ///     appearance from the `\.catButtonConfig` environment value set by `.catButtonConfig(variant:color:)`.
     ///   - styleFont: Overrides the default button label font.
     ///   - stackSpacing: Overrides the spacing between icon and label.
     ///   - padding: Overrides the default internal padding.
@@ -30,7 +27,6 @@ public struct CatButton: View {
     public init(
         _ content: CatButtonContent,
         buttonSize: CatButtonSize = .medium,
-        styleConfig: CatButtonStateStyleConfig? = nil,
         styleFont: Font? = nil,
         stackSpacing: CGFloat? = nil,
         padding: EdgeInsets? = nil,
@@ -38,14 +34,13 @@ public struct CatButton: View {
     ) {
         self.content = content
         self.buttonSize = buttonSize
-        self.styleConfig = styleConfig
         self.styleFont = styleFont
         self.stackSpacing = stackSpacing
         self.padding = padding
         self.action = action
     }
 
-    /// The active button config from the environment. Used when no explicit `styleConfig` is passed.
+    /// The active button config from the environment. Set via `.catButtonConfig(variant:color:)`.
     @Environment(\.catButtonConfig) private var buttonConfig
     /// The active Catalyst theme from the environment. Passed through to the palette registry
     /// so a `.catalystTheme(.dark)` modifier higher in the hierarchy is respected automatically.
@@ -54,18 +49,6 @@ public struct CatButton: View {
     /// button's color role is `.primary` (the default), this palette overrides the registry entry
     /// so the button renders in the client's brand color across all variants.
     @Environment(\.catalystAccentPalette) private var accentPalette
-
-    /// Resolves the style config: explicit `styleConfig` wins; otherwise falls back to the
-    /// environment's `CatButtonConfig` (variant + color) resolved via `CatTheme.buttonConfig`,
-    /// using the environment theme so `.catalystTheme()` propagates correctly.
-    private var resolvedStyleConfig: CatButtonStateStyleConfig {
-        styleConfig ?? CatTheme.buttonConfig(
-            variant: buttonConfig.variant,
-            color: buttonConfig.color,
-            theme: theme,
-            accentPalette: accentPalette
-        )
-    }
 
     public var body: some View {
         CatButtonBuilder(
@@ -76,10 +59,15 @@ public struct CatButton: View {
         )
         .buttonStyle(
             CatButtonStyle(
-                styleConfig: resolvedStyleConfig,
+                styleConfig: CatTheme.buttonConfig(
+                    variant: buttonConfig.variant,
+                    color: buttonConfig.color,
+                    theme: theme,
+                    accentPalette: accentPalette
+                ),
                 font: styleFont ?? {
                     switch buttonConfig.variant {
-                    case .filled: return CatTypography.button1
+                    case .filled:            return CatTypography.button1
                     case .outlined, .text, .link: return CatTypography.button2
                     }
                 }(),
