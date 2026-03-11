@@ -111,7 +111,8 @@ struct ContentView: View {
                             ) {
                                 print("Button tapped")
                             }
-                            .catButtonConfig(variant: .filled, color: .accent)
+                            .catButtonConfig(variant: .filled, color: .primary)
+                            .catalystAccentColor(Color(red: 0.40, green: 0.30, blue: 0.92))
                         }
                         .padding(.horizontal)
                     }
@@ -205,7 +206,8 @@ struct ContentView: View {
                             ) {
                                 print("Button tapped")
                             }
-                            .catButtonConfig(variant: .outlined, color: .accent)
+                            .catButtonConfig(variant: .outlined, color: .primary)
+                            .catalystAccentColor(Color(red: 0.40, green: 0.30, blue: 0.92))
                         }
                         .padding(.horizontal)
                     }
@@ -214,6 +216,16 @@ struct ContentView: View {
             
             Text("Buttons with accent color with old Styling")
                 .font(CatTypography.caption)
+            CatButton(
+                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
+                buttonSize: .extraSmall,
+            ) {
+                print("Button tapped")
+            }
+            .catButtonConfig(variant: .outlined, color: .primary)
+            .catalystAccentColor(.accentColor)
+            .padding(.horizontal)
+            
             CatButton(
                 .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
                 buttonSize: .extraSmall,
@@ -241,7 +253,6 @@ struct ContentView: View {
             }
         }
         .padding()
-        
     }
 }
 
