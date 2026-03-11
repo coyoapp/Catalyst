@@ -67,7 +67,7 @@ public struct CatButton: View {
                 ),
                 font: styleFont ?? {
                     switch buttonConfig.variant {
-                    case .filled: return CatTypography.button1
+                    case .filled:            return CatTypography.button1
                     case .outlined, .text, .link: return CatTypography.button2
                     }
                 }(),
