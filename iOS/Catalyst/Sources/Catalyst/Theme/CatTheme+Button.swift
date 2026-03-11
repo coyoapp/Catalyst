@@ -49,6 +49,12 @@ public extension CatTheme {
             ),
             properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
         )
+        
+        let commonButtonProperties = CatStateProperties(
+            isUnderlined: false,
+            hasSecondaryFocusRing: false,
+            scale: 1
+        )
 
         switch variant {
 
@@ -57,15 +63,15 @@ public extension CatTheme {
             return CatButtonStateStyleConfig(
                 normal: .init(
                     colorStyle: CatButtonStateColorStyle(background: colorPalatte.bg, foreground: colorPalatte.fill, border: Color.clear),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 hovered: .init(
                     colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgHover, foreground: colorPalatte.fillHover, border: Color.clear),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 pressed: .init(
                     colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgActive, foreground: colorPalatte.fillActive, border: Color.clear),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 focused: .init(
                     colorStyle: CatButtonStateColorStyle(background: colorPalatte.bg, foreground: colorPalatte.fill, border: Color.clear),
@@ -77,7 +83,7 @@ public extension CatTheme {
                         foreground: CatColors.Ui.Font.muted,
                         border: Color.clear
                     ),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 )
             )
 
@@ -86,15 +92,15 @@ public extension CatTheme {
             return CatButtonStateStyleConfig(
                 normal: .init(
                     colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: colorPalatte.bg.opacity(0.20)),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 hovered: .init(
                     colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgHover.opacity(0.05), foreground: colorPalatte.text, border: colorPalatte.bg.opacity(0.20)),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 pressed: .init(
                     colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgActive.opacity(0.15), foreground: colorPalatte.text, border: colorPalatte.bg.opacity(0.20)),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 focused: .init(
                     colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: colorPalatte.bg.opacity(0.20)),
@@ -106,7 +112,7 @@ public extension CatTheme {
                         foreground: CatColors.Ui.Font.muted,
                         border: CatColors.Ui.Font.muted.opacity(0.20)
                     ),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 )
             )
 
@@ -115,15 +121,15 @@ public extension CatTheme {
             return CatButtonStateStyleConfig(
                 normal: .init(
                     colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: Color.clear),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 hovered: .init(
                     colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgHover.opacity(0.05), foreground: colorPalatte.textHover, border: Color.clear),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 pressed: .init(
                     colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgActive.opacity(0.15), foreground: colorPalatte.textActive, border: Color.clear),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 focused: .init(
                     colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: Color.clear),
@@ -137,7 +143,7 @@ public extension CatTheme {
             return CatButtonStateStyleConfig(
                 normal: .init(
                     colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: Color.clear),
-                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                    properties: commonButtonProperties
                 ),
                 hovered: .init(
                     colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.textHover, border: Color.clear),
