@@ -49,14 +49,6 @@ public extension CatTheme {
             ),
             properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
         )
-        let filledDisabledState = CatButtonStateStyle(
-            colorStyle: CatButtonStateColorStyle(
-                background: CatColors.Ui.Background.muted,
-                foreground: CatColors.Ui.Font.muted,
-                border: Color.clear
-            ),
-            properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
-        )
 
         switch variant {
 
@@ -79,7 +71,14 @@ public extension CatTheme {
                     colorStyle: CatButtonStateColorStyle(background: p.bg, foreground: p.fill, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: true, scale: 1)
                 ),
-                disabled: filledDisabledState
+                disabled: CatButtonStateStyle(
+                    colorStyle: CatButtonStateColorStyle(
+                        background: CatColors.Ui.Background.muted,
+                        foreground: CatColors.Ui.Font.muted,
+                        border: Color.clear
+                    ),
+                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
+                )
             )
 
         // MARK: Outlined — transparent background, colored border and text
