@@ -33,11 +33,11 @@ public extension CatTheme {
         accentPalette: CatColorPalette? = nil
     ) -> CatButtonStateStyleConfig {
 
-        let p: CatColorPalette
+        let colorPalatte: CatColorPalette
         if color == .primary, let injected = accentPalette {
-            p = injected
+            colorPalatte = injected
         } else {
-            p = color.palette(for: theme)
+            colorPalatte = color.palette(for: theme)
         }
 
         // Shared disabled states — always muted regardless of variant/color.
@@ -56,19 +56,19 @@ public extension CatTheme {
         case .filled:
             return CatButtonStateStyleConfig(
                 normal: .init(
-                    colorStyle: CatButtonStateColorStyle(background: p.bg, foreground: p.fill, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: colorPalatte.bg, foreground: colorPalatte.fill, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 hovered: .init(
-                    colorStyle: CatButtonStateColorStyle(background: p.bgHover, foreground: p.fillHover, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgHover, foreground: colorPalatte.fillHover, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 pressed: .init(
-                    colorStyle: CatButtonStateColorStyle(background: p.bgActive, foreground: p.fillActive, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgActive, foreground: colorPalatte.fillActive, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 focused: .init(
-                    colorStyle: CatButtonStateColorStyle(background: p.bg, foreground: p.fill, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: colorPalatte.bg, foreground: colorPalatte.fill, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: true, scale: 1)
                 ),
                 disabled: CatButtonStateStyle(
@@ -85,19 +85,19 @@ public extension CatTheme {
         case .outlined:
             return CatButtonStateStyleConfig(
                 normal: .init(
-                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: p.text, border: p.bg.opacity(0.20)),
+                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: colorPalatte.bg.opacity(0.20)),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 hovered: .init(
-                    colorStyle: CatButtonStateColorStyle(background: p.bgHover.opacity(0.05), foreground: p.text, border: p.bg.opacity(0.20)),
+                    colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgHover.opacity(0.05), foreground: colorPalatte.text, border: colorPalatte.bg.opacity(0.20)),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 pressed: .init(
-                    colorStyle: CatButtonStateColorStyle(background: p.bgActive.opacity(0.15), foreground: p.text, border: p.bg.opacity(0.20)),
+                    colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgActive.opacity(0.15), foreground: colorPalatte.text, border: colorPalatte.bg.opacity(0.20)),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 focused: .init(
-                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: p.text, border: p.bg.opacity(0.20)),
+                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: colorPalatte.bg.opacity(0.20)),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: true, scale: 1)
                 ),
                 disabled: CatButtonStateStyle(
@@ -114,19 +114,19 @@ public extension CatTheme {
         case .text:
             return CatButtonStateStyleConfig(
                 normal: .init(
-                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: p.text, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 hovered: .init(
-                    colorStyle: CatButtonStateColorStyle(background: p.bgHover.opacity(0.05), foreground: p.textHover, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgHover.opacity(0.05), foreground: colorPalatte.textHover, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 pressed: .init(
-                    colorStyle: CatButtonStateColorStyle(background: p.bgActive.opacity(0.15), foreground: p.textActive, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: colorPalatte.bgActive.opacity(0.15), foreground: colorPalatte.textActive, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 focused: .init(
-                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: p.text, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: true, scale: 1)
                 ),
                 disabled: disabledState
@@ -136,19 +136,19 @@ public extension CatTheme {
         case .link:
             return CatButtonStateStyleConfig(
                 normal: .init(
-                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: p.text, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 hovered: .init(
-                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: p.textHover, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.textHover, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: true, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 pressed: .init(
-                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: p.textActive, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.textActive, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: true, hasSecondaryFocusRing: false, scale: 1)
                 ),
                 focused: .init(
-                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: p.text, border: Color.clear),
+                    colorStyle: CatButtonStateColorStyle(background: Color.clear, foreground: colorPalatte.text, border: Color.clear),
                     properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: true, scale: 1)
                 ),
                 disabled: disabledState
