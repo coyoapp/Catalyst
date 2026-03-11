@@ -214,8 +214,6 @@ struct ContentView: View {
                 }
             }
             
-            Text("Buttons with accent color with old Styling")
-                .font(CatTypography.caption)
             CatButton(
                 .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
                 buttonSize: .extraSmall,
@@ -224,15 +222,6 @@ struct ContentView: View {
             }
             .catButtonConfig(variant: .outlined, color: .primary)
             .catalystAccentColor(.accentColor)
-            .padding(.horizontal)
-            
-            CatButton(
-                .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
-                buttonSize: .extraSmall,
-                styleConfig: CatTheme.Components.Buttons.Accent.filledConfig(accentColor: .red)
-            ) {
-                print("Button tapped")
-            }
             .padding(.horizontal)
         }
         

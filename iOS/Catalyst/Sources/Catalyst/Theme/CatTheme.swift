@@ -39,9 +39,6 @@ public enum CatTheme {
     }
 
     public enum ColorConfig: Hashable {
-        /// Use `.primary` combined with `.catalystAccentColor(_:)` on a parent view instead.
-        @available(*, deprecated, renamed: "primary", message: "Accent is now handled via .catalystAccentColor(_:) on a parent view. Use .primary as the color role and set the brand color with .catalystAccentColor(_:) at the subtree root.")
-        case accent
         case danger
         case info
         case primary

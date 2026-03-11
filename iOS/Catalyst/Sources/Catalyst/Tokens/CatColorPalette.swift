@@ -117,15 +117,15 @@ extension CatColorPalette {
         let hoverFactor  = CatTheme.AccentColorDarkenFactor.hovered.rawValue
         let activeFactor = CatTheme.AccentColorDarkenFactor.pressed.rawValue
         self.init(
-            bg:          accentColor,
-            bgHover:     accentColor.darken(by: hoverFactor),
-            bgActive:    accentColor.darken(by: activeFactor),
-            fill:        Color.white,
-            fillHover:   Color.white,
-            fillActive:  Color.white,
-            text:        accentColor,
-            textHover:   accentColor.darken(by: hoverFactor),
-            textActive:  accentColor.darken(by: activeFactor)
+            bg: accentColor,
+            bgHover: accentColor.darken(by: hoverFactor),
+            bgActive: accentColor.darken(by: activeFactor),
+            fill: Color.white,
+            fillHover: Color.white,
+            fillActive: Color.white,
+            text: accentColor,
+            textHover: accentColor.darken(by: hoverFactor),
+            textActive: accentColor.darken(by: activeFactor)
         )
     }
 }

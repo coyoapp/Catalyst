@@ -96,33 +96,3 @@ public struct CatButton: View {
         )
     }
 }
-
-public struct EngageKudosButton: View {
-    let content: CatButtonContent
-    let action: () -> Void
-    
-    public init(_ content: CatButtonContent, action: @escaping () -> Void) {
-        self.content = content
-        self.action = action
-    }
-    
-    public var body: some View {
-        CatButtonBuilder(content: content, iconSize: .init(width: CatSizes.sizeXl, height: CatSizes.sizeXl), action: action)
-            .buttonStyle(
-                CatButtonStyle(
-                    styleConfig: CatTheme.Components.Buttons.Accent.filledConfig(accentColor: .red),
-                    font: CatTypography.body1,
-                    borderWidth: CatBorderWidth.borderWidthThin,
-                    cornerRadius: CatBorderRadius.borderRadiusSm,
-                    padding: EdgeInsets(
-                        top: CatSpacing.spacing3xl,
-                        leading: CatSpacing.spacingMd,
-                        bottom: CatSpacing.spacing3xl,
-                        trailing: CatSpacing.spacingMd
-                    ),
-                    buttonSize: .custom(150)
-                )
-            )
-            .padding(CatSpacing.spacingMd)
-    }
-}
