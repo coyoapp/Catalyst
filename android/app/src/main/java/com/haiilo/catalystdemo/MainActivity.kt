@@ -4,48 +4,79 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.haiilo.catalyst.components.PrimaryButton
-import com.haiilo.catalyst.theme.CatTheme
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.haiilo.catalyst.components.PrimaryButtonWithTheme
 import com.haiilo.catalyst.R
+import com.haiilo.catalyst.components.buttons.CatButton
+import com.haiilo.catalyst.components.buttons.CatButtonColor
+import com.haiilo.catalyst.components.buttons.CatButtonContent
+import com.haiilo.catalyst.components.buttons.CatButtonVariant
+import com.haiilo.catalyst.components.PrimaryButton
+import com.haiilo.catalyst.components.PrimaryButtonWithTheme
+import com.haiilo.catalyst.theme.CatTheme
+import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
+
+// ---------------------------------------------------------------------------
+// Simple screen enum for lightweight navigation (no Jetpack Nav dependency)
+// ---------------------------------------------------------------------------
+
+private enum class DemoDestination { Main, Buttons }
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DemoScreen()
+            AppNavigation()
         }
     }
 }
 
 @Composable
-fun DemoScreen() {
+private fun AppNavigation() {
+    var destination by remember { mutableStateOf(DemoDestination.Main) }
+
+    when (destination) {
+        DemoDestination.Main ->
+            DemoScreen(onNavigateToButtons = { destination = DemoDestination.Buttons })
+
+        DemoDestination.Buttons ->
+            ButtonsDemoScreen(onBack = { destination = DemoDestination.Main })
+    }
+}
+
+@Composable
+fun DemoScreen(onNavigateToButtons: () -> Unit = {}) {
     var darkTheme by remember { mutableStateOf(false) }
 
     CatTheme(darkTheme = darkTheme) {
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
+            color = MaterialTheme.colorScheme.background,
         ) {
             Column(
                 modifier = Modifier
                     .padding(top = 100.dp)
                     .padding(16.dp)
                     .fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Text("Design System Demo", style = CatTypography.h1)
                 Text("This is body text using DS typography.", style = CatTypography.body1)
@@ -54,23 +85,37 @@ fun DemoScreen() {
                 Icon(
                     painter = painterResource(id = R.drawable.reaction_appreciate),
                     contentDescription = "Appreciate",
-                    tint = Color.Unspecified
+                    tint = Color.Unspecified,
                 )
 
                 Icon(
                     painter = painterResource(id = R.drawable.union),
                     contentDescription = "Union",
-                    tint = Color.Unspecified
+                    tint = Color.Unspecified,
                 )
 
                 PrimaryButton(
                     text = if (darkTheme) "Switch to Light" else "Switch to Dark",
-                    onClick = { darkTheme = !darkTheme }
+                    onClick = { darkTheme = !darkTheme },
                 )
 
                 PrimaryButtonWithTheme(
                     text = if (darkTheme) "Themed to Light" else "Themed to Dark",
-                    onClick = { darkTheme = !darkTheme }
+                    onClick = { darkTheme = !darkTheme },
+                )
+
+                HorizontalDivider(modifier = Modifier.padding(vertical = CatSpacing.spacing_md))
+
+                // ---------------------------------------------------------------
+                // Navigation to Buttons demo
+                // ---------------------------------------------------------------
+                Text("Components", style = CatTypography.h3)
+
+                CatButton(
+                    content = CatButtonContent.TextOnly("View Buttons"),
+                    onClick = onNavigateToButtons,
+                    variant = CatButtonVariant.Filled,
+                    color = CatButtonColor.Primary,
                 )
             }
         }
