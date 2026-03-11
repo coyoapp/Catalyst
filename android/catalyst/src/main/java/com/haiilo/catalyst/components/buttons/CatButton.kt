@@ -151,8 +151,7 @@ fun CatButton(
             } else {
                 Modifier
             }
-        )
-        .clickable(
+        ).clickable(
             interactionSource = interactionSource,
             indication = ripple(color = foregroundColor.copy(alpha = 0.12f)),
             enabled = enabled,

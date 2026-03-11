@@ -100,7 +100,9 @@ enum class CatButtonPlacement {
 
 sealed class CatButtonContent {
     /** Text-only button. */
-    data class TextOnly(val text: String) : CatButtonContent()
+    data class TextOnly(
+        val text: String,
+    ) : CatButtonContent()
 
     /** Icon-only button. */
     data class IconOnly(
