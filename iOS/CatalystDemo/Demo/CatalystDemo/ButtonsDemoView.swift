@@ -277,7 +277,6 @@ private extension CatTheme.ColorConfig {
         case .success:           return "Success"
         case .warning:           return "Warning"
         case .info:              return "Info"
-        case .accent:            return "Accent"
         }
     }
 }
