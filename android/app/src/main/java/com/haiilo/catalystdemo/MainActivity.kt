@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -29,6 +30,7 @@ import com.haiilo.catalyst.components.buttons.CatButtonContent
 import com.haiilo.catalyst.components.buttons.CatButtonVariant
 import com.haiilo.catalyst.components.PrimaryButton
 import com.haiilo.catalyst.components.PrimaryButtonWithTheme
+import com.haiilo.catalyst.components.buttons.CatButtonPlacement
 import com.haiilo.catalyst.theme.CatTheme
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
@@ -79,6 +81,23 @@ fun DemoScreen(onNavigateToButtons: () -> Unit = {}) {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Text("Design System Demo", style = CatTypography.h1)
+                // ---------------------------------------------------------------
+                // Navigation to Buttons demo
+                // ---------------------------------------------------------------
+                Text("Components", style = CatTypography.h3)
+
+                CatButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    content = CatButtonContent.IconText(
+                        painter = painterResource(id = R.drawable.icon_checkmark),
+                        text = "View All Buttons",
+                        CatButtonPlacement.Trailing
+                    ),
+                    onClick = onNavigateToButtons,
+                    variant = CatButtonVariant.Filled,
+                    color = CatButtonColor.Primary,
+                )
+
                 Text("This is body text using DS typography.", style = CatTypography.body1)
                 Text("This is a caption.", style = CatTypography.body2)
 
@@ -106,17 +125,7 @@ fun DemoScreen(onNavigateToButtons: () -> Unit = {}) {
 
                 HorizontalDivider(modifier = Modifier.padding(vertical = CatSpacing.spacing_md))
 
-                // ---------------------------------------------------------------
-                // Navigation to Buttons demo
-                // ---------------------------------------------------------------
-                Text("Components", style = CatTypography.h3)
 
-                CatButton(
-                    content = CatButtonContent.TextOnly("View Buttons"),
-                    onClick = onNavigateToButtons,
-                    variant = CatButtonVariant.Filled,
-                    color = CatButtonColor.Primary,
-                )
             }
         }
     }

@@ -15,7 +15,7 @@
 | `modifier` | `Modifier` | `Modifier` | Applied to the outer container |
 | `variant` | `CatButtonVariant?` | `null` | Visual shape. `null` delegates to the ambient `LocalCatButtonConfig`. Use `ProvideCatButtonConfig` to set it for a subtree; without a provider it falls back to `Filled` |
 | `color` | `CatButtonColor?` | `null` | Semantic color role. `null` delegates to the ambient `LocalCatButtonConfig`. Use `ProvideCatButtonConfig` to set it for a subtree; without a provider it falls back to `Primary` |
-| `size` | `CatButtonSize` | `Medium` | Controls button height and horizontal padding. See [Size](#size) |
+| `size` | `CatButtonSize` | `Small` | Controls button height and horizontal padding. See [Size](#size) |
 | `enabled` | `Boolean` | `true` | When `false`, the button renders in the disabled state and ignores taps |
 | `style` | `CatButtonState?` | `null` | Full state-style override. When non-null, `variant` and `color` are ignored for styling |
 
@@ -75,9 +75,9 @@ Set via the `color` parameter or through `ProvideCatButtonConfig`.
 
 | Size | Height | Horizontal padding |
 |------|--------|--------------------|
-| `Small` | 32 dp | 8 dp |
-| `Medium` *(default)* | 40 dp | 16 dp |
-| `Large` | 48 dp | 16 dp |
+| `XSmall` | 32 dp | 8 dp |
+| `Small` *(default)* | 40 dp | 16 dp |
+| `Medium` | 48 dp | 16 dp |
 | `Custom(height, horizontalPadding)` | caller-supplied | caller-supplied |
 
 ---
@@ -136,9 +136,9 @@ CatButton(
 
 ```kotlin
 CatButton(
-    content = CatButtonContent.TextOnly("Small"),
+    content = CatButtonContent.TextOnly("XSmall"),
     onClick = { },
-    size = CatButtonSize.Small,
+    size = CatButtonSize.XSmall,
 )
 
 CatButton(
