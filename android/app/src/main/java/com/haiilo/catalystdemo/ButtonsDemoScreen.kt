@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.Color
 import com.haiilo.catalyst.R
 import com.haiilo.catalyst.components.buttons.CatButton
 import com.haiilo.catalyst.components.buttons.CatButtonColor
@@ -31,6 +32,7 @@ import com.haiilo.catalyst.components.buttons.CatButtonSize
 import com.haiilo.catalyst.components.buttons.CatButtonVariant
 import com.haiilo.catalyst.components.buttons.ProvideCatButtonConfig
 import com.haiilo.catalyst.theme.CatTheme
+import com.haiilo.catalyst.theme.ProvideAccentColor
 import com.haiilo.catalyst.tokens.generated.CatColors
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
@@ -360,6 +362,73 @@ fun ButtonsDemoScreen(onBack: () -> Unit) {
                             content = CatButtonContent.TextOnly("Override"),
                             onClick = {},
                             color = CatButtonColor.Info,
+                        )
+                    }
+                }
+
+                Divider()
+
+                // ---------------------------------------------------------------
+                // 11. Accent color (whitelabel) — ProvideAccentColor per-subtree
+                //     The app-wide accent (#1A73E8) is set in MainActivity via
+                //     CatThemeConfig.configure(). ProvideAccentColor overrides it
+                //     for a specific subtree.
+                // ---------------------------------------------------------------
+                SectionHeader("Accent Color (Whitelabel)")
+                Text(
+                    text = "App-wide accent (#1A73E8) is set in MainActivity.onCreate() via CatThemeConfig.configure(). " +
+                        "ProvideAccentColor overrides it per-subtree.",
+                    style = CatTypography.body2,
+                )
+                Spacer(modifier = Modifier.height(CatSpacing.spacing_md))
+                Text("App-wide accent (from CatThemeConfig):", style = CatTypography.s1)
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(CatSpacing.spacing_md),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    CatButton(
+                        content = CatButtonContent.TextOnly("Filled"),
+                        onClick = {},
+                        variant = CatButtonVariant.Filled,
+                        color = CatButtonColor.Primary,
+                    )
+                    CatButton(
+                        content = CatButtonContent.TextOnly("Outlined"),
+                        onClick = {},
+                        variant = CatButtonVariant.Outlined,
+                        color = CatButtonColor.Primary,
+                    )
+                    CatButton(
+                        content = CatButtonContent.TextOnly("Text"),
+                        onClick = {},
+                        variant = CatButtonVariant.Text,
+                        color = CatButtonColor.Primary,
+                    )
+                }
+                Spacer(modifier = Modifier.height(CatSpacing.spacing_md))
+                Text("Per-subtree override (#E8340A — red):", style = CatTypography.s1)
+                ProvideAccentColor(Color(0xFFE8340A)) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(CatSpacing.spacing_md),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        CatButton(
+                            content = CatButtonContent.TextOnly("Filled"),
+                            onClick = {},
+                            variant = CatButtonVariant.Filled,
+                            color = CatButtonColor.Primary,
+                        )
+                        CatButton(
+                            content = CatButtonContent.TextOnly("Outlined"),
+                            onClick = {},
+                            variant = CatButtonVariant.Outlined,
+                            color = CatButtonColor.Primary,
+                        )
+                        CatButton(
+                            content = CatButtonContent.TextOnly("Text"),
+                            onClick = {},
+                            variant = CatButtonVariant.Text,
+                            color = CatButtonColor.Primary,
                         )
                     }
                 }

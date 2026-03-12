@@ -1,6 +1,7 @@
-package com.haiilo.catalyst.tokens
+package com.haiilo.catalyst.theme
 
 import androidx.compose.ui.graphics.Color
+import com.haiilo.catalyst.extensions.darken
 import com.haiilo.catalyst.tokens.generated.CatColors
 
 // ---------------------------------------------------------------------------
@@ -32,6 +33,50 @@ data class CatColorPalette(
     val textActive: Color,
 ) {
     companion object {
+        // -------------------------------------------------------------------
+        // Accent color support
+        // -------------------------------------------------------------------
+
+        /**
+         * Lightness-reduction factors applied to the accent base color to
+         * produce hover and pressed variants.
+         *
+         * Mirrors `CatTheme.AccentColorDarkenFactor` on iOS.
+         */
+        object AccentDarkenFactor {
+            const val HOVERED = 0.05f
+            const val PRESSED = 0.11f
+        }
+
+        /**
+         * Builds a [CatColorPalette] driven by a single brand accent [color].
+         *
+         * The hover and active shades are derived by darkening the base color
+         * using HSL lightness reduction — matching the iOS implementation.
+         *
+         * Only the `bg*`, `fill*`, and `text*` slots relevant to the
+         * [CatButtonVariant.Filled] / Outlined / Text / Link variants are
+         * populated here; white is used for the foreground fill so the accent
+         * background always has legible contrast.
+         *
+         * Mirrors `CatColorPalette(accentColor:)` on iOS.
+         */
+        fun fromAccentColor(color: Color): CatColorPalette {
+            val bgHover = color.darken(AccentDarkenFactor.HOVERED)
+            val bgActive = color.darken(AccentDarkenFactor.PRESSED)
+            return CatColorPalette(
+                bg = color,
+                bgHover = bgHover,
+                bgActive = bgActive,
+                fill = Color.White,
+                fillHover = Color.White,
+                fillActive = Color.White,
+                text = color,
+                textHover = bgHover,
+                textActive = bgActive,
+            )
+        }
+
         val Primary: CatColorPalette
             get() = CatColorPalette(
                 bg = CatColors.Theme.Primary.bg,

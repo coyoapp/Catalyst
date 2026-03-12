@@ -1,7 +1,7 @@
 package com.haiilo.catalyst.components.buttons
 
 import androidx.compose.ui.graphics.Color
-import com.haiilo.catalyst.tokens.CatColorPalette
+import com.haiilo.catalyst.theme.CatColorPalette
 import com.haiilo.catalyst.tokens.generated.CatColors
 
 // ---------------------------------------------------------------------------
@@ -20,12 +20,21 @@ object CatButtonDefaults {
      * Resolves a [CatButtonState] for the given [variant] and
      * [color] combination. This is the single source of truth that maps
      * every (variant × color) pair onto the design-token colors.
+     *
+     * When [accentPalette] is non-null **and** [color] is [CatButtonColor.Primary],
+     * the accent palette overrides the default Primary design tokens. All other
+     * color roles are unaffected.
      */
     fun style(
         variant: CatButtonVariant,
         color: CatButtonColor,
+        accentPalette: CatColorPalette? = null,
     ): CatButtonState {
-        val p = color.palette()
+        val p = if (accentPalette != null && color == CatButtonColor.Primary) {
+            accentPalette
+        } else {
+            color.palette()
+        }
         return when (variant) {
             CatButtonVariant.Filled -> filledConfig(p)
             CatButtonVariant.Outlined -> outlinedConfig(p)

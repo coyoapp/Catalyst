@@ -251,3 +251,62 @@ CatButton(
     ),
 )
 ```
+
+---
+
+## Whitelabel / Accent color
+
+Catalyst supports a single brand accent color that automatically replaces the default `Primary` palette on all `CatButton(color = CatButtonColor.Primary)` buttons. All other color roles (`Danger`, `Success`, etc.) are unaffected.
+
+### App-wide setup
+
+Call `CatThemeConfig.configure()` **once**, before `setContent {}`, in `Application.onCreate()` or `Activity.onCreate()`. `CatTheme` reads this value at composition time and injects it automatically — no wrapper needed around individual buttons.
+
+```kotlin
+// Application.onCreate() or Activity.onCreate(), before setContent {}
+
+// From a hex string (strings.xml or colors.xml):
+CatThemeConfig.configure("#1A73E8")
+
+// Or from a Compose Color value:
+CatThemeConfig.configure(Color(0xFF1A73E8))
+```
+
+```xml
+<!-- res/values/strings.xml -->
+<string name="brand_accent">#1A73E8</string>
+
+<!-- res/values/colors.xml -->
+<color name="brand_accent">#FF1A73E8</color>
+```
+
+```kotlin
+// Using a resource value:
+CatThemeConfig.configure(getString(R.string.brand_accent))
+```
+
+### Per-subtree override
+
+Use `ProvideAccentColor` to override the accent for a specific part of the UI without affecting the rest of the app:
+
+```kotlin
+ProvideAccentColor(Color(0xFFE8340A)) {
+    CatButton(
+        content = CatButtonContent.TextOnly("Delete"),
+        onClick = { },
+        variant = CatButtonVariant.Filled,
+        color = CatButtonColor.Primary, // uses the red accent in this subtree
+    )
+}
+```
+
+### How it works
+
+| Layer | API | Scope |
+|-------|-----|-------|
+| App-wide | `CatThemeConfig.configure(color)` | All `Primary` buttons inside `CatTheme {}` |
+| Subtree | `ProvideAccentColor(color) { }` | All `Primary` buttons inside the provider |
+| Button | `CatButton(style = …)` | Single button — full override, accent ignored |
+
+The hover and pressed shades are derived from the base accent color by darkening its HSL lightness by **5 %** (hover) and **11 %** (pressed), matching the iOS implementation.
+```

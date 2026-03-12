@@ -36,6 +36,7 @@ import com.haiilo.catalyst.tokens.generated.CatBorderWidth
 import com.haiilo.catalyst.tokens.generated.CatSizes
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
+import com.haiilo.catalyst.theme.LocalCatAccentPalette
 
 // ---------------------------------------------------------------------------
 // CatButton
@@ -82,8 +83,9 @@ fun CatButton(
     val resolvedVariant = variant ?: ambientConfig.variant
     val resolvedColor = color ?: ambientConfig.color
 
+    val accentPalette = LocalCatAccentPalette.current
     val resolvedStyle = style
-        ?: CatButtonDefaults.style(resolvedVariant, resolvedColor)
+        ?: CatButtonDefaults.style(resolvedVariant, resolvedColor, accentPalette)
 
     // -----------------------------------------------------------------------
     // Interaction tracking

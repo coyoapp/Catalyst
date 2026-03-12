@@ -32,6 +32,7 @@ import com.haiilo.catalyst.components.PrimaryButton
 import com.haiilo.catalyst.components.PrimaryButtonWithTheme
 import com.haiilo.catalyst.components.buttons.CatButtonPlacement
 import com.haiilo.catalyst.theme.CatTheme
+import com.haiilo.catalyst.theme.CatThemeConfig
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
 
@@ -45,6 +46,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        // Whitelabel: set brand accent color before setContent so CatTheme
+        // picks it up automatically for all CatButton(color = Primary) buttons.
+        CatThemeConfig.configure("#1A73E8")
         setContent {
             AppNavigation()
         }
@@ -124,8 +128,6 @@ fun DemoScreen(onNavigateToButtons: () -> Unit = {}) {
                 )
 
                 HorizontalDivider(modifier = Modifier.padding(vertical = CatSpacing.spacing_md))
-
-
             }
         }
     }
