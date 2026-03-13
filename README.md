@@ -22,6 +22,35 @@ PS: After adding the dependency or to receive any update in Design System Librar
 | Platform | Component | Docs |
 |----------|-----------|------|
 | iOS | Button | [docs/ios/button.md](./docs/ios/button.md) |
+| Android | Button | [docs/android/button.md](./docs/android/button.md) |
+
+## 🎨 Whitelabel / Accent Color (Android)
+
+Host apps can set a single brand accent color at startup. All `CatButton(color = CatButtonColor.Primary)` buttons automatically use it — no wrapper needed around individual buttons.
+
+**One-time setup** (before `setContent {}` in `Application.onCreate()` or `Activity.onCreate()`):
+
+```kotlin
+// From a hex string (strings.xml / colors.xml):
+CatThemeConfig.configure("#1A73E8")
+
+// Or from a Compose Color:
+CatThemeConfig.configure(Color(0xFF1A73E8))
+```
+
+**Per-subtree override:**
+
+```kotlin
+ProvideAccentColor(Color(0xFFE8340A)) {
+    CatButton(
+        content = CatButtonContent.TextOnly("Action"),
+        onClick = { },
+        color = CatButtonColor.Primary,
+    )
+}
+```
+
+See [docs/android/button.md — Whitelabel / Accent color](./docs/android/button.md#whitelabel--accent-color) for the full reference.
 
 ## 🏗️ Development Workflow (Contributing)
 

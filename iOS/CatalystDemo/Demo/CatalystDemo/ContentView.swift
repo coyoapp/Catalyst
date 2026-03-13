@@ -16,11 +16,23 @@ struct ContentView: View {
     @Query private var items: [Item]
     
     var body: some View {
+        NavigationStack {
+        ScrollView {
         VStack {
             VStack {
                 Text("Catalyst Demo")
                     .font(CatTypography.h1)
                     .foregroundStyle(CatColors.Theme.Danger.text)
+                // Navigate to the Buttons demo screen
+                NavigationLink(destination: ButtonsDemoView()) {
+                    CatButton(.text("View All Buttons"), buttonSize: .medium) {}
+                        .catButtonConfig(variant: .filled, color: .primary)
+                        .frame(maxWidth: .infinity)
+                        .allowsHitTesting(false)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
+                
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Filled button set with catButtonConfig")
@@ -241,6 +253,9 @@ struct ContentView: View {
                     .frame(width: 50, height: 50)
             }
         }
+        
+        } // ScrollView
+        } // NavigationStack
         .padding()
     }
 }
