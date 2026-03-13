@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/coyoapp/Catalyst/compare/v0.4.0...v0.5.0) (2026-03-13)
+
+
+### Features
+
+* **components:** CM-10019 Added android button components and flags icons. ([#33](https://github.com/coyoapp/Catalyst/issues/33)) ([aba4846](https://github.com/coyoapp/Catalyst/commit/aba48463465936c97d282d83b1a413bcfa90498d))
+
 ## [0.4.0](https://github.com/coyoapp/Catalyst/compare/v0.3.0...v0.4.0) (2026-03-11)
 
 
