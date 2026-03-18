@@ -23,16 +23,20 @@ public enum CatTypography {
 }
 
 public enum CatTypographyUIFont {
-    public static let h1 = UIFont(name: "Lato-Bold", size: 32)!
-    public static let h2 = UIFont(name: "Lato-Semibold", size: 28)!
-    public static let h3 = UIFont(name: "Lato-Semibold", size: 24)!
-    public static let h4 = UIFont(name: "Lato-Semibold", size: 20)!
-    public static let body1 = UIFont(name: "Lato-Regular", size: 16)!
-    public static let body2 = UIFont(name: "Lato-Regular", size: 14)!
-    public static let s1 = UIFont(name: "Lato-Semibold", size: 16)!
-    public static let s2 = UIFont(name: "Lato-Semibold", size: 14)!
-    public static let button1 = UIFont(name: "Lato-Semibold", size: 16)!
-    public static let button2 = UIFont(name: "Lato-Regular", size: 16)!
-    public static let caption = UIFont(name: "Lato-Regular", size: 12)!
-    public static let overline = UIFont(name: "Lato-Regular", size: 10)!
+    private static func font(_ name: String, size: CGFloat) -> UIFont {
+        UIFont(name: name, size: size) ?? .systemFont(ofSize: size)
+    }
+
+    public static let h1 = font("Lato-Bold", size: 32)
+    public static let h2 = font("Lato-Semibold", size: 28)
+    public static let h3 = font("Lato-Semibold", size: 24)
+    public static let h4 = font("Lato-Semibold", size: 20)
+    public static let body1 = font("Lato-Regular", size: 16)
+    public static let body2 = font("Lato-Regular", size: 14)
+    public static let s1 = font("Lato-Semibold", size: 16)
+    public static let s2 = font("Lato-Semibold", size: 14)
+    public static let button1 = font("Lato-Semibold", size: 16)
+    public static let button2 = font("Lato-Regular", size: 16)
+    public static let caption = font("Lato-Regular", size: 12)
+    public static let overline = font("Lato-Regular", size: 10)
 }
