@@ -215,8 +215,11 @@ StyleDictionary.registerFormat({
         swiftFile += `}\n`;
 
         swiftFile += `\npublic enum CatTypographyUIFont {\n`;
+        swiftFile += `    private static func font(_ name: String, size: CGFloat) -> UIFont {\n`;
+        swiftFile += `        UIFont(name: name, size: size) ?? .systemFont(ofSize: size)\n`;
+        swiftFile += `    }\n\n`;
         entries.forEach(({ propName, fontName, size }) => {
-            swiftFile += `    public static let ${propName} = UIFont(name: "${fontName}", size: ${size})!\n`;
+            swiftFile += `    public static let ${propName} = font("${fontName}", size: ${size})\n`;
         });
         swiftFile += `}\n`;
 
