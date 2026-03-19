@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.0](https://github.com/coyoapp/Catalyst/compare/v0.5.0...v0.6.0) (2026-03-19)
+
+
+### Features
+
+* **icons:** Added Open positions widget icons ([#36](https://github.com/coyoapp/Catalyst/issues/36)) ([3647080](https://github.com/coyoapp/Catalyst/commit/364708072a5565cf3ed6a924fea0da586bfdf614))
+* **tokens:** typography support UIKit fonts ([#37](https://github.com/coyoapp/Catalyst/issues/37)) ([b2c5706](https://github.com/coyoapp/Catalyst/commit/b2c5706062c3939acd6c197bf14463f055484a1c))
+
+
+### Bug Fixes
+
+* **icons:** removed no longer need flag icons ([#38](https://github.com/coyoapp/Catalyst/issues/38)) ([af6e5c4](https://github.com/coyoapp/Catalyst/commit/af6e5c4f9296227dc96a2e24c8cac4dd71912c28))
+
 ## [0.5.0](https://github.com/coyoapp/Catalyst/compare/v0.4.0...v0.5.0) (2026-03-13)
 
 
