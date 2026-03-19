@@ -185,7 +185,7 @@ StyleDictionary.registerFormat({
 StyleDictionary.registerFormat({
     name: 'swift/swiftui-typography',
     formatter: function ({ dictionary }) {
-        let swiftFile = `//\n// CatTypography.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\n\npublic enum CatTypography {\n`;
+        let swiftFile = `//\n// CatTypography.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\nimport UIKit\n\npublic enum CatTypography {\n`;
 
         const weightToStyle = {
             "700": "Bold",
@@ -195,6 +195,7 @@ StyleDictionary.registerFormat({
             "300": "Light"
         };
 
+        const entries = [];
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
             // The font/weight/swift transform already converted fontWeight to .bold, .regular etc.
@@ -207,10 +208,21 @@ StyleDictionary.registerFormat({
             const fontName = `${fontFamily}-${style}`;
             const propName = prop.path.slice(-1)[0];
 
+            entries.push({ propName, fontName, size });
             swiftFile += `    public static let ${propName} = Font.custom("${fontName}", size: ${size.toFixed(2)})\n`;
         });
 
         swiftFile += `}\n`;
+
+        swiftFile += `\npublic enum CatTypographyUIFont {\n`;
+        swiftFile += `    private static func font(_ name: String, size: CGFloat) -> UIFont {\n`;
+        swiftFile += `        UIFont(name: name, size: size) ?? .systemFont(ofSize: size)\n`;
+        swiftFile += `    }\n\n`;
+        entries.forEach(({ propName, fontName, size }) => {
+            swiftFile += `    public static let ${propName} = font("${fontName}", size: ${size})\n`;
+        });
+        swiftFile += `}\n`;
+
         return swiftFile;
     }
 });
