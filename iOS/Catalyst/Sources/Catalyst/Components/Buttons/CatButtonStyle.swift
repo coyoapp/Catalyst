@@ -1,5 +1,5 @@
 //
-//  CatButton.swift
+//  CatButtonStyle.swift
 //  Catalyst
 //
 //  Created by Efe Durmaz on 24.11.25.
@@ -180,7 +180,7 @@ public struct CatButtonBuilder: View {
 
     public init(
         content: CatButtonContent,
-        iconSize: CGSize? = CGSize(width: CatSizes.sizeMd, height: CatSizes.sizeMd),
+        iconSize: CGSize? = CGSize(width: CatSizes.sizeSm, height: CatSizes.sizeSm),
         stackSpacing: CGFloat? = CatSpacing.spacingMd,
         isLoading: Bool = false,
         action: @escaping () -> Void
@@ -246,7 +246,7 @@ public struct CatButtonBuilder: View {
         icon.resizable()
             .renderingMode(.template)
             .scaledToFit()
-            .frame(width: iconSize?.width ?? CatSizes.sizeMd, height: iconSize?.height ?? CatSizes.sizeMd)
+            .frame(width: iconSize?.width ?? CatSizes.sizeSm, height: iconSize?.height ?? CatSizes.sizeSm)
     }
 
     private var spinner: some View {
@@ -262,12 +262,4 @@ public struct CatButtonBuilder: View {
             iconView(icon)
         }
     }
-}
-
-#Preview {
-    CatButtonBuilder(
-        content: .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
-        iconSize: .init(width: CatSizes.sizeMd, height: CatSizes.sizeMd)) {
-            "Test Sizes"
-        }
 }
