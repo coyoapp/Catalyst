@@ -1,5 +1,5 @@
 //
-//  CatButton.swift
+//  CatButtonStyle.swift
 //  Catalyst
 //
 //  Created by Efe Durmaz on 24.11.25.
@@ -169,70 +169,3 @@ public struct CatButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - Button Layout
-public struct CatButtonBuilder: View {
-    let content: CatButtonContent
-    let action: () -> Void
-    let iconSize: CGSize?
-    let stackSpacing: CGFloat?
-    
-    public init(
-        content: CatButtonContent,
-        iconSize: CGSize? = CGSize(width: CatSizes.sizeSm, height: CatSizes.sizeSm),
-        stackSpacing: CGFloat? = CatSpacing.spacingMd,
-        action: @escaping () -> Void
-    ) {
-        self.content = content
-        self.iconSize = iconSize
-        self.action = action
-        self.stackSpacing = stackSpacing
-    }
-    
-    public var body: some View {
-        Button(action: action) {
-            buildContent()
-        }
-    }
-    
-    @ViewBuilder
-    private func buildContent() -> some View {
-        switch content {
-        case .text(let title):
-            Text(title)
-        case .icon(let img):
-            iconView(img)
-        case .iconText(let icon, let title, let placement):
-            switch placement {
-            case .leading:
-                HStack(alignment: .center, spacing: stackSpacing) {
-                    iconView(icon)
-                    Text(title)
-                }
-                .multilineTextAlignment(.center)
-            case .trailing:
-                HStack(alignment: .center, spacing: stackSpacing) {
-                    Text(title)
-                    iconView(icon)
-                }
-                .multilineTextAlignment(.center)
-            case .top:
-                VStack(spacing: stackSpacing) {
-                    iconView(icon)
-                    Text(title)
-                }
-            case .bottom:
-                VStack(spacing: stackSpacing) {
-                    Text(title)
-                    iconView(icon)
-                }
-            }
-        }
-    }
-    
-    private func iconView(_ icon: Image) -> some View {
-        icon.resizable()
-            .renderingMode(.template)
-            .scaledToFit()
-            .frame(width: iconSize?.width ?? CatSizes.sizeSm, height: iconSize?.height ?? CatSizes.sizeSm)
-    }
-}

@@ -63,22 +63,25 @@ public struct Cat{{PascalName}}StateStyle: Sendable {
 public struct Cat{{PascalName}}StateStyleConfig: Sendable {
     let normal: Cat{{PascalName}}StateStyle
     let hovered: Cat{{PascalName}}StateStyle?
-    let pressed: Cat{{PascalName}}StateStyle?
+    let pressed: Cat{{PascalName}}StateStyle
     let focused: Cat{{PascalName}}StateStyle
     let disabled: Cat{{PascalName}}StateStyle
+    let loading: Cat{{PascalName}}StateStyle?
 
     public init(
         normal: Cat{{PascalName}}StateStyle,
         hovered: Cat{{PascalName}}StateStyle? = nil,
-        pressed: Cat{{PascalName}}StateStyle? = nil,
+        pressed: Cat{{PascalName}}StateStyle,
         focused: Cat{{PascalName}}StateStyle,
-        disabled: Cat{{PascalName}}StateStyle
+        disabled: Cat{{PascalName}}StateStyle,
+        loading: Cat{{PascalName}}StateStyle? = nil
     ) {
         self.normal = normal
         self.hovered = hovered
         self.pressed = pressed
         self.focused = focused
         self.disabled = disabled
+        self.loading = loading
     }
 }
 
@@ -124,6 +127,7 @@ public struct Cat{{PascalName}}Style: ViewModifier {
     let padding: EdgeInsets
     let componentSize: Cat{{PascalName}}Size
 
+    var isLoading: Bool = false
     @State private var isHovered: Bool = false
     @Environment(\.isFocused) private var isFocused
     @Environment(\.isEnabled) private var isEnabled
@@ -143,7 +147,13 @@ public struct Cat{{PascalName}}Style: ViewModifier {
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .overlay(
                 Group {
-                    // TODO: add hasSecondaryFocusRing check if this component needs it
+                    if state.properties?.hasSecondaryFocusRing == true {
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .stroke(
+                                CatColors.Ui.Border.focus,
+                                lineWidth: CatBorderWidth.borderWidthThin)
+                            .padding(-CatSpacing.spacingXxs)
+                    }
                 }
             )
             .onHover { hovering in
@@ -151,10 +161,22 @@ public struct Cat{{PascalName}}Style: ViewModifier {
             }
     }
 
-    private func resolveState() -> Cat{{PascalName}}StateStyle {
+    /// Resolves the active state following Button's priority chain:
+    /// disabled → loading → pressed → hovered → focused → normal.
+    ///
+    /// For non-interactive components remove the `isPressed` path and pass `false`.
+    private func resolveState(isPressed: Bool = false) -> Cat{{PascalName}}StateStyle {
         guard isEnabled else { return styleConfig.disabled }
-        if isFocused { return styleConfig.focused }
-        if isHovered, let hovered = styleConfig.hovered { return hovered }
-        return styleConfig.normal
+        if isLoading {
+            return styleConfig.loading ?? styleConfig.normal
+        } else if isPressed {
+            return styleConfig.pressed
+        } else if isHovered, let hovered = styleConfig.hovered {
+            return hovered
+        } else if isFocused {
+            return styleConfig.focused
+        } else {
+            return styleConfig.normal
+        }
     }
 }

@@ -55,18 +55,31 @@ function toPascalCase(str) {
     .join('');
 }
 
+/** badge → badge, text-input → textInput */
+function toCamelCase(str) {
+  const pascal = toPascalCase(str);
+  return pascal.charAt(0).toLowerCase() + pascal.slice(1);
+}
+
 /** badge → Badge, text-input → TextInput */
 const componentKebab = opts.component.toLowerCase();
 const PascalName = toPascalCase(componentKebab);
+const camelName = toCamelCase(componentKebab);
 
 const date = new Date().toLocaleDateString('en-US', {
   year: 'numeric', month: '2-digit', day: '2-digit'
 }).replace(/\//g, '.');
 
-// Map size case names → CatSizes token names
+// Map size case names → CatSizes token names.
+// These names mirror the CatButtonSize enum cases in CatButtonStyle.swift:
+//   .extraSmall → CatSizes.sizeXl   (32pt)
+//   .small      → CatSizes.size2xl  (40pt)
+//   .medium     → CatSizes.size3xl  (48pt)
+// Add new entries here when new CatSizes tokens are introduced.
 const SIZE_TOKEN_MAP = {
   'extrasmall': 'CatSizes.sizeXl',
   'extra-small': 'CatSizes.sizeXl',
+  'extraSmall': 'CatSizes.sizeXl',
   'xs': 'CatSizes.sizeXs',
   'small': 'CatSizes.size2xl',
   'sm': 'CatSizes.sizeSm',
@@ -75,7 +88,7 @@ const SIZE_TOKEN_MAP = {
   'large': 'CatSizes.size4xl',
   'lg': 'CatSizes.sizeLg',
   'xlarge': 'CatSizes.size5xl',
-  'xl': 'CatSizes.sizeXl',
+  'xl': 'CatSizes.size5xl',
 };
 
 function sizeToken(caseName) {
@@ -100,6 +113,13 @@ function sizeTokenFromContractPath(tokenPath, fallbackCaseName) {
 
 Handlebars.registerHelper('toUpperCase', str => String(str).toUpperCase());
 Handlebars.registerHelper('toLowerCase', str => String(str).toLowerCase());
+Handlebars.registerHelper('toCamelCase', str => {
+  const pascal = String(str)
+    .split(/[-_\s]+/)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join('');
+  return pascal.charAt(0).toLowerCase() + pascal.slice(1);
+});
 Handlebars.registerHelper('unless', function(conditional, options) {
   if (!conditional) return options.fn(this);
   return options.inverse(this);
@@ -131,6 +151,7 @@ function buildTemplateContext(specContent, contract) {
 
   return {
     PascalName,
+    camelName,
     componentKebab,
     date,
     hasContentEnum: opts.hasContentEnum || contentCases.length > 0,

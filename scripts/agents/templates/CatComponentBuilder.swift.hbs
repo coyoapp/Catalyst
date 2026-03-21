@@ -59,16 +59,25 @@ public struct Cat{{PascalName}}Builder: View {
 
 /// Public-facing {{PascalName}} component. Use this in host apps.
 ///
-/// Default style is `.primary`. Pass a custom `styleConfig` to override.
+/// Style is driven by the SwiftUI environment — set `.cat{{PascalName}}Config(variant:color:)` on a
+/// parent view so that all `Cat{{PascalName}}` instances within that subtree share the same style.
+/// Individual `Cat{{PascalName}}` views can override by applying the modifier directly on themselves.
 ///
 /// Example usage:
 /// ```swift
+/// // Minimal — inherits config from environment (defaults to .filled / .primary)
 /// Cat{{PascalName}}({{#if hasContentEnum}}content: .{{firstContentCase}}{{else}}label: "Draft"{{/if}})
-/// Cat{{PascalName}}(
-///     {{#if hasContentEnum}}content: .{{firstContentCase}},{{else}}label: "Active",{{/if}}
-///     componentSize: .medium,
-///     styleConfig: CatTheme.Components.{{PascalName}}s.Primary.defaultConfig
-/// )
+///
+/// // Override on a single view
+/// Cat{{PascalName}}({{#if hasContentEnum}}content: .{{firstContentCase}}{{else}}label: "Error"{{/if}})
+///     .cat{{PascalName}}Config(variant: .outlined, color: .danger)
+///
+/// // Batch — all Cat{{PascalName}} instances inside the VStack share the same config
+/// VStack {
+///     Cat{{PascalName}}({{#if hasContentEnum}}content: .{{firstContentCase}}{{else}}label: "A"{{/if}})
+///     Cat{{PascalName}}({{#if hasContentEnum}}content: .{{firstContentCase}}{{else}}label: "B"{{/if}})
+/// }
+/// .cat{{PascalName}}Config(variant: .text, color: .secondary)
 /// ```
 public struct Cat{{PascalName}}: View {
     {{#if hasContentEnum}}
@@ -77,18 +86,18 @@ public struct Cat{{PascalName}}: View {
     let label: String
     {{/if}}
     let componentSize: Cat{{PascalName}}Size
-    let styleConfig: Cat{{PascalName}}StateStyleConfig
-    let styleFont: Font
+    let styleFont: Font?
+    let padding: EdgeInsets?
 
     public init(
         {{#if hasContentEnum}}
-        content: Cat{{PascalName}}Content,
+        _ content: Cat{{PascalName}}Content,
         {{else}}
-        label: String,
+        _ label: String,
         {{/if}}
         componentSize: Cat{{PascalName}}Size = .{{defaultSize}},
-        styleConfig: Cat{{PascalName}}StateStyleConfig = CatTheme.Components.{{PascalName}}s.Primary.defaultConfig,
-        styleFont: Font = CatTypography.s1
+        styleFont: Font? = nil,
+        padding: EdgeInsets? = nil
     ) {
         {{#if hasContentEnum}}
         self.content = content
@@ -96,18 +105,33 @@ public struct Cat{{PascalName}}: View {
         self.label = label
         {{/if}}
         self.componentSize = componentSize
-        self.styleConfig = styleConfig
         self.styleFont = styleFont
+        self.padding = padding
     }
+
+    /// The active config from the environment. Set via `.cat{{PascalName}}Config(variant:color:)`.
+    @Environment(\.cat{{PascalName}}Config) private var componentConfig
+    /// The active Catalyst theme from the environment.
+    @Environment(\.catalystTheme) private var theme
+    /// An optional accent palette injected via `.catalystAccentColor(_:)`.
+    @Environment(\.catalystAccentPalette) private var accentPalette
 
     public var body: some View {
         Cat{{PascalName}}Builder({{#if hasContentEnum}}content: content{{else}}label: label{{/if}})
             .modifier(
                 Cat{{PascalName}}Style(
-                    styleConfig: styleConfig,
+                    // TODO: replace with CatTheme.{{PascalName|lowercase}}Config(variant:color:theme:accentPalette:)
+                    // once you add a CatTheme+{{PascalName}}.swift extension following
+                    // the same pattern as CatTheme+Button.swift
+                    styleConfig: CatTheme.{{camelName}}Config(
+                        variant: componentConfig.variant,
+                        color: componentConfig.color,
+                        theme: theme,
+                        accentPalette: accentPalette
+                    ),
                     cornerRadius: CatBorderRadius.borderRadiusMd,
                     borderWidth: CatBorderWidth.borderWidthThin,
-                    padding: EdgeInsets(
+                    padding: padding ?? EdgeInsets(
                         top: CatSpacing.spacingLg,
                         leading: CatSpacing.spacingXl,
                         bottom: CatSpacing.spacingLg,
@@ -116,5 +140,39 @@ public struct Cat{{PascalName}}: View {
                     componentSize: componentSize
                 )
             )
+    }
+}
+
+// MARK: - Cat{{PascalName}}Config (Environment)
+
+/// A lightweight value that describes the visual appearance of a `Cat{{PascalName}}` via its
+/// semantic `variant` and `color` role. Inject it with `.cat{{PascalName}}Config(variant:color:)`.
+public struct Cat{{PascalName}}Config: Equatable {
+    public var variant: CatTheme.ButtonVariant
+    public var color: CatTheme.ColorConfig
+
+    public init(variant: CatTheme.ButtonVariant = .filled, color: CatTheme.ColorConfig = .primary) {
+        self.variant = variant
+        self.color = color
+    }
+
+    public static let `default` = Cat{{PascalName}}Config(variant: .filled, color: .primary)
+}
+
+private struct Cat{{PascalName}}ConfigEnvironmentKey: EnvironmentKey {
+    static let defaultValue: Cat{{PascalName}}Config = .default
+}
+
+public extension EnvironmentValues {
+    var cat{{PascalName}}Config: Cat{{PascalName}}Config {
+        get { self[Cat{{PascalName}}ConfigEnvironmentKey.self] }
+        set { self[Cat{{PascalName}}ConfigEnvironmentKey.self] = newValue }
+    }
+}
+
+public extension View {
+    /// Sets the variant and color role for all `Cat{{PascalName}}` views in this subtree.
+    func cat{{PascalName}}Config(variant: CatTheme.ButtonVariant, color: CatTheme.ColorConfig) -> some View {
+        environment(\.cat{{PascalName}}Config, Cat{{PascalName}}Config(variant: variant, color: color))
     }
 }
