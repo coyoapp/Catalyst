@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/coyoapp/Catalyst/compare/v0.7.0...v0.7.1) (2026-03-26)
+
+
+### Bug Fixes
+
+* **icons:** Icons changed ([#42](https://github.com/coyoapp/Catalyst/issues/42)) ([03e2983](https://github.com/coyoapp/Catalyst/commit/03e29834a34090782513af423f72eb663e83acd6))
+
 ## [0.7.0](https://github.com/coyoapp/Catalyst/compare/v0.6.0...v0.7.0) (2026-03-26)
 
 
