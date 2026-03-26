@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/coyoapp/Catalyst/compare/v0.6.0...v0.7.0) (2026-03-26)
+
+
+### Features
+
+* **icons:** Added Open position widget icons ([#40](https://github.com/coyoapp/Catalyst/issues/40)) ([54b2104](https://github.com/coyoapp/Catalyst/commit/54b2104fd637bb0553a11d30dbe603ecc424d0e9))
+
 ## [0.6.0](https://github.com/coyoapp/Catalyst/compare/v0.5.0...v0.6.0) (2026-03-19)
 
 
