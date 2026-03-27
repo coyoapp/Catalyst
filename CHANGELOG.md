@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/coyoapp/Catalyst/compare/v0.8.0...v0.8.1) (2026-03-27)
+
+
+### Bug Fixes
+
+* **icons:** Changed icon names, it should start with letter. ([33fe51d](https://github.com/coyoapp/Catalyst/commit/33fe51ddde90cc3ee7e5cc0f859d7ceb81788e10))
+
 ## [0.8.0](https://github.com/coyoapp/Catalyst/compare/v0.7.1...v0.8.0) (2026-03-27)
 
 
