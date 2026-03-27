@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/coyoapp/Catalyst/compare/v0.7.1...v0.8.0) (2026-03-27)
+
+
+### Features
+
+* **icons:** 0.7.1 not working, just triggering new release ([#44](https://github.com/coyoapp/Catalyst/issues/44)) ([77e8de5](https://github.com/coyoapp/Catalyst/commit/77e8de58f8f2636b6eaa6dda4e4a65c1b62f7d1f))
+
 ## [0.7.1](https://github.com/coyoapp/Catalyst/compare/v0.7.0...v0.7.1) (2026-03-26)
 
 
