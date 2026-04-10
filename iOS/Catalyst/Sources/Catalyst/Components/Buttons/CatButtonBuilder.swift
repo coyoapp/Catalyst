@@ -53,7 +53,7 @@ public struct CatButton: View {
     public var body: some View {
         CatButtonBuilder(
             content: content,
-            iconSize: .init(width: CatSizes.sizeLg, height: CatSizes.sizeLg),
+            iconSize: .init(width: CatSizes.sizeMd, height: CatSizes.sizeMd),
             stackSpacing: stackSpacing,
             action: action
         )
@@ -83,4 +83,12 @@ public struct CatButton: View {
             )
         )
     }
+}
+
+#Preview {
+    CatButton(
+        .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "button", placement: .trailing),
+        buttonSize: .medium) {
+            print("Testing button!")
+        }
 }
