@@ -185,7 +185,7 @@ fun CatButton(
 // ---------------------------------------------------------------------------
 // ButtonContentLayout (internal)
 //
-// Icon size : CatSizes.size_lg = 24 dp
+// Icon size : CatSizes.size_md = 20 dp
 // Gap       : CatSpacing.spacing_xs = 4 dp  (Figma spacingXs variable)
 // ---------------------------------------------------------------------------
 
@@ -208,7 +208,7 @@ private fun ButtonContentLayout(
             Icon(
                 painter = content.painter,
                 contentDescription = content.contentDescription,
-                modifier = Modifier.size(CatSizes.size_lg), // 24 dp
+                modifier = Modifier.size(CatSizes.size_md), // 24 dp
                 tint = foregroundColor,
             )
         }
@@ -222,7 +222,7 @@ private fun ButtonContentLayout(
                     Icon(
                         painter = content.painter,
                         contentDescription = content.iconContentDescription,
-                        modifier = Modifier.size(CatSizes.size_lg), // 24 dp
+                        modifier = Modifier.size(CatSizes.size_md), // 24 dp
                         tint = foregroundColor,
                     )
                 }
