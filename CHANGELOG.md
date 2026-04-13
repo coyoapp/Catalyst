@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/coyoapp/Catalyst/compare/v0.8.1...v0.8.2) (2026-04-13)
+
+
+### Bug Fixes
+
+* **Tokens:** add 1px border width and adjusted icon sizes ([#48](https://github.com/coyoapp/Catalyst/issues/48)) ([4613ea5](https://github.com/coyoapp/Catalyst/commit/4613ea568fcc9288bf94bb3696891d514a416470))
+
 ## [0.8.1](https://github.com/coyoapp/Catalyst/compare/v0.8.0...v0.8.1) (2026-03-27)
 
 
