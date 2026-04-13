@@ -4,6 +4,10 @@
       "value": "0",
       "type": "dimension"
     },
+    "dimension-0-25": {
+      "value": "1",
+      "type": "dimension"
+    },
     "dimension-0-5": {
       "value": "2",
       "type": "dimension"

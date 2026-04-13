@@ -178,7 +178,7 @@ public struct CatButtonBuilder: View {
     
     public init(
         content: CatButtonContent,
-        iconSize: CGSize? = CGSize(width: CatSizes.sizeSm, height: CatSizes.sizeSm),
+        iconSize: CGSize? = CGSize(width: CatSizes.sizeMd, height: CatSizes.sizeMd),
         stackSpacing: CGFloat? = CatSpacing.spacingMd,
         action: @escaping () -> Void
     ) {
@@ -233,6 +233,14 @@ public struct CatButtonBuilder: View {
         icon.resizable()
             .renderingMode(.template)
             .scaledToFit()
-            .frame(width: iconSize?.width ?? CatSizes.sizeSm, height: iconSize?.height ?? CatSizes.sizeSm)
+            .frame(width: iconSize?.width ?? CatSizes.sizeMd, height: iconSize?.height ?? CatSizes.sizeMd)
     }
+}
+
+#Preview {
+    CatButtonBuilder(
+        content: .iconText(icon: Image("icon-checkmark", bundle: .catalyst), text: "Button", placement: .trailing),
+        iconSize: .init(width: CatSizes.sizeMd, height: CatSizes.sizeMd)) {
+            "Test Sizes"
+        }
 }
