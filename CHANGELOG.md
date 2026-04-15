@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.3](https://github.com/coyoapp/Catalyst/compare/v0.8.2...v0.8.3) (2026-04-15)
+
+
+### Bug Fixes
+
+* **cleanUp:** Test classes cleaned and documentation added for tokens ([#50](https://github.com/coyoapp/Catalyst/issues/50)) ([cf4f72e](https://github.com/coyoapp/Catalyst/commit/cf4f72ecf79c19008aeaeac1557ded8e5ad56eaa))
+
 ## [0.8.2](https://github.com/coyoapp/Catalyst/compare/v0.8.1...v0.8.2) (2026-04-13)
 
 
