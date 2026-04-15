@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -20,7 +19,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.haiilo.catalyst.R
@@ -28,8 +26,6 @@ import com.haiilo.catalyst.components.buttons.CatButton
 import com.haiilo.catalyst.components.buttons.CatButtonColor
 import com.haiilo.catalyst.components.buttons.CatButtonContent
 import com.haiilo.catalyst.components.buttons.CatButtonVariant
-import com.haiilo.catalyst.components.PrimaryButton
-import com.haiilo.catalyst.components.PrimaryButtonWithTheme
 import com.haiilo.catalyst.components.buttons.CatButtonPlacement
 import com.haiilo.catalyst.theme.CatTheme
 import com.haiilo.catalyst.theme.CatThemeConfig
@@ -70,9 +66,7 @@ private fun AppNavigation() {
 
 @Composable
 fun DemoScreen(onNavigateToButtons: () -> Unit = {}) {
-    var darkTheme by remember { mutableStateOf(false) }
-
-    CatTheme(darkTheme = darkTheme) {
+    CatTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background,
@@ -100,31 +94,6 @@ fun DemoScreen(onNavigateToButtons: () -> Unit = {}) {
                     onClick = onNavigateToButtons,
                     variant = CatButtonVariant.Filled,
                     color = CatButtonColor.Primary,
-                )
-
-                Text("This is body text using DS typography.", style = CatTypography.body1)
-                Text("This is a caption.", style = CatTypography.body2)
-
-                Icon(
-                    painter = painterResource(id = R.drawable.reaction_appreciate),
-                    contentDescription = "Appreciate",
-                    tint = Color.Unspecified,
-                )
-
-                Icon(
-                    painter = painterResource(id = R.drawable.union),
-                    contentDescription = "Union",
-                    tint = Color.Unspecified,
-                )
-
-                PrimaryButton(
-                    text = if (darkTheme) "Switch to Light" else "Switch to Dark",
-                    onClick = { darkTheme = !darkTheme },
-                )
-
-                PrimaryButtonWithTheme(
-                    text = if (darkTheme) "Themed to Light" else "Themed to Dark",
-                    onClick = { darkTheme = !darkTheme },
                 )
 
                 HorizontalDivider(modifier = Modifier.padding(vertical = CatSpacing.spacing_md))
