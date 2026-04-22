@@ -40,8 +40,8 @@ public enum CatTheme {
     /// touching individual call sites.
     public static var fontFamily: String {
         switch current {
-        case .primaryHaiilo: return "Lato"
-        case .dbEngage: return "DBNeoScreenSans"
+        case .primaryHaiilo: return CatFontFamilies.lato
+        case .dbEngage: return CatFontFamilies.dbEngage
         }
     }
     

@@ -1,7 +1,8 @@
 {
   "font": {
     "family": {
-      "lato": { "value": "Lato", "type": "fontFamily" }
+      "lato": { "value": "Lato", "type": "fontFamily" },
+      "dbEngage": { "value": "DBNeoScreenSans", "type": "fontFamily" }
     }
   }
 }

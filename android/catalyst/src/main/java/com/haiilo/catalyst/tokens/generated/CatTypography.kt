@@ -12,74 +12,74 @@ import androidx.compose.ui.unit.sp
 import com.haiilo.catalyst.CatFontFamily
 
 public object CatTypography {
-    public val h1 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val h1: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(700),
         fontSize = 32.sp,
         lineHeight = 40.sp
     )
-    public val h2 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val h2: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(600),
         fontSize = 28.sp,
         lineHeight = 36.sp
     )
-    public val h3 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val h3: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(600),
         fontSize = 24.sp,
         lineHeight = 32.sp
     )
-    public val h4 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val h4: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(600),
         fontSize = 20.sp,
         lineHeight = 28.sp
     )
-    public val body1 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val body1: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(400),
         fontSize = 16.sp,
         lineHeight = 22.sp
     )
-    public val body2 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val body2: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(400),
         fontSize = 14.sp,
         lineHeight = 18.sp
     )
-    public val s1 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val s1: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(600),
         fontSize = 16.sp,
         lineHeight = 22.sp
     )
-    public val s2 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val s2: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(600),
         fontSize = 14.sp,
         lineHeight = 18.sp
     )
-    public val button1 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val button1: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(600),
         fontSize = 16.sp,
         lineHeight = 20.sp
     )
-    public val button2 = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val button2: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(400),
         fontSize = 16.sp,
         lineHeight = 20.sp
     )
-    public val caption = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val caption: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(400),
         fontSize = 12.sp,
         lineHeight = 16.sp
     )
-    public val overline = TextStyle(
-        fontFamily = CatFontFamily.lato,
+    public val overline: TextStyle get() = TextStyle(
+        fontFamily = CatFontFamily.current,
         fontWeight = FontWeight(400),
         fontSize = 10.sp,
         lineHeight = 16.sp
