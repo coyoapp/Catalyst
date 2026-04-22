@@ -13,6 +13,7 @@ public enum CatTheme {
     /// Currently only `.primaryHaiilo` is supported; additional cases can be added in future releases.
     public enum ThemeType: Hashable {
         case primaryHaiilo
+        case dbEngage
     }
 
     // MARK: - Configuration
@@ -31,6 +32,19 @@ public enum CatTheme {
     /// The theme that was selected during `configure(theme:)`. Defaults to `.primaryHaiilo`.
     public private(set) static var current: ThemeType = .primaryHaiilo
 
+    // MARK: - Font family
+    /// The font family associated with the active theme.
+    ///
+    /// Generated `CatTypography` reads this at call time, so flipping `current`
+    /// swaps the typographic voice across the whole design system without
+    /// touching individual call sites.
+    public static var fontFamily: String {
+        switch current {
+        case .primaryHaiilo: return "Lato"
+        case .dbEngage: return "DBNeoScreenSans"
+        }
+    }
+    
     public enum ButtonVariant: Hashable {
         case filled
         case outlined
