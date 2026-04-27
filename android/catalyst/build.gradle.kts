@@ -53,7 +53,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.haiilo"
                 artifactId = "catalyst"
-                version = project.version.toString()
+                version = "0.1.0"
             }
         }
     }
