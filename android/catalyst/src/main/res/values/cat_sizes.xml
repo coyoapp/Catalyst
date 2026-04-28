@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Do not edit directly, this file is generated from design tokens
+-->
+<resources>
+    <dimen name="cat_size_xs">12dp</dimen>
+    <dimen name="cat_size_sm">16dp</dimen>
+    <dimen name="cat_size_md">20dp</dimen>
+    <dimen name="cat_size_lg">24dp</dimen>
+    <dimen name="cat_size_xl">32dp</dimen>
+    <dimen name="cat_size_2xl">40dp</dimen>
+    <dimen name="cat_size_3xl">48dp</dimen>
+    <dimen name="cat_size_4xl">56dp</dimen>
+    <dimen name="cat_size_5xl">64dp</dimen>
+</resources>
