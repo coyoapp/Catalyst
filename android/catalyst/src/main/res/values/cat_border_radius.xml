@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Do not edit directly, this file is generated from design tokens
+-->
+<resources>
+    <dimen name="cat_border_radius_none">0dp</dimen>
+    <dimen name="cat_border_radius_sm">4dp</dimen>
+    <dimen name="cat_border_radius_md">8dp</dimen>
+    <dimen name="cat_border_radius_lg">12dp</dimen>
+    <dimen name="cat_border_radius_xl">16dp</dimen>
+    <dimen name="cat_border_radius_2xl">24dp</dimen>
+    <dimen name="cat_border_radius_full">999dp</dimen>
+</resources>

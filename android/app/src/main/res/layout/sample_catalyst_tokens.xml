@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  Sample layout demonstrating usage of Catalyst design tokens in Android XML.
+  Colors, spacing, typography, border radius, border width, and sizes are all
+  referenced from the generated resource files.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cat_color_ui_background_canvas"
+    tools:context=".XmlTokensDemoActivity"
+
+    xsi:schemaLocation="http://schemas.android.com/apk/res/android
+http://schemas.android.com/tools ">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/cat_spacing_xl">
+
+
+        <!-- TYPOGRAPHY SAMPLES -->
+
+        <TextView
+            style="@style/CatTypography.H1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Heading 1"
+            android:textColor="@color/cat_color_ui_font_head" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_md" />
+
+        <TextView
+            style="@style/CatTypography.H2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Heading 2"
+            android:textColor="@color/cat_color_ui_font_head" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_md" />
+
+        <TextView
+            style="@style/CatTypography.H3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Heading 3"
+            android:textColor="@color/cat_color_ui_font_head" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_md" />
+
+        <TextView
+            style="@style/CatTypography.H4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Heading 4"
+            android:textColor="@color/cat_color_ui_font_head" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_lg" />
+
+        <TextView
+            style="@style/CatTypography.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Body 1 – The quick brown fox jumps over the lazy dog."
+            android:textColor="@color/cat_color_ui_font_body" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_sm" />
+
+        <TextView
+            style="@style/CatTypography.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Body 2 – A smaller body text style for secondary content."
+            android:textColor="@color/cat_color_ui_font_muted" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_sm" />
+
+        <TextView
+            style="@style/CatTypography.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Caption text"
+            android:textColor="@color/cat_color_ui_font_muted" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_sm" />
+
+        <TextView
+            style="@style/CatTypography.Overline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OVERLINE"
+            android:textAllCaps="true"
+            android:textColor="@color/cat_color_ui_font_muted" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_3xl" />
+
+        <!-- CARD SAMPLE (Surface + Border + Border Radius + Spacing)     -->
+        <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/cat_spacing_xl"
+            app:cardBackgroundColor="@color/cat_color_ui_background_surface"
+            app:cardCornerRadius="@dimen/cat_border_radius_md"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/cat_spacing_xl">
+
+                <TextView
+                    style="@style/CatTypography.S1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Card Title"
+                    android:textColor="@color/cat_color_ui_font_head" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/cat_spacing_xs" />
+
+                <TextView
+                    style="@style/CatTypography.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="This card demonstrates surface color, border radius, and spacing tokens working together."
+                    android:textColor="@color/cat_color_ui_font_body" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- BUTTON SAMPLES (Sizes + Colors + Typography) -->
+
+        <TextView
+            style="@style/CatTypography.H4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/cat_spacing_md"
+            android:text="Buttons"
+            android:textColor="@color/cat_color_ui_font_head" />
+
+        <!-- Primary Filled Button -->
+        <Button
+            style="@style/CatTypography.Button1"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/cat_size_5xl"
+            android:backgroundTint="@color/cat_color_theme_primary_bg"
+            android:minWidth="@dimen/cat_size_xl"
+            android:paddingStart="@dimen/cat_spacing_xl"
+            android:paddingEnd="@dimen/cat_spacing_xl"
+            android:text="Primary Button"
+            android:textColor="@color/cat_color_theme_primary_fill"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_md" />
+
+        <!-- Secondary Button -->
+        <Button
+            style="@style/CatTypography.Button1"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/cat_size_5xl"
+            android:backgroundTint="@color/cat_color_theme_secondary_bg"
+            android:minWidth="@dimen/cat_size_xl"
+            android:paddingStart="@dimen/cat_spacing_xl"
+            android:paddingEnd="@dimen/cat_spacing_xl"
+            android:text="Secondary Button"
+            android:textColor="@color/cat_color_theme_secondary_fill"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_md" />
+
+        <!-- Danger Button -->
+        <Button
+            style="@style/CatTypography.Button2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/cat_size_5xl"
+            android:backgroundTint="@color/cat_color_theme_danger_bg"
+            android:minWidth="@dimen/cat_size_xl"
+            android:paddingStart="@dimen/cat_spacing_xl"
+            android:paddingEnd="@dimen/cat_spacing_xl"
+            android:text="Danger Button"
+            android:textColor="@color/cat_color_theme_danger_fill"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/cat_spacing_3xl" />
+
+        <!-- SIZING SAMPLE (Icon placeholders using size tokens) -->
+
+        <TextView
+            style="@style/CatTypography.S2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/cat_spacing_md"
+            android:text="Size Tokens"
+            android:textColor="@color/cat_color_ui_font_head" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- XS icon placeholder -->
+            <View
+                android:layout_width="@dimen/cat_size_xs"
+                android:layout_height="@dimen/cat_size_xs"
+                android:background="@color/cat_color_theme_primary_bg" />
+
+            <View
+                android:layout_width="@dimen/cat_spacing_sm"
+                android:layout_height="0dp" />
+
+            <!-- SM icon placeholder -->
+            <View
+                android:layout_width="@dimen/cat_size_sm"
+                android:layout_height="@dimen/cat_size_sm"
+                android:background="@color/cat_color_theme_info_bg" />
+
+            <View
+                android:layout_width="@dimen/cat_spacing_sm"
+                android:layout_height="0dp" />
+
+            <!-- MD icon placeholder -->
+            <View
+                android:layout_width="@dimen/cat_size_md"
+                android:layout_height="@dimen/cat_size_md"
+                android:background="@color/cat_color_theme_success_bg" />
+
+            <View
+                android:layout_width="@dimen/cat_spacing_sm"
+                android:layout_height="0dp" />
+
+            <!-- LG icon placeholder -->
+            <View
+                android:layout_width="@dimen/cat_size_lg"
+                android:layout_height="@dimen/cat_size_lg"
+                android:background="@color/cat_color_theme_warning_bg" />
+
+            <View
+                android:layout_width="@dimen/cat_spacing_sm"
+                android:layout_height="0dp" />
+
+            <!-- XL icon placeholder -->
+            <View
+                android:layout_width="@dimen/cat_size_xl"
+                android:layout_height="@dimen/cat_size_xl"
+                android:background="@color/cat_color_theme_danger_bg" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
