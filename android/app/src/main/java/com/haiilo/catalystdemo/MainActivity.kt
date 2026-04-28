@@ -1,5 +1,6 @@
 package com.haiilo.catalystdemo
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -53,11 +54,17 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 private fun AppNavigation() {
+    val context = androidx.compose.ui.platform.LocalContext.current
     var destination by remember { mutableStateOf(DemoDestination.Main) }
 
     when (destination) {
         DemoDestination.Main ->
-            DemoScreen(onNavigateToButtons = { destination = DemoDestination.Buttons })
+            DemoScreen(
+                onNavigateToButtons = { destination = DemoDestination.Buttons },
+                onNavigateToXmlDemo = {
+                    context.startActivity(Intent(context, XmlTokensDemoActivity::class.java))
+                }
+            )
 
         DemoDestination.Buttons ->
             ButtonsDemoScreen(onBack = { destination = DemoDestination.Main })
@@ -65,7 +72,7 @@ private fun AppNavigation() {
 }
 
 @Composable
-fun DemoScreen(onNavigateToButtons: () -> Unit = {}) {
+fun DemoScreen(onNavigateToButtons: () -> Unit = {}, onNavigateToXmlDemo: () -> Unit = {}) {
     CatTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -97,6 +104,18 @@ fun DemoScreen(onNavigateToButtons: () -> Unit = {}) {
                 )
 
                 HorizontalDivider(modifier = Modifier.padding(vertical = CatSpacing.spacing_md))
+
+                CatButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    content = CatButtonContent.IconText(
+                        painter = painterResource(id = R.drawable.icon_checkmark),
+                        text = "View XML Tokens Demo",
+                        CatButtonPlacement.Trailing
+                    ),
+                    onClick = onNavigateToXmlDemo,
+                    variant = CatButtonVariant.Filled,
+                    color = CatButtonColor.Primary,
+                )
             }
         }
     }
