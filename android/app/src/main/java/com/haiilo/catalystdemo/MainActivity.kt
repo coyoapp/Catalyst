@@ -51,6 +51,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 @Composable
 private fun AppNavigation() {
     val context = androidx.compose.ui.platform.LocalContext.current
