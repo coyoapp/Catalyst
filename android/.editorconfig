@@ -16,6 +16,11 @@ ktlint_standard_no-wildcard-imports = disabled
 ktlint_standard_function-naming = disabled
 ktlint_standard_trailing-comma-on-call-site = disabled
 ktlint_standard_import-ordering = disabled
+# Design-token files use snake_case (e.g. spacing_xl) and XML-style helpers use
+# PascalCase property names that match Android XML style resource names
+# (e.g. H1, Body1).  Both patterns are intentional, so property-naming is
+# disabled project-wide.
+ktlint_standard_property-naming = disabled
 
 # Common exclusions for Design Systems
 [catalyst/**.xml]

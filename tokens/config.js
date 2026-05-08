@@ -228,6 +228,99 @@ StyleDictionary.registerFormat({
 });
 
 
+// Formatter for Android XML Typography (res/values/cat_typography.xml)
+StyleDictionary.registerFormat({
+    name: 'xml/android-typography',
+    formatter: function ({ dictionary }) {
+        const weightToStyle = {
+            "700": "bold",
+            "600": "semibold",
+            "500": "medium",
+            "400": "regular",
+            "300": "light"
+        };
+
+        function toPascalCase(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        let xml = `<?xml version="1.0" encoding="utf-8"?>\n`;
+        xml += `<!--\n  Do not edit directly, this file is generated from design tokens\n-->\n`;
+        xml += `<resources>\n`;
+
+        // Base style required by Android for dot-notation inheritance (e.g. CatTypography.H1)
+        xml += `\n    <style name="CatTypography" />\n`;
+
+        dictionary.allProperties.forEach(prop => {
+            const val = prop.value;
+            const propName = prop.path.slice(-1)[0];
+            const styleName = `CatTypography.${toPascalCase(propName)}`;
+            const fontSize = parseFloat(val.fontSize);
+            const lineHeight = parseFloat(val.lineHeight);
+            const fontWeight = val.fontWeight.replace(/"/g, '');
+            const style = weightToStyle[fontWeight] || "regular";
+            const fontFamily = val.fontFamily.replace(/"/g, '').toLowerCase();
+
+            // Use weight-specific font resource for broader API compatibility
+            let fontRef;
+            if (style === "regular") {
+                fontRef = `@font/${fontFamily}`;
+            } else {
+                fontRef = `@font/${fontFamily}_${style}`;
+            }
+
+            xml += `\n    <style name="${styleName}">\n`;
+            xml += `        <item name="android:fontFamily">${fontRef}</item>\n`;
+            xml += `        <item name="android:textFontWeight">${fontWeight}</item>\n`;
+            xml += `        <item name="android:textSize">${fontSize}sp</item>\n`;
+            xml += `        <item name="android:lineHeight">${lineHeight}sp</item>\n`;
+            xml += `    </style>\n`;
+        });
+
+        xml += `\n</resources>\n`;
+        return xml;
+    }
+});
+
+// Formatter for Android XML Dimensions (res/values/cat_*.xml)
+StyleDictionary.registerFormat({
+    name: 'xml/android-dimensions',
+    formatter: function ({ dictionary, file }) {
+        let xml = `<?xml version="1.0" encoding="utf-8"?>\n`;
+        xml += `<!--\n  Do not edit directly, this file is generated from design tokens\n-->\n`;
+        xml += `<resources>\n`;
+
+        dictionary.allProperties.forEach(prop => {
+            // Use the same name as Compose (e.g., spacing_none, border_radius_sm, size_xs)
+            const name = `cat_${prop.name}`;
+            xml += `    <dimen name="${name}">${prop.value}dp</dimen>\n`;
+        });
+
+        xml += `</resources>\n`;
+        return xml;
+    }
+});
+
+// Formatter for Android XML Colors (res/values/cat_colors.xml)
+StyleDictionary.registerFormat({
+    name: 'xml/android-colors',
+    formatter: function ({ dictionary }) {
+        let xml = `<?xml version="1.0" encoding="utf-8"?>\n`;
+        xml += `<!--\n  Do not edit directly, this file is generated from design tokens\n-->\n`;
+        xml += `<resources>\n`;
+
+        dictionary.allProperties.forEach(prop => {
+            // Build flat name from path: color.theme.danger.bg -> cat_color_theme_danger_bg
+            const name = 'cat_' + prop.path.join('_');
+            // prop.value is already transformed to #AARRGGBB or #RRGGBB by the android transform group
+            xml += `    <color name="${name}">${prop.value}</color>\n`;
+        });
+
+        xml += `</resources>\n`;
+        return xml;
+    }
+});
+
 // Formatter for Compose Typography
 StyleDictionary.registerFormat({
     name: 'kotlin/compose-typography',
@@ -314,6 +407,58 @@ module.exports = {
                         type: 'typography'
                     }
                 }]
+        },
+        'android-xml': {
+            transformGroup: 'android',
+            buildPath: '../android/catalyst/src/main/res/values/',
+            files: [
+                // ✅ Colors
+                {
+                    destination: 'cat_colors.xml',
+                    format: 'xml/android-colors',
+                    filter: (token) => token.path[1] === 'theme' || token.path[1] === 'ui'
+                },
+                // ✅ Spacing Dimensions
+                {
+                    destination: 'cat_spacing.xml',
+                    format: 'xml/android-dimensions',
+                    filter: {
+                        type: 'spacing'
+                    }
+                },
+                // ✅ Border Radius Dimensions
+                {
+                    destination: 'cat_border_radius.xml',
+                    format: 'xml/android-dimensions',
+                    filter: {
+                        type: 'borderRadius'
+                    }
+                },
+                // ✅ Border Width Dimensions
+                {
+                    destination: 'cat_border_width.xml',
+                    format: 'xml/android-dimensions',
+                    filter: {
+                        type: 'borderWidth'
+                    }
+                },
+                // ✅ Sizing Dimensions
+                {
+                    destination: 'cat_sizes.xml',
+                    format: 'xml/android-dimensions',
+                    filter: {
+                        type: 'sizing'
+                    }
+                },
+                // ✅ Typography Styles
+                {
+                    destination: 'cat_typography.xml',
+                    format: 'xml/android-typography',
+                    filter: {
+                        type: 'typography'
+                    }
+                }
+            ]
         },
         kotlin: {
             transformGroup: 'android',
