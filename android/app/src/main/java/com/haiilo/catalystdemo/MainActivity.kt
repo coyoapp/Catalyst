@@ -51,7 +51,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 @Composable
 private fun AppNavigation() {
     val context = androidx.compose.ui.platform.LocalContext.current
@@ -72,7 +71,10 @@ private fun AppNavigation() {
 }
 
 @Composable
-fun DemoScreen(onNavigateToButtons: () -> Unit = {}, onNavigateToXmlDemo: () -> Unit = {}) {
+fun DemoScreen(
+    onNavigateToButtons: () -> Unit = {},
+    onNavigateToXmlDemo: () -> Unit = {},
+) {
     CatTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
