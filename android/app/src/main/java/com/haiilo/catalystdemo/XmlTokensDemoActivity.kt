@@ -16,4 +16,3 @@ class XmlTokensDemoActivity : AppCompatActivity() {
         return true
     }
 }
-
