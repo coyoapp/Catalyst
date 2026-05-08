@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.9.0](https://github.com/coyoapp/Catalyst/compare/v0.8.3...v0.9.0) (2026-05-08)
+
+
+### Features
+
+* **xmlstyles:** add configuration to generate XML styles etc ([4a36783](https://github.com/coyoapp/Catalyst/commit/4a367836ec7e6f531bbffc84de2e2ee012c82f80))
+* **xmlstyles:** Add configuration to generate XML styles etc ([5a1ee65](https://github.com/coyoapp/Catalyst/commit/5a1ee654c8a99dbeea4ca5c7579b7eb3dc680cef))
+
+
+### Bug Fixes
+
+* **tokens:** Added new 25px and 24px icons for dashboard and nav bar implementation ([#53](https://github.com/coyoapp/Catalyst/issues/53)) ([cd48b96](https://github.com/coyoapp/Catalyst/commit/cd48b968b7b791f5569056a680dc4110343ba06d))
+
 ## [0.8.3](https://github.com/coyoapp/Catalyst/compare/v0.8.2...v0.8.3) (2026-04-15)
 
 
