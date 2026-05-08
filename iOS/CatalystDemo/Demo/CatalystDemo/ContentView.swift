@@ -32,6 +32,16 @@ struct ContentView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
+
+                // Navigate to the List demo screen
+                NavigationLink(destination: ListDemoView()) {
+                    CatButton(.text("View All Lists"), buttonSize: .medium) {}
+                        .catButtonConfig(variant: .filled, color: .secondary)
+                        .frame(maxWidth: .infinity)
+                        .allowsHitTesting(false)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
                 
                 HStack {
                     VStack(alignment: .leading) {
