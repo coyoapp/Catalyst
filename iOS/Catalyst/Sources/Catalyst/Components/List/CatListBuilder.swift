@@ -158,7 +158,7 @@ private struct RowContent: View {
                     .padding(.trailing, CatSpacing.spacingXl)
                 }
             }
-            .frame(minHeight: CatListSize.medium.height)
+            .frame(minHeight: CatListSize.custom(80).height)
         }
     }
 
@@ -246,7 +246,7 @@ private struct RowContent: View {
     CatList(items: [
         (
             .listItem(
-                icon: Image(systemName: "bookmark"),
+                icon: Image("bookmarks-outlined-25", bundle: .catalyst),
                 title: "Bookmarks",
                 newItemIndicator: false
             ),
@@ -254,8 +254,8 @@ private struct RowContent: View {
         ),
         (
             .listItem(
-                icon: Image(systemName: "gearshape"),
-                title: "Settings",
+                icon: Image("communities-outlined-25", bundle: .catalyst),
+                title: "Communities",
                 newItemIndicator: true
             ),
             {}
