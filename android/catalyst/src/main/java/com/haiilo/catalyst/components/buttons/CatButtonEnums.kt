@@ -1,6 +1,8 @@
 package com.haiilo.catalyst.components.buttons
 
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 
@@ -95,6 +97,15 @@ enum class CatButtonPlacement {
 }
 
 // ---------------------------------------------------------------------------
+// Button Text config — controls text layout within the button
+// ---------------------------------------------------------------------------
+data class CatButtonTextConfig(
+    val maxLines: Int = 1,
+    val overflow: TextOverflow = TextOverflow.Ellipsis,
+    val textAlign: TextAlign = TextAlign.Center
+)
+
+// ---------------------------------------------------------------------------
 // Content — what the button displays
 // ---------------------------------------------------------------------------
 
@@ -102,6 +113,7 @@ sealed class CatButtonContent {
     /** Text-only button. */
     data class TextOnly(
         val text: String,
+        val textConfig: CatButtonTextConfig = CatButtonTextConfig(),
     ) : CatButtonContent()
 
     /** Icon-only button. */
@@ -116,5 +128,6 @@ sealed class CatButtonContent {
         val text: String,
         val placement: CatButtonPlacement = CatButtonPlacement.Leading,
         val iconContentDescription: String? = null,
+        val textConfig: CatButtonTextConfig = CatButtonTextConfig(),
     ) : CatButtonContent()
 }

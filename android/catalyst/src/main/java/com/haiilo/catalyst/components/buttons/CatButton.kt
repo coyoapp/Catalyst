@@ -201,6 +201,9 @@ private fun ButtonContentLayout(
                 text = content.text,
                 style = textStyle,
                 color = foregroundColor,
+                maxLines = content.textConfig.maxLines,
+                overflow = content.textConfig.overflow,
+                textAlign = content.textConfig.textAlign,
             )
         }
 
@@ -228,9 +231,13 @@ private fun ButtonContentLayout(
                 }
                 val label: @Composable () -> Unit = {
                     Text(
+                        modifier = Modifier.weight(1f, fill = false),
                         text = content.text,
                         style = textStyle,
                         color = foregroundColor,
+                        maxLines = content.textConfig.maxLines,
+                        overflow = content.textConfig.overflow,
+                        textAlign = content.textConfig.textAlign,
                     )
                 }
 
