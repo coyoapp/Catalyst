@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Do not edit directly, this file is generated from design tokens
+-->
+<resources>
+    <dimen name="cat_spacing_none">0dp</dimen>
+    <dimen name="cat_spacing_xxs">2dp</dimen>
+    <dimen name="cat_spacing_xs">4dp</dimen>
+    <dimen name="cat_spacing_sm">6dp</dimen>
+    <dimen name="cat_spacing_md">8dp</dimen>
+    <dimen name="cat_spacing_lg">12dp</dimen>
+    <dimen name="cat_spacing_xl">16dp</dimen>
+    <dimen name="cat_spacing_2xl">20dp</dimen>
+    <dimen name="cat_spacing_3xl">24dp</dimen>
+    <dimen name="cat_spacing_4xl">32dp</dimen>
+    <dimen name="cat_spacing_5xl">40dp</dimen>
+    <dimen name="cat_spacing_6xl">48dp</dimen>
+    <dimen name="cat_spacing_7xl">56dp</dimen>
+</resources>

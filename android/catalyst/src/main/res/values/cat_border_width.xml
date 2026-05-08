@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Do not edit directly, this file is generated from design tokens
+-->
+<resources>
+    <dimen name="cat_border_width_none">0dp</dimen>
+    <dimen name="cat_border_width_thin">1dp</dimen>
+    <dimen name="cat_border_width_default">2dp</dimen>
+    <dimen name="cat_border_width_thick">4dp</dimen>
+</resources>
