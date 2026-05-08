@@ -128,7 +128,7 @@ private struct RowContent: View {
 
                         trailingCluster(newItemIndicator: newItemIndicator ?? false)
                     }
-                    .padding(.vertical, CatSpacing.spacingMd)
+                    .padding(.vertical, CatSpacing.spacingXl)
                     .padding(.trailing, CatSpacing.spacingXl)
                 }
             }
@@ -154,7 +154,7 @@ private struct RowContent: View {
 
                         trailingCluster(newItemIndicator: newItemIndicator ?? false)
                     }
-                    .padding(.vertical, CatSpacing.spacingMd)
+                    .padding(.vertical, CatSpacing.spacing2xl)
                     .padding(.trailing, CatSpacing.spacingXl)
                 }
             }
