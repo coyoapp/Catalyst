@@ -21,71 +21,71 @@ public extension CatTheme {
     ///   disabled → pressed → hovered → focused → normal
     static func listConfig() -> CatListStateStyleConfig {
 
-        // ── Normal ────────────────────────────────────────────────────────────
+        // Normal
         let normal = CatListStateStyle(
             colorStyle: CatListStateColorStyle(
-                background: CatColors.Theme.Primary.fill,       // color/theme/primary/fill
-                text:       CatColors.Ui.Font.body,             // color/ui/font/body
-                icon:       CatColors.Ui.Font.body,             // color/ui/font/body
-                chevron:    CatColors.Ui.Font.muted,            // color/ui/font/muted
-                ellipse:    CatColors.Theme.Danger.bg,          // color/theme/danger/bg
-                divider:    CatColors.Ui.Border.regular         // color/ui/border/regular
+                background: CatColors.Theme.Primary.fill, // color/theme/primary/fill
+                text: CatColors.Ui.Font.body, // color/ui/font/body
+                icon: CatColors.Ui.Font.body, // color/ui/font/body
+                chevron: CatColors.Ui.Font.muted, // color/ui/font/muted
+                ellipse: CatColors.Theme.Danger.bg, // color/theme/danger/bg
+                divider: CatColors.Ui.Border.regular // color/ui/border/regular
             )
         )
 
-        // ── Hovered ───────────────────────────────────────────────────────────
+        // Hovered
         let hovered = CatListStateStyle(
             colorStyle: CatListStateColorStyle(
-                background: CatColors.Theme.Primary.fill,       // TODO: hover background token
-                text:       CatColors.Ui.Font.body,             // TODO: hover text token
-                icon:       CatColors.Ui.Font.body,             // TODO: hover icon token
-                chevron:    CatColors.Ui.Font.muted,            // TODO: hover chevron token
-                ellipse:    CatColors.Theme.Danger.bg,          // TODO: hover ellipse token
-                divider:    CatColors.Ui.Border.regular         // TODO: hover divider token
+                background: CatColors.Theme.Secondary.bgHover,
+                text: CatColors.Ui.Font.body,
+                icon: CatColors.Ui.Font.body,
+                chevron: CatColors.Ui.Font.muted,
+                ellipse: CatColors.Theme.Danger.bg,
+                divider: CatColors.Ui.Border.regular
             )
         )
 
-        // ── Pressed ───────────────────────────────────────────────────────────
+        // Pressed
         let pressed = CatListStateStyle(
             colorStyle: CatListStateColorStyle(
-                background: CatColors.Theme.Secondary.bgActive, // TODO: pressed background token
-                text:       CatColors.Ui.Font.body,             // TODO: pressed text token
-                icon:       CatColors.Ui.Font.body,             // TODO: pressed icon token
-                chevron:    CatColors.Ui.Font.muted,            // TODO: pressed chevron token
-                ellipse:    CatColors.Theme.Danger.bg,          // TODO: pressed ellipse token
-                divider:    CatColors.Ui.Border.regular         // TODO: pressed divider token
+                background: CatColors.Theme.Secondary.bgActive,
+                text: CatColors.Ui.Font.body,
+                icon: CatColors.Ui.Font.body,
+                chevron: CatColors.Ui.Font.muted,
+                ellipse: CatColors.Theme.Danger.bg,
+                divider: CatColors.Ui.Border.regular
             )
         )
 
-        // ── Focused ───────────────────────────────────────────────────────────
+        // Focused (Design not provided so copies the Normal state)
         let focused = CatListStateStyle(
             colorStyle: CatListStateColorStyle(
-                background: CatColors.Theme.Primary.fill,       // TODO: focused background token
-                text:       CatColors.Ui.Font.body,             // TODO: focused text token
-                icon:       CatColors.Ui.Font.body,             // TODO: focused icon token
-                chevron:    CatColors.Ui.Font.muted,            // TODO: focused chevron token
-                ellipse:    CatColors.Theme.Danger.bg,          // TODO: focused ellipse token
-                divider:    CatColors.Ui.Border.regular         // TODO: focused divider token
+                background: CatColors.Theme.Primary.fill, // TODO: Replace if it needed in desing
+                text: CatColors.Ui.Font.body, // TODO: Replace if it needed in desing
+                icon: CatColors.Ui.Font.body, // TODO: Replace if it needed in desing
+                chevron: CatColors.Ui.Font.muted, // TODO: Replace if it needed in desing
+                ellipse: CatColors.Theme.Danger.bg, // TODO: Replace if it needed in desing
+                divider: CatColors.Ui.Border.regular // TODO: Replace if it needed in desing
             )
         )
 
-        // ── Disabled ──────────────────────────────────────────────────────────
+        // Disabled
         let disabled = CatListStateStyle(
             colorStyle: CatListStateColorStyle(
-                background: CatColors.Ui.Background.muted,      // TODO: disabled background token
-                text:       CatColors.Ui.Font.muted,            // TODO: disabled text token
-                icon:       CatColors.Ui.Font.muted,            // TODO: disabled icon token
-                chevron:    CatColors.Ui.Font.muted,            // TODO: disabled chevron token
-                ellipse:    CatColors.Theme.Danger.bg,          // TODO: disabled ellipse token
-                divider:    CatColors.Ui.Border.regular         // TODO: disabled divider token
+                background: CatColors.Theme.Primary.fill,
+                text: CatColors.Ui.Font.muted,
+                icon: CatColors.Ui.Font.muted,
+                chevron: CatColors.Ui.Font.muted,
+                ellipse: CatColors.Theme.Danger.bg,
+                divider: CatColors.Ui.Border.regular
             )
         )
 
         return CatListStateStyleConfig(
-            normal:   normal,
-            hovered:  hovered,
-            pressed:  pressed,
-            focused:  focused,
+            normal: normal,
+            hovered: hovered,
+            pressed: pressed,
+            focused: focused,
             disabled: disabled
         )
     }

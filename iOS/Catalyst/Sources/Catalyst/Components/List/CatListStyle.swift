@@ -140,16 +140,16 @@ public struct CatListStateStyleConfig: Sendable {
     public let disabled: CatListStateStyle
 
     public init(
-        normal:   CatListStateStyle,
-        hovered:  CatListStateStyle? = nil,
-        pressed:  CatListStateStyle,
-        focused:  CatListStateStyle,
+        normal: CatListStateStyle,
+        hovered: CatListStateStyle? = nil,
+        pressed: CatListStateStyle,
+        focused: CatListStateStyle,
         disabled: CatListStateStyle
     ) {
-        self.normal   = normal
-        self.hovered  = hovered
-        self.pressed  = pressed
-        self.focused  = focused
+        self.normal = normal
+        self.hovered = hovered
+        self.pressed = pressed
+        self.focused = focused
         self.disabled = disabled
     }
 }
