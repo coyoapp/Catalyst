@@ -36,7 +36,7 @@ public extension CatTheme {
         // Hovered
         let hovered = CatListStateStyle(
             colorStyle: CatListStateColorStyle(
-                background: CatColors.Theme.Secondary.bgHover,
+                background: CatColors.Theme.Secondary.bgHover.opacity(0.1),
                 text: CatColors.Ui.Font.body,
                 icon: CatColors.Ui.Font.body,
                 chevron: CatColors.Ui.Font.muted,
@@ -48,7 +48,7 @@ public extension CatTheme {
         // Pressed
         let pressed = CatListStateStyle(
             colorStyle: CatListStateColorStyle(
-                background: CatColors.Theme.Secondary.bgActive,
+                background: CatColors.Theme.Secondary.bgActive.opacity(0.1),
                 text: CatColors.Ui.Font.body,
                 icon: CatColors.Ui.Font.body,
                 chevron: CatColors.Ui.Font.muted,

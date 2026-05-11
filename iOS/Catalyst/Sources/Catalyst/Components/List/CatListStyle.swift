@@ -63,8 +63,8 @@ public enum CatListPosition {
     /// Dividers separate consecutive rows but never appear on the first row of a group.
     var showDivider: Bool {
         switch self {
-        case .standalone, .top: return false
-        case .middle, .bottom: return true
+        case .standalone, .bottom: return false
+        case .middle, .top: return true
         }
     }
 }
@@ -200,9 +200,7 @@ public enum CatListSize {
 
 public enum CatListContent {
     /// Standard navigation row: leading icon, title, optional new-item indicator, chevron.
-    case listItem(icon: Image, title: String, newItemIndicator: Bool?)
-    /// Navigation row with a larger leading icon, a title, and a subtitle line below it.
-    case specialWithSubtitle(icon: Image, title: String, subtitle: String, newItemIndicator: Bool?)
+    case listItem(icon: Image, title: String, newItemIndicator: Binding<Bool>)
 }
 
 // MARK: - List ButtonStyle

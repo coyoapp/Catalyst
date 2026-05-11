@@ -111,67 +111,40 @@ private struct RowContent: View {
         switch content {
 
         case .listItem(let icon, let title, let newItemIndicator):
-            HStack(spacing: 0) {
-                leadingIcon(icon, size: CatSizes.sizeMd)
-
-                VStack(spacing: 0) {
-                    if position.showDivider {
-                        dividerLine()
-                            .padding(.trailing, CatSpacing.spacingXl)
-                    }
-
+            VStack(spacing: 0) {
+                HStack(spacing: 0) {
+                    leadingIcon(icon)
                     HStack(spacing: CatSpacing.spacingMd) {
                         Text(title)
                             .font(CatTypography.body1)
                             .foregroundStyle(colors.text)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
-                        trailingCluster(newItemIndicator: newItemIndicator ?? false)
+                        trailingCluster(newItemIndicator: newItemIndicator.wrappedValue)
                     }
                     .padding(.vertical, CatSpacing.spacingXl)
                     .padding(.trailing, CatSpacing.spacingXl)
                 }
-            }
-            .frame(minHeight: CatListSize.regular.height)
-
-        case .specialWithSubtitle(let icon, let title, let subtitle, let newItemIndicator):
-            HStack(spacing: 0) {
-                leadingIcon(icon, size: CatSizes.sizeXl)
-
-                VStack(spacing: 0) {
-                    if position.showDivider { dividerLine() }
-
-                    HStack(spacing: CatSpacing.spacingMd) {
-                        VStack(alignment: .leading, spacing: CatSpacing.spacingXxs) {
-                            Text(title)
-                                .font(CatTypography.body1)
-                                .foregroundStyle(colors.text)
-                            Text(subtitle)
-                                .font(CatTypography.body2)
-                                .foregroundStyle(colors.chevron)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                        trailingCluster(newItemIndicator: newItemIndicator ?? false)
-                    }
-                    .padding(.vertical, CatSpacing.spacing2xl)
-                    .padding(.trailing, CatSpacing.spacingXl)
+                if position.showDivider {
+                    dividerLine()
+                        .padding(.trailing, CatSpacing.spacingXl)
+                        .padding(.leading, CatSpacing.spacing7xl)
                 }
             }
-            .frame(minHeight: CatListSize.custom(80).height)
+            .frame(minHeight: CatListSize.regular.height)
         }
     }
 
     // MARK: Sub-views
 
     /// Leading icon with symmetric padding so the icon column has a consistent width.
-    private func leadingIcon(_ icon: Image, size: CGFloat) -> some View {
+    private func leadingIcon(_ icon: Image) -> some View {
         icon
             .renderingMode(.template)
             .foregroundStyle(colors.icon)
             .padding(.vertical, CatSpacing.spacingMd)
             .padding(.leading, CatSpacing.spacingXl)
-            .padding(.trailing, CatSpacing.spacingMd)
+            .padding(.trailing, CatSpacing.spacingXl)
     }
 
     /// New-item ellipse dot + chevron on the trailing edge.
@@ -196,28 +169,13 @@ private struct RowContent: View {
 }
 
 // MARK: - Preview
-
-#Preview("Single item") {
-    CatListBuilder(
-        content: .specialWithSubtitle(
-            icon: Image("Avatar", bundle: .catalyst),
-            title: "Robert Lang",
-            subtitle: "Senior Designer",
-            newItemIndicator: false
-        ),
-        action: {}
-    )
-    .padding()
-    .background(CatColors.Ui.Background.canvas)
-}
-
 #Preview("Group — 3 items") {
     CatList(items: [
         (
             .listItem(
                 icon: Image("bookmarks-outlined-25", bundle: .catalyst),
                 title: "Bookmarks",
-                newItemIndicator: false
+                newItemIndicator: .constant(false)
             ),
             {}
         ),
@@ -225,7 +183,7 @@ private struct RowContent: View {
             .listItem(
                 icon: Image("pages-outlined-25", bundle: .catalyst),
                 title: "Pages",
-                newItemIndicator: true
+                newItemIndicator: .constant(true)
             ),
             {}
         ),
@@ -233,7 +191,7 @@ private struct RowContent: View {
             .listItem(
                 icon: Image("communities-outlined-25", bundle: .catalyst),
                 title: "Communities",
-                newItemIndicator: false
+                newItemIndicator: .constant(false)
             ),
             {}
         ),
@@ -248,7 +206,7 @@ private struct RowContent: View {
             .listItem(
                 icon: Image("bookmarks-outlined-25", bundle: .catalyst),
                 title: "Bookmarks",
-                newItemIndicator: false
+                newItemIndicator: .constant(false)
             ),
             {}
         ),
@@ -256,7 +214,7 @@ private struct RowContent: View {
             .listItem(
                 icon: Image("communities-outlined-25", bundle: .catalyst),
                 title: "Communities",
-                newItemIndicator: true
+                newItemIndicator: .constant(true)
             ),
             {}
         ),

@@ -33,9 +33,9 @@ struct ListDemoView: View {
                 CatList(items: [
                     (
                         .listItem(
-                            icon: Image(systemName: "doc.text"),
+                            icon: Image("ic_pages-outlined-25", bundle: .catalyst),
                             title: "Pages",
-                            newItemIndicator: false
+                            newItemIndicator: .constant(false)
                         ),
                         { destination = .pagesList }
                     ),
@@ -47,17 +47,17 @@ struct ListDemoView: View {
                 CatList(items: [
                     (
                         .listItem(
-                            icon: Image(systemName: "person.2"),
+                            icon: Image("collagues-outlined-25", bundle: .catalyst),
                             title: "People",
-                            newItemIndicator: true        // ← badge active
+                            newItemIndicator: .constant(true)
                         ),
                         { destination = .people }
                     ),
                     (
                         .listItem(
-                            icon: Image(systemName: "gearshape"),
+                            icon: Image("ic_settings-outlined-25", bundle: .catalyst),
                             title: "Settings",
-                            newItemIndicator: false
+                            newItemIndicator: .constant(false)
                         ),
                         { destination = .settings }
                     ),
@@ -69,147 +69,91 @@ struct ListDemoView: View {
                 CatList(items: [
                     (
                         .listItem(
-                            icon: Image(systemName: "doc.text"),
+                            icon: Image("collagues-outlined-25", bundle: .catalyst),
                             title: "Pages",
-                            newItemIndicator: false
+                            newItemIndicator: .constant(false)
                         ),
                         { destination = .pagesList }
                     ),
                     (
                         .listItem(
-                            icon: Image(systemName: "person.2"),
+                            icon: Image("ic_pages-outlined-25", bundle: .catalyst),
                             title: "People",
-                            newItemIndicator: true
+                            newItemIndicator: .constant(true)
                         ),
                         { destination = .people }
                     ),
                     (
                         .listItem(
-                            icon: Image(systemName: "gearshape"),
+                            icon: Image("ic_settings-outlined-25", bundle: .catalyst),
                             title: "Settings",
-                            newItemIndicator: false
+                            newItemIndicator: .constant(false)
                         ),
                         { destination = .settings }
                     ),
                 ])
-
-                // ── Section 4: Special with subtitle ─────────────────────────
-                SectionHeader("Special with subtitle")
-
-                CatList(items: [
-                    (
-                        .specialWithSubtitle(
-                            icon: Image(systemName: "person.circle"),
-                            title: "Robert Lang",
-                            subtitle: "Senior Designer",
-                            newItemIndicator: false
-                        ),
-                        { destination = .profile }
-                    ),
-                    (
-                        .specialWithSubtitle(
-                            icon: Image(systemName: "person.circle.fill"),
-                            title: "Anna Müller",
-                            subtitle: "Product Manager",
-                            newItemIndicator: true
-                        ),
-                        { destination = .people }
-                    ),
-                ])
-
-                // ── Section 5: Mixed content types ───────────────────────────
-                SectionHeader("Mixed — listItem + specialWithSubtitle")
-
-                CatList(items: [
-                    (
-                        .listItem(
-                            icon: Image(systemName: "doc.text"),
-                            title: "Pages",
-                            newItemIndicator: false
-                        ),
-                        { destination = .pagesList }
-                    ),
-                    (
-                        .specialWithSubtitle(
-                            icon: Image(systemName: "person.circle"),
-                            title: "Robert Lang",
-                            subtitle: "Senior Designer",
-                            newItemIndicator: true
-                        ),
-                        { destination = .profile }
-                    ),
-                    (
-                        .listItem(
-                            icon: Image(systemName: "gearshape"),
-                            title: "Settings",
-                            newItemIndicator: false
-                        ),
-                        { destination = .settings }
-                    ),
-                ])
-
                 Spacer(minLength: CatSpacing.spacing4xl)
             }
             .padding(.horizontal, CatSpacing.spacingXl)
             .padding(.vertical, CatSpacing.spacing2xl)
-        }
-        .background(CatColors.Ui.Background.canvas)
-        .navigationTitle("List")
-        .navigationBarTitleDisplayMode(.inline)
-        // ── Navigation destinations ───────────────────────────────────────────
-        .navigationDestination(item: $destination) { dest in
-            switch dest {
-            case .pagesList: PagesListScreen()
-            case .people: PeopleScreen()
-            case .profile: ProfileScreen()
-            case .settings: SettingsScreen()
+            .background(CatColors.Ui.Background.canvas)
+            .navigationTitle("List")
+            .navigationBarTitleDisplayMode(.inline)
+            // ── Navigation destinations ───────────────────────────────────────────
+            .navigationDestination(item: $destination) { dest in
+                switch dest {
+                case .pagesList: PagesListScreen()
+                case .people: PeopleScreen()
+                case .profile: ProfileScreen()
+                case .settings: SettingsScreen()
+                }
             }
         }
     }
-}
 
-// MARK: - Destination placeholder screens
+    // MARK: - Destination placeholder screens
 
-/// Generic placeholder used for all demo destinations.
-private struct PlaceholderScreen: View {
-    let title: String
-    let systemImage: String
+    /// Generic placeholder used for all demo destinations.
+    private struct PlaceholderScreen: View {
+        let title: String
+        let systemImage: String
 
-    var body: some View {
-        VStack(spacing: CatSpacing.spacingXl) {
-            Image(systemName: systemImage)
-                .font(.system(size: 56))
-                .foregroundStyle(CatColors.Theme.Primary.bg)
-            Text(title)
-                .font(CatTypography.h3)
-                .foregroundStyle(CatColors.Ui.Font.head)
-            Text("This is where the \(title) screen would live.")
-                .font(CatTypography.body1)
-                .foregroundStyle(CatColors.Ui.Font.muted)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, CatSpacing.spacing4xl)
+        var body: some View {
+            VStack(spacing: CatSpacing.spacingXl) {
+                Image(systemName: systemImage)
+                    .font(.system(size: 56))
+                    .foregroundStyle(CatColors.Theme.Primary.bg)
+                Text(title)
+                    .font(CatTypography.h3)
+                    .foregroundStyle(CatColors.Ui.Font.head)
+                Text("This is where the \(title) screen would live.")
+                    .font(CatTypography.body1)
+                    .foregroundStyle(CatColors.Ui.Font.muted)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, CatSpacing.spacing4xl)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(CatColors.Ui.Background.canvas)
+            .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(CatColors.Ui.Background.canvas)
-        .navigationTitle(title)
-        .navigationBarTitleDisplayMode(.inline)
     }
-}
 
-private struct PagesListScreen: View {
-    var body: some View { PlaceholderScreen(title: "Pages", systemImage: "doc.text") }
-}
+    private struct PagesListScreen: View {
+        var body: some View { PlaceholderScreen(title: "Pages", systemImage: "doc.text") }
+    }
 
-private struct PeopleScreen: View {
-    var body: some View { PlaceholderScreen(title: "People", systemImage: "person.2") }
-}
+    private struct PeopleScreen: View {
+        var body: some View { PlaceholderScreen(title: "People", systemImage: "person.2") }
+    }
 
-private struct ProfileScreen: View {
-    var body: some View { PlaceholderScreen(title: "Profile", systemImage: "person.circle") }
-}
+    private struct ProfileScreen: View {
+        var body: some View { PlaceholderScreen(title: "Profile", systemImage: "person.circle") }
+    }
 
-private struct SettingsScreen: View {
-    var body: some View { PlaceholderScreen(title: "Settings", systemImage: "gearshape") }
+    private struct SettingsScreen: View {
+        var body: some View { PlaceholderScreen(title: "Settings", systemImage: "gearshape") }
+    }
 }
 
 // MARK: - Helpers
