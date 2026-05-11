@@ -102,7 +102,7 @@ enum class CatButtonPlacement {
 data class CatButtonTextConfig(
     val maxLines: Int = 1,
     val overflow: TextOverflow = TextOverflow.Ellipsis,
-    val textAlign: TextAlign = TextAlign.Center
+    val textAlign: TextAlign = TextAlign.Center,
 )
 
 // ---------------------------------------------------------------------------
