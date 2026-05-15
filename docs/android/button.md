@@ -4,6 +4,7 @@
 
 `CatButton` is the single button composable for the Catalyst Android design system. It is configured through parameters and, optionally, through the composition tree via `ProvideCatButtonConfig`.
 
+
 ---
 
 ## Parameters
@@ -56,9 +57,9 @@ Set via the `color` parameter or through `ProvideCatButtonConfig`.
 
 | Case | Description |
 |------|-------------|
-| `TextOnly(text: String)` | Text label only |
+| `TextOnly(text: String, textConfig: CatButtonTextConfig?)` | Text label only |
 | `IconOnly(painter: Painter, contentDescription: String?)` | Icon only |
-| `IconText(painter: Painter, text: String, placement: CatButtonPlacement, iconContentDescription: String?)` | Icon and text label side by side |
+| `IconText(painter: Painter, text: String, placement: CatButtonPlacement, iconContentDescription: String?, textConfig: CatButtonTextConfig?)` | Icon and text label side by side |
 
 `CatButtonPlacement` controls where the icon sits relative to the label:
 
@@ -66,6 +67,16 @@ Set via the `color` parameter or through `ProvideCatButtonConfig`.
 |-------|-------------|
 | `Leading` | Icon to the left of the text (default) |
 | `Trailing` | Icon to the right of the text |
+
+### Text Configuration
+
+Both `TextOnly` and `IconText` accept an optional `CatButtonTextConfig` parameter to control text layout and overflow behavior:
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `maxLines` | `Int` | `1` | Maximum number of text lines. Use `Int.MAX_VALUE` for unlimited lines |
+| `overflow` | `TextOverflow` | `TextOverflow.Ellipsis` | Determines how text is truncated: `Clip`, `Ellipsis`, `Visible` |
+| `textAlign` | `TextAlign` | `TextAlign.Center` | Text alignment within the button: `Left`, `Center`, `Right`, `Start`, `End` |
 
 ---
 
@@ -91,6 +102,15 @@ CatButton(
     onClick = { /* action */ },
 )
 
+// Text only with multi-line support
+CatButton(
+    content = CatButtonContent.TextOnly(
+        text = "This is a longer button label",
+        textConfig = CatButtonTextConfig(maxLines = 2),
+    ),
+    onClick = { /* action */ },
+)
+
 // Icon only
 CatButton(
     content = CatButtonContent.IconOnly(
@@ -112,6 +132,21 @@ CatButton(
     onClick = { /* action */ },
     variant = CatButtonVariant.Filled,
     color = CatButtonColor.Danger,
+)
+
+// Icon + label with custom text handling
+CatButton(
+    content = CatButtonContent.IconText(
+        painter = painterResource(R.drawable.icon_info),
+        text = "Long information message",
+        placement = CatButtonPlacement.Leading,
+        textConfig = CatButtonTextConfig(
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Start,
+        ),
+    ),
+    onClick = { /* action */ },
 )
 ```
 
@@ -146,6 +181,16 @@ CatButton(
     onClick = { },
     size = CatButtonSize.Custom(height = 56.dp, horizontalPadding = 24.dp),
 )
+
+// Larger size with multi-line text support
+CatButton(
+    content = CatButtonContent.TextOnly(
+        text = "Long label with multiple lines",
+        textConfig = CatButtonTextConfig(maxLines = 2),
+    ),
+    onClick = { },
+    size = CatButtonSize.Medium,
+)
 ```
 
 ---
@@ -161,6 +206,58 @@ CatButton(
     modifier = Modifier.fillMaxWidth(),
     variant = CatButtonVariant.Filled,
     color = CatButtonColor.Primary,
+)
+```
+
+---
+
+## Handling text overflow
+
+By default, button text is limited to a single line with ellipsis truncation. Use `CatButtonTextConfig` to customize this behavior:
+
+### Single line with truncation (default)
+```kotlin
+CatButton(
+    content = CatButtonContent.TextOnly("Short"),
+    onClick = { },
+)
+// Result: "Short" (ellipsis not visible since it fits)
+```
+
+### Multi-line text
+```kotlin
+CatButton(
+    content = CatButtonContent.TextOnly(
+        text = "This is a very long button label that needs multiple lines",
+        textConfig = CatButtonTextConfig(maxLines = 2),
+    ),
+    onClick = { },
+)
+// Result: "This is a very long button label that needs" (wrapped to 2 lines)
+```
+
+### Custom overflow behavior
+```kotlin
+CatButton(
+    content = CatButtonContent.TextOnly(
+        text = "Long text",
+        textConfig = CatButtonTextConfig(
+            maxLines = 1,
+            overflow = TextOverflow.Clip,  // Clip instead of ellipsis
+        ),
+    ),
+    onClick = { },
+)
+```
+
+### Text alignment
+```kotlin
+CatButton(
+    content = CatButtonContent.TextOnly(
+        text = "Left aligned",
+        textConfig = CatButtonTextConfig(textAlign = TextAlign.Start),
+    ),
+    onClick = { },
 )
 ```
 
