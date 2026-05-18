@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/coyoapp/Catalyst/compare/v0.9.0...v0.10.0) (2026-05-18)
+
+
+### Features
+
+* **components:** Updated the button text to handle long texts ([dd1520e](https://github.com/coyoapp/Catalyst/commit/dd1520e933ebc03fcb02fdc1b9a9d549db9b9b26))
+
 ## [0.9.0](https://github.com/coyoapp/Catalyst/compare/v0.8.3...v0.9.0) (2026-05-08)
 
 
