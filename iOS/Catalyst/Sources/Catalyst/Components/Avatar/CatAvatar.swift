@@ -11,7 +11,7 @@ public struct CatAvatar: View {
     // MARK: Properties
     private let initials: String?
     private let imageURL: URL?
-    private let color: Color?
+    private let backgroundColor: Color?
     private let font: Font
 
     // MARK: Constants
@@ -21,12 +21,12 @@ public struct CatAvatar: View {
     public init(
         initials: String?,
         imageURL: URL?,
-        color: Color?,
+        backgroundColor: Color?,
         font: Font = CatTypography.s1
     ) {
         self.initials = initials
         self.imageURL = imageURL
-        self.color = color
+        self.backgroundColor = backgroundColor
         self.font = font
     }
 
@@ -49,7 +49,7 @@ public struct CatAvatar: View {
     // MARK: Placeholder
     private var placeholder: some View {
         ZStack {
-            (color ?? CatColors.Ui.Background.muted)
+            (backgroundColor ?? CatColors.Ui.Background.muted)
             if let text = initials?.uppercased(), !text.isEmpty {
                 Text(text)
                     .font(font)
@@ -64,10 +64,10 @@ public struct CatAvatar: View {
 
 #Preview("With initials") {
     HStack(spacing: CatSpacing.spacingXl) {
-        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
-        CatAvatar(initials: "CD", imageURL: nil, color: CatColors.Theme.Danger.fill)
-        CatAvatar(initials: "EF", imageURL: nil, color: CatColors.Theme.Success.fill)
-        CatAvatar(initials: nil,  imageURL: nil, color: nil)
+        CatAvatar(initials: "AB", imageURL: nil, backgroundColor: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "CD", imageURL: nil, backgroundColor: CatColors.Theme.Danger.fill)
+        CatAvatar(initials: "EF", imageURL: nil, backgroundColor: CatColors.Theme.Success.fill)
+        CatAvatar(initials: nil,  imageURL: nil, backgroundColor: nil)
     }
     .padding()
     .background(CatColors.Ui.Background.canvas)
@@ -75,10 +75,10 @@ public struct CatAvatar: View {
 
 #Preview("Font sizes") {
     HStack(spacing: CatSpacing.spacingXl) {
-        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
-        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
-        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
-        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "AB", imageURL: nil, backgroundColor: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "AB", imageURL: nil, backgroundColor: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "AB", imageURL: nil, backgroundColor: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "AB", imageURL: nil, backgroundColor: CatColors.Theme.Primary.fill)
     }
     .padding()
     .background(CatColors.Ui.Background.canvas)

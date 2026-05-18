@@ -133,10 +133,10 @@ private struct RowContent: View {
             }
             .frame(minHeight: CatListSize.regular.height)
 
-        case .avatarListItem(let initials, let imageURL, let color, let title, let subtitle, let newItemIndicator):
+        case .avatarListItem(let initials, let imageURL, let backgroundColor, let title, let subtitle, let newItemIndicator):
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
-                    leadingAvatar(initials: initials, imageURL: imageURL, color: color)
+                    leadingAvatar(initials: initials, imageURL: imageURL, backgroundColor: backgroundColor)
                     HStack(spacing: CatSpacing.spacingMd) {
                         VStack {
                             Text(title)
@@ -180,8 +180,8 @@ private struct RowContent: View {
     }
 
     /// Leading avatar with the same padding geometry as `leadingIcon`.
-    private func leadingAvatar(initials: String?, imageURL: URL?, color: Color?) -> some View {
-        CatAvatar(initials: "\(initials ?? "")", imageURL: imageURL, color: color)
+    private func leadingAvatar(initials: String?, imageURL: URL?, backgroundColor: Color?) -> some View {
+        CatAvatar(initials: "\(initials ?? "")", imageURL: imageURL, backgroundColor: backgroundColor)
             .padding(.vertical, CatSpacing.spacingLg)
             .padding(.leading, CatSpacing.spacingXl)
             .padding(.trailing, CatSpacing.spacingXl)
@@ -278,7 +278,7 @@ private struct RowContent: View {
             .avatarListItem(
                 initials: "AB",
                 imageURL: nil,
-                color: CatColors.Theme.Primary.fill,
+                backgroundColor: CatColors.Theme.Primary.fill,
                 title: "Alice Brown",
                 subtitle: "iOS Developer",
                 newItemIndicator: .constant(true)
@@ -289,7 +289,7 @@ private struct RowContent: View {
             .avatarListItem(
                 initials: "CD",
                 imageURL: nil,
-                color: CatColors.Theme.Danger.fill,
+                backgroundColor: CatColors.Theme.Danger.fill,
                 title: "Chris Doe",
                 subtitle: nil,
                 newItemIndicator: .constant(false)

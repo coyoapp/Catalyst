@@ -207,7 +207,7 @@ public enum CatListContent {
     /// Standard navigation row: leading icon, title, optional new-item indicator, chevron.
     case listItem(icon: Image, title: String, newItemIndicator: Binding<Bool>)
     /// Avatar navigation row: leading `CatAvatarView`, title, optional new-item indicator, chevron.
-    case avatarListItem(initials: String?, imageURL: URL?, color: Color?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>)
+    case avatarListItem(initials: String?, imageURL: URL?, backgroundColor: Color?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>)
 }
 
 // MARK: - List Style

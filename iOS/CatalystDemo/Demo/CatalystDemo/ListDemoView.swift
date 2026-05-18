@@ -30,7 +30,7 @@ struct ListDemoView: View {
                 SectionHeader("Standalone — Profile")
                 CatList(items: [
                     (
-                    .avatarListItem(initials: "AH", imageURL: nil, color: .green, title: "Amin Heidari" , subtitle: "iOS Developer", newItemIndicator: .constant(false)),
+                    .avatarListItem(initials: "AH", imageURL: nil, backgroundColor: .green, title: "Amin Heidari" , subtitle: "iOS Developer", newItemIndicator: .constant(false)),
                     { destination = .profile }
                     )
                 ])
@@ -38,7 +38,7 @@ struct ListDemoView: View {
                 SectionHeader("Standalone — Profile without subtitle")
                 CatList(items: [
                     (
-                    .avatarListItem(initials: "AH", imageURL: nil, color: .green, title: "Amin Heidari" , subtitle: nil, newItemIndicator: .constant(false)),
+                    .avatarListItem(initials: "AH", imageURL: nil, backgroundColor: .green, title: "Amin Heidari" , subtitle: nil, newItemIndicator: .constant(false)),
                     { destination = .profile }
                     )
                 ])
