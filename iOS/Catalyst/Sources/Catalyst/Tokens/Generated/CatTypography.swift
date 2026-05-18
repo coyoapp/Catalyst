@@ -20,6 +20,8 @@ public enum CatTypography {
     public static let button2 = Font.custom("Lato-Regular", size: 16.00)
     public static let caption = Font.custom("Lato-Regular", size: 12.00)
     public static let overline = Font.custom("Lato-Regular", size: 10.00)
+    public static let bottomNav1 = Font.custom("Lato-Medium", size: 12.00)
+    public static let bottomNav2 = Font.custom("Lato-Bold", size: 12.00)
 }
 
 public enum CatTypographyUIFont {
@@ -39,4 +41,6 @@ public enum CatTypographyUIFont {
     public static let button2 = font("Lato-Regular", size: 16)
     public static let caption = font("Lato-Regular", size: 12)
     public static let overline = font("Lato-Regular", size: 10)
+    public static let bottomNav1 = font("Lato-Medium", size: 12)
+    public static let bottomNav2 = font("Lato-Bold", size: 12)
 }

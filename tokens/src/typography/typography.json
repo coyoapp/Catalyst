@@ -107,6 +107,24 @@
         "lineHeight": "{dimension.dimension-4}"
       },
       "type": "typography"
+    },
+    "bottomNav1": {
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{dimension.dimension-3}",
+        "lineHeight": "{dimension.dimension-4}"
+      },
+      "type": "typography"
+    },
+    "bottomNav2": {
+      "value": {
+        "fontFamily": "{font.family.lato}",
+        "fontWeight": "{font.weight.bold}",
+        "fontSize": "{dimension.dimension-3}",
+        "lineHeight": "{dimension.dimension-4}"
+      },
+      "type": "typography"
     }
   }
 }

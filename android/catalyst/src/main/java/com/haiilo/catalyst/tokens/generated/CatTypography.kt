@@ -84,4 +84,16 @@ public object CatTypography {
         fontSize = 10.sp,
         lineHeight = 16.sp
     )
+    public val bottomNav1 = TextStyle(
+        fontFamily = CatFontFamily.lato,
+        fontWeight = FontWeight(500),
+        fontSize = 12.sp,
+        lineHeight = 16.sp
+    )
+    public val bottomNav2 = TextStyle(
+        fontFamily = CatFontFamily.lato,
+        fontWeight = FontWeight(700),
+        fontSize = 12.sp,
+        lineHeight = 16.sp
+    )
 }
