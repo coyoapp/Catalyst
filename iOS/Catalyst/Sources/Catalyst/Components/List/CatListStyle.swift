@@ -210,7 +210,7 @@ public enum CatListContent {
     case avatarListItem(initials: String?, imageURL: URL?, color: Color?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>)
 }
 
-// MARK: - List ButtonStyle
+// MARK: - List Style
 
 /// Resolves the active interaction state from `CatListStateStyleConfig`, injects the
 /// winning `CatListStateColorStyle` into the SwiftUI environment, and clips the row
