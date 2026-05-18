@@ -181,7 +181,7 @@ private struct RowContent: View {
 
     /// Leading avatar with the same padding geometry as `leadingIcon`.
     private func leadingAvatar(initials: String?, imageURL: URL?, color: Color?) -> some View {
-        CatAvatarView(initials: "\(initials ?? "")", imageURL: imageURL, color: color)
+        CatAvatar(initials: "\(initials ?? "")", imageURL: imageURL, color: color)
             .padding(.vertical, CatSpacing.spacingLg)
             .padding(.leading, CatSpacing.spacingXl)
             .padding(.trailing, CatSpacing.spacingXl)

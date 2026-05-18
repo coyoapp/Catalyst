@@ -1,12 +1,12 @@
 //
-//  CatAvatarView.swift
+//  CatAvatar.swift
 //  Catalyst
 //
 
 import SwiftUI
 import Kingfisher
 
-public struct CatAvatarView: View {
+public struct CatAvatar: View {
 
     // MARK: Properties
     private let initials: String?
@@ -64,10 +64,10 @@ public struct CatAvatarView: View {
 
 #Preview("With initials") {
     HStack(spacing: CatSpacing.spacingXl) {
-        CatAvatarView(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
-        CatAvatarView(initials: "CD", imageURL: nil, color: CatColors.Theme.Danger.fill)
-        CatAvatarView(initials: "EF", imageURL: nil, color: CatColors.Theme.Success.fill)
-        CatAvatarView(initials: nil,  imageURL: nil, color: nil)
+        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "CD", imageURL: nil, color: CatColors.Theme.Danger.fill)
+        CatAvatar(initials: "EF", imageURL: nil, color: CatColors.Theme.Success.fill)
+        CatAvatar(initials: nil,  imageURL: nil, color: nil)
     }
     .padding()
     .background(CatColors.Ui.Background.canvas)
@@ -75,10 +75,10 @@ public struct CatAvatarView: View {
 
 #Preview("Font sizes") {
     HStack(spacing: CatSpacing.spacingXl) {
-        CatAvatarView(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
-        CatAvatarView(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
-        CatAvatarView(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
-        CatAvatarView(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
+        CatAvatar(initials: "AB", imageURL: nil, color: CatColors.Theme.Primary.fill)
     }
     .padding()
     .background(CatColors.Ui.Background.canvas)
