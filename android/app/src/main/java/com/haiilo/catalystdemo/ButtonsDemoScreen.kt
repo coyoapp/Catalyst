@@ -288,6 +288,32 @@ fun ButtonsDemoScreen(onBack: () -> Unit) {
                     color = CatButtonColor.Danger,
                 )
                 CatButton(
+                    content = CatButtonContent.IconText(
+                        painter = painterResource(id = R.drawable.icon_checkmark),
+                        text = "This is a very long button text with leading icon that should wrap " +
+                            "to multiple lines if needed, it is supposed to test the text overflow " +
+                            "in a button text.",
+                        placement = CatButtonPlacement.Leading,
+                    ),
+                    onClick = {},
+                    modifier = Modifier.fillMaxWidth(),
+                    variant = CatButtonVariant.Filled,
+                    color = CatButtonColor.Danger,
+                )
+                CatButton(
+                    content = CatButtonContent.IconText(
+                        painter = painterResource(id = R.drawable.icon_checkmark),
+                        text = "This is a very long button text with trailing icon that should wrap " +
+                            "to multiple lines if needed, it is supposed to test the text overflow " +
+                            "in a button text.",
+                        placement = CatButtonPlacement.Trailing,
+                    ),
+                    onClick = {},
+                    modifier = Modifier.fillMaxWidth(),
+                    variant = CatButtonVariant.Outlined,
+                    color = CatButtonColor.Danger,
+                )
+                CatButton(
                     content = CatButtonContent.TextOnly("Full Width — Success Text"),
                     onClick = {},
                     modifier = Modifier.fillMaxWidth(),
