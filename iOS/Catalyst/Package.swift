@@ -15,11 +15,15 @@ let package = Package(
             targets: ["Catalyst"]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.4.0")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "Catalyst",
+            dependencies: ["Kingfisher"],
             path: "Sources/Catalyst",
             resources: [
                 .process("Resources")

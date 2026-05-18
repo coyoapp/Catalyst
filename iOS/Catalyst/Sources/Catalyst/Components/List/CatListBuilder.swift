@@ -132,6 +132,38 @@ private struct RowContent: View {
                 }
             }
             .frame(minHeight: CatListSize.regular.height)
+
+        case .avatarListItem(let initials, let imageURL, let color, let title, let subtitle, let newItemIndicator):
+            VStack(spacing: 0) {
+                HStack(spacing: 0) {
+                    leadingAvatar(initials: initials, imageURL: imageURL, color: color)
+                    HStack(spacing: CatSpacing.spacingMd) {
+                        VStack {
+                            Text(title)
+                                .font(CatTypography.body1)
+                                .foregroundStyle(colors.text)
+                                .lineLimit(1)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            if let subtitle = subtitle {
+                                Text(subtitle)
+                                    .font(CatTypography.body2)
+                                    .foregroundStyle(colors.subtitle)
+                                    .lineLimit(1)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
+                        trailingCluster(newItemIndicator: newItemIndicator.wrappedValue)
+                    }
+                    .padding(.vertical, CatSpacing.spacingXl)
+                    .padding(.trailing, CatSpacing.spacingXl)
+                }
+                if position.showDivider {
+                    dividerLine()
+                        .padding(.trailing, CatSpacing.spacingXl)
+                        .padding(.leading, CatSpacing.spacing7xl)
+                }
+            }
+            .frame(minHeight: CatListSize.medium.height)
         }
     }
 
@@ -142,7 +174,15 @@ private struct RowContent: View {
         icon
             .renderingMode(.template)
             .foregroundStyle(colors.icon)
-            .padding(.vertical, CatSpacing.spacingMd)
+            .padding(.vertical, CatSpacing.spacingLg)
+            .padding(.leading, CatSpacing.spacingXl)
+            .padding(.trailing, CatSpacing.spacingXl)
+    }
+
+    /// Leading avatar with the same padding geometry as `leadingIcon`.
+    private func leadingAvatar(initials: String?, imageURL: URL?, color: Color?) -> some View {
+        CatAvatarView(initials: "\(initials ?? "")", imageURL: imageURL, color: color)
+            .padding(.vertical, CatSpacing.spacingLg)
             .padding(.leading, CatSpacing.spacingXl)
             .padding(.trailing, CatSpacing.spacingXl)
     }
@@ -220,6 +260,51 @@ private struct RowContent: View {
         ),
     ])
     .disabled(true)
+    .padding()
+    .background(CatColors.Ui.Background.canvas)
+}
+
+#Preview("Mixed — icon and avatar rows") {
+    CatList(items: [
+        (
+            .listItem(
+                icon: Image("bookmarks-outlined-25", bundle: .catalyst),
+                title: "Bookmarks",
+                newItemIndicator: .constant(false)
+            ),
+            {}
+        ),
+        (
+            .avatarListItem(
+                initials: "AB",
+                imageURL: nil,
+                color: CatColors.Theme.Primary.fill,
+                title: "Alice Brown",
+                subtitle: "iOS Developer",
+                newItemIndicator: .constant(true)
+            ),
+            {}
+        ),
+        (
+            .avatarListItem(
+                initials: "CD",
+                imageURL: nil,
+                color: CatColors.Theme.Danger.fill,
+                title: "Chris Doe",
+                subtitle: nil,
+                newItemIndicator: .constant(false)
+            ),
+            {}
+        ),
+        (
+            .listItem(
+                icon: Image("communities-outlined-25", bundle: .catalyst),
+                title: "Communities",
+                newItemIndicator: .constant(false)
+            ),
+            {}
+        ),
+    ])
     .padding()
     .background(CatColors.Ui.Background.canvas)
 }

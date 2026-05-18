@@ -4,3 +4,7 @@ iOS/Catalyst/.build/
 .DS_Store
 *.iml
 tokens/node_modules
+
+# Tuist-generated files (created when this package is used as a local dependency)
+iOS/Catalyst/Catalyst.xcodeproj/
+iOS/Catalyst/Derived/

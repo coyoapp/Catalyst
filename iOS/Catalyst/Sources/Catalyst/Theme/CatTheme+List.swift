@@ -26,6 +26,7 @@ public extension CatTheme {
             colorStyle: CatListStateColorStyle(
                 background: CatColors.Theme.Primary.fill, // color/theme/primary/fill
                 text: CatColors.Ui.Font.body, // color/ui/font/body
+                subtitle: CatColors.Ui.Font.muted,
                 icon: CatColors.Ui.Font.body, // color/ui/font/body
                 chevron: CatColors.Ui.Font.muted, // color/ui/font/muted
                 ellipse: CatColors.Theme.Danger.bg, // color/theme/danger/bg
@@ -38,6 +39,7 @@ public extension CatTheme {
             colorStyle: CatListStateColorStyle(
                 background: CatColors.Theme.Secondary.bgHover.opacity(0.1),
                 text: CatColors.Ui.Font.body,
+                subtitle: CatColors.Ui.Font.muted,
                 icon: CatColors.Ui.Font.body,
                 chevron: CatColors.Ui.Font.muted,
                 ellipse: CatColors.Theme.Danger.bg,
@@ -50,6 +52,7 @@ public extension CatTheme {
             colorStyle: CatListStateColorStyle(
                 background: CatColors.Theme.Secondary.bgActive.opacity(0.1),
                 text: CatColors.Ui.Font.body,
+                subtitle: CatColors.Ui.Font.muted,
                 icon: CatColors.Ui.Font.body,
                 chevron: CatColors.Ui.Font.muted,
                 ellipse: CatColors.Theme.Danger.bg,
@@ -62,6 +65,7 @@ public extension CatTheme {
             colorStyle: CatListStateColorStyle(
                 background: CatColors.Theme.Primary.fill, // TODO: Replace if it needed in desing
                 text: CatColors.Ui.Font.body, // TODO: Replace if it needed in desing
+                subtitle: CatColors.Ui.Font.muted,
                 icon: CatColors.Ui.Font.body, // TODO: Replace if it needed in desing
                 chevron: CatColors.Ui.Font.muted, // TODO: Replace if it needed in desing
                 ellipse: CatColors.Theme.Danger.bg, // TODO: Replace if it needed in desing
@@ -74,6 +78,7 @@ public extension CatTheme {
             colorStyle: CatListStateColorStyle(
                 background: CatColors.Theme.Primary.fill,
                 text: CatColors.Ui.Font.muted,
+                subtitle: CatColors.Ui.Font.muted,
                 icon: CatColors.Ui.Font.muted,
                 chevron: CatColors.Ui.Font.muted,
                 ellipse: CatColors.Theme.Danger.bg,

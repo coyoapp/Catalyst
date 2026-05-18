@@ -26,8 +26,23 @@ struct ListDemoView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: CatSpacing.spacing3xl) {
+                // ── Section 1: Standalone profile ──────────────────────
+                SectionHeader("Standalone — Profile")
+                CatList(items: [
+                    (
+                    .avatarListItem(initials: "AH", imageURL: nil, color: .green, title: "Amin Heidari" , subtitle: "iOS Developer", newItemIndicator: .constant(false)),
+                    { destination = .profile }
+                    )
+                ])
 
-                // ── Section 1: Standalone (single item) ──────────────────────
+                SectionHeader("Standalone — Profile without subtitle")
+                CatList(items: [
+                    (
+                    .avatarListItem(initials: "AH", imageURL: nil, color: .green, title: "Amin Heidari" , subtitle: nil, newItemIndicator: .constant(false)),
+                    { destination = .profile }
+                    )
+                ])
+                // ── Section 2: Standalone (single item) ──────────────────────
                 SectionHeader("Standalone — single item")
 
                 CatList(items: [
@@ -41,7 +56,7 @@ struct ListDemoView: View {
                     ),
                 ])
 
-                // ── Section 2: Two-item group (top + bottom) ──────────────────
+                // ── Section 3: Two-item group (top + bottom) ──────────────────
                 SectionHeader("Two items — top / bottom")
 
                 CatList(items: [
@@ -63,7 +78,7 @@ struct ListDemoView: View {
                     ),
                 ])
 
-                // ── Section 3: Full group (top / middle / bottom) ─────────────
+                // ── Section 4: Full group (top / middle / bottom) ─────────────
                 SectionHeader("Full group — top / middle / bottom")
 
                 CatList(items: [

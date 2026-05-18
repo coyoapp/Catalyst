@@ -82,6 +82,8 @@ public struct CatListStateColorStyle: Sendable {
     public let background: Color
     /// Title (and subtitle) text color.
     public let text: Color
+    /// Subtitle text color.
+    public let subtitle: Color
     /// Leading icon tint.
     public let icon: Color
     /// Trailing chevron tint.
@@ -94,6 +96,7 @@ public struct CatListStateColorStyle: Sendable {
     public init(
         background: Color,
         text: Color,
+        subtitle: Color,
         icon: Color,
         chevron: Color,
         ellipse: Color,
@@ -105,6 +108,7 @@ public struct CatListStateColorStyle: Sendable {
         self.chevron = chevron
         self.ellipse = ellipse
         self.divider = divider
+        self.subtitle = subtitle
     }
 }
 
@@ -162,6 +166,7 @@ struct CatListResolvedStyleKey: EnvironmentKey {
     static let defaultValue = CatListStateColorStyle(
         background: CatColors.Theme.Primary.fill,
         text: CatColors.Ui.Font.body,
+        subtitle: CatColors.Ui.Font.muted,
         icon: CatColors.Ui.Font.body,
         chevron: CatColors.Ui.Font.muted,
         ellipse: CatColors.Theme.Danger.bg,
@@ -201,6 +206,8 @@ public enum CatListSize {
 public enum CatListContent {
     /// Standard navigation row: leading icon, title, optional new-item indicator, chevron.
     case listItem(icon: Image, title: String, newItemIndicator: Binding<Bool>)
+    /// Avatar navigation row: leading `CatAvatarView`, title, optional new-item indicator, chevron.
+    case avatarListItem(initials: String?, imageURL: URL?, color: Color?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>)
 }
 
 // MARK: - List ButtonStyle
