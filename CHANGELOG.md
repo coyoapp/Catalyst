@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.11.2](https://github.com/coyoapp/Catalyst/compare/v0.11.1...v0.11.2) (2026-05-19)
+
+
+### Bug Fixes
+
+* list icon and separator ([c30b7cc](https://github.com/coyoapp/Catalyst/commit/c30b7cc2f2a3990eb98f38e2d19e54c12b69f71f))
+* **list:** Handle no icon on list item ([488d428](https://github.com/coyoapp/Catalyst/commit/488d4286e794d4bd479317995515c985d961155b))
+
 ## [0.11.1](https://github.com/coyoapp/Catalyst/compare/v0.11.0...v0.11.1) (2026-05-19)
 
 
