@@ -111,9 +111,15 @@ private struct RowContent: View {
         switch content {
 
         case .listItem(let icon, let title, let newItemIndicator):
+            // Leading inset: icon column width when icon is present, plain leading padding when nil.
+            let textLeadingPadding: CGFloat = icon == nil
+                ? CatSpacing.spacingXl
+                : CatSpacing.spacing7xl
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
-                    leadingIcon(icon)
+                    if let icon {
+                        leadingIcon(icon)
+                    }
                     HStack(spacing: CatSpacing.spacingMd) {
                         Text(title)
                             .font(CatTypography.body1)
@@ -123,12 +129,13 @@ private struct RowContent: View {
                         trailingCluster(newItemIndicator: newItemIndicator.wrappedValue)
                     }
                     .padding(.vertical, CatSpacing.spacingXl)
+                    .padding(.leading, icon == nil ? CatSpacing.spacingXl : 0)
                     .padding(.trailing, CatSpacing.spacingXl)
                 }
                 if position.showDivider {
                     dividerLine()
                         .padding(.trailing, CatSpacing.spacingXl)
-                        .padding(.leading, CatSpacing.spacing7xl)
+                        .padding(.leading, textLeadingPadding)
                 }
             }
             .frame(minHeight: CatListSize.regular.height)
@@ -196,7 +203,7 @@ private struct RowContent: View {
                     .foregroundStyle(colors.ellipse)
             }
 
-            Image("chevron-right-outlined", bundle: .catalyst)
+            Image("ic_chevron-right-outlined-25", bundle: .catalyst)
                 .renderingMode(.template)
                 .foregroundStyle(colors.chevron)
         }

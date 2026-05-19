@@ -62,7 +62,7 @@ struct ListDemoView: View {
                 CatList(items: [
                     (
                         .listItem(
-                            icon: Image("collagues-outlined-25", bundle: .catalyst),
+                            icon: nil,
                             title: "People",
                             newItemIndicator: .constant(true)
                         ),
@@ -70,7 +70,7 @@ struct ListDemoView: View {
                     ),
                     (
                         .listItem(
-                            icon: Image("ic_settings-outlined-25", bundle: .catalyst),
+                            icon: nil,
                             title: "Settings",
                             newItemIndicator: .constant(false)
                         ),
@@ -84,7 +84,7 @@ struct ListDemoView: View {
                 CatList(items: [
                     (
                         .listItem(
-                            icon: Image("collagues-outlined-25", bundle: .catalyst),
+                            icon: Image("ic_colleagues-outlined-25", bundle: .catalyst),
                             title: "Pages",
                             newItemIndicator: .constant(false)
                         ),
