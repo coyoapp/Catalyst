@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.11.1](https://github.com/coyoapp/Catalyst/compare/v0.11.0...v0.11.1) (2026-05-19)
+
+
+### Bug Fixes
+
+* **icons:** add icon-more ([80731ba](https://github.com/coyoapp/Catalyst/commit/80731bacb6dee414869ba28f7d56527a789813d9))
+* **icons:** add icon-more ([569d553](https://github.com/coyoapp/Catalyst/commit/569d553c09862ca17d8fe582c9f10a65ec191635))
+
 ## [0.11.0](https://github.com/coyoapp/Catalyst/compare/v0.10.0...v0.11.0) (2026-05-19)
 
 
