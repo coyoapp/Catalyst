@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.0](https://github.com/coyoapp/Catalyst/compare/v0.10.0...v0.11.0) (2026-05-19)
+
+
+### Features
+
+* **components:** Implement list component ([3e7b902](https://github.com/coyoapp/Catalyst/commit/3e7b902911e9824ff2f8c3fd0f8ce2387ce24915))
+
+
+### Bug Fixes
+
+* **tokens:** bottomNav1 and bottomNav2 typography values added ([#58](https://github.com/coyoapp/Catalyst/issues/58)) ([9e41a00](https://github.com/coyoapp/Catalyst/commit/9e41a00a454cd69ff038a91c21445fe0c0a45aa5))
+
 ## [0.10.0](https://github.com/coyoapp/Catalyst/compare/v0.9.0...v0.10.0) (2026-05-18)
 
 
