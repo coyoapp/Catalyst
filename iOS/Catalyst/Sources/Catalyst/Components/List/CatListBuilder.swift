@@ -20,14 +20,23 @@ import SwiftUI
 /// ])
 /// ```
 public struct CatList: View {
-    public let items: [(content: CatListContent, action: () -> Void)]
+    public let items: [(content: CatListContent, accessibilityIdentifier: String?, action: () -> Void)]
     public let styleConfig: CatListStateStyleConfig
 
+    public init(
+        items: [(content: CatListContent, accessibilityIdentifier: String?, action: () -> Void)],
+        styleConfig: CatListStateStyleConfig = CatTheme.listConfig()
+    ) {
+        self.items = items
+        self.styleConfig = styleConfig
+    }
+
+    /// Convenience init for callers that don't need per-row accessibility identifiers.
     public init(
         items: [(content: CatListContent, action: () -> Void)],
         styleConfig: CatListStateStyleConfig = CatTheme.listConfig()
     ) {
-        self.items = items
+        self.items = items.map { (content: $0.content, accessibilityIdentifier: nil, action: $0.action) }
         self.styleConfig = styleConfig
     }
 
@@ -38,12 +47,11 @@ public struct CatList: View {
                     content: item.content,
                     position: position(at: index),
                     styleConfig: styleConfig,
+                    accessibilityIdentifier: item.accessibilityIdentifier,
                     action: item.action
                 )
             }
         }
-        // Outer clip ensures group corners are always respected even when
-        // CatListStyle clips individual rows with UnevenRoundedRectangle.
         .clipShape(RoundedRectangle(cornerRadius: CatBorderRadius.borderRadiusMd))
     }
 
@@ -74,17 +82,20 @@ public struct CatListBuilder: View {
     let content: CatListContent
     let position: CatListPosition
     let styleConfig: CatListStateStyleConfig
+    let accessibilityIdentifier: String?
     let action: () -> Void
 
     public init(
         content: CatListContent,
         position: CatListPosition = .standalone,
         styleConfig: CatListStateStyleConfig = CatTheme.listConfig(),
+        accessibilityIdentifier: String? = nil,
         action: @escaping () -> Void
     ) {
         self.content = content
         self.position = position
         self.styleConfig = styleConfig
+        self.accessibilityIdentifier = accessibilityIdentifier
         self.action = action
     }
 
@@ -93,6 +104,7 @@ public struct CatListBuilder: View {
             RowContent(content: content, position: position)
         }
         .buttonStyle(CatListStyle(styleConfig: styleConfig, position: position))
+        .accessibilityIdentifier(accessibilityIdentifier ?? "")
     }
 }
 
