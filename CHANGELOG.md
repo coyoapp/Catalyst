@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.3](https://github.com/coyoapp/Catalyst/compare/v0.11.2...v0.11.3) (2026-05-20)
+
+
+### Bug Fixes
+
+* **list:** Support accessibilityIdentifier in list ([1dbccbf](https://github.com/coyoapp/Catalyst/commit/1dbccbfe62ecd8d8908d00d6eee7c83ca1ad1af3))
+
 ## [0.11.2](https://github.com/coyoapp/Catalyst/compare/v0.11.1...v0.11.2) (2026-05-19)
 
 
