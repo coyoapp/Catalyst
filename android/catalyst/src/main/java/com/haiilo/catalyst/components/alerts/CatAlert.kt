@@ -101,8 +101,7 @@ fun CatAlert(
         .border(
             BorderStroke(CatBorderWidth.border_width_default, resolvedColors.border),
             shape,
-        )
-        .padding(CatSpacing.spacing_xl)
+        ).padding(CatSpacing.spacing_xl)
 
     // -----------------------------------------------------------------------
     // Shared sub-composables
@@ -131,7 +130,6 @@ fun CatAlert(
     // Layout — switches between Trailing and Below placements
     // -----------------------------------------------------------------------
     when (buttonPlacement) {
-
         // Icon ─ Heading (fills space) ─ Button
         CatAlertButtonPlacement.Trailing -> {
             Row(

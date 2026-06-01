@@ -41,4 +41,3 @@ enum class CatAlertButtonPlacement {
      */
     Below,
 }
-

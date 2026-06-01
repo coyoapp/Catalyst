@@ -7,7 +7,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class CatAlertDefaultsTest {
-
     private val testAccentPalette = CatColorPalette(
         bg = Color(0xFF1A73E8),
         bgHover = Color(0xFF1867D2),
@@ -26,7 +25,11 @@ class CatAlertDefaultsTest {
 
         assertEquals(CatColors.Theme.Primary.text, colors.icon)
         assertEquals(CatColors.Theme.Primary.text, colors.text)
-        assertEquals(CatColors.Theme.Primary.text.copy(alpha = 0.30f), colors.border)
+        assertEquals(
+            CatColors.Theme.Primary.text
+                .copy(alpha = 0.30f),
+            colors.border
+        )
         assertEquals(Color.Transparent, colors.background)
     }
 
@@ -51,7 +54,10 @@ class CatAlertDefaultsTest {
 
         assertEquals(CatColors.Theme.Info.text, colors.icon)
         assertEquals(CatColors.Theme.Info.text, colors.text)
-        assertEquals(CatColors.Theme.Info.text.copy(alpha = 0.30f), colors.border)
+        assertEquals(
+            CatColors.Theme.Info.text
+                .copy(alpha = 0.30f),
+            colors.border
+        )
     }
 }
-

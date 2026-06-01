@@ -3,7 +3,6 @@ package com.haiilo.catalyst.components.alerts
 import com.haiilo.catalyst.theme.CatColorPalette
 import com.haiilo.catalyst.tokens.generated.CatColors
 
-
 // ---------------------------------------------------------------------------
 // CatAlertDefaults
 //
@@ -29,7 +28,8 @@ object CatAlertDefaults {
     ): CatAlertColors {
         if (color == CatAlertColor.Default) {
             return CatAlertColors(
-                border = CatColors.Ui.Border.dark.copy(alpha = BorderAlpha),
+                border = CatColors.Ui.Border.dark
+                    .copy(alpha = BorderAlpha),
                 icon = CatColors.Ui.Font.body,
                 text = CatColors.Ui.Font.body,
             )

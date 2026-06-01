@@ -182,4 +182,3 @@ private fun AlertDivider() {
         modifier = Modifier.padding(vertical = CatSpacing.spacing_md),
     )
 }
-

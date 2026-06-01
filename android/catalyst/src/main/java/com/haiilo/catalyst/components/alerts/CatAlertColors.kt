@@ -33,4 +33,3 @@ data class CatAlertColors(
     val text: Color,
     val background: Color = Color.Transparent,
 )
-
