@@ -22,6 +22,7 @@ PS: After adding the dependency or to receive any update in Design System Librar
 | Platform | Component | Docs |
 |----------|-----------|------|
 | iOS | Button | [docs/ios/button.md](./docs/ios/button.md) |
+| iOS | Alert | [docs/ios/alert.md](./docs/ios/alert.md) |
 | Android | Button | [docs/android/button.md](./docs/android/button.md) |
 
 ## 🎨 Whitelabel / Accent Color (Android)
