@@ -109,14 +109,6 @@ struct CatAlertBuilder<Action: View>: View {
             RoundedRectangle(cornerRadius: config.cornerRadius)
                 .stroke(config.colorStyle.border, lineWidth: config.borderWidth)
         )
-        // Subtle card elevation. There is no shadow design token; radius/offset are token-derived
-        // and the small opacity is the one unavoidable literal (a new token needs Design sign-off).
-        .shadow(
-            color: CatColors.Ui.Background.tooltip.opacity(0.08),
-            radius: CatSpacing.spacingXs,
-            x: 0,
-            y: CatSpacing.spacingXxs
-        )
     }
 
     /// Leading icon + heading. `alignment` is `.center` for the single-line inline layout and
