@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/coyoapp/Catalyst/compare/v0.12.0...v0.13.0) (2026-06-05)
+
+
+### Features
+
+* **components:** Alert view component ([#67](https://github.com/coyoapp/Catalyst/issues/67)) ([28fc76b](https://github.com/coyoapp/Catalyst/commit/28fc76b958b67da6ad87dccefb76d88a2eda9928))
+
 ## [0.12.0](https://github.com/coyoapp/Catalyst/compare/v0.11.3...v0.12.0) (2026-06-05)
 
 
