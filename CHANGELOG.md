@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.12.0](https://github.com/coyoapp/Catalyst/compare/v0.11.3...v0.12.0) (2026-06-05)
+
+
+### Features
+
+* **icons:** Add ringign bell and fix some others ([5da9df3](https://github.com/coyoapp/Catalyst/commit/5da9df37a67d3a0dea88fb874ded7e576e152d4a))
+* **icons:** Add ringing bell and fix some others ([cc6c8f3](https://github.com/coyoapp/Catalyst/commit/cc6c8f37a15333cd0dbd199cadd22f50c482301b))
+
 ## [0.11.3](https://github.com/coyoapp/Catalyst/compare/v0.11.2...v0.11.3) (2026-05-20)
 
 
