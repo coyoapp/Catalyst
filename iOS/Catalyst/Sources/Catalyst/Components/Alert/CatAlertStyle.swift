@@ -65,7 +65,7 @@ public struct CatAlertStyleConfig: Sendable {
         colorStyle: CatAlertColorStyle,
         cornerRadius: CGFloat = CatBorderRadius.borderRadiusMd,
         borderWidth: CGFloat = CatBorderWidth.borderWidthDefault,
-        headingFont: Font = CatTypography.s1
+        headingFont: Font = CatTypography.body1
     ) {
         self.colorStyle = colorStyle
         self.cornerRadius = cornerRadius
