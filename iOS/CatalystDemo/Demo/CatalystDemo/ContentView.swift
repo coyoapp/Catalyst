@@ -42,7 +42,17 @@ struct ContentView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
-                
+
+                // Navigate to the Alerts demo screen
+                NavigationLink(destination: AlertsDemoView()) {
+                    CatButton(.text("View All Alerts"), buttonSize: .medium) {}
+                        .catButtonConfig(variant: .filled, color: .info)
+                        .frame(maxWidth: .infinity)
+                        .allowsHitTesting(false)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
+
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Filled button set with catButtonConfig")
