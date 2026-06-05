@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/coyoapp/Catalyst/compare/v0.13.0...v0.13.1) (2026-06-05)
+
+
+### Bug Fixes
+
+* **components:** Fix alert text font ([#71](https://github.com/coyoapp/Catalyst/issues/71)) ([cb10c77](https://github.com/coyoapp/Catalyst/commit/cb10c775da2a046016d391c4572477ad56d22aa5))
+
 ## [0.13.0](https://github.com/coyoapp/Catalyst/compare/v0.12.0...v0.13.0) (2026-06-05)
 
 
