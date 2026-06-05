@@ -54,10 +54,10 @@ public extension CatTheme {
             )
 
         case .warning:
-            // Warning `.bg` (#FFCE80) is too pale to read as a 1pt border, so the legible
-            // `.text` amber (#9F6100) is used for border, heading, and icon alike.
+            // Designer spec: border uses theme/warning/bg. Heading + icon use the legible
+            // `.text` amber (#9F6100) so the text stays readable on white.
             colorStyle = CatAlertColorStyle(
-                border: CatColors.Theme.Warning.text,
+                border: CatColors.Theme.Warning.bg,
                 heading: CatColors.Theme.Warning.text,
                 icon: CatColors.Theme.Warning.text,
                 background: background

@@ -102,52 +102,57 @@ struct CatAlertBuilder<Action: View>: View {
             stackedLayout
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(CatSpacing.spacingXl)
+        .padding(CatSpacing.spacingLg)
         .background(config.colorStyle.background)
         .clipShape(RoundedRectangle(cornerRadius: config.cornerRadius))
         .overlay(
             RoundedRectangle(cornerRadius: config.cornerRadius)
-                .stroke(config.colorStyle.border, lineWidth: config.borderWidth)
+                .strokeBorder(config.colorStyle.border.opacity(0.3), lineWidth: config.borderWidth)
         )
     }
 
-    /// Leading icon + heading. `alignment` is `.center` for the single-line inline layout and
-    /// `.top` for the stacked layout so the icon aligns with the first line of a wrapped heading.
-    private func iconHeading(_ alignment: VerticalAlignment) -> some View {
-        HStack(alignment: alignment, spacing: CatSpacing.spacingMd) {
-            icon
-                .resizable()
-                .renderingMode(.template)
-                .scaledToFit()
-                .frame(width: CatSizes.sizeLg, height: CatSizes.sizeLg)
-                .foregroundStyle(config.colorStyle.icon)
-            Text(heading)
-                .font(config.headingFont)
-                .foregroundStyle(config.colorStyle.heading)
-                .fixedSize(horizontal: false, vertical: true)
-        }
+    /// The leading icon, tinted to the variant color.
+    private var iconView: some View {
+        icon
+            .resizable()
+            .renderingMode(.template)
+            .scaledToFit()
+            .frame(width: CatSizes.sizeLg, height: CatSizes.sizeLg)
+            .foregroundStyle(config.colorStyle.icon)
     }
 
-    /// Icon + heading on the left, action button pinned to the trailing edge.
+    /// The heading text, colored to the variant.
+    private var headingText: some View {
+        Text(heading)
+            .font(config.headingFont)
+            .foregroundStyle(config.colorStyle.heading)
+            .fixedSize(horizontal: false, vertical: true)
+    }
+
+    /// Single-line layout: icon + heading, then the action button pinned to the trailing edge.
     /// `.fixedSize()` keeps the button at its intrinsic width so `ViewThatFits` reports this
     /// candidate as "too wide" once the heading no longer fits on one line.
     private var inlineLayout: some View {
         HStack(alignment: .center, spacing: CatSpacing.spacingMd) {
-            iconHeading(.center)
+            iconView
+            headingText
             Spacer(minLength: CatSpacing.spacingMd)
             action()
                 .fixedSize()
         }
     }
 
-    /// Icon + heading, with the action button below.
-    /// `.fixedSize()` keeps the button at its intrinsic width (leading-aligned) instead of
-    /// stretching to fill the row — `CatButton` expands to `maxWidth: .infinity` otherwise.
+    /// Stacked layout: the icon stays in a leading column; the heading and the action button
+    /// share the trailing column, so the button leading-aligns with the text (not the icon).
+    /// `.fixedSize()` keeps the button at its intrinsic width instead of stretching the row.
     private var stackedLayout: some View {
-        VStack(alignment: .leading, spacing: CatSpacing.spacingMd) {
-            iconHeading(.top)
-            action()
-                .fixedSize()
+        HStack(alignment: .top, spacing: CatSpacing.spacingMd) {
+            iconView
+            VStack(alignment: .leading, spacing: CatSpacing.spacingMd) {
+                headingText
+                action()
+                    .fixedSize()
+            }
         }
     }
 }
