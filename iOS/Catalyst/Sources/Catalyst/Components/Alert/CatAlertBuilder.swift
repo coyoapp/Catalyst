@@ -46,7 +46,7 @@ public struct CatAlert<Action: View>: View {
     ///     below the heading on long ones.
     public init(
         _ heading: String,
-        icon: Image = Image("info-circle-outlined", bundle: .catalyst),
+        icon: Image = Image("ic_info-outlined-25", bundle: .catalyst),
         @ViewBuilder action: () -> Action
     ) {
         self.heading = heading
@@ -76,7 +76,7 @@ public extension CatAlert where Action == EmptyView {
     ///   - icon: The leading icon. Defaults to the design system's info-circle.
     init(
         _ heading: String,
-        icon: Image = Image("info-circle-outlined", bundle: .catalyst)
+        icon: Image = Image("ic_info-outlined-25", bundle: .catalyst)
     ) {
         self.init(heading, icon: icon) { EmptyView() }
     }
@@ -119,7 +119,7 @@ struct CatAlertBuilder<Action: View>: View {
                 .resizable()
                 .renderingMode(.template)
                 .scaledToFit()
-                .frame(width: CatSizes.sizeMd, height: CatSizes.sizeMd)
+                .frame(width: CatSizes.sizeLg, height: CatSizes.sizeLg)
                 .foregroundStyle(config.colorStyle.icon)
             Text(heading)
                 .font(config.headingFont)
