@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import com.haiilo.catalyst.components.buttons.CatButton
 import com.haiilo.catalyst.components.buttons.CatButtonColor
@@ -72,7 +73,7 @@ import com.haiilo.catalyst.tokens.generated.CatTypography
 @Composable
 fun CatAlert(
     heading: String,
-    leadingIcon: Painter,
+    leadingIcon: Painter = painterResource(id = com.haiilo.catalyst.R.drawable.info_circle_outlined),
     buttonText: String,
     onButtonClick: () -> Unit,
     modifier: Modifier = Modifier,
