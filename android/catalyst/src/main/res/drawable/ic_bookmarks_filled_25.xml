@@ -4,6 +4,13 @@
     android:viewportWidth="25"
     android:viewportHeight="25">
     <path
+        android:fillColor="#FFD9D9D9"
+        android:pathData="M5 6c0-1.1 0.9-2 2-2h11c1.1 0 2 0.9 2 2v15.01c0 0.41-0.47 0.65-0.8 0.4l-6.4-4.7c-0.18-0.12-0.42-0.12-0.6 0l-6.4 4.7C5.47 21.67 5 21.43 5 21.02V6Z"/>
+    <path
         android:fillColor="#FF000000"
+        android:pathData="M5 6c0-1.1 0.9-2 2-2h11c1.1 0 2 0.9 2 2v15.01c0 0.41-0.47 0.65-0.8 0.4l-6.4-4.7c-0.18-0.12-0.42-0.12-0.6 0l-6.4 4.7C5.47 21.67 5 21.43 5 21.02V6Z"/>
+    <path
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1.5"
         android:pathData="M5 6c0-1.1 0.9-2 2-2h11c1.1 0 2 0.9 2 2v15.01c0 0.41-0.47 0.65-0.8 0.4l-6.4-4.7c-0.18-0.12-0.42-0.12-0.6 0l-6.4 4.7C5.47 21.67 5 21.43 5 21.02V6Z"/>
 </vector>
