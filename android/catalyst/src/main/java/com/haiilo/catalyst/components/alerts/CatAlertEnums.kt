@@ -30,6 +30,14 @@ enum class CatAlertColor {
 
 enum class CatAlertButtonPlacement {
     /**
+     * Chooses the best layout automatically.
+     *
+     * Short headings with an action stay inline; longer headings fall back to a
+     * stacked layout with the action below the text.
+     */
+    Automatic,
+
+    /**
      * Button sits on the trailing edge in the same row as the heading.
      * Best for short, single-line headings.
      */

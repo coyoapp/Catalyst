@@ -17,9 +17,12 @@ import com.haiilo.catalyst.R
 import com.haiilo.catalyst.components.alerts.CatAlert
 import com.haiilo.catalyst.components.alerts.CatAlertButtonPlacement
 import com.haiilo.catalyst.components.alerts.CatAlertColor
+import com.haiilo.catalyst.components.alerts.ProvideCatAlertConfig
 import com.haiilo.catalyst.components.buttons.CatButton
 import com.haiilo.catalyst.components.buttons.CatButtonColor
 import com.haiilo.catalyst.components.buttons.CatButtonContent
+import com.haiilo.catalyst.components.buttons.CatButtonPlacement
+import com.haiilo.catalyst.components.buttons.CatButtonSize
 import com.haiilo.catalyst.components.buttons.CatButtonVariant
 import com.haiilo.catalyst.theme.CatTheme
 import com.haiilo.catalyst.tokens.generated.CatSpacing
@@ -28,8 +31,8 @@ import com.haiilo.catalyst.tokens.generated.CatTypography
 // ---------------------------------------------------------------------------
 // AlertsDemoScreen
 //
-// Demonstrates all CatAlert color roles, button placements, long-heading
-// wrapping behaviour, and the disabled state.
+// Demonstrates CatAlert color roles, automatic and explicit placement,
+// disabled actions, optional actions, and custom action-slot content.
 // ---------------------------------------------------------------------------
 
 @Composable
@@ -55,121 +58,199 @@ fun AlertsDemoScreen(onBack: () -> Unit) {
 
                 Text("Alerts", style = CatTypography.h2)
 
-                // ---------------------------------------------------------------
-                // 1. Color roles — Trailing button placement (short heading)
-                // ---------------------------------------------------------------
-                AlertSectionHeader("Color roles — Trailing button")
+                AlertSectionHeader("Color roles - automatic placement")
+                AlertDivider()
+
+                DemoAlert("Info alert", CatAlertColor.Info)
+                DemoAlert("Primary alert", CatAlertColor.Primary)
+                DemoAlert("Success alert", CatAlertColor.Success, icon = R.drawable.icon_checkmark)
+                DemoAlert("Warning alert", CatAlertColor.Warning)
+                DemoAlert("Danger alert", CatAlertColor.Danger)
+                DemoAlert("Default alert", CatAlertColor.Default)
+
+                AlertDivider()
+
+                AlertSectionHeader("Explicit trailing placement")
+                AlertDivider()
+
+                DemoAlert(
+                    "Short heading",
+                    CatAlertColor.Info,
+                    buttonPlacement = CatAlertButtonPlacement.Trailing
+                )
+                DemoAlert(
+                    "Short heading",
+                    CatAlertColor.Success,
+                    buttonPlacement = CatAlertButtonPlacement.Trailing
+                )
+
+                AlertDivider()
+
+                AlertSectionHeader("Explicit below placement")
+                AlertDivider()
+
+                DemoAlert(
+                    heading = "This is a longer heading that needs more than one line to display fully",
+                    color = CatAlertColor.Info,
+                    buttonPlacement = CatAlertButtonPlacement.Below,
+                )
+                DemoAlert(
+                    heading = "This is a longer heading that needs more than one line to display fully",
+                    color = CatAlertColor.Warning,
+                    buttonPlacement = CatAlertButtonPlacement.Below,
+                )
+                DemoAlert(
+                    heading = "This is a longer heading that needs more than one line to display fully",
+                    color = CatAlertColor.Danger,
+                    buttonPlacement = CatAlertButtonPlacement.Below,
+                )
+
+                AlertDivider()
+
+                AlertSectionHeader("Disabled action")
+                AlertDivider()
+
+                DemoAlert(
+                    heading = "Action is currently unavailable",
+                    color = CatAlertColor.Info,
+                    buttonEnabled = false,
+                )
+                DemoAlert(
+                    heading = "This is a longer heading to test disabled with below placement",
+                    color = CatAlertColor.Danger,
+                    buttonPlacement = CatAlertButtonPlacement.Below,
+                    buttonEnabled = false,
+                )
+
+                AlertDivider()
+
+                AlertSectionHeader("Accessibility — iconContentDescription")
                 AlertDivider()
 
                 CatAlert(
-                    heading = "Info alert",
+                    heading = "With explicit icon description (TalkBack announces icon)",
+                    color = CatAlertColor.Warning,
+                    iconContentDescription = "Warning",
+                )
+                CatAlert(
+                    heading = "No icon description (icon is decorative, heading carries meaning)",
+                    color = CatAlertColor.Info,
+                    iconContentDescription = null,
+                )
+
+                AlertDivider()
+
+                AlertSectionHeader("Ambient config — ProvideCatAlertConfig")
+                AlertDivider()
+
+                ProvideCatAlertConfig(color = CatAlertColor.Danger) {
+                    // Both alerts inherit Danger color from the ambient config
+                    // without each needing an explicit color param.
+                    CatAlert(heading = "Inherits Danger from ambient config")
+                    CatAlert(heading = "Also inherits Danger from ambient config")
+                    // Call-site override still wins:
+                    CatAlert(
+                        heading = "Overrides ambient to Success at call site",
+                        color = CatAlertColor.Success,
+                    )
+                }
+
+                AlertDivider()
+
+                AlertSectionHeader("Optional action")
+                AlertDivider()
+
+                CatAlert(
+                    heading = "Informational message",
                     leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
                     color = CatAlertColor.Info,
                 )
                 CatAlert(
-                    heading = "Primary alert",
-                    leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
-                    color = CatAlertColor.Primary,
-                )
-                CatAlert(
-                    heading = "Success alert",
+                    heading = "This is a longer informational message that wraps to multiple lines without an action",
                     leadingIcon = painterResource(R.drawable.icon_checkmark),
-                    buttonText = "Action",
-                    onButtonClick = {},
                     color = CatAlertColor.Success,
                 )
-                CatAlert(
-                    heading = "Warning alert",
-                    leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
-                    color = CatAlertColor.Warning,
-                )
-                CatAlert(
-                    heading = "Danger alert",
-                    leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
-                    color = CatAlertColor.Danger,
-                )
-                CatAlert(
-                    heading = "Default alert",
-                    leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
-                    color = CatAlertColor.Default,
-                )
 
                 AlertDivider()
 
-                // ---------------------------------------------------------------
-                // 2. Long heading — Below button placement (multi-line heading)
-                // ---------------------------------------------------------------
-                AlertSectionHeader("Long heading — Below button")
+                AlertSectionHeader("Custom action slot")
                 AlertDivider()
 
                 CatAlert(
-                    heading = "This is a longer heading that needs more than one line to display fully",
+                    heading = "Text variant button",
                     leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
-                    color = CatAlertColor.Info,
-                    buttonPlacement = CatAlertButtonPlacement.Below,
+                    color = CatAlertColor.Primary,
+                    action = {
+                        CatButton(
+                            content = CatButtonContent.TextOnly("Learn more"),
+                            onClick = {},
+                            variant = CatButtonVariant.Text,
+                            color = CatButtonColor.Primary,
+                            size = CatButtonSize.Small,
+                        )
+                    },
                 )
                 CatAlert(
-                    heading = "This is a longer heading that needs more than one line to display fully",
+                    heading = "Icon + text button",
                     leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
                     color = CatAlertColor.Warning,
                     buttonPlacement = CatAlertButtonPlacement.Below,
+                    action = {
+                        CatButton(
+                            content = CatButtonContent.IconText(
+                                painter = painterResource(id = R.drawable.icon_checkmark),
+                                text = "Confirm",
+                                placement = CatButtonPlacement.Leading,
+                            ),
+                            onClick = {},
+                            variant = CatButtonVariant.Filled,
+                            color = CatButtonColor.Success,
+                            size = CatButtonSize.Medium,
+                        )
+                    },
                 )
                 CatAlert(
-                    heading = "This is a longer heading that needs more than one line to display fully",
+                    heading = "Link variant button",
                     leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
                     color = CatAlertColor.Danger,
-                    buttonPlacement = CatAlertButtonPlacement.Below,
-                )
-
-                AlertDivider()
-
-                // ---------------------------------------------------------------
-                // 3. Disabled state
-                // ---------------------------------------------------------------
-                AlertSectionHeader("Disabled")
-                AlertDivider()
-
-                CatAlert(
-                    heading = "Action is currently unavailable",
-                    leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
-                    color = CatAlertColor.Info,
-                    enabled = false,
-                )
-                CatAlert(
-                    heading = "This is a longer heading to test disabled with below placement",
-                    leadingIcon = painterResource(R.drawable.info_circle_outlined),
-                    buttonText = "Action",
-                    onButtonClick = {},
-                    color = CatAlertColor.Danger,
-                    buttonPlacement = CatAlertButtonPlacement.Below,
-                    enabled = false,
+                    action = {
+                        CatButton(
+                            content = CatButtonContent.TextOnly("Dismiss"),
+                            onClick = {},
+                            variant = CatButtonVariant.Link,
+                            color = CatButtonColor.Danger,
+                        )
+                    },
                 )
             }
         }
     }
 }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+@Composable
+private fun DemoAlert(
+    heading: String,
+    color: CatAlertColor,
+    icon: Int = R.drawable.info_circle_outlined,
+    buttonPlacement: CatAlertButtonPlacement = CatAlertButtonPlacement.Automatic,
+    buttonEnabled: Boolean = true,
+) {
+    CatAlert(
+        heading = heading,
+        leadingIcon = painterResource(icon),
+        color = color,
+        buttonPlacement = buttonPlacement,
+        action = {
+            CatButton(
+                content = CatButtonContent.TextOnly("Action"),
+                onClick = {},
+                variant = CatButtonVariant.Outlined,
+                color = CatButtonColor.Secondary,
+                enabled = buttonEnabled,
+            )
+        },
+    )
+}
 
 @Composable
 private fun AlertSectionHeader(title: String) {
