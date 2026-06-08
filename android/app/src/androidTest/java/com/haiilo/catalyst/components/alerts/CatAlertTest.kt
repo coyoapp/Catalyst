@@ -30,7 +30,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class CatAlertTest {
-
     @get:Rule
     val composeRule = createAndroidComposeRule<ComponentActivity>()
 
@@ -58,7 +57,8 @@ class CatAlertTest {
         composeRule.onNodeWithText("Connection issue").assertIsDisplayed()
         composeRule.onNodeWithContentDescription("Alert status").assertIsDisplayed()
 
-        composeRule.onNodeWithText("Retry")
+        composeRule
+            .onNodeWithText("Retry")
             .assertIsDisplayed()
             .assertHasClickAction()
             .performClick()
@@ -88,7 +88,8 @@ class CatAlertTest {
             }
         }
 
-        composeRule.onNodeWithText("Retry")
+        composeRule
+            .onNodeWithText("Retry")
             .assertIsDisplayed()
             .assertHasClickAction()
             .performClick()
@@ -109,13 +110,16 @@ class CatAlertTest {
             }
         }
 
-        composeRule.onNodeWithText("Informational alert without action")
+        composeRule
+            .onNodeWithText("Informational alert without action")
             .assertIsDisplayed()
-        composeRule.onNodeWithContentDescription("Alert icon")
+        composeRule
+            .onNodeWithContentDescription("Alert icon")
             .assertIsDisplayed()
 
         assertTrue(
-            composeRule.onAllNodesWithText("Retry")
+            composeRule
+                .onAllNodesWithText("Retry")
                 .fetchSemanticsNodes(atLeastOneRootRequired = false)
                 .isEmpty(),
         )
@@ -146,7 +150,8 @@ class CatAlertTest {
             }
         }
 
-        composeRule.onNodeWithText("Learn more")
+        composeRule
+            .onNodeWithText("Learn more")
             .assertIsDisplayed()
             .assertHasClickAction()
             .performClick()
@@ -177,7 +182,8 @@ class CatAlertTest {
             }
         }
 
-        composeRule.onNodeWithText("Retry")
+        composeRule
+            .onNodeWithText("Retry")
             .assertIsDisplayed()
             .assertIsNotEnabled()
 
@@ -206,11 +212,13 @@ class CatAlertTest {
             }
         }
 
-        val headingBounds = composeRule.onAllNodesWithText("Saved")
+        val headingBounds = composeRule
+            .onAllNodesWithText("Saved")
             .fetchSemanticsNodes()
             .first()
             .boundsInRoot
-        val actionBounds = composeRule.onAllNodesWithText("Undo")
+        val actionBounds = composeRule
+            .onAllNodesWithText("Undo")
             .fetchSemanticsNodes()
             .first()
             .boundsInRoot
@@ -242,11 +250,11 @@ class CatAlertTest {
             .onAllNodesWithText(
                 "This is a very long alert heading that should force the action below",
                 substring = true
-            )
-            .fetchSemanticsNodes()
+            ).fetchSemanticsNodes()
             .first()
             .boundsInRoot
-        val actionBounds = composeRule.onAllNodesWithText("Undo")
+        val actionBounds = composeRule
+            .onAllNodesWithText("Undo")
             .fetchSemanticsNodes()
             .first()
             .boundsInRoot
@@ -254,4 +262,3 @@ class CatAlertTest {
         assertTrue(actionBounds.top >= headingBounds.bottom)
     }
 }
-

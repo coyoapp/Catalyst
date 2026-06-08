@@ -101,8 +101,7 @@ fun CatAlert(
         .border(
             BorderStroke(CatBorderWidth.border_width_default, resolvedColors.border),
             shape,
-        )
-        .padding(CatSpacing.spacing_xl)
+        ).padding(CatSpacing.spacing_xl)
 
     // -----------------------------------------------------------------------
     // Measure heading text for Automatic placement decisions.
@@ -122,18 +121,19 @@ fun CatAlert(
             )
         }.first().measure(constraints.copy(minWidth = 0, minHeight = 0))
 
-        val actionPlaceables = action?.let {
-            subcompose(CatAlertLayoutSlot.Action) { it() }
-                .map { measurable ->
-                    measurable.measure(
-                        constraints.copy(
-                            minWidth = 0,
-                            minHeight = 0,
-                            maxWidth = Constraints.Infinity
-                        ),
-                    )
-                }
-        }.orEmpty()
+        val actionPlaceables = action
+            ?.let {
+                subcompose(CatAlertLayoutSlot.Action) { it() }
+                    .map { measurable ->
+                        measurable.measure(
+                            constraints.copy(
+                                minWidth = 0,
+                                minHeight = 0,
+                                maxWidth = Constraints.Infinity
+                            ),
+                        )
+                    }
+            }.orEmpty()
         val actionPlaceable = actionPlaceables.firstOrNull()
         val actionWidth = actionPlaceable?.width ?: 0
 
