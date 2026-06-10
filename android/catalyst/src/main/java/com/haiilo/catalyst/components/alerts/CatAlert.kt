@@ -79,7 +79,7 @@ private enum class CatAlertLayoutSlot {
 fun CatAlert(
     modifier: Modifier = Modifier,
     heading: String,
-    leadingIcon: Painter = painterResource(id = com.haiilo.catalyst.R.drawable.info_circle_outlined),
+    leadingIcon: Painter = painterResource(id = com.haiilo.catalyst.R.drawable.ic_info_outlined_25),
     color: CatAlertColor? = null,
     buttonPlacement: CatAlertButtonPlacement = CatAlertButtonPlacement.Automatic,
     iconContentDescription: String? = null,
@@ -93,7 +93,7 @@ fun CatAlert(
     val resolvedColor = color ?: ambientConfig.color
     val accentPalette = LocalCatAccentPalette.current
     val resolvedColors = style ?: CatAlertDefaults.colors(resolvedColor, accentPalette)
-    val shape = RoundedCornerShape(CatBorderRadius.border_radius_lg)
+    val shape = RoundedCornerShape(CatBorderRadius.border_radius_md)
 
     val containerModifier = modifier
         .clip(shape)
