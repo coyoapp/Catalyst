@@ -101,7 +101,7 @@ fun CatAlert(
         .border(
             BorderStroke(CatBorderWidth.border_width_default, resolvedColors.border),
             shape,
-        ).padding(CatSpacing.spacing_xl)
+        ).padding(CatSpacing.spacing_lg)
 
     // -----------------------------------------------------------------------
     // Measure heading text for Automatic placement decisions.
