@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.13.1](https://github.com/coyoapp/Catalyst/compare/v0.13.0...v0.13.1) (2026-06-05)
+
+
+### Bug Fixes
+
+* **components:** Fix alert text font ([#71](https://github.com/coyoapp/Catalyst/issues/71)) ([cb10c77](https://github.com/coyoapp/Catalyst/commit/cb10c775da2a046016d391c4572477ad56d22aa5))
+
+## [0.13.0](https://github.com/coyoapp/Catalyst/compare/v0.12.0...v0.13.0) (2026-06-05)
+
+
+### Features
+
+* **components:** Alert view component ([#67](https://github.com/coyoapp/Catalyst/issues/67)) ([28fc76b](https://github.com/coyoapp/Catalyst/commit/28fc76b958b67da6ad87dccefb76d88a2eda9928))
+
+## [0.12.0](https://github.com/coyoapp/Catalyst/compare/v0.11.3...v0.12.0) (2026-06-05)
+
+
+### Features
+
+* **icons:** Add ringign bell and fix some others ([5da9df3](https://github.com/coyoapp/Catalyst/commit/5da9df37a67d3a0dea88fb874ded7e576e152d4a))
+* **icons:** Add ringing bell and fix some others ([cc6c8f3](https://github.com/coyoapp/Catalyst/commit/cc6c8f37a15333cd0dbd199cadd22f50c482301b))
+
 ## [0.11.3](https://github.com/coyoapp/Catalyst/compare/v0.11.2...v0.11.3) (2026-05-20)
 
 

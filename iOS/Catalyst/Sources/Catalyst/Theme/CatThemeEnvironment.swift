@@ -84,6 +84,58 @@ public extension View {
     }
 }
 
+// MARK: - Alert config environment
+
+/// A lightweight value that describes the appearance of a `CatAlert` via its semantic `variant`.
+/// Inject it with `.catAlertConfig(variant:)`.
+///
+/// ```swift
+/// CatAlert("Saved successfully") {
+///     CatButton(.text("Undo"), buttonSize: .small) { }
+/// }
+/// .catAlertConfig(variant: .success)
+///
+/// // Applied to a group — all CatAlerts inside inherit the variant:
+/// VStack {
+///     CatAlert("First")
+///     CatAlert("Second")
+/// }
+/// .catAlertConfig(variant: .info)
+/// ```
+public struct CatAlertConfig: Equatable {
+    public var variant: CatAlertVariant
+
+    public init(variant: CatAlertVariant = .info) {
+        self.variant = variant
+    }
+}
+
+private struct CatAlertConfigEnvironmentKey: EnvironmentKey {
+    static let defaultValue = CatAlertConfig(variant: .info)
+}
+
+public extension EnvironmentValues {
+    /// The active `CatAlertConfig` for descendant `CatAlert` views.
+    /// Set via `.catAlertConfig(variant:)`.
+    var catAlertConfig: CatAlertConfig {
+        get { self[CatAlertConfigEnvironmentKey.self] }
+        set { self[CatAlertConfigEnvironmentKey.self] = newValue }
+    }
+}
+
+public extension View {
+    /// Sets the alert variant for all `CatAlert` views in this subtree.
+    ///
+    /// This modifier injects a `CatAlertConfig` into the SwiftUI environment. Any `CatAlert`
+    /// resolves its colors from this environment value via `CatTheme.alertConfig(variant:)`.
+    ///
+    /// - Parameter variant: The semantic color role — `.info`, `.success`, `.warning`,
+    ///   `.danger`, `.neutral`, or `.brand`.
+    func catAlertConfig(variant: CatAlertVariant) -> some View {
+        environment(\.catAlertConfig, CatAlertConfig(variant: variant))
+    }
+}
+
 // MARK: - Accent color environment
 
 private struct CatAccentPaletteEnvironmentKey: EnvironmentKey {
