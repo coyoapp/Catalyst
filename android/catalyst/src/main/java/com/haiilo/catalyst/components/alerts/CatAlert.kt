@@ -116,7 +116,6 @@ fun CatAlert(
             Icon(
                 painter = leadingIcon,
                 contentDescription = iconContentDescription,
-                modifier = Modifier.size(CatSizes.size_md),
                 tint = resolvedColors.icon,
             )
         }.first().measure(constraints.copy(minWidth = 0, minHeight = 0))

@@ -63,7 +63,7 @@ fun AlertsDemoScreen(onBack: () -> Unit) {
 
                 DemoAlert("Info alert", CatAlertColor.Info)
                 DemoAlert("Primary alert", CatAlertColor.Primary)
-                DemoAlert("Success alert", CatAlertColor.Success, icon = R.drawable.icon_checkmark)
+                DemoAlert("Success alert", CatAlertColor.Success, icon = R.drawable.ic_chat_outlined_25)
                 DemoAlert("Warning alert", CatAlertColor.Warning)
                 DemoAlert("Danger alert", CatAlertColor.Danger)
                 DemoAlert("Default alert", CatAlertColor.Default)
@@ -231,7 +231,7 @@ fun AlertsDemoScreen(onBack: () -> Unit) {
 private fun DemoAlert(
     heading: String,
     color: CatAlertColor,
-    icon: Int = R.drawable.info_circle_outlined,
+    icon: Int = R.drawable.ic_info_outlined_25,
     buttonPlacement: CatAlertButtonPlacement = CatAlertButtonPlacement.Automatic,
     buttonEnabled: Boolean = true,
 ) {
