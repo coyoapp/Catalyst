@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -22,7 +21,6 @@ import androidx.compose.ui.unit.Constraints
 import com.haiilo.catalyst.theme.LocalCatAccentPalette
 import com.haiilo.catalyst.tokens.generated.CatBorderRadius
 import com.haiilo.catalyst.tokens.generated.CatBorderWidth
-import com.haiilo.catalyst.tokens.generated.CatSizes
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
 
