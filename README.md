@@ -24,10 +24,11 @@ PS: After adding the dependency or to receive any update in Design System Librar
 | iOS | Button | [docs/ios/button.md](./docs/ios/button.md) |
 | iOS | Alert | [docs/ios/alert.md](./docs/ios/alert.md) |
 | Android | Button | [docs/android/button.md](./docs/android/button.md) |
+| Android | Alert | [docs/android/alert.md](./docs/android/alert.md) |
 
 ## 🎨 Whitelabel / Accent Color (Android)
 
-Host apps can set a single brand accent color at startup. All `CatButton(color = CatButtonColor.Primary)` buttons automatically use it — no wrapper needed around individual buttons.
+Host apps can set a single brand accent color at startup. All `CatButton(color = CatButtonColor.Primary)` buttons and `CatAlert(color = CatAlertColor.Primary)` alerts automatically use it — no wrapper needed around individual components.
 
 **One-time setup** (before `setContent {}` in `Application.onCreate()` or `Activity.onCreate()`):
 
@@ -48,10 +49,15 @@ ProvideAccentColor(Color(0xFFE8340A)) {
         onClick = { },
         color = CatButtonColor.Primary,
     )
+
+    CatAlert(
+        heading = "Accent-colored alert",
+        color = CatAlertColor.Primary,
+    )
 }
 ```
 
-See [docs/android/button.md — Whitelabel / Accent color](./docs/android/button.md#whitelabel--accent-color) for the full reference.
+See [docs/android/button.md — Whitelabel / Accent color](./docs/android/button.md#whitelabel--accent-color) and [docs/android/alert.md — Whitelabel / Accent color](./docs/android/alert.md#whitelabel--accent-color) for the full reference.
 
 ## 🏗️ Development Workflow (Contributing)
 
