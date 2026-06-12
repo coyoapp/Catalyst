@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.14.0](https://github.com/coyoapp/Catalyst/compare/v0.13.1...v0.14.0) (2026-06-12)
+
+
+### Features
+
+* **components:** Add default leading icon ([87b8b46](https://github.com/coyoapp/Catalyst/commit/87b8b46b0641ba5f0c2d9eb7357d46ba97d0f964))
+* **components:** add suggestions from code review ([7be04d7](https://github.com/coyoapp/Catalyst/commit/7be04d71639f695c84d4220175ae80b2848d0619))
+* **components:** Fix linting ([f1afc68](https://github.com/coyoapp/Catalyst/commit/f1afc68abe729ebffbe270dbbf253bf14751f19b))
+* **components:** Implement alert component for Android ([3ffd299](https://github.com/coyoapp/Catalyst/commit/3ffd2995f82692879f66cdb3ccc512afda505f60))
+* **components:** Make the Alert component accept a composable instead of a button and add tests ([9d82601](https://github.com/coyoapp/Catalyst/commit/9d82601ecf781fe921cd251ad1d551e7cdecf4df))
+* **components:** Remove icon size ([e677a91](https://github.com/coyoapp/Catalyst/commit/e677a9119b09d220ccf8548d0bac40a252eb8d61))
+* **components:** Remove unused imports ([dc9165b](https://github.com/coyoapp/Catalyst/commit/dc9165b8e9b60427fb9973b0b02afb01b0b8802b))
+* **components:** Update component padding to lg ([54af6b5](https://github.com/coyoapp/Catalyst/commit/54af6b5da1cf6d1b861ddc7088729ac074405ba4))
+
 ## [0.13.1](https://github.com/coyoapp/Catalyst/compare/v0.13.0...v0.13.1) (2026-06-05)
 
 
