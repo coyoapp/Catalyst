@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.1](https://github.com/coyoapp/Catalyst/compare/v0.14.0...v0.14.1) (2026-06-30)
+
+
+### Miscellaneous Chores
+
+* bump Kingfisher to 8.x ([#74](https://github.com/coyoapp/Catalyst/issues/74)) ([663163b](https://github.com/coyoapp/Catalyst/commit/663163b116d550b1ab8c2f2bccf59a687b76ae11))
+
 ## [0.14.0](https://github.com/coyoapp/Catalyst/compare/v0.13.1...v0.14.0) (2026-06-12)
 
 
