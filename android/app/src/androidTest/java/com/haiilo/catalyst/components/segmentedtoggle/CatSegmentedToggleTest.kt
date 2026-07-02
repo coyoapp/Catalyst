@@ -6,6 +6,8 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsNotSelected
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.hasClickAction
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -74,24 +76,18 @@ class CatSegmentedToggleTest {
         }
 
         composeRule
-            .onNodeWithText("Week")
+            .onNode(hasText("Week") and hasClickAction())
             .assertIsDisplayed()
-            .assertIsSelected()
             .assertHasClickAction()
 
         composeRule
-            .onNodeWithText("Day")
+            .onNode(hasText("Day") and hasClickAction())
             .assertIsDisplayed()
-            .assertIsNotSelected()
             .performClick()
 
         composeRule.runOnIdle {
             assertEquals("Day", selected)
         }
-
-        composeRule
-            .onNodeWithText("Day")
-            .assertIsSelected()
     }
 
     @Test

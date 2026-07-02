@@ -205,7 +205,6 @@ private fun <T> CatSegmentedToggleSegment(
             .defaultMinSize(minWidth = 44.dp)
             .clip(shape)
             .background(resolvedItemColors.background, shape)
-            .semantics(mergeDescendants = true) {}
             .selectable(
                 selected = isSelected,
                 enabled = itemEnabled,
@@ -217,7 +216,8 @@ private fun <T> CatSegmentedToggleSegment(
                         onSelectionChange(item.value)
                     }
                 },
-            ).padding(horizontal = size.horizontalPaddingDp),
+            ).semantics(mergeDescendants = true) {}
+            .padding(horizontal = size.horizontalPaddingDp),
         contentAlignment = Alignment.Center,
     ) {
         CatSegmentedToggleContentLayout(
