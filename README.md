@@ -23,6 +23,7 @@ PS: After adding the dependency or to receive any update in Design System Librar
 |----------|-----------|------|
 | iOS | Button | [docs/ios/button.md](./docs/ios/button.md) |
 | iOS | Alert | [docs/ios/alert.md](./docs/ios/alert.md) |
+| iOS | Segmented control | [docs/ios/segmented-control.md](./docs/ios/segmented-control.md) |
 | Android | Button | [docs/android/button.md](./docs/android/button.md) |
 | Android | Alert | [docs/android/alert.md](./docs/android/alert.md) |
 

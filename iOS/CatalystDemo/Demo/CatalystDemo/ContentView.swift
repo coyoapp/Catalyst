@@ -53,6 +53,16 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
 
+                // Navigate to the Segmented control demo screen
+                NavigationLink(destination: SegmentedControlDemoView()) {
+                    CatButton(.text("View Segmented Control"), buttonSize: .medium) {}
+                        .catButtonConfig(variant: .filled, color: .success)
+                        .frame(maxWidth: .infinity)
+                        .allowsHitTesting(false)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
+
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Filled button set with catButtonConfig")
