@@ -25,6 +25,7 @@ PS: After adding the dependency or to receive any update in Design System Librar
 | iOS | Alert | [docs/ios/alert.md](./docs/ios/alert.md) |
 | Android | Button | [docs/android/button.md](./docs/android/button.md) |
 | Android | Alert | [docs/android/alert.md](./docs/android/alert.md) |
+| Android | Segmented Toggle | [docs/android/segmented-toggle.md](./docs/android/segmented-toggle.md) |
 
 ## 🎨 Whitelabel / Accent Color (Android)
 
