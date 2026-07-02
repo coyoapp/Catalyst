@@ -24,7 +24,7 @@ class CatSegmentedToggleDefaultsTest {
         val colors = CatSegmentedToggleDefaults.colors(CatSegmentedToggleColor.Primary)
 
         assertEquals(CatColors.Ui.Background.muted, colors.containerBackground)
-        assertEquals(CatColors.Ui.Border.regular, colors.containerBorder)
+        assertEquals(Color.Transparent, colors.containerBorder)
         assertEquals(CatColors.Ui.Background.surface, colors.itemColors.selected.background)
         assertEquals(CatColors.Theme.Primary.text, colors.itemColors.selected.foreground)
         assertEquals(CatColors.Ui.Font.muted, colors.itemColors.unselected.foreground)

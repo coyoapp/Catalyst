@@ -33,7 +33,7 @@ object CatSegmentedToggleDefaults {
 
         return CatSegmentedToggleColors(
             containerBackground = CatColors.Ui.Background.muted,
-            containerBorder = CatColors.Ui.Border.regular,
+            containerBorder = Color.Transparent,
             itemColors = CatSegmentedToggleItemStateColors(
                 selected = CatSegmentedToggleSegmentColors(
                     background = CatColors.Ui.Background.surface,

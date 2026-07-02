@@ -77,6 +77,7 @@ This matches the intended v1 shape best:
 - single selected pill
 - outer container height is 48 dp with 4 dp inset on all sides
 - each inner segment resolves to 40 dp height in the default small size
+- outer holder uses a muted background without a visible border by default
 - selected segment uses a white surface with semantic text color
 - unselected segment sits on the muted gray container with muted text
 - selected label uses the semibold `CatTypography.button1` style
