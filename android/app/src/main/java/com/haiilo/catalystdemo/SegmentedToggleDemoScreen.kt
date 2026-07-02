@@ -57,12 +57,7 @@ fun SegmentedToggleDemoScreen(onBack: () -> Unit) {
 
                 Text("Segmented Toggle", style = CatTypography.h2)
 
-                Text(
-                    text = "V1 recommendation: use segmented toggle primarily as a 2-option, full-width, text-only selector.",
-                    style = CatTypography.body2,
-                )
-
-                SegmentedSectionHeader("Screenshot-like states")
+                SegmentedSectionHeader("Design library like states")
                 DesignLibraryDemo()
 
                 SegmentedDivider()
@@ -122,11 +117,6 @@ private fun TypicalBinaryChoiceDemo() {
         onSelectionChange = { selectedValue = it },
         color = CatSegmentedToggleColor.Secondary,
     )
-
-    Text(
-        text = "Selected: $selectedValue",
-        style = CatTypography.body2,
-    )
 }
 
 @Composable
@@ -150,11 +140,6 @@ private fun DisabledItemDemo() {
 @Composable
 private fun AccentColorDemo() {
     var selectedValue by remember { mutableStateOf("Enabled") }
-
-    Text(
-        text = "App-wide accent uses the color configured in CatThemeConfig. The subtree below overrides it to red.",
-        style = CatTypography.body2,
-    )
 
     CatSegmentedToggle(
         modifier = Modifier.fillMaxWidth(),
