@@ -37,7 +37,7 @@ import com.haiilo.catalyst.tokens.generated.CatTypography
 // Simple screen enum for lightweight navigation (no Jetpack Nav dependency)
 // ---------------------------------------------------------------------------
 
-private enum class DemoDestination { Main, Buttons, Alerts, SegmentedToggle }
+private enum class DemoDestination { Main, Buttons, Alerts, SegmentedControl }
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +62,7 @@ private fun AppNavigation() {
             DemoScreen(
                 onNavigateToButtons = { destination = DemoDestination.Buttons },
                 onNavigateToAlerts = { destination = DemoDestination.Alerts },
-                onNavigateToSegmentedToggle = { destination = DemoDestination.SegmentedToggle },
+                onNavigateToSegmentedControl = { destination = DemoDestination.SegmentedControl },
                 onNavigateToXmlDemo = {
                     context.startActivity(Intent(context, XmlTokensDemoActivity::class.java))
                 }
@@ -74,8 +74,8 @@ private fun AppNavigation() {
         DemoDestination.Alerts ->
             AlertsDemoScreen(onBack = { destination = DemoDestination.Main })
 
-        DemoDestination.SegmentedToggle ->
-            SegmentedToggleDemoScreen(onBack = { destination = DemoDestination.Main })
+        DemoDestination.SegmentedControl ->
+            SegmentedControlDemoScreen(onBack = { destination = DemoDestination.Main })
     }
 }
 
@@ -83,7 +83,7 @@ private fun AppNavigation() {
 fun DemoScreen(
     onNavigateToButtons: () -> Unit = {},
     onNavigateToAlerts: () -> Unit = {},
-    onNavigateToSegmentedToggle: () -> Unit = {},
+    onNavigateToSegmentedControl: () -> Unit = {},
     onNavigateToXmlDemo: () -> Unit = {},
 ) {
     CatTheme {
@@ -132,10 +132,10 @@ fun DemoScreen(
                     modifier = Modifier.fillMaxWidth(),
                     content = CatButtonContent.IconText(
                         painter = painterResource(id = R.drawable.icon_checkmark),
-                        text = "View Segmented Toggle",
+                        text = "View Segmented Control",
                         CatButtonPlacement.Trailing
                     ),
-                    onClick = onNavigateToSegmentedToggle,
+                    onClick = onNavigateToSegmentedControl,
                     variant = CatButtonVariant.Filled,
                     color = CatButtonColor.Primary,
                 )

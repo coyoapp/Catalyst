@@ -1,4 +1,4 @@
-package com.haiilo.catalyst.components.segmentedtoggle
+package com.haiilo.catalyst.components.segmentedcontrol
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.assertHasClickAction
@@ -13,7 +13,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.haiilo.catalyst.theme.CatTheme
-import com.haiilo.catalystdemo.SegmentedToggleDemoScreen
+import com.haiilo.catalystdemo.SegmentedControlDemoScreen
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Rule
@@ -21,7 +21,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class CatSegmentedToggleTest {
+class CatSegmentedControlTest {
     @get:Rule
     val composeRule = createAndroidComposeRule<ComponentActivity>()
 
@@ -31,9 +31,9 @@ class CatSegmentedToggleTest {
 
         composeRule.setContent {
             CatTheme {
-                CatSegmentedToggle(
-                    firstItem = CatSegmentedToggleItem("Option 1", CatSegmentedToggleContent.TextOnly("Option 1")),
-                    secondItem = CatSegmentedToggleItem("Option 2", CatSegmentedToggleContent.TextOnly("Option 2")),
+                CatSegmentedControl(
+                    firstItem = CatSegmentedControlItem("Option 1", CatSegmentedControlContent.TextOnly("Option 1")),
+                    secondItem = CatSegmentedControlItem("Option 2", CatSegmentedControlContent.TextOnly("Option 2")),
                     selectedValue = selected,
                     onSelectionChange = { selected = it },
                 )
@@ -63,11 +63,11 @@ class CatSegmentedToggleTest {
 
         composeRule.setContent {
             CatTheme {
-                CatSegmentedToggle(
+                CatSegmentedControl(
                     items = listOf(
-                        CatSegmentedToggleItem("Day", CatSegmentedToggleContent.TextOnly("Day")),
-                        CatSegmentedToggleItem("Week", CatSegmentedToggleContent.TextOnly("Week")),
-                        CatSegmentedToggleItem("Month", CatSegmentedToggleContent.TextOnly("Month")),
+                        CatSegmentedControlItem("Day", CatSegmentedControlContent.TextOnly("Day")),
+                        CatSegmentedControlItem("Week", CatSegmentedControlContent.TextOnly("Week")),
+                        CatSegmentedControlItem("Month", CatSegmentedControlContent.TextOnly("Month")),
                     ),
                     selectedValue = selected,
                     onSelectionChange = { selected = it },
@@ -97,12 +97,12 @@ class CatSegmentedToggleTest {
 
         composeRule.setContent {
             CatTheme {
-                CatSegmentedToggle(
+                CatSegmentedControl(
                     items = listOf(
-                        CatSegmentedToggleItem("Upcoming", CatSegmentedToggleContent.TextOnly("Upcoming")),
-                        CatSegmentedToggleItem(
+                        CatSegmentedControlItem("Upcoming", CatSegmentedControlContent.TextOnly("Upcoming")),
+                        CatSegmentedControlItem(
                             value = "Archived",
-                            content = CatSegmentedToggleContent.TextOnly("Archived"),
+                            content = CatSegmentedControlContent.TextOnly("Archived"),
                             enabled = false,
                         ),
                     ),
@@ -129,15 +129,15 @@ class CatSegmentedToggleTest {
     @Test
     fun demoScreen_rendersWithoutCrashing() {
         composeRule.setContent {
-            SegmentedToggleDemoScreen(onBack = {})
+            SegmentedControlDemoScreen(onBack = {})
         }
 
         composeRule
-            .onNodeWithText("Segmented Toggle")
+            .onNodeWithText("Segmented Control")
             .assertIsDisplayed()
 
         composeRule
-            .onNodeWithText("Screenshot-like states")
+            .onNodeWithText("Design library like states")
             .assertIsDisplayed()
     }
 }

@@ -1,8 +1,8 @@
 [← Back to README](../../README.md)
 
-# CatSegmentedToggle — Android
+# CatSegmentedControl — Android
 
-`CatSegmentedToggle` is a single-select segmented control for the Catalyst Android design system. For v1, the recommended usage is a **2-option, full-width, text-only toggle** like “Option 1 / Option 2” or “Enabled / Paused”.
+`CatSegmentedControl` is a single-select segmented control for the Catalyst Android design system. For v1, the recommended usage is a **2-option, full-width, text-only control** like “Option 1 / Option 2” or “Enabled / Paused”.
 
 The implementation remains generic underneath, so the component can grow later without changing its foundation, but the primary public guidance intentionally stays narrow for the first release.
 
@@ -12,16 +12,16 @@ The implementation remains generic underneath, so the component can grow later w
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `items` | `List<CatSegmentedToggleItem<T>>` | required on the generic overload | Segments shown from start to end |
-| `firstItem` / `secondItem` | `CatSegmentedToggleItem<T>` | required on the 2-option overload | Recommended v1 API for the common binary-toggle case |
+| `items` | `List<CatSegmentedControlItem<T>>` | required on the generic overload | Segments shown from start to end |
+| `firstItem` / `secondItem` | `CatSegmentedControlItem<T>` | required on the 2-option overload | Recommended v1 API for the common binary-control case |
 | `selectedValue` | `T?` | required | Currently selected value. Pass `null` for an initially unselected state |
 | `onSelectionChange` | `(T) -> Unit` | required | Called when the user chooses a different segment |
 | `modifier` | `Modifier` | `Modifier` | Applied to the outer container |
-| `color` | `CatSegmentedToggleColor` | `Primary` | Semantic color role used by the selected segment |
-| `size` | `CatSegmentedToggleSize` | `Medium` | Controls the overall height and segment padding |
+| `color` | `CatSegmentedControlColor` | `Primary` | Semantic color role used by the selected segment |
+| `size` | `CatSegmentedControlSize` | `Medium` | Controls the overall height and segment padding |
 | `enabled` | `Boolean` | `true` | Parent enabled state for the whole control |
 | `equalWidth` | `Boolean` | `true` on the generic overload | When `true`, segments share the same width |
-| `style` | `CatSegmentedToggleColors?` | `null` | Advanced escape hatch. Prefer `color` and tokens for standard usage |
+| `style` | `CatSegmentedControlColors?` | `null` | Advanced escape hatch. Prefer `color` and tokens for standard usage |
 
 ---
 
@@ -41,7 +41,7 @@ The implementation remains generic underneath, so the component can grow later w
 
 ## Size
 
-`CatSegmentedToggleSize` mirrors the button size scale so segmented toggles align cleanly with buttons.
+`CatSegmentedControlSize` mirrors the button size scale so segmented controls align cleanly with buttons.
 
 | Size | Height | Horizontal padding per segment |
 |------|--------|--------------------------------|
@@ -59,10 +59,10 @@ Use the dedicated 2-option overload for most first-iteration product cases.
 ```kotlin
 var selectedValue by remember { mutableStateOf("Option 1") }
 
-CatSegmentedToggle(
+CatSegmentedControl(
     modifier = Modifier.fillMaxWidth(),
-    firstItem = CatSegmentedToggleItem("Option 1", CatSegmentedToggleContent.TextOnly("Option 1")),
-    secondItem = CatSegmentedToggleItem("Option 2", CatSegmentedToggleContent.TextOnly("Option 2")),
+    firstItem = CatSegmentedControlItem("Option 1", CatSegmentedControlContent.TextOnly("Option 1")),
+    secondItem = CatSegmentedControlItem("Option 2", CatSegmentedControlContent.TextOnly("Option 2")),
     selectedValue = selectedValue,
     onSelectionChange = { selectedValue = it },
 )
@@ -90,13 +90,13 @@ This matches the intended v1 shape best:
 ```kotlin
 var selectedValue by remember { mutableStateOf("Enabled") }
 
-CatSegmentedToggle(
+CatSegmentedControl(
     modifier = Modifier.fillMaxWidth(),
-    firstItem = CatSegmentedToggleItem("Enabled", CatSegmentedToggleContent.TextOnly("Enabled")),
-    secondItem = CatSegmentedToggleItem("Paused", CatSegmentedToggleContent.TextOnly("Paused")),
+    firstItem = CatSegmentedControlItem("Enabled", CatSegmentedControlContent.TextOnly("Enabled")),
+    secondItem = CatSegmentedControlItem("Paused", CatSegmentedControlContent.TextOnly("Paused")),
     selectedValue = selectedValue,
     onSelectionChange = { selectedValue = it },
-    color = CatSegmentedToggleColor.Primary,
+    color = CatSegmentedControlColor.Primary,
 )
 ```
 
@@ -104,12 +104,12 @@ CatSegmentedToggle(
 
 ## Content
 
-`CatSegmentedToggleItem<T>` wraps the stable value and visible content for a segment:
+`CatSegmentedControlItem<T>` wraps the stable value and visible content for a segment:
 
 ```kotlin
-data class CatSegmentedToggleItem<T>(
+data class CatSegmentedControlItem<T>(
     val value: T,
-    val content: CatSegmentedToggleContent,
+    val content: CatSegmentedControlContent,
     val enabled: Boolean = true,
 )
 ```
@@ -118,13 +118,13 @@ For v1, prefer `TextOnly`.
 
 The underlying API also supports icon-based content types, but those are intentionally deferred from the primary guidance until there is a concrete product need.
 
-`CatSegmentedToggleContent` supports three display modes:
+`CatSegmentedControlContent` supports three display modes:
 
 | Case | Description |
 |------|-------------|
 | `TextOnly(text: String)` | Text label only |
 | `IconOnly(painter: Painter, contentDescription: String?)` | Icon only *(supported, not part of the primary v1 recommendation)* |
-| `IconText(painter: Painter, text: String, placement: CatSegmentedTogglePlacement, iconContentDescription: String?)` | Icon and text side by side *(supported, but deferred from the main v1 pattern)* |
+| `IconText(painter: Painter, text: String, placement: CatSegmentedControlPlacement, iconContentDescription: String?)` | Icon and text side by side *(supported, but deferred from the main v1 pattern)* |
 
 ---
 
@@ -133,12 +133,12 @@ The underlying API also supports icon-based content types, but those are intenti
 Disable an individual segment without disabling the whole control:
 
 ```kotlin
-CatSegmentedToggle(
+CatSegmentedControl(
     modifier = Modifier.fillMaxWidth(),
-    firstItem = CatSegmentedToggleItem("Upcoming", CatSegmentedToggleContent.TextOnly("Upcoming")),
-    secondItem = CatSegmentedToggleItem(
+    firstItem = CatSegmentedControlItem("Upcoming", CatSegmentedControlContent.TextOnly("Upcoming")),
+    secondItem = CatSegmentedControlItem(
         value = "Archived",
-        content = CatSegmentedToggleContent.TextOnly("Archived"),
+        content = CatSegmentedControlContent.TextOnly("Archived"),
         enabled = false,
     ),
     selectedValue = selectedValue,
@@ -162,13 +162,13 @@ CatThemeConfig.configure("#1A73E8")
 
 ```kotlin
 ProvideAccentColor(Color(0xFFE8340A)) {
-    CatSegmentedToggle(
+    CatSegmentedControl(
         modifier = Modifier.fillMaxWidth(),
-        firstItem = CatSegmentedToggleItem("Enabled", CatSegmentedToggleContent.TextOnly("Enabled")),
-        secondItem = CatSegmentedToggleItem("Paused", CatSegmentedToggleContent.TextOnly("Paused")),
+        firstItem = CatSegmentedControlItem("Enabled", CatSegmentedControlContent.TextOnly("Enabled")),
+        secondItem = CatSegmentedControlItem("Paused", CatSegmentedControlContent.TextOnly("Paused")),
         selectedValue = selectedValue,
         onSelectionChange = { selectedValue = it },
-        color = CatSegmentedToggleColor.Primary,
+        color = CatSegmentedControlColor.Primary,
     )
 }
 ```
@@ -179,13 +179,13 @@ ProvideAccentColor(Color(0xFFE8340A)) {
 
 The underlying implementation still supports more than two segments through the generic `items` overload.
 
-That capability is intentionally not the primary documented v1 pattern, because the current design direction is centered on binary toggles.
+That capability is intentionally not the primary documented v1 pattern, because the current design direction is centered on binary controls.
 
 ---
 
 ## Style override
 
-`style: CatSegmentedToggleColors?` is an **escape hatch**, not the normal design-system path.
+`style: CatSegmentedControlColors?` is an **escape hatch**, not the normal design-system path.
 
 Use it only when you have a one-off UI requirement that cannot be expressed through:
 

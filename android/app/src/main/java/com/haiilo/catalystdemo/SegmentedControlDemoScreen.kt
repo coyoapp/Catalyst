@@ -24,10 +24,10 @@ import com.haiilo.catalyst.components.buttons.CatButton
 import com.haiilo.catalyst.components.buttons.CatButtonColor
 import com.haiilo.catalyst.components.buttons.CatButtonContent
 import com.haiilo.catalyst.components.buttons.CatButtonVariant
-import com.haiilo.catalyst.components.segmentedtoggle.CatSegmentedToggle
-import com.haiilo.catalyst.components.segmentedtoggle.CatSegmentedToggleColor
-import com.haiilo.catalyst.components.segmentedtoggle.CatSegmentedToggleContent
-import com.haiilo.catalyst.components.segmentedtoggle.CatSegmentedToggleItem
+import com.haiilo.catalyst.components.segmentedcontrol.CatSegmentedControl
+import com.haiilo.catalyst.components.segmentedcontrol.CatSegmentedControlColor
+import com.haiilo.catalyst.components.segmentedcontrol.CatSegmentedControlContent
+import com.haiilo.catalyst.components.segmentedcontrol.CatSegmentedControlItem
 import com.haiilo.catalyst.theme.CatTheme
 import com.haiilo.catalyst.theme.ProvideAccentColor
 import com.haiilo.catalyst.tokens.generated.CatColors
@@ -35,7 +35,7 @@ import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
 
 @Composable
-fun SegmentedToggleDemoScreen(onBack: () -> Unit) {
+fun SegmentedControlDemoScreen(onBack: () -> Unit) {
     CatTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -55,7 +55,7 @@ fun SegmentedToggleDemoScreen(onBack: () -> Unit) {
                     color = CatButtonColor.Primary,
                 )
 
-                Text("Segmented Toggle", style = CatTypography.h2)
+                Text("Segmented Control", style = CatTypography.h2)
 
                 SegmentedSectionHeader("Design library like states")
                 DesignLibraryDemo()
@@ -85,22 +85,22 @@ private fun DesignLibraryDemo() {
     var bottomSelection by remember { mutableStateOf("Option 2") }
 
     Column(verticalArrangement = Arrangement.spacedBy(CatSpacing.spacing_xl)) {
-        CatSegmentedToggle(
+        CatSegmentedControl(
             modifier = Modifier.fillMaxWidth(),
-            firstItem = CatSegmentedToggleItem("Option 1", CatSegmentedToggleContent.TextOnly("Option 1")),
-            secondItem = CatSegmentedToggleItem("Option 2", CatSegmentedToggleContent.TextOnly("Option 2")),
+            firstItem = CatSegmentedControlItem("Option 1", CatSegmentedControlContent.TextOnly("Option 1")),
+            secondItem = CatSegmentedControlItem("Option 2", CatSegmentedControlContent.TextOnly("Option 2")),
             selectedValue = topSelection,
             onSelectionChange = { topSelection = it },
-            color = CatSegmentedToggleColor.Primary,
+            color = CatSegmentedControlColor.Primary,
         )
 
-        CatSegmentedToggle(
+        CatSegmentedControl(
             modifier = Modifier.fillMaxWidth(),
-            firstItem = CatSegmentedToggleItem("Option 1", CatSegmentedToggleContent.TextOnly("Option 1")),
-            secondItem = CatSegmentedToggleItem("Option 2", CatSegmentedToggleContent.TextOnly("Option 2")),
+            firstItem = CatSegmentedControlItem("Option 1", CatSegmentedControlContent.TextOnly("Option 1")),
+            secondItem = CatSegmentedControlItem("Option 2", CatSegmentedControlContent.TextOnly("Option 2")),
             selectedValue = bottomSelection,
             onSelectionChange = { bottomSelection = it },
-            color = CatSegmentedToggleColor.Primary,
+            color = CatSegmentedControlColor.Primary,
         )
     }
 }
@@ -109,13 +109,13 @@ private fun DesignLibraryDemo() {
 private fun TypicalBinaryChoiceDemo() {
     var selectedValue by remember { mutableStateOf("Enabled") }
 
-    CatSegmentedToggle(
+    CatSegmentedControl(
         modifier = Modifier.fillMaxWidth(),
-        firstItem = CatSegmentedToggleItem("Enabled", CatSegmentedToggleContent.TextOnly("Enabled")),
-        secondItem = CatSegmentedToggleItem("Paused", CatSegmentedToggleContent.TextOnly("Paused")),
+        firstItem = CatSegmentedControlItem("Enabled", CatSegmentedControlContent.TextOnly("Enabled")),
+        secondItem = CatSegmentedControlItem("Paused", CatSegmentedControlContent.TextOnly("Paused")),
         selectedValue = selectedValue,
         onSelectionChange = { selectedValue = it },
-        color = CatSegmentedToggleColor.Secondary,
+        color = CatSegmentedControlColor.Secondary,
     )
 }
 
@@ -123,17 +123,17 @@ private fun TypicalBinaryChoiceDemo() {
 private fun DisabledItemDemo() {
     var selectedValue by remember { mutableStateOf("Upcoming") }
 
-    CatSegmentedToggle(
+    CatSegmentedControl(
         modifier = Modifier.fillMaxWidth(),
-        firstItem = CatSegmentedToggleItem("Upcoming", CatSegmentedToggleContent.TextOnly("Upcoming")),
-        secondItem = CatSegmentedToggleItem(
+        firstItem = CatSegmentedControlItem("Upcoming", CatSegmentedControlContent.TextOnly("Upcoming")),
+        secondItem = CatSegmentedControlItem(
             value = "Archived",
-            content = CatSegmentedToggleContent.TextOnly("Archived"),
+            content = CatSegmentedControlContent.TextOnly("Archived"),
             enabled = false,
         ),
         selectedValue = selectedValue,
         onSelectionChange = { selectedValue = it },
-        color = CatSegmentedToggleColor.Warning,
+        color = CatSegmentedControlColor.Warning,
     )
 }
 
@@ -141,13 +141,13 @@ private fun DisabledItemDemo() {
 private fun AccentColorDemo() {
     var selectedValue by remember { mutableStateOf("Enabled") }
 
-    CatSegmentedToggle(
+    CatSegmentedControl(
         modifier = Modifier.fillMaxWidth(),
-        firstItem = CatSegmentedToggleItem("Enabled", CatSegmentedToggleContent.TextOnly("Enabled")),
-        secondItem = CatSegmentedToggleItem("Paused", CatSegmentedToggleContent.TextOnly("Paused")),
+        firstItem = CatSegmentedControlItem("Enabled", CatSegmentedControlContent.TextOnly("Enabled")),
+        secondItem = CatSegmentedControlItem("Paused", CatSegmentedControlContent.TextOnly("Paused")),
         selectedValue = selectedValue,
         onSelectionChange = { selectedValue = it },
-        color = CatSegmentedToggleColor.Primary,
+        color = CatSegmentedControlColor.Primary,
     )
 
     Box(
@@ -157,13 +157,13 @@ private fun AccentColorDemo() {
             .padding(CatSpacing.spacing_md),
     ) {
         ProvideAccentColor(Color(0xFFE8340A)) {
-            CatSegmentedToggle(
+            CatSegmentedControl(
                 modifier = Modifier.fillMaxWidth(),
-                firstItem = CatSegmentedToggleItem("Enabled", CatSegmentedToggleContent.TextOnly("Enabled")),
-                secondItem = CatSegmentedToggleItem("Paused", CatSegmentedToggleContent.TextOnly("Paused")),
+                firstItem = CatSegmentedControlItem("Enabled", CatSegmentedControlContent.TextOnly("Enabled")),
+                secondItem = CatSegmentedControlItem("Paused", CatSegmentedControlContent.TextOnly("Paused")),
                 selectedValue = selectedValue,
                 onSelectionChange = { selectedValue = it },
-                color = CatSegmentedToggleColor.Primary,
+                color = CatSegmentedControlColor.Primary,
             )
         }
     }

@@ -1,4 +1,4 @@
-package com.haiilo.catalyst.components.segmentedtoggle
+package com.haiilo.catalyst.components.segmentedcontrol
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -44,9 +44,9 @@ import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
 
 // ---------------------------------------------------------------------------
-// CatSegmentedToggle
+// CatSegmentedControl
 //
-// Single-select segmented toggle for Catalyst Android.
+// Single-select segmented control for Catalyst Android.
 //
 // Configuration priority (highest -> lowest):
 //   1. Explicit [style]
@@ -55,24 +55,24 @@ import com.haiilo.catalyst.tokens.generated.CatTypography
 // ---------------------------------------------------------------------------
 
 /**
- * Convenience overload for the common two-option segmented toggle.
+ * Convenience overload for the common two-option segmented control.
  *
  * Prefer this overload for the standard v1 binary-toggle use case. The generic
  * `items = listOf(...)` overload remains available for more advanced layouts.
  */
 @Composable
-fun <T> CatSegmentedToggle(
-    firstItem: CatSegmentedToggleItem<T>,
-    secondItem: CatSegmentedToggleItem<T>,
+fun <T> CatSegmentedControl(
+    firstItem: CatSegmentedControlItem<T>,
+    secondItem: CatSegmentedControlItem<T>,
     selectedValue: T?,
     onSelectionChange: (T) -> Unit,
     modifier: Modifier = Modifier,
-    color: CatSegmentedToggleColor = CatSegmentedToggleColor.Primary,
-    size: CatSegmentedToggleSize = CatSegmentedToggleSize.Medium,
+    color: CatSegmentedControlColor = CatSegmentedControlColor.Primary,
+    size: CatSegmentedControlSize = CatSegmentedControlSize.Medium,
     enabled: Boolean = true,
-    style: CatSegmentedToggleColors? = null,
+    style: CatSegmentedControlColors? = null,
 ) {
-    CatSegmentedToggle(
+    CatSegmentedControl(
         items = listOf(firstItem, secondItem),
         selectedValue = selectedValue,
         onSelectionChange = onSelectionChange,
@@ -86,7 +86,7 @@ fun <T> CatSegmentedToggle(
 }
 
 /**
- * Catalyst segmented toggle component.
+ * Catalyst segmented control component.
  *
  * @param items              Segments rendered in order from start to end.
  * @param selectedValue      Currently selected value. Pass null for an initially
@@ -103,24 +103,24 @@ fun <T> CatSegmentedToggle(
  *                           ignored for styling.
  */
 @Composable
-fun <T> CatSegmentedToggle(
-    items: List<CatSegmentedToggleItem<T>>,
+fun <T> CatSegmentedControl(
+    items: List<CatSegmentedControlItem<T>>,
     selectedValue: T?,
     onSelectionChange: (T) -> Unit,
     modifier: Modifier = Modifier,
-    color: CatSegmentedToggleColor = CatSegmentedToggleColor.Primary,
-    size: CatSegmentedToggleSize = CatSegmentedToggleSize.Medium,
+    color: CatSegmentedControlColor = CatSegmentedControlColor.Primary,
+    size: CatSegmentedControlSize = CatSegmentedControlSize.Medium,
     enabled: Boolean = true,
     equalWidth: Boolean = true,
-    style: CatSegmentedToggleColors? = null,
+    style: CatSegmentedControlColors? = null,
 ) {
-    require(items.isNotEmpty()) { "CatSegmentedToggle requires at least one item." }
+    require(items.isNotEmpty()) { "CatSegmentedControl requires at least one item." }
     require(items.map { it.value }.distinct().size == items.size) {
-        "CatSegmentedToggle items must have distinct values."
+        "CatSegmentedControl items must have distinct values."
     }
 
     val accentPalette = LocalCatAccentPalette.current
-    val resolvedColors = style ?: CatSegmentedToggleDefaults.colors(color, accentPalette)
+    val resolvedColors = style ?: CatSegmentedControlDefaults.colors(color, accentPalette)
     val outerShape = RoundedCornerShape(CatBorderRadius.border_radius_lg)
     val innerShape = RoundedCornerShape(CatBorderRadius.border_radius_md)
 
@@ -149,7 +149,7 @@ fun <T> CatSegmentedToggle(
         ) {
             items.forEach { item ->
                 key(item.value) {
-                    CatSegmentedToggleSegment(
+                    CatSegmentedControlSegment(
                         modifier = if (equalWidth) {
                             Modifier
                                 .weight(1f)
@@ -172,13 +172,13 @@ fun <T> CatSegmentedToggle(
 }
 
 @Composable
-private fun <T> CatSegmentedToggleSegment(
+private fun <T> CatSegmentedControlSegment(
     modifier: Modifier,
-    item: CatSegmentedToggleItem<T>,
+    item: CatSegmentedControlItem<T>,
     isSelected: Boolean,
-    size: CatSegmentedToggleSize,
+    size: CatSegmentedControlSize,
     enabled: Boolean,
-    colors: CatSegmentedToggleColors,
+    colors: CatSegmentedControlColors,
     shape: RoundedCornerShape,
     onSelectionChange: (T) -> Unit,
 ) {
@@ -220,7 +220,7 @@ private fun <T> CatSegmentedToggleSegment(
             .padding(horizontal = size.horizontalPaddingDp),
         contentAlignment = Alignment.Center,
     ) {
-        CatSegmentedToggleContentLayout(
+        CatSegmentedControlContentLayout(
             content = item.content,
             foregroundColor = resolvedItemColors.foreground,
             textStyle = textStyle,
@@ -229,13 +229,13 @@ private fun <T> CatSegmentedToggleSegment(
 }
 
 @Composable
-private fun CatSegmentedToggleContentLayout(
-    content: CatSegmentedToggleContent,
+private fun CatSegmentedControlContentLayout(
+    content: CatSegmentedControlContent,
     foregroundColor: Color,
     textStyle: TextStyle,
 ) {
     when (content) {
-        is CatSegmentedToggleContent.TextOnly -> {
+        is CatSegmentedControlContent.TextOnly -> {
             Text(
                 text = content.text,
                 style = textStyle,
@@ -245,7 +245,7 @@ private fun CatSegmentedToggleContentLayout(
             )
         }
 
-        is CatSegmentedToggleContent.IconOnly -> {
+        is CatSegmentedControlContent.IconOnly -> {
             Icon(
                 painter = content.painter,
                 contentDescription = content.contentDescription,
@@ -254,7 +254,7 @@ private fun CatSegmentedToggleContentLayout(
             )
         }
 
-        is CatSegmentedToggleContent.IconText -> {
+        is CatSegmentedControlContent.IconText -> {
             androidx.compose.foundation.layout.Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center,
@@ -278,13 +278,13 @@ private fun CatSegmentedToggleContentLayout(
                 }
 
                 when (content.placement) {
-                    CatSegmentedTogglePlacement.Leading -> {
+                    CatSegmentedControlPlacement.Leading -> {
                         icon()
                         Spacer(Modifier.width(CatSpacing.spacing_xs))
                         label()
                     }
 
-                    CatSegmentedTogglePlacement.Trailing -> {
+                    CatSegmentedControlPlacement.Trailing -> {
                         label()
                         Spacer(Modifier.width(CatSpacing.spacing_xs))
                         icon()

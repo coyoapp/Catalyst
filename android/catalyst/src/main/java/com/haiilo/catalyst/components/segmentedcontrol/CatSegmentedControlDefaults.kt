@@ -1,62 +1,62 @@
-package com.haiilo.catalyst.components.segmentedtoggle
+package com.haiilo.catalyst.components.segmentedcontrol
 
 import androidx.compose.ui.graphics.Color
 import com.haiilo.catalyst.theme.CatColorPalette
 import com.haiilo.catalyst.tokens.generated.CatColors
 
 // ---------------------------------------------------------------------------
-// CatSegmentedToggleDefaults
+// CatSegmentedControlDefaults
 //
-// Single source of truth that maps CatSegmentedToggleColor to the design-token
+// Single source of truth that maps CatSegmentedControlColor to the design-token
 // colors used by the control.
 // ---------------------------------------------------------------------------
 
-object CatSegmentedToggleDefaults {
+object CatSegmentedControlDefaults {
     private const val PressedSurfaceAlpha = 0.72f
 
     /**
-     * Resolves the colors for a segmented toggle.
+     * Resolves the colors for a segmented control.
      *
      * When [accentPalette] is non-null and [color] is
-     * [CatSegmentedToggleColor.Primary], the accent palette overrides the
+     * [CatSegmentedControlColor.Primary], the accent palette overrides the
      * default primary token palette. All other color roles are unaffected.
      */
     fun colors(
-        color: CatSegmentedToggleColor,
+        color: CatSegmentedControlColor,
         accentPalette: CatColorPalette? = null,
-    ): CatSegmentedToggleColors {
-        val palette = if (accentPalette != null && color == CatSegmentedToggleColor.Primary) {
+    ): CatSegmentedControlColors {
+        val palette = if (accentPalette != null && color == CatSegmentedControlColor.Primary) {
             accentPalette
         } else {
             color.palette()
         }
 
-        return CatSegmentedToggleColors(
+        return CatSegmentedControlColors(
             containerBackground = CatColors.Ui.Background.muted,
             containerBorder = Color.Transparent,
-            itemColors = CatSegmentedToggleItemStateColors(
-                selected = CatSegmentedToggleSegmentColors(
+            itemColors = CatSegmentedControlItemStateColors(
+                selected = CatSegmentedControlSegmentColors(
                     background = CatColors.Ui.Background.surface,
                     foreground = palette.text,
                 ),
-                selectedPressed = CatSegmentedToggleSegmentColors(
+                selectedPressed = CatSegmentedControlSegmentColors(
                     background = CatColors.Ui.Background.surface,
                     foreground = palette.textActive,
                 ),
-                selectedDisabled = CatSegmentedToggleSegmentColors(
+                selectedDisabled = CatSegmentedControlSegmentColors(
                     background = CatColors.Ui.Background.surface,
                     foreground = CatColors.Ui.Font.muted,
                 ),
-                unselected = CatSegmentedToggleSegmentColors(
+                unselected = CatSegmentedControlSegmentColors(
                     background = Color.Transparent,
                     foreground = CatColors.Ui.Font.muted,
                 ),
-                unselectedPressed = CatSegmentedToggleSegmentColors(
+                unselectedPressed = CatSegmentedControlSegmentColors(
                     background = CatColors.Ui.Background.surface
                         .copy(alpha = PressedSurfaceAlpha),
                     foreground = palette.textActive,
                 ),
-                unselectedDisabled = CatSegmentedToggleSegmentColors(
+                unselectedDisabled = CatSegmentedControlSegmentColors(
                     background = Color.Transparent,
                     foreground = CatColors.Ui.Font.muted,
                 ),
@@ -65,14 +65,14 @@ object CatSegmentedToggleDefaults {
     }
 }
 
-internal fun CatSegmentedToggleColor.palette(): CatColorPalette =
+internal fun CatSegmentedControlColor.palette(): CatColorPalette =
     when (this) {
-        CatSegmentedToggleColor.Primary -> CatColorPalette.Primary
-        CatSegmentedToggleColor.PrimaryInverted -> CatColorPalette.PrimaryInverted
-        CatSegmentedToggleColor.Secondary -> CatColorPalette.Secondary
-        CatSegmentedToggleColor.SecondaryInverted -> CatColorPalette.SecondaryInverted
-        CatSegmentedToggleColor.Danger -> CatColorPalette.Danger
-        CatSegmentedToggleColor.Success -> CatColorPalette.Success
-        CatSegmentedToggleColor.Warning -> CatColorPalette.Warning
-        CatSegmentedToggleColor.Info -> CatColorPalette.Info
+        CatSegmentedControlColor.Primary -> CatColorPalette.Primary
+        CatSegmentedControlColor.PrimaryInverted -> CatColorPalette.PrimaryInverted
+        CatSegmentedControlColor.Secondary -> CatColorPalette.Secondary
+        CatSegmentedControlColor.SecondaryInverted -> CatColorPalette.SecondaryInverted
+        CatSegmentedControlColor.Danger -> CatColorPalette.Danger
+        CatSegmentedControlColor.Success -> CatColorPalette.Success
+        CatSegmentedControlColor.Warning -> CatColorPalette.Warning
+        CatSegmentedControlColor.Info -> CatColorPalette.Info
     }

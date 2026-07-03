@@ -1,4 +1,4 @@
-package com.haiilo.catalyst.components.segmentedtoggle
+package com.haiilo.catalyst.components.segmentedcontrol
 
 import androidx.compose.ui.graphics.Color
 import com.haiilo.catalyst.theme.CatColorPalette
@@ -6,7 +6,7 @@ import com.haiilo.catalyst.tokens.generated.CatColors
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class CatSegmentedToggleDefaultsTest {
+class CatSegmentedControlDefaultsTest {
     private val testAccentPalette = CatColorPalette(
         bg = Color(0xFF1A73E8),
         bgHover = Color(0xFF1867D2),
@@ -21,7 +21,7 @@ class CatSegmentedToggleDefaultsTest {
 
     @Test
     fun primary_withoutAccent_usesPrimaryThemePalette() {
-        val colors = CatSegmentedToggleDefaults.colors(CatSegmentedToggleColor.Primary)
+        val colors = CatSegmentedControlDefaults.colors(CatSegmentedControlColor.Primary)
 
         assertEquals(CatColors.Ui.Background.muted, colors.containerBackground)
         assertEquals(Color.Transparent, colors.containerBorder)
@@ -32,8 +32,8 @@ class CatSegmentedToggleDefaultsTest {
 
     @Test
     fun primary_withAccent_usesAccentPalette() {
-        val colors = CatSegmentedToggleDefaults.colors(
-            color = CatSegmentedToggleColor.Primary,
+        val colors = CatSegmentedControlDefaults.colors(
+            color = CatSegmentedControlColor.Primary,
             accentPalette = testAccentPalette,
         )
 
@@ -49,8 +49,8 @@ class CatSegmentedToggleDefaultsTest {
 
     @Test
     fun nonPrimary_withAccent_ignoresAccentPalette() {
-        val colors = CatSegmentedToggleDefaults.colors(
-            color = CatSegmentedToggleColor.Info,
+        val colors = CatSegmentedControlDefaults.colors(
+            color = CatSegmentedControlColor.Info,
             accentPalette = testAccentPalette,
         )
 
