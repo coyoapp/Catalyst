@@ -116,8 +116,12 @@ function buildKotlinColorNodes(node, indent) {
     return kotlin;
 }
 
-// Style Dictionary will perform all the standard iOS transformations except for the one that converts the color to UIColor code.
-// Because of the transfowmation of Colors had issues with their formattings
+// Style Dictionary will perform all the standard iOS transformations except for the ones
+// that interfere with our custom typography formatter:
+//   - 'color/UIColor'     removed: had formatting issues with our color output
+//   - 'font/swift/literal' removed: wraps font token values in double-quotes via template
+//                                   literal which coerces compound objects to "[object Object]";
+//                                   our custom formatter handles font name construction itself
 StyleDictionary.registerTransformGroup({
     name: 'ios-swift-custom',
     transforms: [
@@ -127,7 +131,7 @@ StyleDictionary.registerTransformGroup({
         'content/swift/literal',
         'asset/swift/literal',
         'size/swift/remToCGFloat',
-        'font/swift/literal'
+        // 'font/swift/literal' removed — see comment above
     ]
 });
 
@@ -187,25 +191,33 @@ StyleDictionary.registerFormat({
     formatter: function ({ dictionary }) {
         let swiftFile = `//\n// CatTypography.swift\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\nimport SwiftUI\nimport UIKit\n\npublic enum CatTypography {\n`;
 
-        const weightToStyle = {
-            "700": "Bold",
-            "600": "Semibold",
-            "500": "Medium",
-            "400": "Regular",
-            "300": "Light"
+        // Maps "fontWeight-fontStyle" to the Lato font file suffix.
+        // fontWeight and fontStyle are separate scalar tokens resolved from font-properties.json.
+        const weightStyleToFontSuffix = {
+            "700-normal": "Bold",
+            "600-normal": "Semibold",
+            "500-normal": "Medium",
+            "400-normal": "Regular",
+            "300-normal": "Light",
+            "400-italic": "Italic",
+            "500-italic": "MediumItalic",
+            "600-italic": "SemiboldItalic",
+            "700-italic": "BoldItalic",
+            "300-italic": "LightItalic"
         };
 
         const entries = [];
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
-            // The font/weight/swift transform already converted fontWeight to .bold, .regular etc.
-            const weight = val.fontWeight.replace(/"/g, '');;
+            // fontWeight resolves to a plain numeric string ("700", "400", etc.)
+            // fontStyle resolves to a plain string ("normal" or "italic")
+            const weight = val.fontWeight;
+            const style = val.fontStyle || 'normal';
             const size = parseFloat(val.fontSize);
-            // Look up the style (e.g., "Bold") from the fontWeight value ("700")
-            const style = weightToStyle[weight] || "Regular";
-            const fontFamily = val.fontFamily.replace(/"/g, '');
-            // Construct the proper font name, e.g., "Lato-Bold"
-            const fontName = `${fontFamily}-${style}`;
+            const fontSuffix = weightStyleToFontSuffix[`${weight}-${style}`] || "Regular";
+            const fontFamily = val.fontFamily;
+            // Construct the proper font name, e.g., "Lato-Bold", "Lato-Italic", "Lato-BoldItalic"
+            const fontName = `${fontFamily}-${fontSuffix}`;
             const propName = prop.path.slice(-1)[0];
 
             entries.push({ propName, fontName, size });
@@ -232,12 +244,19 @@ StyleDictionary.registerFormat({
 StyleDictionary.registerFormat({
     name: 'xml/android-typography',
     formatter: function ({ dictionary }) {
-        const weightToStyle = {
-            "700": "bold",
-            "600": "semibold",
-            "500": "medium",
-            "400": "regular",
-            "300": "light"
+        // Maps "fontWeight-fontStyle" to the Android @font resource suffix.
+        // fontWeight and fontStyle are separate scalar tokens resolved from font-properties.json.
+        const weightStyleToFontSuffix = {
+            "700-normal": "bold",
+            "600-normal": "semibold",
+            "500-normal": "medium",
+            "400-normal": "regular",
+            "300-normal": "light",
+            "400-italic": "italic",
+            "500-italic": "medium_italic",
+            "600-italic": "semibold_italic",
+            "700-italic": "bold_italic",
+            "300-italic": "light_italic"
         };
 
         function toPascalCase(str) {
@@ -257,21 +276,22 @@ StyleDictionary.registerFormat({
             const styleName = `CatTypography.${toPascalCase(propName)}`;
             const fontSize = parseFloat(val.fontSize);
             const lineHeight = parseFloat(val.lineHeight);
-            const fontWeight = val.fontWeight.replace(/"/g, '');
-            const style = weightToStyle[fontWeight] || "regular";
-            const fontFamily = val.fontFamily.replace(/"/g, '').toLowerCase();
+            // fontWeight resolves to a plain numeric string ("700", "400", etc.)
+            // fontStyle resolves to a plain string ("normal" or "italic")
+            const fontWeight = val.fontWeight;
+            const fontStyle = val.fontStyle || 'normal';
+            const fontFamily = val.fontFamily.toLowerCase();
 
-            // Use weight-specific font resource for broader API compatibility
-            let fontRef;
-            if (style === "regular") {
-                fontRef = `@font/${fontFamily}`;
-            } else {
-                fontRef = `@font/${fontFamily}_${style}`;
-            }
+            const suffix = weightStyleToFontSuffix[`${fontWeight}-${fontStyle}`] || "regular";
+            // "regular" maps to the base @font/lato resource; all others append the suffix
+            const fontRef = suffix === "regular"
+                ? `@font/${fontFamily}`
+                : `@font/${fontFamily}_${suffix}`;
 
             xml += `\n    <style name="${styleName}">\n`;
             xml += `        <item name="android:fontFamily">${fontRef}</item>\n`;
             xml += `        <item name="android:textFontWeight">${fontWeight}</item>\n`;
+            xml += `        <item name="android:textStyle">${fontStyle}</item>\n`;
             xml += `        <item name="android:textSize">${fontSize}sp</item>\n`;
             xml += `        <item name="android:lineHeight">${lineHeight}sp</item>\n`;
             xml += `    </style>\n`;
@@ -325,14 +345,31 @@ StyleDictionary.registerFormat({
 StyleDictionary.registerFormat({
     name: 'kotlin/compose-typography',
     formatter: function ({ dictionary }) {
-        let kotlinFile = `//\n// CatTypography.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.haiilo.catalyst.tokens.generated\n\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.unit.sp\nimport com.haiilo.catalyst.CatFontFamily\n\npublic object CatTypography {\n`;
+        // fontStyle is now a separate scalar token resolved from font-properties.json
+        const hasItalic = dictionary.allProperties.some(
+            prop => prop.value.fontStyle === 'italic'
+        );
+
+        let kotlinFile = `//\n// CatTypography.kt\n//\n// Do not edit directly, this file is generated from design tokens\n//\n\npackage com.haiilo.catalyst.tokens.generated\n\nimport androidx.compose.ui.text.TextStyle\nimport androidx.compose.ui.text.font.FontWeight\n`;
+        if (hasItalic) {
+            kotlinFile += `import androidx.compose.ui.text.font.FontStyle\n`;
+        }
+        kotlinFile += `import androidx.compose.ui.unit.sp\nimport com.haiilo.catalyst.CatFontFamily\n\npublic object CatTypography {\n`;
 
         dictionary.allProperties.forEach(prop => {
             const val = prop.value;
             const propName = prop.path.slice(-1)[0];
+            // fontWeight resolves to a plain numeric string ("700", "400", etc.)
+            // fontStyle resolves to a plain string ("normal" or "italic")
+            const fontWeight = val.fontWeight;
+            const fontStyle = val.fontStyle || 'normal';
+
             kotlinFile += `    public val ${propName} = TextStyle(\n`;
             kotlinFile += `        fontFamily = CatFontFamily.${val.fontFamily.toLowerCase()},\n`;
-            kotlinFile += `        fontWeight = FontWeight(${val.fontWeight}),\n`;
+            kotlinFile += `        fontWeight = FontWeight(${fontWeight}),\n`;
+            if (fontStyle === 'italic') {
+                kotlinFile += `        fontStyle = FontStyle.Italic,\n`;
+            }
             kotlinFile += `        fontSize = ${val.fontSize}.sp,\n`;
             kotlinFile += `        lineHeight = ${val.lineHeight}.sp\n`;
             kotlinFile += `    )\n`;

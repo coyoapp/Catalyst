@@ -8,6 +8,7 @@ package com.haiilo.catalyst.tokens.generated
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.sp
 import com.haiilo.catalyst.CatFontFamily
 
@@ -95,5 +96,18 @@ public object CatTypography {
         fontWeight = FontWeight(700),
         fontSize = 12.sp,
         lineHeight = 16.sp
+    )
+    public val body1Italic = TextStyle(
+        fontFamily = CatFontFamily.lato,
+        fontWeight = FontWeight(400),
+        fontStyle = FontStyle.Italic,
+        fontSize = 16.sp,
+        lineHeight = 22.sp
+    )
+    public val body1Bold = TextStyle(
+        fontFamily = CatFontFamily.lato,
+        fontWeight = FontWeight(700),
+        fontSize = 16.sp,
+        lineHeight = 22.sp
     )
 }
