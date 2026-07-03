@@ -187,8 +187,7 @@ private fun <T> CatSegmentedControlSegment(
     val itemEnabled = enabled && item.enabled
 
     val resolvedItemColors = when {
-        !itemEnabled && isSelected -> colors.itemColors.selectedDisabled
-        !itemEnabled -> colors.itemColors.unselectedDisabled
+        !itemEnabled -> colors.itemColors.disabled
         isPressed && isSelected -> colors.itemColors.selectedPressed
         isPressed -> colors.itemColors.unselectedPressed
         isSelected -> colors.itemColors.selected

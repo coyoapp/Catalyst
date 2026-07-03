@@ -80,6 +80,7 @@ This matches the intended v1 shape best:
 - outer holder uses a muted background without a visible border by default
 - selected segment uses a white surface with semantic text color
 - unselected segment sits on the muted gray container with muted text
+- disabled segments use the muted filled background with muted text, matching the shared disabled treatment used by Catalyst buttons
 - selected label uses the semibold `CatTypography.button1` style
 - unselected label uses the regular `CatTypography.button2` style
 

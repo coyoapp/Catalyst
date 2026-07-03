@@ -43,10 +43,6 @@ object CatSegmentedControlDefaults {
                     background = CatColors.Ui.Background.surface,
                     foreground = palette.textActive,
                 ),
-                selectedDisabled = CatSegmentedControlSegmentColors(
-                    background = CatColors.Ui.Background.surface,
-                    foreground = CatColors.Ui.Font.muted,
-                ),
                 unselected = CatSegmentedControlSegmentColors(
                     background = Color.Transparent,
                     foreground = CatColors.Ui.Font.muted,
@@ -56,8 +52,8 @@ object CatSegmentedControlDefaults {
                         .copy(alpha = PressedSurfaceAlpha),
                     foreground = palette.textActive,
                 ),
-                unselectedDisabled = CatSegmentedControlSegmentColors(
-                    background = Color.Transparent,
+                disabled = CatSegmentedControlSegmentColors(
+                    background = CatColors.Ui.Background.muted,
                     foreground = CatColors.Ui.Font.muted,
                 ),
             ),

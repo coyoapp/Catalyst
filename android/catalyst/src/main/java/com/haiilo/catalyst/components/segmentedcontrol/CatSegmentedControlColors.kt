@@ -14,10 +14,9 @@ data class CatSegmentedControlSegmentColors(
 data class CatSegmentedControlItemStateColors(
     val selected: CatSegmentedControlSegmentColors,
     val selectedPressed: CatSegmentedControlSegmentColors,
-    val selectedDisabled: CatSegmentedControlSegmentColors,
     val unselected: CatSegmentedControlSegmentColors,
     val unselectedPressed: CatSegmentedControlSegmentColors,
-    val unselectedDisabled: CatSegmentedControlSegmentColors,
+    val disabled: CatSegmentedControlSegmentColors,
 )
 
 /**

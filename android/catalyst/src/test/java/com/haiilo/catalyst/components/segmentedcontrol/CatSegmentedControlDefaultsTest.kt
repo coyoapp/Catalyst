@@ -28,6 +28,8 @@ class CatSegmentedControlDefaultsTest {
         assertEquals(CatColors.Ui.Background.surface, colors.itemColors.selected.background)
         assertEquals(CatColors.Theme.Primary.text, colors.itemColors.selected.foreground)
         assertEquals(CatColors.Ui.Font.muted, colors.itemColors.unselected.foreground)
+        assertEquals(CatColors.Ui.Background.muted, colors.itemColors.disabled.background)
+        assertEquals(CatColors.Ui.Font.muted, colors.itemColors.disabled.foreground)
     }
 
     @Test
@@ -40,6 +42,8 @@ class CatSegmentedControlDefaultsTest {
         assertEquals(CatColors.Ui.Background.surface, colors.itemColors.selected.background)
         assertEquals(testAccentPalette.text, colors.itemColors.selected.foreground)
         assertEquals(CatColors.Ui.Font.muted, colors.itemColors.unselected.foreground)
+        assertEquals(CatColors.Ui.Background.muted, colors.itemColors.disabled.background)
+        assertEquals(CatColors.Ui.Font.muted, colors.itemColors.disabled.foreground)
         assertEquals(
             CatColors.Ui.Background.surface
                 .copy(alpha = 0.72f),
@@ -57,5 +61,7 @@ class CatSegmentedControlDefaultsTest {
         assertEquals(CatColors.Ui.Background.surface, colors.itemColors.selected.background)
         assertEquals(CatColors.Theme.Info.text, colors.itemColors.selected.foreground)
         assertEquals(CatColors.Ui.Font.muted, colors.itemColors.unselected.foreground)
+        assertEquals(CatColors.Ui.Background.muted, colors.itemColors.disabled.background)
+        assertEquals(CatColors.Ui.Font.muted, colors.itemColors.disabled.foreground)
     }
 }
