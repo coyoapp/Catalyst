@@ -122,7 +122,7 @@ private struct RowContent: View {
     var body: some View {
         switch content {
 
-        case .listItem(let icon, let title, let newItemIndicator):
+        case .listItem(let icon, let title, let subtitle, let newItemIndicator):
             // Leading inset: icon column width when icon is present, plain leading padding when nil.
             let textLeadingPadding: CGFloat = icon == nil
                 ? CatSpacing.spacingXl
@@ -133,10 +133,19 @@ private struct RowContent: View {
                         leadingIcon(icon)
                     }
                     HStack(spacing: CatSpacing.spacingMd) {
-                        Text(title)
-                            .font(CatTypography.body1)
-                            .foregroundStyle(colors.text)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        VStack(alignment: .leading, spacing: CatSpacing.spacingXs) {
+                            Text(title)
+                                .font(CatTypography.body1)
+                                .foregroundStyle(colors.text)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            if let subtitle {
+                                Text(subtitle)
+                                    .font(CatTypography.body2)
+                                    .foregroundStyle(colors.subtitle)
+                                    .lineLimit(1)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
 
                         trailingCluster(newItemIndicator: newItemIndicator.wrappedValue)
                     }
