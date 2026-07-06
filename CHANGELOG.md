@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.15.0](https://github.com/coyoapp/Catalyst/compare/v0.14.1...v0.15.0) (2026-07-06)
+
+
+### Features
+
+* **catlist:** Support subtitle in list item ([869442c](https://github.com/coyoapp/Catalyst/commit/869442c99006501a6495f4cb4cec05f30fd84779))
+* **Catlist:** Support subtitle in list item ([511e16d](https://github.com/coyoapp/Catalyst/commit/511e16dcf3831d3c4fd5026c9ec3b34718eec59c))
+
 ## [0.14.1](https://github.com/coyoapp/Catalyst/compare/v0.14.0...v0.14.1) (2026-06-30)
 
 
