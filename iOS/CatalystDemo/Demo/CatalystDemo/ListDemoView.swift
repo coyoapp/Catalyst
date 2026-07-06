@@ -102,9 +102,34 @@ struct ListDemoView: View {
                         .listItem(
                             icon: Image("ic_settings-outlined-25", bundle: .catalyst),
                             title: "Settings",
+                            subtitle: "Subtitle",
                             newItemIndicator: .constant(false)
                         ),
                         { destination = .settings }
+                    ),
+                ])
+
+                // ── Section 5: Full group (top / middle / bottom) ─────────────
+                SectionHeader("Item with subtitle")
+
+                CatList(items: [
+                    (
+                        .listItem(
+                            icon: nil,
+                            title: "Pages",
+                            subtitle: "Subtitle",
+                            newItemIndicator: .constant(false)
+                        ),
+                        { destination = .pagesList }
+                    ),
+                    (
+                        .listItem(
+                            icon: nil,
+                            title: "People",
+                            subtitle: "Subtitleas das das dsa da sd sa asd asd sad sa das dasd ",
+                            newItemIndicator: .constant(true)
+                        ),
+                        { destination = .people }
                     ),
                 ])
                 Spacer(minLength: CatSpacing.spacing4xl)

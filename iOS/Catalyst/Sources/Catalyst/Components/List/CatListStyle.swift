@@ -204,10 +204,20 @@ public enum CatListSize {
 // MARK: - List Content
 
 public enum CatListContent {
-    /// Standard navigation row: optional leading icon, title, optional new-item indicator, chevron.
-    case listItem(icon: Image?, title: String, newItemIndicator: Binding<Bool>)
+    /// Standard navigation row: optional leading icon, title, optional subtitle, optional new-item indicator, chevron.
+    case listItem(icon: Image?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>)
     /// Avatar navigation row: leading `CatAvatarView`, title, optional new-item indicator, chevron.
     case avatarListItem(initials: String?, imageURL: URL?, backgroundColor: Color?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>)
+}
+
+public extension CatListContent {
+    static func listItem(
+        icon: Image?,
+        title: String,
+        newItemIndicator: Binding<Bool>
+    ) -> CatListContent {
+        .listItem(icon: icon, title: title, subtitle: nil, newItemIndicator: newItemIndicator)
+    }
 }
 
 // MARK: - List Style
