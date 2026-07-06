@@ -52,7 +52,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions...)
 
 | Value | Description |
 |-------|-------------|
-| `.listItem(icon:title:newItemIndicator:)` | Standard navigation row with a leading icon, title, optional new-item indicator dot, and a trailing chevron |
+| `.listItem(icon:title:subtitle:newItemIndicator:)` | Standard navigation row with a leading icon, title, optional subtitle, optional new-item indicator dot, and a trailing chevron |
 | `.avatarListItem(initials:imageURL:color:title:subtitle:newItemIndicator:)` | Avatar navigation row with a leading `CatAvatarView`, title, optional subtitle, optional new-item indicator dot, and a trailing chevron |
 
 ---
@@ -91,6 +91,7 @@ CatListBuilder(
     content: .listItem(
         icon: Image(systemName: "bookmark"),
         title: "Bookmarks",
+        subtitle: nil,
         newItemIndicator: .constant(false)
     )
 ) {
@@ -100,11 +101,11 @@ CatListBuilder(
 // Group of rows — positions assigned automatically
 CatList(items: [
     (
-        .listItem(icon: Image(systemName: "bookmark"), title: "Bookmarks", newItemIndicator: .constant(false)),
+        .listItem(icon: Image(systemName: "bookmark"), title: "Bookmarks", subtitle: "Saved items", newItemIndicator: .constant(false)),
         { }
     ),
     (
-        .listItem(icon: Image(systemName: "gear"), title: "Settings", newItemIndicator: .constant(true)),
+        .listItem(icon: Image(systemName: "gear"), title: "Settings", subtitle: nil, newItemIndicator: .constant(true)),
         { }
     ),
 ])
