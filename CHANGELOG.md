@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/coyoapp/Catalyst/compare/v0.15.0...v0.16.0) (2026-07-08)
+
+
+### Features
+
+* **icons:** Add new icons for assistant ([0451cf5](https://github.com/coyoapp/Catalyst/commit/0451cf5621ff29c6bd7276c6e64d6334fdc3b678))
+
 ## [0.15.0](https://github.com/coyoapp/Catalyst/compare/v0.14.1...v0.15.0) (2026-07-06)
 
 
