@@ -16,6 +16,8 @@ import Catalyst
 
 struct ButtonsDemoView: View {
 
+    @State private var isLoading = false
+
     private let allColors: [CatTheme.ColorConfig] = [
         .primary, .primaryInverted, .secondary, .secondaryInverted,
         .danger, .success, .warning, .info,
@@ -208,7 +210,40 @@ struct ButtonsDemoView: View {
                 Divider()
 
                 // -----------------------------------------------------------
-                // 11. catButtonConfig — environment injection demo
+                // 11. Loading — spinner replaces leading icon, taps blocked
+                // -----------------------------------------------------------
+                SectionHeader("Loading (tap to start)")
+                HStack(spacing: CatSpacing.spacingMd) {
+                    CatButton(.text("Submit"), buttonSize: .medium, isLoading: isLoading) {
+                        startLoading()
+                    }
+                    .catButtonConfig(variant: .filled, color: .primary)
+
+                    CatButton(
+                        .iconText(icon: Image("icon-checkmark", bundle: .catalyst),
+                                  text: "Save",
+                                  placement: .leading),
+                        buttonSize: .medium,
+                        isLoading: isLoading
+                    ) {
+                        startLoading()
+                    }
+                    .catButtonConfig(variant: .outlined, color: .primary)
+
+                    CatButton(
+                        .icon(Image("icon-checkmark", bundle: .catalyst)),
+                        buttonSize: .medium,
+                        isLoading: isLoading
+                    ) {
+                        startLoading()
+                    }
+                    .catButtonConfig(variant: .filled, color: .success)
+                }
+
+                Divider()
+
+                // -----------------------------------------------------------
+                // 12. catButtonConfig — environment injection demo
                 // -----------------------------------------------------------
                 SectionHeader("catButtonConfig (environment)")
                 Text("All buttons inside the modifier inherit Outlined + Warning without explicit params.")
@@ -231,6 +266,11 @@ struct ButtonsDemoView: View {
         }
         .navigationTitle("Buttons")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func startLoading() {
+        isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { isLoading = false }
     }
 }
 

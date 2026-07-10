@@ -13,6 +13,7 @@ public struct CatButton: View {
     let styleFont: Font?
     let stackSpacing: CGFloat?
     let padding: EdgeInsets?
+    let isLoading: Bool
     let action: () -> Void
 
     /// Creates a `CatButton`.
@@ -23,6 +24,8 @@ public struct CatButton: View {
     ///   - styleFont: Overrides the default button label font.
     ///   - stackSpacing: Overrides the spacing between icon and label.
     ///   - padding: Overrides the default internal padding.
+    ///   - isLoading: When `true`, shows a spinner in place of the leading icon
+    ///     (or before the text) and ignores taps until loading finishes.
     ///   - action: The closure invoked when the button is tapped.
     public init(
         _ content: CatButtonContent,
@@ -30,6 +33,7 @@ public struct CatButton: View {
         styleFont: Font? = nil,
         stackSpacing: CGFloat? = nil,
         padding: EdgeInsets? = nil,
+        isLoading: Bool = false,
         action: @escaping () -> Void
     ) {
         self.content = content
@@ -37,6 +41,7 @@ public struct CatButton: View {
         self.styleFont = styleFont
         self.stackSpacing = stackSpacing
         self.padding = padding
+        self.isLoading = isLoading
         self.action = action
     }
 
@@ -55,6 +60,7 @@ public struct CatButton: View {
             content: content,
             iconSize: .init(width: CatSizes.sizeMd, height: CatSizes.sizeMd),
             stackSpacing: stackSpacing,
+            isLoading: isLoading,
             action: action
         )
         .buttonStyle(
@@ -79,7 +85,8 @@ public struct CatButton: View {
                     bottom: CatSpacing.spacingLg,
                     trailing: CatSpacing.spacingXl
                 ),
-                buttonSize: buttonSize
+                buttonSize: buttonSize,
+                isLoading: isLoading
             )
         )
     }
