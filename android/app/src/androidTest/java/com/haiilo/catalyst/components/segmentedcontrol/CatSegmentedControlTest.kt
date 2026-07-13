@@ -3,7 +3,6 @@ package com.haiilo.catalyst.components.segmentedcontrol
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsNotSelected
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.hasClickAction
@@ -26,15 +25,14 @@ class CatSegmentedControlTest {
     val composeRule = createAndroidComposeRule<ComponentActivity>()
 
     @Test
-    fun twoOptionOverload_isDiscoverableViaSemantics_andSelectionChangesOnTap() {
-        var selected: String? = "Option 1"
+    fun textSegments_areDiscoverableViaSemantics_andSelectionChangesOnTap() {
+        var selected = 0
 
         composeRule.setContent {
             CatTheme {
                 CatSegmentedControl(
-                    firstItem = CatSegmentedControlItem("Option 1", CatSegmentedControlContent.TextOnly("Option 1")),
-                    secondItem = CatSegmentedControlItem("Option 2", CatSegmentedControlContent.TextOnly("Option 2")),
-                    selectedValue = selected,
+                    segments = listOf("Option 1", "Option 2"),
+                    selection = selected,
                     onSelectionChange = { selected = it },
                 )
             }
@@ -53,23 +51,19 @@ class CatSegmentedControlTest {
             .performClick()
 
         composeRule.runOnIdle {
-            assertEquals("Option 2", selected)
+            assertEquals(1, selected)
         }
     }
 
     @Test
-    fun textSegments_areDiscoverableViaSemantics_andSelectionChangesOnTap() {
-        var selected: String? = "Week"
+    fun threeSegments_canChangeSelection() {
+        var selected = 1
 
         composeRule.setContent {
             CatTheme {
                 CatSegmentedControl(
-                    items = listOf(
-                        CatSegmentedControlItem("Day", CatSegmentedControlContent.TextOnly("Day")),
-                        CatSegmentedControlItem("Week", CatSegmentedControlContent.TextOnly("Week")),
-                        CatSegmentedControlItem("Month", CatSegmentedControlContent.TextOnly("Month")),
-                    ),
-                    selectedValue = selected,
+                    segments = listOf("Day", "Week", "Month"),
+                    selection = selected,
                     onSelectionChange = { selected = it },
                 )
             }
@@ -86,27 +80,20 @@ class CatSegmentedControlTest {
             .performClick()
 
         composeRule.runOnIdle {
-            assertEquals("Day", selected)
+            assertEquals(0, selected)
         }
     }
 
     @Test
-    fun disabledSegment_doesNotInvokeSelectionChange() {
-        var selected = "Upcoming"
+    fun selectingAlreadySelectedSegment_keepsSelection() {
+        var selected = 0
         var callbackInvoked = false
 
         composeRule.setContent {
             CatTheme {
                 CatSegmentedControl(
-                    items = listOf(
-                        CatSegmentedControlItem("Upcoming", CatSegmentedControlContent.TextOnly("Upcoming")),
-                        CatSegmentedControlItem(
-                            value = "Archived",
-                            content = CatSegmentedControlContent.TextOnly("Archived"),
-                            enabled = false,
-                        ),
-                    ),
-                    selectedValue = selected,
+                    segments = listOf("Upcoming", "Archived"),
+                    selection = selected,
                     onSelectionChange = {
                         callbackInvoked = true
                         selected = it
@@ -116,12 +103,13 @@ class CatSegmentedControlTest {
         }
 
         composeRule
-            .onNodeWithText("Archived")
+            .onNodeWithText("Upcoming")
             .assertIsDisplayed()
-            .assertIsNotEnabled()
+            .assertIsSelected()
+            .performClick()
 
         composeRule.runOnIdle {
-            assertEquals("Upcoming", selected)
+            assertEquals(0, selected)
             assertFalse(callbackInvoked)
         }
     }
@@ -137,7 +125,7 @@ class CatSegmentedControlTest {
             .assertIsDisplayed()
 
         composeRule
-            .onNodeWithText("Design library like states")
+            .onNodeWithText("Two segments")
             .assertIsDisplayed()
     }
 }

@@ -2,26 +2,72 @@
 
 # CatSegmentedControl — Android
 
-`CatSegmentedControl` is a single-select segmented control for the Catalyst Android design system. For v1, the recommended usage is a **2-option, full-width, text-only control** like “Option 1 / Option 2” or “Enabled / Paused”.
+`CatSegmentedControl` is a single-select segmented control for the Catalyst Android design system.
 
-The implementation remains generic underneath, so the component can grow later without changing its foundation, but the primary public guidance intentionally stays narrow for the first release.
+The primary API is the richer item-based overload that supports:
+
+- text-only segments
+- icon-only segments
+- icon + text segments
+- per-item enabled state
+- semantic color roles
+- size presets
+- app-wide and subtree accent color overrides
+
+There is also a text-only convenience overload that accepts `List<String>` and uses index-based selection for simpler cases.
 
 ---
 
 ## Parameters
 
+### Item-based API
+
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `items` | `List<CatSegmentedControlItem<T>>` | required on the generic overload | Segments shown from start to end |
-| `firstItem` / `secondItem` | `CatSegmentedControlItem<T>` | required on the 2-option overload | Recommended v1 API for the common binary-control case |
+| `items` | `List<CatSegmentedControlItem<T>>` | required | Segments rendered from start to end |
 | `selectedValue` | `T?` | required | Currently selected value. Pass `null` for an initially unselected state |
 | `onSelectionChange` | `(T) -> Unit` | required | Called when the user chooses a different segment |
 | `modifier` | `Modifier` | `Modifier` | Applied to the outer container |
 | `color` | `CatSegmentedControlColor` | `Primary` | Semantic color role used by the selected segment |
 | `size` | `CatSegmentedControlSize` | `Medium` | Controls the overall height and segment padding |
 | `enabled` | `Boolean` | `true` | Parent enabled state for the whole control |
-| `equalWidth` | `Boolean` | `true` on the generic overload | When `true`, segments share the same width |
-| `style` | `CatSegmentedControlColors?` | `null` | Advanced escape hatch. Prefer `color` and tokens for standard usage |
+| `equalWidth` | `Boolean` | `true` | When `true`, segments share the same width |
+| `style` | `CatSegmentedControlColors?` | `null` | Full color override. When non-null, `color` is ignored for styling |
+
+### Text-only convenience API
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `segments` | `List<String>` | required | Segment titles rendered left to right |
+| `selection` | `Int` | required | Index of the selected segment |
+| `onSelectionChange` | `(Int) -> Unit` | required | Called when the user chooses a different segment |
+| `modifier` | `Modifier` | `Modifier` | Applied to the outer container |
+| `color` | `CatSegmentedControlColor` | `Primary` | Semantic color role used by the selected segment |
+| `size` | `CatSegmentedControlSize` | `Medium` | Controls the overall height and segment padding |
+| `enabled` | `Boolean` | `true` | Parent enabled state for the whole control |
+| `style` | `CatSegmentedControlColors?` | `null` | Full color override. When non-null, `color` is ignored for styling |
+
+---
+
+## Content
+
+`CatSegmentedControlItem<T>` wraps the stable value and visible content for a segment:
+
+```kotlin
+data class CatSegmentedControlItem<T>(
+    val value: T,
+    val content: CatSegmentedControlContent,
+    val enabled: Boolean = true,
+)
+```
+
+`CatSegmentedControlContent` supports three display modes:
+
+| Case | Description |
+|------|-------------|
+| `TextOnly(text: String)` | Text label only |
+| `IconOnly(painter: Painter, contentDescription: String?)` | Icon only |
+| `IconText(painter: Painter, text: String, placement: CatSegmentedControlPlacement, iconContentDescription: String?)` | Icon and text side by side |
 
 ---
 
@@ -36,6 +82,8 @@ The implementation remains generic underneath, so the component can grow later w
 | `Warning` | Warning-related modes |
 | `Info` | Informational modes |
 | `PrimaryInverted` / `SecondaryInverted` | Use when the selected state needs to read on dark surfaces |
+
+The default color mapping comes from the design tokens, and `ProvideAccentColor(...)` overrides the primary palette for the current subtree.
 
 ---
 
@@ -52,41 +100,9 @@ The implementation remains generic underneath, so the component can grow later w
 
 ---
 
-## Recommended v1 pattern
+## Recommended usage
 
-Use the dedicated 2-option overload for most first-iteration product cases.
-
-```kotlin
-var selectedValue by remember { mutableStateOf("Option 1") }
-
-CatSegmentedControl(
-    modifier = Modifier.fillMaxWidth(),
-    firstItem = CatSegmentedControlItem("Option 1", CatSegmentedControlContent.TextOnly("Option 1")),
-    secondItem = CatSegmentedControlItem("Option 2", CatSegmentedControlContent.TextOnly("Option 2")),
-    selectedValue = selectedValue,
-    onSelectionChange = { selectedValue = it },
-)
-```
-
-This matches the intended v1 shape best:
-
-- 2 options
-- equal width
-- full width
-- text only
-- single selected pill
-- outer container height is 48 dp with 4 dp inset on all sides
-- each inner segment resolves to 40 dp height in the default small size
-- outer holder uses a muted background without a visible border by default
-- selected segment uses a white surface with semantic text color
-- unselected segment sits on the muted gray container with muted text
-- disabled segments use the muted filled background with muted text, matching the shared disabled treatment used by Catalyst buttons
-- selected label uses the semibold `CatTypography.button1` style
-- unselected label uses the regular `CatTypography.button2` style
-
----
-
-## Basic usage
+Use the item-based overload when you need the full design-system behavior.
 
 ```kotlin
 var selectedValue by remember { mutableStateOf("Enabled") }
@@ -97,35 +113,21 @@ CatSegmentedControl(
     secondItem = CatSegmentedControlItem("Paused", CatSegmentedControlContent.TextOnly("Paused")),
     selectedValue = selectedValue,
     onSelectionChange = { selectedValue = it },
-    color = CatSegmentedControlColor.Primary,
 )
 ```
 
----
-
-## Content
-
-`CatSegmentedControlItem<T>` wraps the stable value and visible content for a segment:
+For icon-based or mixed-content segments, use the generic `items` overload:
 
 ```kotlin
-data class CatSegmentedControlItem<T>(
-    val value: T,
-    val content: CatSegmentedControlContent,
-    val enabled: Boolean = true,
+CatSegmentedControl(
+    items = listOf(
+        CatSegmentedControlItem("Day", CatSegmentedControlContent.IconText(icon, "Day")),
+        CatSegmentedControlItem("Week", CatSegmentedControlContent.TextOnly("Week")),
+    ),
+    selectedValue = selectedValue,
+    onSelectionChange = { selectedValue = it },
 )
 ```
-
-For v1, prefer `TextOnly`.
-
-The underlying API also supports icon-based content types, but those are intentionally deferred from the primary guidance until there is a concrete product need.
-
-`CatSegmentedControlContent` supports three display modes:
-
-| Case | Description |
-|------|-------------|
-| `TextOnly(text: String)` | Text label only |
-| `IconOnly(painter: Painter, contentDescription: String?)` | Icon only *(supported, not part of the primary v1 recommendation)* |
-| `IconText(painter: Painter, text: String, placement: CatSegmentedControlPlacement, iconContentDescription: String?)` | Icon and text side by side *(supported, but deferred from the main v1 pattern)* |
 
 ---
 
@@ -135,12 +137,13 @@ Disable an individual segment without disabling the whole control:
 
 ```kotlin
 CatSegmentedControl(
-    modifier = Modifier.fillMaxWidth(),
-    firstItem = CatSegmentedControlItem("Upcoming", CatSegmentedControlContent.TextOnly("Upcoming")),
-    secondItem = CatSegmentedControlItem(
-        value = "Archived",
-        content = CatSegmentedControlContent.TextOnly("Archived"),
-        enabled = false,
+    items = listOf(
+        CatSegmentedControlItem("Upcoming", CatSegmentedControlContent.TextOnly("Upcoming")),
+        CatSegmentedControlItem(
+            value = "Archived",
+            content = CatSegmentedControlContent.TextOnly("Archived"),
+            enabled = false,
+        ),
     ),
     selectedValue = selectedValue,
     onSelectionChange = { selectedValue = it },
@@ -178,35 +181,21 @@ ProvideAccentColor(Color(0xFFE8340A)) {
 
 ## More than two options
 
-The underlying implementation still supports more than two segments through the generic `items` overload.
-
-That capability is intentionally not the primary documented v1 pattern, because the current design direction is centered on binary controls.
+The generic `items` overload supports more than two segments and should be used whenever the control needs richer content or values.
 
 ---
 
 ## Style override
 
-`style: CatSegmentedControlColors?` is an **escape hatch**, not the normal design-system path.
+`style: CatSegmentedControlColors?` is an escape hatch, not the normal design-system path.
 
-Use it only when you have a one-off UI requirement that cannot be expressed through:
-
-- the standard semantic `color`
-- existing design tokens
-- the app-wide or subtree accent color
-
-Why this is de-emphasized:
-
-- it bypasses the shared token mapping
-- it makes consistency across products harder
-- it can drift away from the design system if overused
-
-For most product work, prefer the standard props and token-driven defaults.
+Use it only when you have a one-off UI requirement that cannot be expressed through the standard semantic color roles and design tokens.
 
 ---
 
 ## Accessibility
 
-- The control uses single-select semantics via `selectableGroup` and per-segment `Role.RadioButton`
+- The control uses single-select semantics via `selectableGroup()` and per-segment `Role.RadioButton`
 - Text and icon semantics are merged into the segment for discoverability without test tags
 - For icon-only segments, provide a meaningful `contentDescription`
 

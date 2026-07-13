@@ -1,5 +1,6 @@
 package com.haiilo.catalyst.components.segmentedcontrol
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -29,6 +30,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
@@ -39,42 +41,41 @@ import androidx.compose.ui.unit.dp
 import com.haiilo.catalyst.theme.LocalCatAccentPalette
 import com.haiilo.catalyst.tokens.generated.CatBorderRadius
 import com.haiilo.catalyst.tokens.generated.CatBorderWidth
+import com.haiilo.catalyst.tokens.generated.CatColors
 import com.haiilo.catalyst.tokens.generated.CatSizes
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
 
 // ---------------------------------------------------------------------------
 // CatSegmentedControl
-//
-// Single-select segmented control for Catalyst Android.
-//
-// Configuration priority (highest -> lowest):
-//   1. Explicit [style]
-//   2. Explicit [color]
-//   3. Defaults: Primary
 // ---------------------------------------------------------------------------
 
 /**
- * Convenience overload for the common two-option segmented control.
- *
- * Prefer this overload for the standard v1 binary-toggle use case. The generic
- * `items = listOf(...)` overload remains available for more advanced layouts.
+ * Text-only convenience overload that uses the older segment-state rendering.
  */
 @Composable
-fun <T> CatSegmentedControl(
-    firstItem: CatSegmentedControlItem<T>,
-    secondItem: CatSegmentedControlItem<T>,
-    selectedValue: T?,
-    onSelectionChange: (T) -> Unit,
+fun CatSegmentedControl(
+    segments: List<String>,
+    selection: Int,
+    onSelectionChange: (Int) -> Unit,
     modifier: Modifier = Modifier,
     color: CatSegmentedControlColor = CatSegmentedControlColor.Primary,
     size: CatSegmentedControlSize = CatSegmentedControlSize.Medium,
     enabled: Boolean = true,
     style: CatSegmentedControlColors? = null,
 ) {
+    require(segments.isNotEmpty()) { "CatSegmentedControl requires at least one segment." }
+
+    val items = segments.mapIndexed { index, title ->
+        CatSegmentedControlItem(
+            value = index,
+            content = CatSegmentedControlContent.TextOnly(title),
+        )
+    }
+
     CatSegmentedControl(
-        items = listOf(firstItem, secondItem),
-        selectedValue = selectedValue,
+        items = items,
+        selectedValue = selection.takeIf { it in segments.indices },
         onSelectionChange = onSelectionChange,
         modifier = modifier,
         color = color,
@@ -86,21 +87,7 @@ fun <T> CatSegmentedControl(
 }
 
 /**
- * Catalyst segmented control component.
- *
- * @param items              Segments rendered in order from start to end.
- * @param selectedValue      Currently selected value. Pass null for an initially
- *                           unselected state.
- * @param onSelectionChange  Called when the user chooses a different segment.
- * @param modifier           Modifier applied to the outer container.
- * @param color              Semantic color role used by the selected segment.
- * @param size               Controls overall height and segment padding.
- * @param enabled            Parent enabled state for the whole control.
- * @param equalWidth         When true, segments share the same width. In bounded
- *                           layouts such as `Modifier.fillMaxWidth()`, the
- *                           available width is divided evenly across segments.
- * @param style              Full color override. When non-null, [color] is
- *                           ignored for styling.
+ * Restored state-driven segmented control implementation.
  */
 @Composable
 fun <T> CatSegmentedControl(
@@ -132,7 +119,8 @@ fun <T> CatSegmentedControl(
             .border(
                 border = BorderStroke(CatBorderWidth.border_width_default, resolvedColors.containerBorder),
                 shape = outerShape,
-            ).padding(CatSpacing.spacing_xs)
+            )
+            .padding(CatSpacing.spacing_xs)
             .selectableGroup(),
         contentAlignment = Alignment.Center,
     ) {
@@ -193,6 +181,7 @@ private fun <T> CatSegmentedControlSegment(
         isSelected -> colors.itemColors.selected
         else -> colors.itemColors.unselected
     }
+
     val textStyle = if (isSelected) {
         CatTypography.button1
     } else {
@@ -215,7 +204,9 @@ private fun <T> CatSegmentedControlSegment(
                         onSelectionChange(item.value)
                     }
                 },
-            ).semantics(mergeDescendants = true) {}
+            )
+            .semantics(mergeDescendants = true) {}
+            .alpha(if (itemEnabled) 1f else 0.5f)
             .padding(horizontal = size.horizontalPaddingDp),
         contentAlignment = Alignment.Center,
     ) {
@@ -293,3 +284,5 @@ private fun CatSegmentedControlContentLayout(
         }
     }
 }
+
+

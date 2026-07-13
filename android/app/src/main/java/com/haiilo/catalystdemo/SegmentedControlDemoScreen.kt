@@ -1,8 +1,6 @@
 package com.haiilo.catalystdemo
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,20 +17,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.haiilo.catalyst.components.buttons.CatButton
 import com.haiilo.catalyst.components.buttons.CatButtonColor
 import com.haiilo.catalyst.components.buttons.CatButtonContent
 import com.haiilo.catalyst.components.buttons.CatButtonVariant
 import com.haiilo.catalyst.components.segmentedcontrol.CatSegmentedControl
-import com.haiilo.catalyst.components.segmentedcontrol.CatSegmentedControlColor
 import com.haiilo.catalyst.components.segmentedcontrol.CatSegmentedControlContent
 import com.haiilo.catalyst.components.segmentedcontrol.CatSegmentedControlItem
 import com.haiilo.catalyst.theme.CatTheme
 import com.haiilo.catalyst.theme.ProvideAccentColor
-import com.haiilo.catalyst.tokens.generated.CatColors
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun SegmentedControlDemoScreen(onBack: () -> Unit) {
@@ -55,25 +51,25 @@ fun SegmentedControlDemoScreen(onBack: () -> Unit) {
                     color = CatButtonColor.Primary,
                 )
 
-                Text("Segmented Control", style = CatTypography.h2)
+                Text("Segmented Toggle", style = CatTypography.h2)
 
-                SegmentedSectionHeader("Design library like states")
+                SegmentedSectionHeader("Two segments")
                 DesignLibraryDemo()
 
                 SegmentedDivider()
 
-                SegmentedSectionHeader("Typical binary choice")
+                SegmentedSectionHeader("Three segments")
                 TypicalBinaryChoiceDemo()
-
-                SegmentedDivider()
-
-                SegmentedSectionHeader("Disabled option")
-                DisabledItemDemo()
 
                 SegmentedDivider()
 
                 SegmentedSectionHeader("Accent color override")
                 AccentColorDemo()
+
+                SegmentedDivider()
+
+                SegmentedSectionHeader("Disabled option")
+                DisabledStateDemo()
             }
         }
     }
@@ -81,92 +77,62 @@ fun SegmentedControlDemoScreen(onBack: () -> Unit) {
 
 @Composable
 private fun DesignLibraryDemo() {
-    var topSelection by remember { mutableStateOf("Option 1") }
-    var bottomSelection by remember { mutableStateOf("Option 2") }
-
-    Column(verticalArrangement = Arrangement.spacedBy(CatSpacing.spacing_xl)) {
-        CatSegmentedControl(
-            modifier = Modifier.fillMaxWidth(),
-            firstItem = CatSegmentedControlItem("Option 1", CatSegmentedControlContent.TextOnly("Option 1")),
-            secondItem = CatSegmentedControlItem("Option 2", CatSegmentedControlContent.TextOnly("Option 2")),
-            selectedValue = topSelection,
-            onSelectionChange = { topSelection = it },
-            color = CatSegmentedControlColor.Primary,
-        )
-
-        CatSegmentedControl(
-            modifier = Modifier.fillMaxWidth(),
-            firstItem = CatSegmentedControlItem("Option 1", CatSegmentedControlContent.TextOnly("Option 1")),
-            secondItem = CatSegmentedControlItem("Option 2", CatSegmentedControlContent.TextOnly("Option 2")),
-            selectedValue = bottomSelection,
-            onSelectionChange = { bottomSelection = it },
-            color = CatSegmentedControlColor.Primary,
-        )
-    }
-}
-
-@Composable
-private fun TypicalBinaryChoiceDemo() {
-    var selectedValue by remember { mutableStateOf("Enabled") }
+    var selected by remember { mutableStateOf(0) }
 
     CatSegmentedControl(
         modifier = Modifier.fillMaxWidth(),
-        firstItem = CatSegmentedControlItem("Enabled", CatSegmentedControlContent.TextOnly("Enabled")),
-        secondItem = CatSegmentedControlItem("Paused", CatSegmentedControlContent.TextOnly("Paused")),
-        selectedValue = selectedValue,
-        onSelectionChange = { selectedValue = it },
-        color = CatSegmentedControlColor.Secondary,
+        segments = listOf("Option 1", "Option 2"),
+        selection = selected,
+        onSelectionChange = { selected = it },
     )
 }
 
 @Composable
-private fun DisabledItemDemo() {
-    var selectedValue by remember { mutableStateOf("Upcoming") }
+private fun TypicalBinaryChoiceDemo() {
+    var selected by remember { mutableStateOf(0) }
 
     CatSegmentedControl(
         modifier = Modifier.fillMaxWidth(),
-        firstItem = CatSegmentedControlItem("Upcoming", CatSegmentedControlContent.TextOnly("Upcoming")),
-        secondItem = CatSegmentedControlItem(
-            value = "Archived",
-            content = CatSegmentedControlContent.TextOnly("Archived"),
-            enabled = false,
-        ),
-        selectedValue = selectedValue,
-        onSelectionChange = { selectedValue = it },
-        color = CatSegmentedControlColor.Warning,
+        segments = listOf("Summarize", "Explain", "Translate"),
+        selection = selected,
+        onSelectionChange = { selected = it },
     )
 }
 
 @Composable
 private fun AccentColorDemo() {
-    var selectedValue by remember { mutableStateOf("Enabled") }
+    var selected by remember { mutableStateOf(0) }
+
+    ProvideAccentColor(Color(0xFFE8340A)) {
+        CatSegmentedControl(
+            modifier = Modifier.fillMaxWidth(),
+            segments = listOf("Enabled", "Paused"),
+            selection = selected,
+            onSelectionChange = { selected = it },
+        )
+    }
+}
+
+@Composable
+private fun DisabledStateDemo() {
+    var selected by remember { mutableStateOf(0) }
 
     CatSegmentedControl(
         modifier = Modifier.fillMaxWidth(),
-        firstItem = CatSegmentedControlItem("Enabled", CatSegmentedControlContent.TextOnly("Enabled")),
-        secondItem = CatSegmentedControlItem("Paused", CatSegmentedControlContent.TextOnly("Paused")),
-        selectedValue = selectedValue,
-        onSelectionChange = { selectedValue = it },
-        color = CatSegmentedControlColor.Primary,
+        items = listOf(
+            CatSegmentedControlItem(
+                value = "Upcoming",
+                content = CatSegmentedControlContent.TextOnly("Upcoming"),
+            ),
+            CatSegmentedControlItem(
+                value = "Archived",
+                content = CatSegmentedControlContent.TextOnly("Archived"),
+                enabled = false,
+            ),
+        ),
+        selectedValue = if (selected == 0) "Upcoming" else "Archived",
+        onSelectionChange = { selected = if (it == "Upcoming") 0 else 1 },
     )
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(CatColors.Ui.Background.surface)
-            .padding(CatSpacing.spacing_md),
-    ) {
-        ProvideAccentColor(Color(0xFFE8340A)) {
-            CatSegmentedControl(
-                modifier = Modifier.fillMaxWidth(),
-                firstItem = CatSegmentedControlItem("Enabled", CatSegmentedControlContent.TextOnly("Enabled")),
-                secondItem = CatSegmentedControlItem("Paused", CatSegmentedControlContent.TextOnly("Paused")),
-                selectedValue = selectedValue,
-                onSelectionChange = { selectedValue = it },
-                color = CatSegmentedControlColor.Primary,
-            )
-        }
-    }
 }
 
 @Composable
