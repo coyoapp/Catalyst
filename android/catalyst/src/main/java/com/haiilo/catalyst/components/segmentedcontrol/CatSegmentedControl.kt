@@ -1,6 +1,5 @@
 package com.haiilo.catalyst.components.segmentedcontrol
 
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -41,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import com.haiilo.catalyst.theme.LocalCatAccentPalette
 import com.haiilo.catalyst.tokens.generated.CatBorderRadius
 import com.haiilo.catalyst.tokens.generated.CatBorderWidth
-import com.haiilo.catalyst.tokens.generated.CatColors
 import com.haiilo.catalyst.tokens.generated.CatSizes
 import com.haiilo.catalyst.tokens.generated.CatSpacing
 import com.haiilo.catalyst.tokens.generated.CatTypography
