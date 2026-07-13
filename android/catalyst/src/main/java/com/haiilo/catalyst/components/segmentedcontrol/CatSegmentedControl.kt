@@ -117,8 +117,7 @@ fun <T> CatSegmentedControl(
             .border(
                 border = BorderStroke(CatBorderWidth.border_width_default, resolvedColors.containerBorder),
                 shape = outerShape,
-            )
-            .padding(CatSpacing.spacing_xs)
+            ).padding(CatSpacing.spacing_xs)
             .selectableGroup(),
         contentAlignment = Alignment.Center,
     ) {
@@ -202,8 +201,7 @@ private fun <T> CatSegmentedControlSegment(
                         onSelectionChange(item.value)
                     }
                 },
-            )
-            .semantics(mergeDescendants = true) {}
+            ).semantics(mergeDescendants = true) {}
             .alpha(if (itemEnabled) 1f else 0.5f)
             .padding(horizontal = size.horizontalPaddingDp),
         contentAlignment = Alignment.Center,
@@ -282,5 +280,3 @@ private fun CatSegmentedControlContentLayout(
         }
     }
 }
-
-
