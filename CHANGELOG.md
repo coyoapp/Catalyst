@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.17.0](https://github.com/coyoapp/Catalyst/compare/v0.16.0...v0.17.0) (2026-07-17)
+
+
+### Features
+
+* **components:** Add segmented toggle for Android ([42a41f8](https://github.com/coyoapp/Catalyst/commit/42a41f83d86606a8a5b9826220822eb484ab7775))
+* **components:** fix lint issues ([740ff29](https://github.com/coyoapp/Catalyst/commit/740ff29cc3b1fd7e11eba70b4b9853425879a13a))
+* **components:** fix lint issues ([b6af5f6](https://github.com/coyoapp/Catalyst/commit/b6af5f658df40986a0a80024f7f97784123871c6))
+* **components:** Make implementation similar to iOS ([295c258](https://github.com/coyoapp/Catalyst/commit/295c258e8dfb7b35aef1cbc9984e03bdeb1cdd09))
+
 ## [0.16.0](https://github.com/coyoapp/Catalyst/compare/v0.15.0...v0.16.0) (2026-07-08)
 
 
