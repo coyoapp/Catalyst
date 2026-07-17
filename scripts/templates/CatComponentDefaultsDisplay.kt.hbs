@@ -1,0 +1,65 @@
+// Cat{{PascalName}}Defaults.kt
+// Catalyst
+//
+// Created by Catalyst Agent on {{date}}.
+//
+// !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/{{camelName}}/
+//
+// Display profile — colors() factory that resolves Cat{{PascalName}}Colors
+// from color/variant. No state machine.
+// Reference: CatAlertDefaults.kt
+
+package com.haiilo.catalyst.components.{{camelName}}
+
+import com.haiilo.catalyst.theme.CatColorPalette
+import com.haiilo.catalyst.tokens.generated.CatColors
+
+object Cat{{PascalName}}Defaults {
+
+    private const val BorderAlpha = 0.30f
+
+    fun colors(
+        {{#if hasVariants}}
+        variant: Cat{{PascalName}}Variant,
+        {{/if}}
+        accentPalette: CatColorPalette? = null,
+    ): Cat{{PascalName}}Colors {
+        {{#if hasAccentPaletteSupport}}
+        val palette = if (accentPalette != null{{#if hasVariants}} && variant == Cat{{PascalName}}Variant.{{toPascalCase firstVariant}}{{/if}}) {
+            accentPalette
+        } else {
+            {{#if hasVariants}}variant.palette(){{else}}CatColorPalette.Primary{{/if}}
+        }
+        {{else}}
+        val palette = {{#if hasVariants}}variant.palette(){{else}}CatColorPalette.Primary{{/if}}
+        {{/if}}
+
+        {{#if hasVariants}}
+        return when (variant) {
+            {{#each variants}}
+            Cat{{PascalName}}Variant.{{toPascalCase this}} -> Cat{{PascalName}}Colors(
+                background = palette.bg,
+                foreground = palette.fill,
+                border = palette.bg.copy(alpha = BorderAlpha),
+            )
+            {{/each}}
+        }
+        {{else}}
+        return Cat{{PascalName}}Colors(
+            background = palette.bg,
+            foreground = palette.fill,
+            border = palette.bg.copy(alpha = BorderAlpha),
+        )
+        {{/if}}
+    }
+}
+
+{{#if hasVariants}}
+internal fun Cat{{PascalName}}Variant.palette(): CatColorPalette =
+    when (this) {
+        {{#each variants}}
+        Cat{{PascalName}}Variant.{{toPascalCase this}} -> CatColorPalette.{{toPascalCase this}}
+        {{/each}}
+    }
+{{/if}}

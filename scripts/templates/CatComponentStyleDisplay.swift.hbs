@@ -1,0 +1,57 @@
+//
+//  Cat{{PascalName}}StyleConfig.swift
+//  Catalyst
+//
+//  Created by Catalyst Agent on {{date}}.
+//
+//  !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+//  Destination: iOS/Catalyst/Sources/Catalyst/Components/{{PascalName}}s/
+//
+//  Display profile — flat StyleConfig, no ButtonStyle, no state machine.
+//  Reference: CatAlertStyle.swift
+//
+
+import SwiftUI
+
+{{#if hasVariants}}
+// MARK: - {{PascalName}} Variant
+
+public enum Cat{{PascalName}}Variant: Hashable, CaseIterable {
+    {{#each variants}}
+    case {{toCamelCase this}}
+    {{/each}}
+}
+
+{{/if}}
+// MARK: - {{PascalName}} Color Style
+
+public struct Cat{{PascalName}}ColorStyle: Sendable {
+    public let background: Color
+    public let foreground: Color
+    public let border: Color
+
+    public init(background: Color, foreground: Color, border: Color) {
+        self.background = background
+        self.foreground = foreground
+        self.border = border
+    }
+}
+
+// MARK: - {{PascalName}} Style Config
+
+/// Flat resolved config — no state machine needed for display-only components.
+public struct Cat{{PascalName}}StyleConfig: Sendable {
+    public let colorStyle: Cat{{PascalName}}ColorStyle
+    public let cornerRadius: CGFloat
+    public let borderWidth: CGFloat
+
+    public init(
+        colorStyle: Cat{{PascalName}}ColorStyle,
+        cornerRadius: CGFloat = CatBorderRadius.borderRadiusMd,
+        borderWidth: CGFloat = CatBorderWidth.borderWidthDefault
+    ) {
+        self.colorStyle = colorStyle
+        self.cornerRadius = cornerRadius
+        self.borderWidth = borderWidth
+    }
+}

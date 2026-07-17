@@ -1,0 +1,26 @@
+// Cat{{PascalName}}Colors.kt
+// Catalyst
+//
+// Created by Catalyst Agent on {{date}}.
+//
+// !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/{{camelName}}/
+//
+// Display profile — single resolved color state (no state machine).
+// Reference: CatAlertColors (inline in CatAlertDefaults.kt)
+
+package com.haiilo.catalyst.components.{{camelName}}
+
+import androidx.compose.ui.graphics.Color
+
+// ---------------------------------------------------------------------------
+// Cat{{PascalName}}Colors
+// Resolved color slots for a display-only component.
+// No interaction states — visual appearance is determined by variant/color only.
+// ---------------------------------------------------------------------------
+
+data class Cat{{PascalName}}Colors(
+    val background: Color,
+    val foreground: Color,
+    val border: Color = Color.Transparent,
+)

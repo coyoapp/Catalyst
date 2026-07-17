@@ -1,0 +1,165 @@
+//
+//  Cat{{PascalName}}Builder.swift
+//  Catalyst
+//
+//  Created by Catalyst Agent on {{date}}.
+//
+//  !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+//  Destination: iOS/Catalyst/Sources/Catalyst/Components/{{PascalName}}s/
+//
+//  Interactive profile — Button wrapper + ButtonStyle attachment.
+//  Reference: CatButtonBuilder.swift
+//
+
+import SwiftUI
+
+// MARK: - Cat{{PascalName}}Builder (Internal Layout)
+
+/// Internal layout helper. Wraps a Button and builds visual content
+/// based on the provided Cat{{PascalName}}Content model.
+public struct Cat{{PascalName}}Builder: View {
+    {{#if hasContentEnum}}
+    let content: Cat{{PascalName}}Content
+    {{else}}
+    let label: String
+    {{/if}}
+    let action: () -> Void
+
+    public init(
+        {{#if hasContentEnum}}
+        content: Cat{{PascalName}}Content,
+        {{else}}
+        label: String,
+        {{/if}}
+        action: @escaping () -> Void
+    ) {
+        {{#if hasContentEnum}}
+        self.content = content
+        {{else}}
+        self.label = label
+        {{/if}}
+        self.action = action
+    }
+
+    public var body: some View {
+        Button(action: action) {
+            buildContent()
+        }
+    }
+
+    @ViewBuilder
+    private func buildContent() -> some View {
+        {{#if hasContentEnum}}
+        switch content {
+        {{#each contentCases}}
+        case .{{this}}:
+            // TODO: implement layout for .{{this}}
+            EmptyView()
+        {{/each}}
+        }
+        {{else}}
+        Text(label)
+        {{/if}}
+    }
+}
+
+// MARK: - Cat{{PascalName}} (Public View)
+
+public struct Cat{{PascalName}}: View {
+    {{#if hasContentEnum}}
+    let content: Cat{{PascalName}}Content
+    {{else}}
+    let label: String
+    {{/if}}
+    {{#if hasSizes}}
+    let componentSize: Cat{{PascalName}}Size
+    {{/if}}
+    let action: () -> Void
+
+    public init(
+        {{#if hasContentEnum}}
+        _ content: Cat{{PascalName}}Content,
+        {{else}}
+        _ label: String,
+        {{/if}}
+        {{#if hasSizes}}
+        componentSize: Cat{{PascalName}}Size = .{{defaultSize}},
+        {{/if}}
+        action: @escaping () -> Void
+    ) {
+        {{#if hasContentEnum}}
+        self.content = content
+        {{else}}
+        self.label = label
+        {{/if}}
+        {{#if hasSizes}}
+        self.componentSize = componentSize
+        {{/if}}
+        self.action = action
+    }
+
+    @Environment(\.cat{{PascalName}}Config) private var config
+    @Environment(\.catalystTheme) private var theme
+    @Environment(\.catalystAccentPalette) private var accentPalette
+
+    public var body: some View {
+        Cat{{PascalName}}Builder(
+            {{#if hasContentEnum}}
+            content: content,
+            {{else}}
+            label: label,
+            {{/if}}
+            action: action
+        )
+        .buttonStyle(
+            Cat{{PascalName}}Style(
+                styleConfig: CatTheme.{{camelName}}Config(
+                    {{#if hasVariants}}
+                    variant: config.variant,
+                    {{/if}}
+                    theme: theme,
+                    accentPalette: accentPalette
+                ),
+                cornerRadius: CatBorderRadius.borderRadiusMd,
+                borderWidth: CatBorderWidth.borderWidthThin,
+                padding: EdgeInsets(
+                    top: CatSpacing.spacingLg,
+                    leading: CatSpacing.spacingXl,
+                    bottom: CatSpacing.spacingLg,
+                    trailing: CatSpacing.spacingXl
+                ){{#if hasSizes}},
+                componentSize: componentSize{{/if}}
+            )
+        )
+    }
+}
+
+// MARK: - Environment Config
+
+public struct Cat{{PascalName}}Config {
+    {{#if hasVariants}}
+    public let variant: Cat{{PascalName}}Variant
+    public init(variant: Cat{{PascalName}}Variant = .{{toCamelCase firstVariant}}) {
+        self.variant = variant
+    }
+    {{else}}
+    public init() {}
+    {{/if}}
+}
+
+private struct Cat{{PascalName}}ConfigKey: EnvironmentKey {
+    static let defaultValue = Cat{{PascalName}}Config()
+}
+
+extension EnvironmentValues {
+    var cat{{PascalName}}Config: Cat{{PascalName}}Config {
+        get { self[Cat{{PascalName}}ConfigKey.self] }
+        set { self[Cat{{PascalName}}ConfigKey.self] = newValue }
+    }
+}
+
+public extension View {
+    func cat{{PascalName}}Config({{#if hasVariants}}variant: Cat{{PascalName}}Variant = .{{toCamelCase firstVariant}}{{/if}}) -> some View {
+        environment(\.cat{{PascalName}}Config, Cat{{PascalName}}Config({{#if hasVariants}}variant: variant{{/if}}))
+    }
+}

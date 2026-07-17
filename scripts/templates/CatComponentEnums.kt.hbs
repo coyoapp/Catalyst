@@ -1,0 +1,98 @@
+// Cat{{PascalName}}Enums.kt
+// Catalyst
+//
+// Created by Catalyst Agent on {{date}}.
+//
+// !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/{{camelName}}/
+//
+// Reference: CatButtonEnums.kt
+
+package com.haiilo.catalyst.components.{{camelName}}
+
+{{#if isInteractive}}
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+{{/if}}
+import androidx.compose.ui.unit.Dp
+import com.haiilo.catalyst.tokens.generated.CatSpacing
+
+// ---------------------------------------------------------------------------
+// Variant — semantic color role
+// ---------------------------------------------------------------------------
+{{#if hasVariants}}
+
+enum class Cat{{PascalName}}Variant {
+    {{#each variants}}
+    /** {{this}} variant. */
+    {{toPascalCase this}},
+    {{/each}}
+}
+{{/if}}
+
+{{#if hasSizes}}
+// ---------------------------------------------------------------------------
+// Size — controls height and horizontal padding
+// ---------------------------------------------------------------------------
+
+sealed class Cat{{PascalName}}Size {
+    {{#each sizes}}
+    data object {{toPascalCase this.name}} : Cat{{PascalName}}Size()
+    {{/each}}
+    data class Custom(val height: Dp, val horizontalPadding: Dp = CatSpacing.spacing_xl) : Cat{{PascalName}}Size()
+
+    val heightDp: Dp
+        get() = when (this) {
+            {{#each sizes}}
+            is {{toPascalCase this.name}} -> {{this.heightToken}}
+            {{/each}}
+            is Custom -> height
+        }
+
+    val horizontalPaddingDp: Dp
+        get() = when (this) {
+            {{#each sizes}}
+            is {{toPascalCase this.name}} -> {{this.horizontalPaddingToken}}
+            {{/each}}
+            is Custom -> horizontalPadding
+        }
+}
+
+{{/if}}
+{{#if isInteractive}}
+// ---------------------------------------------------------------------------
+// Placement — icon position relative to text
+// ---------------------------------------------------------------------------
+
+enum class Cat{{PascalName}}Placement {
+    Leading,
+    Trailing,
+}
+
+// ---------------------------------------------------------------------------
+// Text config — controls text layout
+// ---------------------------------------------------------------------------
+
+data class Cat{{PascalName}}TextConfig(
+    val maxLines: Int = 1,
+    val overflow: TextOverflow = TextOverflow.Ellipsis,
+    val textAlign: TextAlign = TextAlign.Center,
+)
+
+// ---------------------------------------------------------------------------
+// Content — what the component displays
+// ---------------------------------------------------------------------------
+{{#if hasContentEnum}}
+
+sealed class Cat{{PascalName}}Content {
+    {{#each contentCases}}
+    // TODO: define fields for {{this}}
+    data class {{toPascalCase this}}(val text: String) : Cat{{PascalName}}Content()
+    {{/each}}
+}
+{{else}}
+
+// Content is a plain label string — no content enum needed.
+{{/if}}
+{{/if}}

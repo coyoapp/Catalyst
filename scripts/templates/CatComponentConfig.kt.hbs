@@ -1,0 +1,40 @@
+// Cat{{PascalName}}Config.kt
+// Catalyst
+//
+// Created by Catalyst Agent on {{date}}.
+//
+// !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/{{camelName}}/
+//
+// CompositionLocal config — same pattern for interactive and display profiles.
+// Reference: CatButtonConfig.kt / CatAlertConfig.kt
+
+package com.haiilo.catalyst.components.{{camelName}}
+
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
+
+data class Cat{{PascalName}}Config(
+    {{#if hasVariants}}
+    val variant: Cat{{PascalName}}Variant = Cat{{PascalName}}Variant.{{toPascalCase firstVariant}},
+    {{else}}
+    // Add config properties here as the component grows
+    val placeholder: Unit = Unit,
+    {{/if}}
+)
+
+val LocalCat{{PascalName}}Config = compositionLocalOf { Cat{{PascalName}}Config() }
+
+@Composable
+fun ProvideCat{{PascalName}}Config(
+    {{#if hasVariants}}
+    variant: Cat{{PascalName}}Variant,
+    {{/if}}
+    content: @Composable () -> Unit,
+) {
+    CompositionLocalProvider(
+        LocalCat{{PascalName}}Config provides Cat{{PascalName}}Config({{#if hasVariants}}variant = variant{{/if}}),
+        content = content,
+    )
+}

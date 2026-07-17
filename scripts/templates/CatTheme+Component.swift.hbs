@@ -1,0 +1,133 @@
+//
+//  CatTheme+{{PascalName}}.swift
+//  Catalyst
+//
+//  Created by Catalyst Agent on {{date}}.
+//
+//  !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+//  Destination: iOS/Catalyst/Sources/Catalyst/Theme/
+//
+//  Interactive profile — resolves full state style config from variant × color palette.
+//  Reference: CatTheme+Button.swift
+//
+
+import SwiftUI
+
+// MARK: - {{PascalName}} Config
+
+public extension CatTheme {
+
+    static func {{camelName}}Config(
+        {{#if hasVariants}}
+        variant: Cat{{PascalName}}Variant = .{{toCamelCase firstVariant}},
+        {{/if}}
+        color: ColorConfig = .primary,
+        theme: ThemeType = CatTheme.current,
+        accentPalette: CatColorPalette? = nil
+    ) -> Cat{{PascalName}}StateStyleConfig {
+
+        // Accent palette swap: when color is .primary and an accent palette
+        // is injected via .catalystAccentColor(), use the accent palette instead.
+        // This enables per-subtree whitelabeling without changing component code.
+        let colorPalette: CatColorPalette
+        if color == .primary, let injected = accentPalette {
+            colorPalette = injected
+        } else {
+            colorPalette = color.palette(for: theme)
+        }
+
+        let disabledState = Cat{{PascalName}}StateStyle(
+            colorStyle: Cat{{PascalName}}StateColorStyle(
+                background: CatColors.Ui.Background.muted,
+                foreground: CatColors.Ui.Font.muted,
+                border: Color.clear
+            )
+        )
+
+        let commonProperties = CatStateProperties(
+            isUnderlined: false,
+            hasSecondaryFocusRing: false,
+            scale: 1
+        )
+
+        {{#if hasVariants}}
+        switch variant {
+        {{#each variants}}
+        // MARK: {{this}}
+        case .{{toCamelCase this}}:
+            return Cat{{PascalName}}StateStyleConfig(
+                normal: .init(
+                    colorStyle: Cat{{PascalName}}StateColorStyle(
+                        background: colorPalette.bg,
+                        foreground: colorPalette.fill,
+                        border: Color.clear
+                    ),
+                    properties: commonProperties
+                ),
+                hovered: .init(
+                    colorStyle: Cat{{PascalName}}StateColorStyle(
+                        background: colorPalette.bgHover,
+                        foreground: colorPalette.fillHover,
+                        border: Color.clear
+                    ),
+                    properties: commonProperties
+                ),
+                pressed: .init(
+                    colorStyle: Cat{{PascalName}}StateColorStyle(
+                        background: colorPalette.bgActive,
+                        foreground: colorPalette.fillActive,
+                        border: Color.clear
+                    ),
+                    properties: commonProperties
+                ),
+                focused: .init(
+                    colorStyle: Cat{{PascalName}}StateColorStyle(
+                        background: colorPalette.bg,
+                        foreground: colorPalette.fill,
+                        border: Color.clear
+                    ),
+                    properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: true, scale: 1)
+                ),
+                disabled: disabledState
+            )
+        {{/each}}
+        }
+        {{else}}
+        return Cat{{PascalName}}StateStyleConfig(
+            normal: .init(
+                colorStyle: Cat{{PascalName}}StateColorStyle(
+                    background: colorPalette.bg,
+                    foreground: colorPalette.fill,
+                    border: Color.clear
+                ),
+                properties: commonProperties
+            ),
+            hovered: .init(
+                colorStyle: Cat{{PascalName}}StateColorStyle(
+                    background: colorPalette.bgHover,
+                    foreground: colorPalette.fillHover,
+                    border: Color.clear
+                ),
+                properties: commonProperties
+            ),
+            pressed: .init(
+                colorStyle: Cat{{PascalName}}StateColorStyle(
+                    background: colorPalette.bgActive,
+                    foreground: colorPalette.fillActive,
+                    border: Color.clear
+                ),
+                properties: commonProperties
+            ),
+            focused: .init(
+                colorStyle: Cat{{PascalName}}StateColorStyle(
+                    background: colorPalette.bg,
+                    foreground: colorPalette.fill,
+                    border: Color.clear
+                ),
+                properties: CatStateProperties(isUnderlined: false, hasSecondaryFocusRing: true, scale: 1)
+            ),
+            disabled: disabledState
+        )
+        {{/if}}
+    }
+}
