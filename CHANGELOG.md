@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://github.com/coyoapp/Catalyst/compare/v0.17.0...v0.18.0) (2026-07-20)
+
+
+### Features
+
+* **segmented-control:** add CatSegmentedControl for iOS ([#78](https://github.com/coyoapp/Catalyst/issues/78)) ([8a1839a](https://github.com/coyoapp/Catalyst/commit/8a1839a05cef0e1aadb46d05e207869fecce5179))
+
 ## [0.17.0](https://github.com/coyoapp/Catalyst/compare/v0.16.0...v0.17.0) (2026-07-17)
 
 
