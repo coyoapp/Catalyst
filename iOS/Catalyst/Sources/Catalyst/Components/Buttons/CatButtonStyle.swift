@@ -198,7 +198,7 @@ public struct CatButtonBuilder: View {
         }
         .allowsHitTesting(!isLoading)
     }
-    
+
     @ViewBuilder
     private func buildContent() -> some View {
         switch content {
