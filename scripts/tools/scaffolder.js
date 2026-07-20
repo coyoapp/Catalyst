@@ -93,25 +93,25 @@ function buildTemplateContext(decisions) {
 
 const TEMPLATE_MAP = {
   // iOS interactive
-  'ios-Style-interactive':   'CatComponentStyle.swift.hbs',
-  'ios-Builder-interactive': 'CatComponentBuilder.swift.hbs',
-  'ios-Theme-interactive':   'CatTheme+Component.swift.hbs',
+  'ios-Style-interactive':   'ios/CatComponentStyle.swift.hbs',
+  'ios-Builder-interactive': 'ios/CatComponentBuilder.swift.hbs',
+  'ios-Theme-interactive':   'ios/CatTheme+Component.swift.hbs',
   // iOS display
-  'ios-Style-display':       'CatComponentStyleDisplay.swift.hbs',
-  'ios-Builder-display':     'CatComponentBuilderDisplay.swift.hbs',
-  'ios-Theme-display':       'CatTheme+ComponentDisplay.swift.hbs',
+  'ios-Style-display':       'ios/CatComponentStyleDisplay.swift.hbs',
+  'ios-Builder-display':     'ios/CatComponentBuilderDisplay.swift.hbs',
+  'ios-Theme-display':       'ios/CatTheme+ComponentDisplay.swift.hbs',
   // Android interactive
-  'android-Enums-interactive':      'CatComponentEnums.kt.hbs',
-  'android-StateStyle-interactive': 'CatComponentStateStyle.kt.hbs',
-  'android-Defaults-interactive':   'CatComponentDefaults.kt.hbs',
-  'android-Config-interactive':     'CatComponentConfig.kt.hbs',
-  'android-Composable-interactive': 'CatComponent.kt.hbs',
+  'android-Enums-interactive':      'android/CatComponentEnums.kt.hbs',
+  'android-StateStyle-interactive': 'android/CatComponentStateStyle.kt.hbs',
+  'android-Defaults-interactive':   'android/CatComponentDefaults.kt.hbs',
+  'android-Config-interactive':     'android/CatComponentConfig.kt.hbs',
+  'android-Composable-interactive': 'android/CatComponent.kt.hbs',
   // Android display
-  'android-Enums-display':      'CatComponentEnums.kt.hbs',      // same — just color enum
-  'android-Colors-display':     'CatComponentColors.kt.hbs',
-  'android-Defaults-display':   'CatComponentDefaultsDisplay.kt.hbs',
-  'android-Config-display':     'CatComponentConfig.kt.hbs',      // same structure
-  'android-Composable-display': 'CatComponentDisplay.kt.hbs',
+  'android-Enums-display':      'android/CatComponentEnums.kt.hbs',      // same — just color enum
+  'android-Colors-display':     'android/CatComponentColors.kt.hbs',
+  'android-Defaults-display':   'android/CatComponentDefaultsDisplay.kt.hbs',
+  'android-Config-display':     'android/CatComponentConfig.kt.hbs',      // same structure
+  'android-Composable-display': 'android/CatComponentDisplay.kt.hbs',
 };
 
 // Output file name generators
