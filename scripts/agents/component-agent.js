@@ -154,6 +154,30 @@ function loadReferenceComponents() {
       path: path.join(REPO_ROOT, 'android/catalyst/src/main/java/com/haiilo/catalyst/components/buttons/CatButtonStateStyle.kt'),
     },
     {
+      label: 'iOS interactive reference: CatSegmentedControlStyle.swift',
+      path: path.join(REPO_ROOT, 'iOS/Catalyst/Sources/Catalyst/Components/SegmentedControl/CatSegmentedControlStyle.swift'),
+    },
+    {
+      label: 'iOS interactive reference: CatSegmentedControlBuilder.swift',
+      path: path.join(REPO_ROOT, 'iOS/Catalyst/Sources/Catalyst/Components/SegmentedControl/CatSegmentedControlBuilder.swift'),
+    },
+    {
+      label: 'iOS interactive reference: CatTheme+SegmentedControl.swift',
+      path: path.join(REPO_ROOT, 'iOS/Catalyst/Sources/Catalyst/Theme/CatTheme+SegmentedControl.swift'),
+    },
+    {
+      label: 'Android interactive reference: CatSegmentedControl.kt',
+      path: path.join(REPO_ROOT, 'android/catalyst/src/main/java/com/haiilo/catalyst/components/segmentedcontrol/CatSegmentedControl.kt'),
+    },
+    {
+      label: 'Android interactive reference: CatSegmentedControlEnums.kt',
+      path: path.join(REPO_ROOT, 'android/catalyst/src/main/java/com/haiilo/catalyst/components/segmentedcontrol/CatSegmentedControlEnums.kt'),
+    },
+    {
+      label: 'Android interactive reference: CatSegmentedControlDefaults.kt',
+      path: path.join(REPO_ROOT, 'android/catalyst/src/main/java/com/haiilo/catalyst/components/segmentedcontrol/CatSegmentedControlDefaults.kt'),
+    },
+    {
       label: 'Android display reference: CatAlert.kt',
       path: path.join(REPO_ROOT, 'android/catalyst/src/main/java/com/haiilo/catalyst/components/alerts/CatAlert.kt'),
     },

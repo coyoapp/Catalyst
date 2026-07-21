@@ -202,7 +202,7 @@ The agent uses these as pattern references during review:
 
 | Pattern | iOS | Android |
 |---|---|---|
-| Interactive | `CatButtonStyle.swift`, `CatButtonBuilder.swift` | `CatButton.kt`, `CatButtonEnums.kt`, `CatButtonStateStyle.kt` |
+| Interactive | `CatButtonStyle.swift`, `CatButtonBuilder.swift`, `CatSegmentedControlStyle.swift`, `CatSegmentedControlBuilder.swift` | `CatButton.kt`, `CatButtonEnums.kt`, `CatButtonStateStyle.kt`, `CatSegmentedControl.kt`, `CatSegmentedControlEnums.kt`, `CatSegmentedControlDefaults.kt` |
 | Display | `CatAlertStyle.swift`, `CatAlertBuilder.swift` | `CatAlert.kt`, `CatAlertDefaults.kt` |
 
 ---

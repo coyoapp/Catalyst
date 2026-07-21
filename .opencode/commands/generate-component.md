@@ -35,6 +35,9 @@ These are the only token paths you may reference. Do not invent paths that are n
 @iOS/Catalyst/Sources/Catalyst/Components/Buttons/CatButtonStyle.swift
 @iOS/Catalyst/Sources/Catalyst/Components/Buttons/CatButtonBuilder.swift
 @iOS/Catalyst/Sources/Catalyst/Theme/CatTheme+Button.swift
+@iOS/Catalyst/Sources/Catalyst/Components/SegmentedControl/CatSegmentedControlStyle.swift
+@iOS/Catalyst/Sources/Catalyst/Components/SegmentedControl/CatSegmentedControlBuilder.swift
+@iOS/Catalyst/Sources/Catalyst/Theme/CatTheme+SegmentedControl.swift
 
 ### iOS — Display pattern
 @iOS/Catalyst/Sources/Catalyst/Components/Alert/CatAlertStyle.swift
@@ -46,6 +49,9 @@ These are the only token paths you may reference. Do not invent paths that are n
 @android/catalyst/src/main/java/com/haiilo/catalyst/components/buttons/CatButtonEnums.kt
 @android/catalyst/src/main/java/com/haiilo/catalyst/components/buttons/CatButtonStateStyle.kt
 @android/catalyst/src/main/java/com/haiilo/catalyst/components/buttons/CatButtonDefaults.kt
+@android/catalyst/src/main/java/com/haiilo/catalyst/components/segmentedcontrol/CatSegmentedControl.kt
+@android/catalyst/src/main/java/com/haiilo/catalyst/components/segmentedcontrol/CatSegmentedControlEnums.kt
+@android/catalyst/src/main/java/com/haiilo/catalyst/components/segmentedcontrol/CatSegmentedControlDefaults.kt
 
 ### Android — Display pattern
 @android/catalyst/src/main/java/com/haiilo/catalyst/components/alerts/CatAlert.kt
