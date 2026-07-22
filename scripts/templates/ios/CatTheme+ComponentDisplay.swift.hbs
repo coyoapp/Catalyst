@@ -1,0 +1,70 @@
+//
+//  CatTheme+{{PascalName}}.swift
+//  Catalyst
+//
+//  Created by Catalyst Agent on {{date}}.
+//
+//  !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+//  Destination: iOS/Catalyst/Sources/Catalyst/Theme/
+//
+//  Display profile — resolves a flat StyleConfig (no state machine).
+//  Reference: CatTheme+Alert.swift
+//
+
+import SwiftUI
+
+// MARK: - {{PascalName}} Config
+
+public extension CatTheme {
+
+    static func {{camelName}}Config(
+        {{#if hasVariants}}
+        variant: Cat{{PascalName}}Variant,
+        {{/if}}
+        theme: ThemeType = CatTheme.current,
+        accentPalette: CatColorPalette? = nil
+    ) -> Cat{{PascalName}}StyleConfig {
+
+        {{#if hasVariants}}
+        let colorStyle: Cat{{PascalName}}ColorStyle
+
+        switch variant {
+        {{#each variants}}
+        case .{{toCamelCase this}}:
+            {{#if @first}}
+            // Primary / brand variant — supports accent palette swap for whitelabeling
+            if let injected = accentPalette {
+                colorStyle = Cat{{PascalName}}ColorStyle(
+                    background: injected.bg,
+                    foreground: injected.fill,
+                    border: Color.clear
+                )
+            } else {
+                colorStyle = Cat{{PascalName}}ColorStyle(
+                    background: CatColors.Theme.Primary.bg,
+                    foreground: CatColors.Theme.Primary.fill,
+                    border: Color.clear
+                )
+            }
+            {{else}}
+            colorStyle = Cat{{PascalName}}ColorStyle(
+                background: CatColors.Theme.{{toPascalCase this}}.bg,
+                foreground: CatColors.Theme.{{toPascalCase this}}.fill,
+                border: Color.clear
+            )
+            {{/if}}
+        {{/each}}
+        }
+
+        return Cat{{PascalName}}StyleConfig(colorStyle: colorStyle)
+        {{else}}
+        return Cat{{PascalName}}StyleConfig(
+            colorStyle: Cat{{PascalName}}ColorStyle(
+                background: CatColors.Theme.Primary.bg,
+                foreground: CatColors.Theme.Primary.fill,
+                border: Color.clear
+            )
+        )
+        {{/if}}
+    }
+}

@@ -1,11 +1,13 @@
 //
-//  CatButton.swift
+//  CatButtonBuilder.swift
 //  Catalyst
 //
 //  Created by Efe Durmaz on 24.11.25.
 //
 
 import SwiftUI
+
+// MARK: - CatButton (Public View)
 
 public struct CatButton: View {
     let content: CatButtonContent
@@ -89,6 +91,100 @@ public struct CatButton: View {
                 isLoading: isLoading
             )
         )
+    }
+}
+
+// MARK: - Button Layout
+public struct CatButtonBuilder: View {
+    let content: CatButtonContent
+    let action: () -> Void
+    let iconSize: CGSize?
+    let stackSpacing: CGFloat?
+    let isLoading: Bool
+
+    public init(
+        content: CatButtonContent,
+        iconSize: CGSize? = CGSize(width: CatSizes.sizeSm, height: CatSizes.sizeSm),
+        stackSpacing: CGFloat? = CatSpacing.spacingMd,
+        isLoading: Bool = false,
+        action: @escaping () -> Void
+    ) {
+        self.content = content
+        self.iconSize = iconSize
+        self.action = action
+        self.stackSpacing = stackSpacing
+        self.isLoading = isLoading
+    }
+
+    public var body: some View {
+        Button(action: action) {
+            buildContent()
+        }
+        .allowsHitTesting(!isLoading)
+    }
+
+    @ViewBuilder
+    private func buildContent() -> some View {
+        switch content {
+        case .text(let title):
+            if isLoading {
+                HStack(alignment: .center, spacing: stackSpacing) {
+                    spinner
+                    Text(title)
+                }
+                .multilineTextAlignment(.center)
+            } else {
+                Text(title)
+            }
+        case .icon(let img):
+            iconOrSpinner(img)
+        case .iconText(let icon, let title, let placement):
+            switch placement {
+            case .leading:
+                HStack(alignment: .center, spacing: stackSpacing) {
+                    iconOrSpinner(icon)
+                    Text(title)
+                }
+                .multilineTextAlignment(.center)
+            case .trailing:
+                HStack(alignment: .center, spacing: stackSpacing) {
+                    Text(title)
+                    iconOrSpinner(icon)
+                }
+                .multilineTextAlignment(.center)
+            case .top:
+                VStack(spacing: stackSpacing) {
+                    iconOrSpinner(icon)
+                    Text(title)
+                }
+            case .bottom:
+                VStack(spacing: stackSpacing) {
+                    Text(title)
+                    iconOrSpinner(icon)
+                }
+            }
+        }
+    }
+
+    private func iconView(_ icon: Image) -> some View {
+        icon.resizable()
+            .renderingMode(.template)
+            .scaledToFit()
+            .frame(width: iconSize?.width ?? CatSizes.sizeSm, height: iconSize?.height ?? CatSizes.sizeSm)
+    }
+
+    private var spinner: some View {
+        ProgressView()
+            .frame(width: iconSize?.width ?? CatSizes.sizeMd, height: iconSize?.height ?? CatSizes.sizeMd)
+    }
+
+    @ViewBuilder
+    private func iconOrSpinner(_ icon: Image) -> some View {
+        if isLoading {
+            spinner
+        } else {
+            iconView(icon)
+        }
     }
 }
 

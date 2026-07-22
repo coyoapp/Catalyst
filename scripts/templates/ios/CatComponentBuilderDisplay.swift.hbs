@@ -1,0 +1,130 @@
+//
+//  Cat{{PascalName}}Builder.swift
+//  Catalyst
+//
+//  Created by Catalyst Agent on {{date}}.
+//
+//  !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+//  Destination: iOS/Catalyst/Sources/Catalyst/Components/{{PascalName}}s/
+//
+//  Display profile — config passed directly, no Button wrapper.
+//  Reference: CatAlertBuilder.swift
+//
+
+import SwiftUI
+
+// MARK: - Cat{{PascalName}} (Public View)
+
+public struct Cat{{PascalName}}: View {
+    {{#if hasContentEnum}}
+    private let content: Cat{{PascalName}}Content
+    {{else}}
+    private let label: String
+    {{/if}}
+
+    @Environment(\.cat{{PascalName}}Config) private var config
+    @Environment(\.catalystTheme) private var theme
+    @Environment(\.catalystAccentPalette) private var accentPalette
+
+    public init(
+        {{#if hasContentEnum}}
+        _ content: Cat{{PascalName}}Content
+        {{else}}
+        _ label: String
+        {{/if}}
+    ) {
+        {{#if hasContentEnum}}
+        self.content = content
+        {{else}}
+        self.label = label
+        {{/if}}
+    }
+
+    public var body: some View {
+        let styleConfig = CatTheme.{{camelName}}Config(
+            {{#if hasVariants}}
+            variant: config.variant,
+            {{/if}}
+            theme: theme,
+            accentPalette: accentPalette
+        )
+        Cat{{PascalName}}Builder(
+            {{#if hasContentEnum}}
+            content: content,
+            {{else}}
+            label: label,
+            {{/if}}
+            config: styleConfig
+        )
+    }
+}
+
+// MARK: - Cat{{PascalName}}Builder (Internal Layout)
+
+struct Cat{{PascalName}}Builder: View {
+    {{#if hasContentEnum}}
+    let content: Cat{{PascalName}}Content
+    {{else}}
+    let label: String
+    {{/if}}
+    let config: Cat{{PascalName}}StyleConfig
+
+    var body: some View {
+        {{#if hasContentEnum}}
+        buildContent()
+        {{else}}
+        Text(label)
+            .foregroundStyle(config.colorStyle.foreground)
+        {{/if}}
+            .padding(CatSpacing.spacingMd)
+            .background(config.colorStyle.background)
+            .clipShape(RoundedRectangle(cornerRadius: config.cornerRadius))
+            .overlay(
+                RoundedRectangle(cornerRadius: config.cornerRadius)
+                    .strokeBorder(config.colorStyle.border, lineWidth: config.borderWidth)
+            )
+    }
+
+    {{#if hasContentEnum}}
+    @ViewBuilder
+    private func buildContent() -> some View {
+        switch content {
+        {{#each contentCases}}
+        case .{{this}}:
+            // TODO: implement layout for .{{this}}
+            EmptyView()
+        {{/each}}
+        }
+    }
+    {{/if}}
+}
+
+// MARK: - Environment Config
+
+public struct Cat{{PascalName}}Config {
+    {{#if hasVariants}}
+    public let variant: Cat{{PascalName}}Variant
+    public init(variant: Cat{{PascalName}}Variant = .{{toCamelCase firstVariant}}) {
+        self.variant = variant
+    }
+    {{else}}
+    public init() {}
+    {{/if}}
+}
+
+private struct Cat{{PascalName}}ConfigKey: EnvironmentKey {
+    static let defaultValue = Cat{{PascalName}}Config()
+}
+
+extension EnvironmentValues {
+    var cat{{PascalName}}Config: Cat{{PascalName}}Config {
+        get { self[Cat{{PascalName}}ConfigKey.self] }
+        set { self[Cat{{PascalName}}ConfigKey.self] = newValue }
+    }
+}
+
+public extension View {
+    func cat{{PascalName}}Config({{#if hasVariants}}variant: Cat{{PascalName}}Variant = .{{toCamelCase firstVariant}}{{/if}}) -> some View {
+        environment(\.cat{{PascalName}}Config, Cat{{PascalName}}Config({{#if hasVariants}}variant: variant{{/if}}))
+    }
+}

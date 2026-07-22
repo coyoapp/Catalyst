@@ -1,0 +1,113 @@
+// Cat{{PascalName}}Defaults.kt
+// Catalyst
+//
+// Created by Catalyst Agent on {{date}}.
+//
+// !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/{{camelName}}/
+//
+// Interactive profile — style() factory that resolves Cat{{PascalName}}State
+// from variant × color palette.
+// Reference: CatButtonDefaults.kt
+
+package com.haiilo.catalyst.components.{{camelName}}
+
+import androidx.compose.ui.graphics.Color
+import com.haiilo.catalyst.theme.CatColorPalette
+import com.haiilo.catalyst.tokens.generated.CatColors
+
+object Cat{{PascalName}}Defaults {
+
+    fun style(
+        {{#if hasVariants}}
+        variant: Cat{{PascalName}}Variant,
+        {{/if}}
+        accentPalette: CatColorPalette? = null,
+    ): Cat{{PascalName}}State {
+        {{#if hasAccentPaletteSupport}}
+        // Accent palette swap for whitelabeling:
+        // When the primary variant is active and an accent palette is injected,
+        // use the accent palette instead of the default primary palette.
+        val palette = if (accentPalette != null{{#if hasVariants}} && variant == Cat{{PascalName}}Variant.{{toPascalCase firstVariant}}{{/if}}) {
+            accentPalette
+        } else {
+            {{#if hasVariants}}variant.palette(){{else}}CatColorPalette.Primary{{/if}}
+        }
+        {{else}}
+        val palette = {{#if hasVariants}}variant.palette(){{else}}CatColorPalette.Primary{{/if}}
+        {{/if}}
+
+        val disabledState = Cat{{PascalName}}StateStyle(
+            colorStyle = Cat{{PascalName}}StateColorStyle(
+                background = CatColors.Ui.Background.muted,
+                foreground = CatColors.Ui.Font.muted,
+                border = Color.Transparent,
+            )
+        )
+
+        {{#if hasVariants}}
+        return when (variant) {
+            {{#each variants}}
+            Cat{{PascalName}}Variant.{{toPascalCase this}} -> Cat{{PascalName}}State(
+                normal = Cat{{PascalName}}StateStyle(
+                    colorStyle = Cat{{PascalName}}StateColorStyle(
+                        background = palette.bg,
+                        foreground = palette.fill,
+                        border = Color.Transparent,
+                    )
+                ),
+                pressed = Cat{{PascalName}}StateStyle(
+                    colorStyle = Cat{{PascalName}}StateColorStyle(
+                        background = palette.bgActive,
+                        foreground = palette.fillActive,
+                        border = Color.Transparent,
+                    )
+                ),
+                focused = Cat{{PascalName}}StateStyle(
+                    colorStyle = Cat{{PascalName}}StateColorStyle(
+                        background = palette.bg,
+                        foreground = palette.fill,
+                        border = Color.Transparent,
+                    )
+                ),
+                disabled = disabledState,
+            )
+            {{/each}}
+        }
+        {{else}}
+        return Cat{{PascalName}}State(
+            normal = Cat{{PascalName}}StateStyle(
+                colorStyle = Cat{{PascalName}}StateColorStyle(
+                    background = palette.bg,
+                    foreground = palette.fill,
+                    border = Color.Transparent,
+                )
+            ),
+            pressed = Cat{{PascalName}}StateStyle(
+                colorStyle = Cat{{PascalName}}StateColorStyle(
+                    background = palette.bgActive,
+                    foreground = palette.fillActive,
+                    border = Color.Transparent,
+                )
+            ),
+            focused = Cat{{PascalName}}StateStyle(
+                colorStyle = Cat{{PascalName}}StateColorStyle(
+                    background = palette.bg,
+                    foreground = palette.fill,
+                    border = Color.Transparent,
+                )
+            ),
+            disabled = disabledState,
+        )
+        {{/if}}
+    }
+}
+
+{{#if hasVariants}}
+internal fun Cat{{PascalName}}Variant.palette(): CatColorPalette =
+    when (this) {
+        {{#each variants}}
+        Cat{{PascalName}}Variant.{{toPascalCase this}} -> CatColorPalette.{{toPascalCase this}}
+        {{/each}}
+    }
+{{/if}}

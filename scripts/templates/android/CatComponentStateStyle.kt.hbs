@@ -1,0 +1,55 @@
+// Cat{{PascalName}}StateStyle.kt
+// Catalyst
+//
+// Created by Catalyst Agent on {{date}}.
+//
+// !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/{{camelName}}/
+//
+// Interactive profile — state machine types.
+// Reference: CatButtonStateStyle.kt
+
+package com.haiilo.catalyst.components.{{camelName}}
+
+import androidx.compose.ui.graphics.Color
+
+// ---------------------------------------------------------------------------
+// Cat{{PascalName}}StateColorStyle
+// Holds the three color channels for a single interaction state.
+// ---------------------------------------------------------------------------
+
+data class Cat{{PascalName}}StateColorStyle(
+    val background: Color,
+    val foreground: Color,
+    val border: Color = Color.Transparent,
+)
+
+// ---------------------------------------------------------------------------
+// Cat{{PascalName}}StateStyle
+// Combines color style with visual state properties.
+// ---------------------------------------------------------------------------
+
+data class Cat{{PascalName}}StateStyle(
+    val colorStyle: Cat{{PascalName}}StateColorStyle,
+    /** Whether the label should be underlined (used by Link-style variants). */
+    val isUnderlined: Boolean = false,
+    /** Scale transform (reserved for future animation use). */
+    val scale: Float = 1f,
+)
+
+// ---------------------------------------------------------------------------
+// Cat{{PascalName}}State
+// Full per-state style for the component.
+// Note: hovered is omitted — not applicable on Android touch targets.
+// State priority: disabled → pressed → focused → normal.
+// ---------------------------------------------------------------------------
+
+data class Cat{{PascalName}}State(
+    val normal: Cat{{PascalName}}StateStyle,
+    val pressed: Cat{{PascalName}}StateStyle,
+    val focused: Cat{{PascalName}}StateStyle,
+    val disabled: Cat{{PascalName}}StateStyle,
+    {{#if hasLoading}}
+    val loading: Cat{{PascalName}}StateStyle? = null,
+    {{/if}}
+)

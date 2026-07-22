@@ -1,0 +1,85 @@
+// Cat{{PascalName}}.kt
+// Catalyst
+//
+// Created by Catalyst Agent on {{date}}.
+//
+// !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/{{camelName}}/
+//
+// Display profile — simple Box layout, no interaction source.
+// Reference: CatAlert.kt
+
+package com.haiilo.catalyst.components.{{camelName}}
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import com.haiilo.catalyst.theme.LocalCatAccentPalette
+import com.haiilo.catalyst.tokens.generated.CatBorderRadius
+import com.haiilo.catalyst.tokens.generated.CatBorderWidth
+import com.haiilo.catalyst.tokens.generated.CatSpacing
+
+/**
+ * Catalyst {{PascalName}} component (display-only).
+ *
+ * @param {{#if hasContentEnum}}content   What the component displays.{{else}}label     Text label.{{/if}}
+ * @param modifier  Applied to the outer container.
+ * {{#if hasVariants}}@param variant   Color variant override. Null reads from [LocalCat{{PascalName}}Config].{{/if}}
+ * @param colors    Full color override. When non-null, variant is ignored for styling.
+ */
+@Composable
+fun Cat{{PascalName}}(
+    {{#if hasContentEnum}}
+    content: Cat{{PascalName}}Content,
+    {{else}}
+    label: String,
+    {{/if}}
+    modifier: Modifier = Modifier,
+    {{#if hasVariants}}
+    variant: Cat{{PascalName}}Variant? = null,
+    {{/if}}
+    colors: Cat{{PascalName}}Colors? = null,
+) {
+    val ambientConfig = LocalCat{{PascalName}}Config.current
+    {{#if hasVariants}}
+    val resolvedVariant = variant ?: ambientConfig.variant
+    {{/if}}
+    val accentPalette = LocalCatAccentPalette.current
+    val resolvedColors = colors
+        ?: Cat{{PascalName}}Defaults.colors({{#if hasVariants}}resolvedVariant, {{/if}}accentPalette)
+
+    val shape = RoundedCornerShape(CatBorderRadius.border_radius_md)
+
+    Box(
+        modifier = modifier
+            .clip(shape)
+            .background(color = resolvedColors.background, shape = shape)
+            .border(BorderStroke(CatBorderWidth.border_width_default, resolvedColors.border), shape)
+            .padding(horizontal = CatSpacing.spacing_md, vertical = CatSpacing.spacing_xs),
+        contentAlignment = Alignment.Center,
+    ) {
+        {{#if hasContentEnum}}
+        when (content) {
+            {{#each contentCases}}
+            is Cat{{PascalName}}Content.{{toPascalCase this}} -> {
+                // TODO: implement layout for {{toPascalCase this}}
+                Text(text = "{{this}}", color = resolvedColors.foreground)
+            }
+            {{/each}}
+        }
+        {{else}}
+        Text(
+            text = label,
+            color = resolvedColors.foreground,
+        )
+        {{/if}}
+    }
+}

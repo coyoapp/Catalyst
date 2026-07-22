@@ -1,0 +1,166 @@
+//
+//  Cat{{PascalName}}Style.swift
+//  Catalyst
+//
+//  Created by Catalyst Agent on {{date}}.
+//
+//  !! GENERATED — REVIEW decisions.md THEN MOVE TO SOURCE !!
+//  Destination: iOS/Catalyst/Sources/Catalyst/Components/{{PascalName}}s/
+//
+//  Interactive profile — uses ButtonStyle + shared CatStateProperties.
+//  Reference: CatButtonStyle.swift
+//
+
+import SwiftUI
+
+// MARK: - {{PascalName}} State Color Style
+
+public struct Cat{{PascalName}}StateColorStyle: Sendable {
+    let background: Color
+    let foreground: Color
+    let border: Color
+
+    public init(background: Color, foreground: Color, border: Color) {
+        self.background = background
+        self.foreground = foreground
+        self.border = border
+    }
+}
+
+// MARK: - {{PascalName}} State Style
+
+/// Combines color channels with structural property toggles for one interaction state.
+/// Uses the shared CatStateProperties (isUnderlined, hasSecondaryFocusRing, scale).
+public struct Cat{{PascalName}}StateStyle: Sendable {
+    public let colorStyle: Cat{{PascalName}}StateColorStyle
+    public let properties: CatStateProperties?
+
+    public init(
+        colorStyle: Cat{{PascalName}}StateColorStyle,
+        properties: CatStateProperties? = nil
+    ) {
+        self.colorStyle = colorStyle
+        self.properties = properties
+    }
+}
+
+// MARK: - {{PascalName}} State Style Config
+
+public struct Cat{{PascalName}}StateStyleConfig: Sendable {
+    let normal: Cat{{PascalName}}StateStyle
+    let hovered: Cat{{PascalName}}StateStyle?
+    let pressed: Cat{{PascalName}}StateStyle
+    let focused: Cat{{PascalName}}StateStyle
+    let disabled: Cat{{PascalName}}StateStyle
+    {{#if hasLoading}}
+    let loading: Cat{{PascalName}}StateStyle?
+    {{/if}}
+
+    public init(
+        normal: Cat{{PascalName}}StateStyle,
+        hovered: Cat{{PascalName}}StateStyle? = nil,
+        pressed: Cat{{PascalName}}StateStyle,
+        focused: Cat{{PascalName}}StateStyle,
+        disabled: Cat{{PascalName}}StateStyle{{#if hasLoading}},
+        loading: Cat{{PascalName}}StateStyle? = nil{{/if}}
+    ) {
+        self.normal = normal
+        self.hovered = hovered
+        self.pressed = pressed
+        self.focused = focused
+        self.disabled = disabled
+        {{#if hasLoading}}
+        self.loading = loading
+        {{/if}}
+    }
+}
+
+{{#if hasSizes}}
+// MARK: - {{PascalName}} Size
+
+public enum Cat{{PascalName}}Size {
+    {{#each sizes}}
+    case {{this.name}}
+    {{/each}}
+    case custom(CGFloat)
+
+    var height: CGFloat {
+        switch self {
+        {{#each sizes}}
+        case .{{this.name}}: return {{this.heightToken}}
+        {{/each}}
+        case .custom(let h): return h
+        }
+    }
+}
+
+{{/if}}
+{{#if hasContentEnum}}
+// MARK: - {{PascalName}} Content
+
+public enum Cat{{PascalName}}Content {
+    {{#each contentCases}}
+    case {{this}}
+    {{/each}}
+}
+
+{{/if}}
+// MARK: - {{PascalName}} Style
+
+/// Applies Catalyst visual styling to Cat{{PascalName}}.
+/// State priority: disabled → {{#if hasLoading}}loading → {{/if}}pressed → hovered → focused → normal.
+public struct Cat{{PascalName}}Style: ButtonStyle {
+    let styleConfig: Cat{{PascalName}}StateStyleConfig
+    let cornerRadius: CGFloat
+    let borderWidth: CGFloat
+    let padding: EdgeInsets
+    {{#if hasSizes}}
+    let componentSize: Cat{{PascalName}}Size
+    {{/if}}
+    {{#if hasLoading}}
+    var isLoading: Bool = false
+    {{/if}}
+
+    @State private var isHovered: Bool = false
+    @Environment(\.isFocused) private var isFocused
+    @Environment(\.isEnabled) private var isEnabled
+
+    public func makeBody(configuration: Configuration) -> some View {
+        let state = resolveState(isPressed: configuration.isPressed)
+
+        configuration.label
+            .padding(padding)
+            .frame(minWidth: 44{{#if hasSizes}}, minHeight: componentSize.height{{/if}})
+            .background(state.colorStyle.background)
+            .foregroundStyle(state.colorStyle.foreground)
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(state.colorStyle.border, lineWidth: borderWidth)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .overlay(
+                Group {
+                    if state.properties?.hasSecondaryFocusRing == true {
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .stroke(
+                                CatColors.Ui.Border.focus,
+                                lineWidth: CatBorderWidth.borderWidthThin)
+                            .padding(-CatSpacing.spacingXxs)
+                    }
+                }
+            )
+            .onHover { isHovered = $0 }
+            .contentShape(RoundedRectangle(cornerRadius: cornerRadius))
+    }
+
+    private func resolveState(isPressed: Bool) -> Cat{{PascalName}}StateStyle {
+        guard isEnabled else { return styleConfig.disabled }
+        {{#if hasLoading}}
+        if isLoading { return styleConfig.loading ?? styleConfig.normal }
+        {{/if}}
+        if isPressed { return styleConfig.pressed }
+        if isHovered, let hovered = styleConfig.hovered { return hovered }
+        if isFocused { return styleConfig.focused }
+        return styleConfig.normal
+    }
+}
