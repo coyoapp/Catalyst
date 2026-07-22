@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/coyoapp/Catalyst/compare/v0.18.0...v1.0.0) (2026-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Agent:** Catalyst design library Agents ([#85](https://github.com/coyoapp/Catalyst/issues/85))
+
+### Features
+
+* **Agent:** Catalyst design library Agents ([#85](https://github.com/coyoapp/Catalyst/issues/85)) ([285db64](https://github.com/coyoapp/Catalyst/commit/285db648190b4a9681e6343998950224d608993d))
+
 ## [0.18.0](https://github.com/coyoapp/Catalyst/compare/v0.17.0...v0.18.0) (2026-07-20)
 
 
