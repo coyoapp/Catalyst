@@ -14,67 +14,98 @@ struct ToastMsgDemoView: View {
             Text("Toast Msg")
                 .font(CatTypography.h2)
             
-            CatToastMsg(
-                "Hello World",
-                showDismissButton: false
-            )
-            
-            CatToastMsg(
-                "Toast with Icon",
-                icon: Image("ic_check-circle-outlined-24", bundle: .catalyst),
-                showDismissButton: false
-            )
-            
-            CatToastMsg(
-                "Toast with CatButton",
-                icon: Image("ic_check-circle-outlined-24", bundle: .catalyst),
-                showDismissButton: false
-            ) {
-                CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
-                    print("Dismiss!")
+            ScrollView {
+                CatToastMsg(
+                    "Hello World",
+                    showDismissButton: false
+                )
+                
+                CatToastMsg(
+                    "Toast with Icon",
+                    icon: Image("ic_check-circle-outlined-24", bundle: .catalyst),
+                    showDismissButton: false
+                )
+                
+                CatToastMsg(
+                    "Toast with CatButton",
+                    icon: Image("ic_check-circle-outlined-24", bundle: .catalyst),
+                    showDismissButton: false
+                ) {
+                    CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
+                        print("Dismiss!")
+                    }
+                    .catButtonConfig(variant: .text, color: .primaryInverted)
                 }
-                .catButtonConfig(variant: .text, color: .primaryInverted)
-            }
-            
-            CatToastMsg(
-                "Toast with CatButton",
-                icon: Image("ic_info-outlined-25", bundle: .catalyst)
-            ) {
-                CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
-                    print("Dismiss!")
+                
+                CatToastMsg(
+                    "Toast with CatButton",
+                    icon: Image("ic_info-outlined-25", bundle: .catalyst)
+                ) {
+                    CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
+                        print("Dismiss!")
+                    }
+                    .catButtonConfig(variant: .text, color: .primaryInverted)
                 }
-                .catButtonConfig(variant: .text, color: .primaryInverted)
-            }
-            
-            CatToastMsg(
-                "Toast with CatButton",
-            ) {
-                CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
-                    print("Dismiss!")
+                
+                CatToastMsg(
+                    "Toast with CatButton",
+                    icon: Image("ic_info-outlined-25", bundle: .catalyst),
+                ) {
+                    CatButton(
+                        .text("Dismiss"),
+                        buttonSize: .extraSmall,
+                        padding: EdgeInsets(
+                            top: 0,
+                            leading: 0,
+                            bottom: 0,
+                            trailing: 0
+                        )
+                    ) {
+                        print("Dismiss!")
+                    }
+                    .catButtonConfig(variant: .text, color: .primaryInverted)
                 }
-                .catButtonConfig(variant: .text, color: .primaryInverted)
-            }
-            
-            CatToastMsg(
-                "Toast with CatButton",
-                icon: Image("ic_info-outlined-25", bundle: .catalyst),
-                variant: .expanded
-            ) {
-                CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
-                    print("Dismiss!")
+                
+                CatToastMsg(
+                    "Toast with CatButton",
+                    icon: Image("ic_info-outlined-25", bundle: .catalyst),
+                    variant: .expanded
+                ) {
+                    CatButton(
+                        .text("Dismiss"),
+                        buttonSize: .custom(32),
+                        padding: EdgeInsets(
+                            top: 0,
+                            leading: 0,
+                            bottom: 0,
+                            trailing: 0
+                        )
+                    ) {
+                        print("Dismiss!")
+                    }
+                    .catButtonConfig(variant: .text, color: .primaryInverted)
                 }
-                .catButtonConfig(variant: .outlined, color: .primaryInverted)
-            }
-            
-            CatToastMsg(
-                "Toast with CatButton",
-                icon: Image("ic_info-outlined-25", bundle: .catalyst),
-                variant: .expanded
-            ) {
-                CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
-                    print("Dismiss!")
+                
+                CatToastMsg(
+                    "Toast with CatButton",
+                    icon: Image("ic_info-outlined-25", bundle: .catalyst),
+                    variant: .expanded
+                ) {
+                    CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
+                        print("Dismiss!")
+                    }
+                    .catButtonConfig(variant: .outlined, color: .primaryInverted)
                 }
-                .catButtonConfig(variant: .outlined, color: .primaryInverted)
+                
+                CatToastMsg(
+                    "Toast with Button",
+                    icon: Image("ic_info-outlined-25", bundle: .catalyst),
+                    variant: .expanded
+                ) {
+                    Button ("Action") {
+                        print("Dismiss!")
+                    }
+                }
             }
         }
     }
