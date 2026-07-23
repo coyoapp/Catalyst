@@ -161,7 +161,7 @@ struct CatToastMsgBuilder<Action: View>: View {
                 dismissButton
             }
         }
-        .padding(.horizontal, CatSpacing.spacingLg)
+        .padding(.horizontal, CatSpacing.spacingXl)
         .frame(height: 56)
     }
 
@@ -171,7 +171,6 @@ struct CatToastMsgBuilder<Action: View>: View {
         HStack(alignment: .top, spacing: CatSpacing.spacingLg) {
             if let icon {
                 iconView(icon)
-                    .padding(.top, CatSpacing.spacingXs)
             }
             VStack(alignment: .leading, spacing: CatSpacing.spacingMd) {
                 Text(title)
@@ -185,37 +184,21 @@ struct CatToastMsgBuilder<Action: View>: View {
                     .fixedSize()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top, CatSpacing.spacingXs)
             
             if showDismissButton {
-                dismissButtonCat
-                    .padding(.top, CatSpacing.spacingXs)
+                dismissButton
             }
         }
-        .padding(.horizontal, CatSpacing.spacingLg)
-        .padding(.vertical, CatSpacing.spacingMd)
+        .padding(.horizontal, CatSpacing.spacingXl)
+        .padding(.vertical, CatSpacing.spacingXl)
     }
 
     // MARK: Shared sub-views
 
     private func iconView(_ icon: Image) -> some View {
         icon
-            .resizable()
             .renderingMode(.template)
-            .scaledToFit()
-            .frame(width: CatSizes.sizeMd, height: CatSizes.sizeMd)
             .foregroundStyle(config.colorStyle.foreground)
-    }
-    
-    private var dismissButtonCat: some View {
-        CatButton(
-            .icon(Image("ic_cross-outlined-24", bundle: .catalyst)),
-            buttonSize: .extraSmall
-        ) {
-            onDismiss?()
-        }
-        .catButtonConfig(variant: .text, color: .secondaryInverted)
-        .frame(width: 24)
     }
 
     private var dismissButton: some View {
@@ -223,10 +206,7 @@ struct CatToastMsgBuilder<Action: View>: View {
             onDismiss?()
         } label: {
             Image("ic_cross-outlined-24", bundle: .catalyst)
-                .resizable()
                 .renderingMode(.template)
-                .scaledToFit()
-                .frame(width: CatSizes.sizeMd, height: CatSizes.sizeMd)
                 .foregroundStyle(config.colorStyle.foreground)
         }
         .buttonStyle(.plain)

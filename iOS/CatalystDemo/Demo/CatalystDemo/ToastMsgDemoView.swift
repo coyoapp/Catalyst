@@ -38,7 +38,7 @@ struct ToastMsgDemoView: View {
             
             CatToastMsg(
                 "Toast with CatButton",
-                icon: Image("ic_check-circle-outlined-24", bundle: .catalyst)
+                icon: Image("ic_info-outlined-25", bundle: .catalyst)
             ) {
                 CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
                     print("Dismiss!")
@@ -57,7 +57,7 @@ struct ToastMsgDemoView: View {
             
             CatToastMsg(
                 "Toast with CatButton",
-                icon: Image("ic_check-circle-outlined-24", bundle: .catalyst),
+                icon: Image("ic_info-outlined-25", bundle: .catalyst),
                 variant: .expanded
             ) {
                 CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
@@ -68,7 +68,7 @@ struct ToastMsgDemoView: View {
             
             CatToastMsg(
                 "Toast with CatButton",
-                icon: Image("ic_check-circle-outlined-24", bundle: .catalyst),
+                icon: Image("ic_info-outlined-25", bundle: .catalyst),
                 variant: .expanded
             ) {
                 CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
