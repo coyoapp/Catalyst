@@ -14,6 +14,7 @@ package com.haiilo.catalyst.components.toastmsg
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -143,8 +144,9 @@ private fun CompactLayout(
     Row(
         modifier = Modifier
             .height(ToastCompactHeight)
-            .padding(horizontal = CatSpacing.spacing_lg),
+            .padding(horizontal = CatSpacing.spacing_xl),
         verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(CatSpacing.spacing_lg),
     ) {
         if (leadingIcon != null) {
             Icon(
@@ -153,7 +155,6 @@ private fun CompactLayout(
                 modifier = Modifier.size(CatSizes.size_md),
                 tint = colors.foreground,
             )
-            Spacer(Modifier.width(CatSpacing.spacing_md))
         }
 
         Text(
@@ -166,14 +167,12 @@ private fun CompactLayout(
         )
 
         if (action != null) {
-            Spacer(Modifier.width(CatSpacing.spacing_md))
             // The action slot is typically a CatButton. The consumer should configure
             // the button's color via .catButtonConfig or pass colors.actionColor explicitly.
             action()
         }
 
         if (showDismissButton) {
-            Spacer(Modifier.width(CatSpacing.spacing_md))
             DismissButton(onDismiss = onDismiss, tint = colors.foreground)
         }
     }
@@ -194,7 +193,7 @@ private fun ExpandedLayout(
 ) {
     Row(
         modifier = Modifier
-            .padding(horizontal = CatSpacing.spacing_lg, vertical = CatSpacing.spacing_md),
+            .padding(horizontal = CatSpacing.spacing_xl, vertical = CatSpacing.spacing_xl),
         verticalAlignment = Alignment.Top,
     ) {
         if (leadingIcon != null) {
@@ -206,7 +205,7 @@ private fun ExpandedLayout(
                     .padding(top = CatSpacing.spacing_xs),
                 tint = colors.foreground,
             )
-            Spacer(Modifier.width(CatSpacing.spacing_md))
+            Spacer(Modifier.width(CatSpacing.spacing_lg))
         }
 
         Column(
@@ -225,7 +224,7 @@ private fun ExpandedLayout(
         }
 
         if (showDismissButton) {
-            Spacer(Modifier.width(CatSpacing.spacing_md))
+            Spacer(Modifier.width(CatSpacing.spacing_lg))
             DismissButton(onDismiss = onDismiss, tint = colors.foreground)
         }
     }

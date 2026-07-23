@@ -37,7 +37,7 @@ import com.haiilo.catalyst.tokens.generated.CatTypography
 // Simple screen enum for lightweight navigation (no Jetpack Nav dependency)
 // ---------------------------------------------------------------------------
 
-private enum class DemoDestination { Main, Buttons, Alerts, SegmentedControl }
+private enum class DemoDestination { Main, Buttons, Alerts, SegmentedControl, ToastMsgs }
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +63,7 @@ private fun AppNavigation() {
                 onNavigateToButtons = { destination = DemoDestination.Buttons },
                 onNavigateToAlerts = { destination = DemoDestination.Alerts },
                 onNavigateToSegmentedControl = { destination = DemoDestination.SegmentedControl },
+                onNavigateToToastMsgs = { destination = DemoDestination.ToastMsgs },
                 onNavigateToXmlDemo = {
                     context.startActivity(Intent(context, XmlTokensDemoActivity::class.java))
                 }
@@ -76,6 +77,9 @@ private fun AppNavigation() {
 
         DemoDestination.SegmentedControl ->
             SegmentedControlDemoScreen(onBack = { destination = DemoDestination.Main })
+
+        DemoDestination.ToastMsgs ->
+            ToastMsgDemoScreen(onBack = { destination = DemoDestination.Main })
     }
 }
 
@@ -84,6 +88,7 @@ fun DemoScreen(
     onNavigateToButtons: () -> Unit = {},
     onNavigateToAlerts: () -> Unit = {},
     onNavigateToSegmentedControl: () -> Unit = {},
+    onNavigateToToastMsgs: () -> Unit = {},
     onNavigateToXmlDemo: () -> Unit = {},
 ) {
     CatTheme {
@@ -136,6 +141,18 @@ fun DemoScreen(
                         CatButtonPlacement.Trailing
                     ),
                     onClick = onNavigateToSegmentedControl,
+                    variant = CatButtonVariant.Filled,
+                    color = CatButtonColor.Primary,
+                )
+
+                CatButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    content = CatButtonContent.IconText(
+                        painter = painterResource(id = R.drawable.icon_checkmark),
+                        text = "View All Toast Messages",
+                        CatButtonPlacement.Trailing
+                    ),
+                    onClick = onNavigateToToastMsgs,
                     variant = CatButtonVariant.Filled,
                     color = CatButtonColor.Primary,
                 )
