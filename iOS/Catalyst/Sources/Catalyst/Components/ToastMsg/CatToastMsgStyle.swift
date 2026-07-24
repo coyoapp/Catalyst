@@ -4,9 +4,6 @@
 //
 //  Created by Catalyst Agent on 2026-07-21.
 //
-//  !! GENERATED — REVIEW review.md THEN MOVE TO SOURCE !!
-//  Destination: iOS/Catalyst/Sources/Catalyst/Components/ToastMsgs/
-//
 //  Display profile — flat StyleConfig, no ButtonStyle, no state machine.
 //  Reference: CatAlertStyle.swift
 //

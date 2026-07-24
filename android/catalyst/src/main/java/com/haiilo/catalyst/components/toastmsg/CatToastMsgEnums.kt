@@ -3,8 +3,6 @@
 //
 // Created by Catalyst Agent on 2026-07-21.
 //
-// !! GENERATED — REVIEW review.md THEN MOVE TO SOURCE !!
-// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/toastmsg/
 
 package com.haiilo.catalyst.components.toastmsg
 

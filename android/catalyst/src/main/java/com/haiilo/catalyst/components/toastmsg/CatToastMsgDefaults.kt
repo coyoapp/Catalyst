@@ -3,9 +3,6 @@
 //
 // Created by Catalyst Agent on 2026-07-21.
 //
-// !! GENERATED — REVIEW review.md THEN MOVE TO SOURCE !!
-// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/toastmsg/
-//
 // Display profile — colors() factory resolves CatToastMsgColors from tokens.
 // Reference: CatAlertDefaults.kt
 
@@ -25,7 +22,6 @@ import com.haiilo.catalyst.tokens.generated.CatColors
 // ---------------------------------------------------------------------------
 
 object CatToastMsgDefaults {
-
     /**
      * Resolves [CatToastMsgColors] for the toast.
      *
@@ -33,9 +29,7 @@ object CatToastMsgDefaults {
      * from `accentPalette.text`, enabling whitelabeling of the action affordance.
      * Surface and title colors are always the dark inverted tokens.
      */
-    fun colors(
-        accentPalette: CatColorPalette? = null,
-    ): CatToastMsgColors {
+    fun colors(accentPalette: CatColorPalette? = null): CatToastMsgColors {
         val actionColor = accentPalette?.text
             ?: CatColors.Theme.PrimaryInverted.text
 

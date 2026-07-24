@@ -3,9 +3,6 @@
 //
 // Created by Catalyst Agent on 2026-07-21.
 //
-// !! GENERATED — REVIEW review.md THEN MOVE TO SOURCE !!
-// Destination: android/catalyst/src/main/java/com/haiilo/catalyst/components/toastmsg/
-//
 // Display profile — Box + clip + background layout. No Material3 Surface.
 // Reference: CatAlert.kt
 
