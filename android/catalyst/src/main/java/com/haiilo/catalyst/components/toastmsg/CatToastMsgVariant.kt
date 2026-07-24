@@ -1,4 +1,4 @@
-// CatToastMsgEnums.kt
+// CatToastMsgVariant.kt
 // Catalyst
 //
 // Created by Catalyst Agent on 2026-07-21.
