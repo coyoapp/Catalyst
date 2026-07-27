@@ -32,6 +32,7 @@ public struct CatToastMsg<Action: View>: View {
     private let title: String
     private let icon: Image?
     private let variant: CatToastMsgVariant
+    private let accessibilityIdentifier: String?
     private let showDismissButton: Bool
     private let onDismiss: (() -> Void)?
     private let action: Action
@@ -55,6 +56,7 @@ public struct CatToastMsg<Action: View>: View {
         _ title: String,
         icon: Image? = nil,
         variant: CatToastMsgVariant = .compact,
+        accessibilityIdentifier: String? = nil,
         showDismissButton: Bool = true,
         onDismiss: (() -> Void)? = nil,
         @ViewBuilder action: () -> Action
@@ -62,6 +64,7 @@ public struct CatToastMsg<Action: View>: View {
         self.title = title
         self.icon = icon
         self.variant = variant
+        self.accessibilityIdentifier = accessibilityIdentifier
         self.showDismissButton = showDismissButton
         self.onDismiss = onDismiss
         self.action = action()
@@ -76,6 +79,7 @@ public struct CatToastMsg<Action: View>: View {
             title: title,
             icon: icon,
             variant: variant,
+            accessibilityIdentifier: accessibilityIdentifier,
             showDismissButton: showDismissButton,
             onDismiss: onDismiss,
             config: config
@@ -93,6 +97,7 @@ public extension CatToastMsg where Action == EmptyView {
         _ title: String,
         icon: Image? = nil,
         variant: CatToastMsgVariant = .compact,
+        accessibilityIdentifier: String? = nil,
         showDismissButton: Bool = true,
         onDismiss: (() -> Void)? = nil
     ) {
@@ -100,6 +105,7 @@ public extension CatToastMsg where Action == EmptyView {
             title,
             icon: icon,
             variant: variant,
+            accessibilityIdentifier: accessibilityIdentifier,
             showDismissButton: showDismissButton,
             onDismiss: onDismiss
         ) { EmptyView() }
@@ -117,6 +123,7 @@ struct CatToastMsgBuilder<Action: View>: View {
     let title: String
     let icon: Image?
     let variant: CatToastMsgVariant
+    let accessibilityIdentifier: String?
     let showDismissButton: Bool
     let onDismiss: (() -> Void)?
     let config: CatToastMsgStyleConfig
@@ -134,6 +141,7 @@ struct CatToastMsgBuilder<Action: View>: View {
         .frame(width: config.fixedWidth)
         .background(config.colorStyle.background)
         .clipShape(RoundedRectangle(cornerRadius: config.cornerRadius))
+        .accessibilityIdentifier(accessibilityIdentifier ?? "")
     }
 
     // MARK: Compact — single row, 56 pt height
@@ -207,6 +215,7 @@ struct CatToastMsgBuilder<Action: View>: View {
                 .foregroundStyle(config.colorStyle.foreground)
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("toast.msg.cross.dismissbutton")
     }
 }
 

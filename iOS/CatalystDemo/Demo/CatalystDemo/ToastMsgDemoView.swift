@@ -89,9 +89,14 @@ struct ToastMsgDemoView: View {
                 CatToastMsg(
                     "Toast with CatButton",
                     icon: Image("ic_info-outlined-25", bundle: .catalyst),
-                    variant: .expanded
+                    variant: .expanded,
+                    accessibilityIdentifier: "toast-expanded"
                 ) {
-                    CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
+                    CatButton(
+                        .text("Dismiss"),
+                        buttonSize: .extraSmall,
+                        accessibilityIdentifier: "toast-expanded-dismiss"
+                    ) {
                         print("Dismiss!")
                     }
                     .catButtonConfig(variant: .outlined, color: .primaryInverted)
