@@ -50,7 +50,6 @@ struct ToastMsgDemoView: View {
                 }
                 .catToastMsgConfig(variant: .expanded)
                 
-                
                 CatToastMsg(
                     "Toast with CatButton",
                     icon: Image("ic_info-outlined-25", bundle: .catalyst)

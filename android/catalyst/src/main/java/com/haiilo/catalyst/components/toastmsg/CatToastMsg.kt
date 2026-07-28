@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.haiilo.catalyst.R
@@ -76,6 +77,9 @@ private val ToastCompactHeight = 56.dp
  * @param onDismiss         Called when the dismiss button is tapped.
  *                          Null means no-op when [showDismissButton] is true.
  * @param colors            Full color override. When non-null, tokens are ignored for styling.
+ * @param testTag           Tag used by UI automation tests to locate this toast. Null skips tagging.
+ *                          The internal dismiss button always carries the fixed tag
+ *                          `"toast.msg.cross.dismissbutton"`.
  * @param action            Optional action slot, typically a [com.haiilo.catalyst.components.buttons.CatButton].
  *                          The consumer is responsible for applying the correct text/tint color
  *                          from [CatToastMsgColors.actionColor] if using a raw composable.
@@ -89,6 +93,7 @@ fun CatToastMsg(
     showDismissButton: Boolean = true,
     onDismiss: (() -> Unit)? = null,
     colors: CatToastMsgColors? = null,
+    testTag: String? = null,
     action: (@Composable () -> Unit)? = null,
 ) {
     val ambientConfig = LocalCatToastMsgConfig.current
@@ -101,6 +106,7 @@ fun CatToastMsg(
     Box(
         modifier = modifier
             .width(ToastFixedWidth)
+            .then(if (testTag != null) Modifier.testTag(testTag) else Modifier)
             .clip(shape)
             .background(color = resolvedColors.background, shape = shape),
     ) {
@@ -242,6 +248,7 @@ private fun DismissButton(
         contentDescription = null,
         modifier = Modifier
             .size(CatSizes.size_md)
+            .testTag("toast.msg.cross.dismissbutton")
             .clickable(
                 interactionSource = interactionSource,
                 indication = ripple(bounded = false, color = tint.copy(alpha = 0.12f)),

@@ -23,6 +23,7 @@ Fixed width: 343 dp per design spec.
 | `showDismissButton` | `Boolean` | `true` | When `true`, an internal × dismiss button is shown |
 | `onDismiss` | `(() -> Unit)?` | `null` | Called when the dismiss button is tapped. `null` means the button renders but is a no-op |
 | `colors` | `CatToastMsgColors?` | `null` | Full color override. When non-null, token resolution is skipped. See [Color override](#color-override) |
+| `testTag` | `String?` | `null` | Tag used by UI automation tests to locate this toast. `null` skips tagging. See [UI automation](#ui-automation) |
 | `action` | `(@Composable () -> Unit)?` | `null` | Optional action slot, typically a `CatButton` with `color = CatButtonColor.PrimaryInverted` |
 
 ---
@@ -163,6 +164,40 @@ ProvideCatToastMsgConfig(variant = CatToastMsgVariant.Expanded) {
         )
     }
 }
+```
+
+---
+
+## UI automation
+
+Use `testTag` to tag a toast and its action button for UI tests with Compose's `onNodeWithTag`:
+
+```kotlin
+CatToastMsg(
+    title = "Profile updated",
+    leadingIcon = painterResource(R.drawable.ic_info_outlined_25),
+    testTag = "profile-updated-toast",
+    onDismiss = { /* dismiss */ },
+    action = {
+        CatButton(
+            content = CatButtonContent.TextOnly("View"),
+            onClick = { /* view */ },
+            variant = CatButtonVariant.Outlined,
+            color = CatButtonColor.PrimaryInverted,
+            size = CatButtonSize.XSmall,
+            testTag = "profile-updated-toast-view-btn",
+        )
+    },
+)
+```
+
+The tag is applied to the toast container surface. The internal dismiss button always carries the fixed tag `"toast.msg.cross.dismissbutton"`.
+
+```kotlin
+// In a UI test:
+composeTestRule.onNodeWithTag("profile-updated-toast").assertIsDisplayed()
+composeTestRule.onNodeWithTag("profile-updated-toast-view-btn").performClick()
+composeTestRule.onNodeWithTag("toast.msg.cross.dismissbutton").performClick()
 ```
 
 ---
