@@ -17,7 +17,7 @@ import SwiftUI
 // The surface is display-only; the optional action slot and the internal
 // dismiss button are the only interactive elements.
 //
-// Layout variants (set via `.catToastMsgConfig(variant:)` or the `variant` param):
+// Layout variants (set via `.catToastMsgConfig(variant:)`):
 //   - compact:  Single row — icon? + title + action? + dismiss?  (fixed 56 pt height)
 //   - expanded: Stacked   — icon? + VStack { title, action? } + dismiss? (top-right)
 //
@@ -31,7 +31,6 @@ import SwiftUI
 public struct CatToastMsg<Action: View>: View {
     private let title: String
     private let icon: Image?
-    private let variant: CatToastMsgVariant
     private let accessibilityIdentifier: String?
     private let showDismissButton: Bool
     private let onDismiss: (() -> Void)?
@@ -41,13 +40,15 @@ public struct CatToastMsg<Action: View>: View {
     @Environment(\.catalystTheme) private var theme
     /// An optional accent palette injected via `.catalystAccentColor(_:)`.
     @Environment(\.catalystAccentPalette) private var accentPalette
+    /// The active toast config from the environment. Set via `.catToastMsgConfig(variant:)`.
+    @Environment(\.catToastMsgConfig) private var toastConfig
 
     /// Creates a `CatToastMsg` with a trailing action slot.
     ///
     /// - Parameters:
     ///   - title: The toast's message text.
     ///   - icon: Optional leading status icon. Pass `nil` to hide.
-    ///   - variant: Layout mode — `.compact` (single row) or `.expanded` (stacked).
+    ///   - accessibilityIdentifier: An identifier used by UI automation tests to locate this toast.
     ///   - showDismissButton: When `true` (default), the internal dismiss × button is shown.
     ///   - onDismiss: Closure invoked when the dismiss button is tapped.
     ///     When `nil` and `showDismissButton == true`, the button renders but is a no-op.
@@ -55,7 +56,6 @@ public struct CatToastMsg<Action: View>: View {
     public init(
         _ title: String,
         icon: Image? = nil,
-        variant: CatToastMsgVariant = .compact,
         accessibilityIdentifier: String? = nil,
         showDismissButton: Bool = true,
         onDismiss: (() -> Void)? = nil,
@@ -63,7 +63,6 @@ public struct CatToastMsg<Action: View>: View {
     ) {
         self.title = title
         self.icon = icon
-        self.variant = variant
         self.accessibilityIdentifier = accessibilityIdentifier
         self.showDismissButton = showDismissButton
         self.onDismiss = onDismiss
@@ -78,7 +77,7 @@ public struct CatToastMsg<Action: View>: View {
         CatToastMsgBuilder(
             title: title,
             icon: icon,
-            variant: variant,
+            variant: toastConfig.variant,
             accessibilityIdentifier: accessibilityIdentifier,
             showDismissButton: showDismissButton,
             onDismiss: onDismiss,
@@ -93,10 +92,17 @@ public struct CatToastMsg<Action: View>: View {
 
 public extension CatToastMsg where Action == EmptyView {
     /// Creates a `CatToastMsg` with no action button.
+    ///
+    /// - Parameters:
+    ///   - title: The toast's message text.
+    ///   - icon: Optional leading status icon. Pass `nil` to hide.
+    ///   - accessibilityIdentifier: An identifier used by UI automation tests to locate this toast.
+    ///   - showDismissButton: When `true` (default), the internal dismiss × button is shown.
+    ///   - onDismiss: Closure invoked when the dismiss button is tapped.
+    ///     When `nil` and `showDismissButton == true`, the button renders but is a no-op.
     init(
         _ title: String,
         icon: Image? = nil,
-        variant: CatToastMsgVariant = .compact,
         accessibilityIdentifier: String? = nil,
         showDismissButton: Bool = true,
         onDismiss: (() -> Void)? = nil
@@ -104,7 +110,6 @@ public extension CatToastMsg where Action == EmptyView {
         self.init(
             title,
             icon: icon,
-            variant: variant,
             accessibilityIdentifier: accessibilityIdentifier,
             showDismissButton: showDismissButton,
             onDismiss: onDismiss
@@ -223,6 +228,7 @@ struct CatToastMsgBuilder<Action: View>: View {
 
 public struct CatToastMsgConfig {
     public let variant: CatToastMsgVariant
+
     public init(variant: CatToastMsgVariant = .compact) {
         self.variant = variant
     }
@@ -252,7 +258,6 @@ public extension View {
         CatToastMsg(
             "File successfully saved",
             icon: Image(systemName: "checkmark.circle"),
-            variant: .compact,
             onDismiss: { print("dismissed") }
         ) {
             Button("Undo") { print("undo") }
@@ -260,7 +265,6 @@ public extension View {
 
         CatToastMsg(
             "No internet connection available",
-            variant: .compact,
             showDismissButton: false
         )
     }
@@ -272,11 +276,11 @@ public extension View {
     CatToastMsg(
         "Your file has been successfully saved to the cloud and is now available on all your devices.",
         icon: Image(systemName: "icloud.and.arrow.up"),
-        variant: .expanded,
         onDismiss: { print("dismissed") }
     ) {
         Button("View file") { print("view") }
     }
+    .catToastMsgConfig(variant: .expanded)
     .padding()
     .background(Color.gray.opacity(0.2))
 }

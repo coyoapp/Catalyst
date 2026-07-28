@@ -26,30 +26,34 @@ struct ToastMsgDemoView: View {
                     showDismissButton: false
                 )
                 
-                CatToastMsg(
-                    "Toast with CatButton",
-                    icon: Image("ic_check-circle-outlined-24", bundle: .catalyst),
-                    showDismissButton: false
-                ) {
-                    CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
-                        print("Dismiss!")
+                VStack {
+                    CatToastMsg(
+                        "Toast with CatButton",
+                        icon: Image("ic_check-circle-outlined-24", bundle: .catalyst),
+                        showDismissButton: false
+                    ) {
+                        CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
+                            print("Dismiss!")
+                        }
+                        .catButtonConfig(variant: .text, color: .primaryInverted)
                     }
-                    .catButtonConfig(variant: .text, color: .primaryInverted)
+                    
+                    CatToastMsg(
+                        "Toast with CatButton",
+                        icon: Image("ic_info-outlined-25", bundle: .catalyst)
+                    ) {
+                        CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
+                            print("Dismiss!")
+                        }
+                        .catButtonConfig(variant: .text, color: .primaryInverted)
+                    }
                 }
+                .catToastMsgConfig(variant: .expanded)
+                
                 
                 CatToastMsg(
                     "Toast with CatButton",
                     icon: Image("ic_info-outlined-25", bundle: .catalyst)
-                ) {
-                    CatButton(.text("Dismiss"), buttonSize: .extraSmall) {
-                        print("Dismiss!")
-                    }
-                    .catButtonConfig(variant: .text, color: .primaryInverted)
-                }
-                
-                CatToastMsg(
-                    "Toast with CatButton",
-                    icon: Image("ic_info-outlined-25", bundle: .catalyst),
                 ) {
                     CatButton(
                         .text("Dismiss"),
@@ -68,8 +72,7 @@ struct ToastMsgDemoView: View {
                 
                 CatToastMsg(
                     "Toast with CatButton",
-                    icon: Image("ic_info-outlined-25", bundle: .catalyst),
-                    variant: .expanded
+                    icon: Image("ic_info-outlined-25", bundle: .catalyst)
                 ) {
                     CatButton(
                         .text("Dismiss"),
@@ -85,11 +88,11 @@ struct ToastMsgDemoView: View {
                     }
                     .catButtonConfig(variant: .text, color: .primaryInverted)
                 }
+                .catToastMsgConfig(variant: .expanded)
                 
                 CatToastMsg(
                     "Toast with CatButton",
                     icon: Image("ic_info-outlined-25", bundle: .catalyst),
-                    variant: .expanded,
                     accessibilityIdentifier: "toast-expanded"
                 ) {
                     CatButton(
@@ -101,16 +104,17 @@ struct ToastMsgDemoView: View {
                     }
                     .catButtonConfig(variant: .outlined, color: .primaryInverted)
                 }
+                .catToastMsgConfig(variant: .expanded)
                 
                 CatToastMsg(
                     "Toast with Button",
-                    icon: Image("ic_info-outlined-25", bundle: .catalyst),
-                    variant: .expanded
+                    icon: Image("ic_info-outlined-25", bundle: .catalyst)
                 ) {
-                    Button ("Action") {
+                    Button("Action") {
                         print("Dismiss!")
                     }
                 }
+                .catToastMsgConfig(variant: .expanded)
             }
         }
     }

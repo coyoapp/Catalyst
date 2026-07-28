@@ -40,7 +40,7 @@ Fixed width: 343 pt per design spec.
 |-----------|------|---------|-------------|
 | `title` | `String` | required | The toast's message text |
 | `icon` | `Image?` | `nil` | Optional leading status icon. `nil` hides the icon slot |
-| `variant` | `CatToastMsgVariant` | `.compact` | Layout mode — `.compact` (single row) or `.expanded` (stacked) |
+| `accessibilityIdentifier` | `String?` | `nil` | An identifier used by UI automation tests to locate this toast |
 | `showDismissButton` | `Bool` | `true` | When `true`, an internal × dismiss button is shown |
 | `onDismiss` | `(() -> Void)?` | `nil` | Closure invoked when the dismiss button is tapped. `nil` means the button renders but is a no-op |
 | `action` | `() -> some View` | none (optional) | Optional action slot, typically a `CatButton` with `.primaryInverted` color |
@@ -130,7 +130,6 @@ CatToastMsg(
 CatToastMsg(
     "Your file has been successfully saved to the cloud and is now available on all your devices.",
     icon: Image("ic_info-outlined-25", bundle: .catalyst),
-    variant: .expanded,
     onDismiss: { /* dismiss */ }
 ) {
     CatButton(.text("View file"), buttonSize: .extraSmall) {
@@ -138,15 +137,21 @@ CatToastMsg(
     }
     .catButtonConfig(variant: .text, color: .primaryInverted)
 }
+.catToastMsgConfig(variant: .expanded) 
 ```
 
 ---
 
-## Setting the variant via environment
+## Setting the variant
 
-Apply `.catToastMsgConfig(variant:)` to a parent view to set the variant for all toasts in that subtree without passing it on each call site:
+The variant is controlled exclusively via the `.catToastMsgConfig(variant:)` environment modifier — it is not an init parameter. Apply it to an individual toast or to a parent view to set the variant for the entire subtree.
 
 ```swift
+// Single toast — expanded
+CatToastMsg("File saved", onDismiss: { })
+    .catToastMsgConfig(variant: .expanded)
+
+// All toasts in a container — expanded
 VStack {
     CatToastMsg("First notification", onDismiss: { })
     CatToastMsg("Second notification", onDismiss: { })
@@ -154,22 +159,45 @@ VStack {
 .catToastMsgConfig(variant: .expanded)
 ```
 
-A call-site `variant` parameter always overrides the environment:
+To override the variant for a specific toast inside a subtree that already has a config modifier, apply a closer `.catToastMsgConfig` directly on that toast — the innermost modifier wins, following standard SwiftUI environment precedence:
 
 ```swift
 VStack {
-    // Inherits .expanded from the environment modifier
+    // Inherits .expanded from the VStack modifier below
     CatToastMsg("Expanded toast", onDismiss: { })
 
-    // Overrides to .compact at the call site
-    CatToastMsg(
-        "Compact override",
-        variant: .compact,
-        onDismiss: { }
-    )
+    // Overrides to .compact for this toast only
+    CatToastMsg("Compact toast", onDismiss: { })
+        .catToastMsgConfig(variant: .compact)
 }
 .catToastMsgConfig(variant: .expanded)
 ```
+
+---
+
+## UI automation
+
+Use `accessibilityIdentifier` to tag a toast and its action button for UI tests:
+
+```swift
+CatToastMsg(
+    "Profile updated",
+    icon: Image("ic_info-outlined-25", bundle: .catalyst),
+    accessibilityIdentifier: "profile-updated-toast",
+    onDismiss: { /* dismiss */ }
+) {
+    CatButton(
+        .text("View"),
+        buttonSize: .extraSmall,
+        accessibilityIdentifier: "profile-updated-toast-view-btn"
+    ) {
+        // view
+    }
+    .catButtonConfig(variant: .outlined, color: .primaryInverted)
+}
+```
+
+The identifier is applied to the toast container surface. The internal dismiss button always carries the fixed identifier `"toast.msg.cross.dismissbutton"`.
 
 ---
 
