@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/coyoapp/Catalyst/compare/v1.1.0...v1.2.0) (2026-08-06)
+
+
+### Features
+
+* **ToastMsg:** Component added ([#88](https://github.com/coyoapp/Catalyst/issues/88)) ([4597675](https://github.com/coyoapp/Catalyst/commit/4597675f5292506ea8fe225a202140c35bab586b))
+
 ## [1.1.0](https://github.com/coyoapp/Catalyst/compare/v1.0.0...v1.1.0) (2026-08-06)
 
 
