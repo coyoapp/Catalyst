@@ -1,6 +1,6 @@
 //
 //  ToastMsgDemoView.swift
-//  CatalistDemo
+//  CatalystDemo
 //
 //  Created by Efe Durmaz on 22.07.26.
 //
