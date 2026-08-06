@@ -16,6 +16,7 @@ public struct CatButton: View {
     let stackSpacing: CGFloat?
     let padding: EdgeInsets?
     let isLoading: Bool
+    let accessibilityIdentifier: String?
     let action: () -> Void
 
     /// Creates a `CatButton`.
@@ -28,6 +29,7 @@ public struct CatButton: View {
     ///   - padding: Overrides the default internal padding.
     ///   - isLoading: When `true`, shows a spinner in place of the leading icon
     ///     (or before the text) and ignores taps until loading finishes.
+    ///   - accessibilityIdentifier: An identifier used by UI automation tests to locate this button.
     ///   - action: The closure invoked when the button is tapped.
     public init(
         _ content: CatButtonContent,
@@ -36,6 +38,7 @@ public struct CatButton: View {
         stackSpacing: CGFloat? = nil,
         padding: EdgeInsets? = nil,
         isLoading: Bool = false,
+        accessibilityIdentifier: String? = nil,
         action: @escaping () -> Void
     ) {
         self.content = content
@@ -44,6 +47,7 @@ public struct CatButton: View {
         self.stackSpacing = stackSpacing
         self.padding = padding
         self.isLoading = isLoading
+        self.accessibilityIdentifier = accessibilityIdentifier
         self.action = action
     }
 
@@ -63,6 +67,7 @@ public struct CatButton: View {
             iconSize: .init(width: CatSizes.sizeMd, height: CatSizes.sizeMd),
             stackSpacing: stackSpacing,
             isLoading: isLoading,
+            accessibilityIdentifier: accessibilityIdentifier,
             action: action
         )
         .buttonStyle(
@@ -101,12 +106,14 @@ public struct CatButtonBuilder: View {
     let iconSize: CGSize?
     let stackSpacing: CGFloat?
     let isLoading: Bool
+    let accessibilityIdentifier: String?
 
     public init(
         content: CatButtonContent,
         iconSize: CGSize? = CGSize(width: CatSizes.sizeSm, height: CatSizes.sizeSm),
         stackSpacing: CGFloat? = CatSpacing.spacingMd,
         isLoading: Bool = false,
+        accessibilityIdentifier: String? = nil,
         action: @escaping () -> Void
     ) {
         self.content = content
@@ -114,12 +121,14 @@ public struct CatButtonBuilder: View {
         self.action = action
         self.stackSpacing = stackSpacing
         self.isLoading = isLoading
+        self.accessibilityIdentifier = accessibilityIdentifier
     }
 
     public var body: some View {
         Button(action: action) {
             buildContent()
         }
+        .accessibilityIdentifier(accessibilityIdentifier ?? "")
         .allowsHitTesting(!isLoading)
     }
 

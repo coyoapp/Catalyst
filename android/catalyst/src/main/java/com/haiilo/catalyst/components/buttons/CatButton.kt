@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -64,6 +65,7 @@ import com.haiilo.catalyst.theme.LocalCatAccentPalette
  * @param enabled     When false the button is shown in the disabled state and ignores taps.
  * @param style       Full state-style override. When non-null, [variant]/[color] are
  *                    ignored for styling.
+ * @param testTag     Tag used by UI automation tests to locate this button. Null skips tagging.
  */
 @Composable
 fun CatButton(
@@ -75,6 +77,7 @@ fun CatButton(
     size: CatButtonSize = CatButtonSize.Small,
     enabled: Boolean = true,
     style: CatButtonState? = null,
+    testTag: String? = null,
 ) {
     // -----------------------------------------------------------------------
     // Resolve configuration
@@ -142,6 +145,7 @@ fun CatButton(
     val containerModifier = modifier
         .defaultMinSize(minWidth = 44.dp)
         .height(size.heightDp) // exact height from token
+        .then(if (testTag != null) Modifier.testTag(testTag) else Modifier)
         .clip(shape)
         .background(color = backgroundColor, shape = shape)
         .then(

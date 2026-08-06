@@ -62,6 +62,15 @@ struct ContentView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
+                
+                NavigationLink(destination: ToastMsgDemoView()) {
+                    CatButton(.text("View Toast Msg"), buttonSize: .medium) {
+                        print("Navigating to Toast Msg")
+                    }
+                        .catButtonConfig(variant: .filled, color: .success)
+                        .allowsHitTesting(false)
+                }
+                .padding(.horizontal)
 
                 HStack {
                     VStack(alignment: .leading) {
