@@ -30,8 +30,6 @@ Layout variants:
 - **compact** — single row, fixed 56 pt height. Icon + title + action + dismiss on one line.
 - **expanded** — stacked layout. Title wraps freely; action sits below the title; dismiss anchors top-trailing.
 
-Fixed width: 343 pt per design spec.
-
 ---
 
 ## Parameters

@@ -21,7 +21,7 @@ import SwiftUI
 //   - compact:  Single row — icon? + title + action? + dismiss?  (fixed 56 pt height)
 //   - expanded: Stacked   — icon? + VStack { title, action? } + dismiss? (top-right)
 //
-// Fixed width: 343 pt per design spec. Always dark surface + inverted text.
+// Width: fills available width (.infinity). Always dark surface + inverted text.
 // Action text color uses primaryInverted.text, accent-overridable for whitelabeling.
 //
 // Accessibility: CatToastMsg does NOT set an accessibilityLabel on the container.
@@ -143,7 +143,6 @@ struct CatToastMsgBuilder<Action: View>: View {
                 expandedLayout
             }
         }
-        .frame(width: config.fixedWidth)
         .background(config.colorStyle.background)
         .clipShape(RoundedRectangle(cornerRadius: config.cornerRadius))
         .accessibilityIdentifier(accessibilityIdentifier ?? "")

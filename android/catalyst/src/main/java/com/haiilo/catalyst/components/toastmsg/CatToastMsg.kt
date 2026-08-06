@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -53,7 +54,7 @@ import com.haiilo.catalyst.tokens.generated.CatTypography
 //   - Compact:  Single-row, 56 dp tall. Icon + title + action? + dismiss?.
 //   - Expanded: Stacked. Title wraps freely; action below title; dismiss top-end.
 //
-// Fixed width: 343 dp per design spec. Always dark surface + inverted text.
+// Width: fills available width (fillMaxWidth). Always dark surface + inverted text.
 // Action text color uses primaryInverted.text, accent-overridable for whitelabeling.
 //
 // Configuration priority (highest → lowest):
@@ -63,7 +64,6 @@ import com.haiilo.catalyst.tokens.generated.CatTypography
 //   4. Defaults: Compact
 // ---------------------------------------------------------------------------
 
-private val ToastFixedWidth = 343.dp
 private val ToastCompactHeight = 56.dp
 
 /**
@@ -105,7 +105,7 @@ fun CatToastMsg(
 
     Box(
         modifier = modifier
-            .width(ToastFixedWidth)
+            .fillMaxWidth()
             .then(if (testTag != null) Modifier.testTag(testTag) else Modifier)
             .clip(shape)
             .background(color = resolvedColors.background, shape = shape),

@@ -16,7 +16,7 @@ package com.haiilo.catalyst.components.toastmsg
  * - [Compact]: Single-row layout. Icon + title + action + dismiss all inline.
  *   Fixed height: 56 dp.
  * - [Expanded]: Stacked layout. Title can wrap to multiple lines; action sits
- *   below the title. Dismiss button stays anchored top-end. Fixed width: 343 dp.
+ *   below the title. Dismiss button stays anchored top-end. Width fills available space.
  */
 enum class CatToastMsgVariant {
     /** Single-row layout, 56 dp tall. */

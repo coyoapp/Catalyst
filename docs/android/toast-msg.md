@@ -8,8 +8,6 @@ Layout variants:
 - **Compact** — single row, fixed 56 dp height. Icon + title + action + dismiss on one line.
 - **Expanded** — stacked layout. Title wraps freely; action sits below the title; dismiss anchors top-end.
 
-Fixed width: 343 dp per design spec.
-
 ---
 
 ## Parameters

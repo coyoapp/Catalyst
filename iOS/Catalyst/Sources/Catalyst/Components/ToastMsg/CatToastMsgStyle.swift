@@ -17,7 +17,7 @@ import SwiftUI
 /// - `compact`: Single-row layout. Icon + title + action + dismiss all inline.
 ///   Fixed height: 56 pt.
 /// - `expanded`: Stacked layout. Title can wrap to multiple lines; action sits
-///   below the title. Dismiss button stays anchored top-right. Fixed width 343 pt.
+///   below the title. Dismiss button stays anchored top-right. Width fills available space.
 public enum CatToastMsgVariant: Hashable, CaseIterable {
     case compact
     case expanded
@@ -53,16 +53,12 @@ public struct CatToastMsgColorStyle: Sendable {
 public struct CatToastMsgStyleConfig: Sendable {
     public let colorStyle: CatToastMsgColorStyle
     public let cornerRadius: CGFloat
-    /// Fixed width for the toast container (343 pt per brief spec).
-    public let fixedWidth: CGFloat
 
     public init(
         colorStyle: CatToastMsgColorStyle,
-        cornerRadius: CGFloat = CatBorderRadius.borderRadiusLg,
-        fixedWidth: CGFloat = 343
+        cornerRadius: CGFloat = CatBorderRadius.borderRadiusLg
     ) {
         self.colorStyle = colorStyle
         self.cornerRadius = cornerRadius
-        self.fixedWidth = fixedWidth
     }
 }
