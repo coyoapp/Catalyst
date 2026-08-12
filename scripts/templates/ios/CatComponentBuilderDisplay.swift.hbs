@@ -21,6 +21,7 @@ public struct Cat{{PascalName}}: View {
     {{else}}
     private let label: String
     {{/if}}
+    private let accessibilityIdentifier: String?
 
     @Environment(\.cat{{PascalName}}Config) private var config
     @Environment(\.catalystTheme) private var theme
@@ -28,16 +29,18 @@ public struct Cat{{PascalName}}: View {
 
     public init(
         {{#if hasContentEnum}}
-        _ content: Cat{{PascalName}}Content
+        _ content: Cat{{PascalName}}Content,
         {{else}}
-        _ label: String
+        _ label: String,
         {{/if}}
+        accessibilityIdentifier: String? = nil
     ) {
         {{#if hasContentEnum}}
         self.content = content
         {{else}}
         self.label = label
         {{/if}}
+        self.accessibilityIdentifier = accessibilityIdentifier
     }
 
     public var body: some View {
@@ -54,6 +57,7 @@ public struct Cat{{PascalName}}: View {
             {{else}}
             label: label,
             {{/if}}
+            accessibilityIdentifier: accessibilityIdentifier,
             config: styleConfig
         )
     }
@@ -67,6 +71,7 @@ struct Cat{{PascalName}}Builder: View {
     {{else}}
     let label: String
     {{/if}}
+    let accessibilityIdentifier: String?
     let config: Cat{{PascalName}}StyleConfig
 
     var body: some View {
@@ -79,6 +84,7 @@ struct Cat{{PascalName}}Builder: View {
             .padding(CatSpacing.spacingMd)
             .background(config.colorStyle.background)
             .clipShape(RoundedRectangle(cornerRadius: config.cornerRadius))
+            .accessibilityIdentifier(accessibilityIdentifier ?? "")
             .overlay(
                 RoundedRectangle(cornerRadius: config.cornerRadius)
                     .strokeBorder(config.colorStyle.border, lineWidth: config.borderWidth)

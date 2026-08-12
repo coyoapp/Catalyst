@@ -24,6 +24,7 @@ public struct Cat{{PascalName}}: View {
     {{#if hasSizes}}
     let componentSize: Cat{{PascalName}}Size
     {{/if}}
+    let accessibilityIdentifier: String?
     let action: () -> Void
 
     public init(
@@ -35,6 +36,7 @@ public struct Cat{{PascalName}}: View {
         {{#if hasSizes}}
         componentSize: Cat{{PascalName}}Size = .{{defaultSize}},
         {{/if}}
+        accessibilityIdentifier: String? = nil,
         action: @escaping () -> Void
     ) {
         {{#if hasContentEnum}}
@@ -45,6 +47,7 @@ public struct Cat{{PascalName}}: View {
         {{#if hasSizes}}
         self.componentSize = componentSize
         {{/if}}
+        self.accessibilityIdentifier = accessibilityIdentifier
         self.action = action
     }
 
@@ -59,6 +62,7 @@ public struct Cat{{PascalName}}: View {
             {{else}}
             label: label,
             {{/if}}
+            accessibilityIdentifier: accessibilityIdentifier,
             action: action
         )
         .buttonStyle(
@@ -94,6 +98,7 @@ public struct Cat{{PascalName}}Builder: View {
     {{else}}
     let label: String
     {{/if}}
+    let accessibilityIdentifier: String?
     let action: () -> Void
 
     public init(
@@ -102,6 +107,7 @@ public struct Cat{{PascalName}}Builder: View {
         {{else}}
         label: String,
         {{/if}}
+        accessibilityIdentifier: String? = nil,
         action: @escaping () -> Void
     ) {
         {{#if hasContentEnum}}
@@ -109,6 +115,7 @@ public struct Cat{{PascalName}}Builder: View {
         {{else}}
         self.label = label
         {{/if}}
+        self.accessibilityIdentifier = accessibilityIdentifier
         self.action = action
     }
 
@@ -116,6 +123,7 @@ public struct Cat{{PascalName}}Builder: View {
         Button(action: action) {
             buildContent()
         }
+        .accessibilityIdentifier(accessibilityIdentifier ?? "")
     }
 
     @ViewBuilder

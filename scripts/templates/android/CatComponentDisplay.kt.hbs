@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import com.haiilo.catalyst.theme.LocalCatAccentPalette
 import com.haiilo.catalyst.tokens.generated.CatBorderRadius
 import com.haiilo.catalyst.tokens.generated.CatBorderWidth
@@ -34,6 +35,7 @@ import com.haiilo.catalyst.tokens.generated.CatSpacing
  * @param modifier  Applied to the outer container.
  * {{#if hasVariants}}@param variant   Color variant override. Null reads from [LocalCat{{PascalName}}Config].{{/if}}
  * @param colors    Full color override. When non-null, variant is ignored for styling.
+ * @param testTag   Tag used by UI automation tests to locate this component. Null skips tagging.
  */
 @Composable
 fun Cat{{PascalName}}(
@@ -47,6 +49,7 @@ fun Cat{{PascalName}}(
     variant: Cat{{PascalName}}Variant? = null,
     {{/if}}
     colors: Cat{{PascalName}}Colors? = null,
+    testTag: String? = null,
 ) {
     val ambientConfig = LocalCat{{PascalName}}Config.current
     {{#if hasVariants}}
@@ -60,6 +63,7 @@ fun Cat{{PascalName}}(
 
     Box(
         modifier = modifier
+            .then(if (testTag != null) Modifier.testTag(testTag) else Modifier)
             .clip(shape)
             .background(color = resolvedColors.background, shape = shape)
             .border(BorderStroke(CatBorderWidth.border_width_default, resolvedColors.border), shape)
