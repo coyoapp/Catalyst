@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/coyoapp/Catalyst/compare/v1.2.0...v1.3.0) (2026-08-12)
+
+
+### Features
+
+* **ID:** AccessibilityID and Test Tag parameters added in agent templates ([#92](https://github.com/coyoapp/Catalyst/issues/92)) ([80233ae](https://github.com/coyoapp/Catalyst/commit/80233aef627aa0a13f809c998d0c3de5575ea83f))
+
 ## [1.2.0](https://github.com/coyoapp/Catalyst/compare/v1.1.0...v1.2.0) (2026-08-06)
 
 
