@@ -204,19 +204,64 @@ public enum CatListSize {
 // MARK: - List Content
 
 public enum CatListContent {
-    /// Standard navigation row: optional leading icon, title, optional subtitle, optional new-item indicator, chevron.
-    case listItem(icon: Image?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>)
-    /// Avatar navigation row: leading `CatAvatarView`, title, optional new-item indicator, chevron.
-    case avatarListItem(initials: String?, imageURL: URL?, backgroundColor: Color?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>)
+    /// Standard navigation row: optional leading icon, title, optional subtitle, optional new-item indicator, optional chevron, optional divider.
+    case listItem(icon: Image?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>, showChevron: Bool, showDivider: Bool)
+    /// Avatar navigation row: leading `CatAvatarView`, title, optional new-item indicator, optional chevron, optional divider.
+    case avatarListItem(initials: String?, imageURL: URL?, backgroundColor: Color?, title: String, subtitle: String?, newItemIndicator: Binding<Bool>, showChevron: Bool, showDivider: Bool)
 }
 
 public extension CatListContent {
     static func listItem(
         icon: Image?,
         title: String,
+        subtitle: String?,
         newItemIndicator: Binding<Bool>
     ) -> CatListContent {
-        .listItem(icon: icon, title: title, subtitle: nil, newItemIndicator: newItemIndicator)
+        .listItem(
+            icon: icon,
+            title: title,
+            subtitle: subtitle,
+            newItemIndicator: newItemIndicator,
+            showChevron: true,
+            showDivider: true
+        )
+    }
+
+    static func listItem(
+        icon: Image?,
+        title: String,
+        newItemIndicator: Binding<Bool>,
+        showChevron: Bool = true,
+        showDivider: Bool = true
+    ) -> CatListContent {
+        .listItem(
+            icon: icon,
+            title: title,
+            subtitle: nil,
+            newItemIndicator: newItemIndicator,
+            showChevron: showChevron,
+            showDivider: showDivider
+        )
+    }
+
+    static func avatarListItem(
+        initials: String?,
+        imageURL: URL?,
+        backgroundColor: Color?,
+        title: String,
+        subtitle: String?,
+        newItemIndicator: Binding<Bool>
+    ) -> CatListContent {
+        .avatarListItem(
+            initials: initials,
+            imageURL: imageURL,
+            backgroundColor: backgroundColor,
+            title: title,
+            subtitle: subtitle,
+            newItemIndicator: newItemIndicator,
+            showChevron: true,
+            showDivider: true
+        )
     }
 }
 
