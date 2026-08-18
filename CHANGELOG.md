@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/coyoapp/Catalyst/compare/v1.3.0...v1.4.0) (2026-08-18)
+
+
+### Features
+
+* **List:** CatList item to have optional chevron and divider ([#94](https://github.com/coyoapp/Catalyst/issues/94)) ([#95](https://github.com/coyoapp/Catalyst/issues/95)) ([3d433c0](https://github.com/coyoapp/Catalyst/commit/3d433c01f648e26b12b1a09fcd0f0f067f705f2d))
+
 ## [1.3.0](https://github.com/coyoapp/Catalyst/compare/v1.2.0...v1.3.0) (2026-08-12)
 
 
