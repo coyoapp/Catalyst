@@ -132,6 +132,35 @@ struct ListDemoView: View {
                         { destination = .people }
                     ),
                 ])
+                // ── Section 6: Chevron and divider hidden ────────────────────
+                SectionHeader("Chevron and divider hidden")
+
+                CatList(items: [
+                    (
+                        .listItem(
+                            icon: Image("ic_pages-outlined-25", bundle: .catalyst),
+                            title: "Pages",
+                            newItemIndicator: .constant(false),
+                            showChevron: false,
+                            showDivider: false
+                        ),
+                        { destination = .pagesList }
+                    ),
+                    (
+                        .avatarListItem(
+                            initials: "AH",
+                            imageURL: nil,
+                            backgroundColor: .green,
+                            title: "Amin Heidari",
+                            subtitle: "iOS Developer",
+                            newItemIndicator: .constant(true),
+                            showChevron: false,
+                            showDivider: false
+                        ),
+                        { destination = .profile }
+                    ),
+                ])
+
                 Spacer(minLength: CatSpacing.spacing4xl)
             }
             .padding(.horizontal, CatSpacing.spacingXl)

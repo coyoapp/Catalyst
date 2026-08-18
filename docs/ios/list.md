@@ -52,8 +52,10 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions...)
 
 | Value | Description |
 |-------|-------------|
-| `.listItem(icon:title:subtitle:newItemIndicator:)` | Standard navigation row with a leading icon, title, optional subtitle, optional new-item indicator dot, and a trailing chevron |
-| `.avatarListItem(initials:imageURL:color:title:subtitle:newItemIndicator:)` | Avatar navigation row with a leading `CatAvatarView`, title, optional subtitle, optional new-item indicator dot, and a trailing chevron |
+| `.listItem(icon:title:subtitle:newItemIndicator:showChevron:showDivider:)` | Standard navigation row with a leading icon, title, optional subtitle, optional new-item indicator dot, an optional trailing chevron, and an optional divider |
+| `.avatarListItem(initials:imageURL:backgroundColor:title:subtitle:newItemIndicator:showChevron:showDivider:)` | Avatar navigation row with a leading `CatAvatarView`, title, optional subtitle, optional new-item indicator dot, an optional trailing chevron, and an optional divider |
+
+Omit `subtitle` and both flags to get the defaults (`showChevron: true`, `showDivider: true`).
 
 ---
 
@@ -123,7 +125,7 @@ CatList(items: [
         .avatarListItem(
             initials: "AB",
             imageURL: nil,
-            color: CatColors.Theme.Primary.fill,
+            backgroundColor: CatColors.Theme.Primary.fill,
             title: "Alice Brown",
             subtitle: "iOS Developer",
             newItemIndicator: .constant(false)
@@ -134,7 +136,7 @@ CatList(items: [
         .avatarListItem(
             initials: "CD",
             imageURL: URL(string: "https://example.com/avatar.jpg"),
-            color: nil,
+            backgroundColor: nil,
             title: "Chris Doe",
             subtitle: nil,
             newItemIndicator: .constant(true)
@@ -161,6 +163,42 @@ CatList(items: [
             newItemIndicator: $hasNew
         ),
         { hasNew = false }
+    ),
+])
+```
+
+---
+
+## Chevron and divider
+
+Every row shows a trailing chevron and an inter-row divider by default. Pass `showChevron: false` to hide the chevron (useful for rows that act in place instead of navigating) and `showDivider: false` to suppress the divider below the row.
+
+`showDivider` only suppresses a divider that `position` would otherwise draw — the first row of a group and a `.standalone` row never draw one.
+
+```swift
+CatList(items: [
+    (
+        .listItem(
+            icon: Image(systemName: "bookmark"),
+            title: "Bookmarks",
+            newItemIndicator: .constant(false),
+            showChevron: false,
+            showDivider: false
+        ),
+        { }
+    ),
+    (
+        .avatarListItem(
+            initials: "AB",
+            imageURL: nil,
+            backgroundColor: CatColors.Theme.Primary.fill,
+            title: "Alice Brown",
+            subtitle: "iOS Developer",
+            newItemIndicator: .constant(false),
+            showChevron: false,
+            showDivider: false
+        ),
+        { }
     ),
 ])
 ```

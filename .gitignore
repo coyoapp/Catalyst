@@ -9,6 +9,14 @@ tokens/node_modules
 iOS/Catalyst/Catalyst.xcodeproj/
 iOS/Catalyst/Derived/
 
+# Build outputs (Xcode, SwiftPM, Gradle)
+build/
+DerivedData/
+**/*.xcodeproj/-Xcc/
+xcuserdata/
+.gradle/
+android/local.properties
+
 scripts/agents/node_modules
 scripts/agents/.env
 scripts/agents/output/*/

@@ -16,7 +16,7 @@ import SwiftUI
 /// ```swift
 /// CatList(items: [
 ///     (.listItem(icon: Image("icon"), title: "Bookmarks", newItemIndicator: false), { }),
-///     (.listItem(icon: Image("icon"), title: "Settings",  newItemIndicator: true),  { }),
+///     (.listItem(icon: Image("icon"), title: "Settings",  newItemIndicator: true, showChevron: false, showDivider: false), { }),
 /// ])
 /// ```
 public struct CatList: View {
@@ -69,7 +69,7 @@ public struct CatList: View {
 // MARK: - CatListBuilder (Single Row)
 
 /// A single tappable navigation row. Handles icon, title (+ optional subtitle),
-/// new-item indicator dot, chevron, and inter-row divider placement.
+/// new-item indicator dot, optional chevron, and optional inter-row divider placement.
 ///
 /// Colors are driven by `CatListStateStyleConfig` — `CatListStyle` resolves the
 /// active interaction state and injects the winning `CatListStateColorStyle` into
@@ -122,7 +122,7 @@ private struct RowContent: View {
     var body: some View {
         switch content {
 
-        case .listItem(let icon, let title, let subtitle, let newItemIndicator):
+        case .listItem(let icon, let title, let subtitle, let newItemIndicator, let showChevron, let showDivider):
             // Leading inset: icon column width when icon is present, plain leading padding when nil.
             let textLeadingPadding: CGFloat = icon == nil
                 ? CatSpacing.spacingXl
@@ -147,13 +147,13 @@ private struct RowContent: View {
                             }
                         }
 
-                        trailingCluster(newItemIndicator: newItemIndicator.wrappedValue)
+                        trailingCluster(newItemIndicator: newItemIndicator.wrappedValue, showChevron: showChevron)
                     }
                     .padding(.vertical, CatSpacing.spacingXl)
                     .padding(.leading, icon == nil ? CatSpacing.spacingXl : 0)
                     .padding(.trailing, CatSpacing.spacingXl)
                 }
-                if position.showDivider {
+                if position.showDivider && showDivider {
                     dividerLine()
                         .padding(.trailing, CatSpacing.spacingXl)
                         .padding(.leading, textLeadingPadding)
@@ -161,7 +161,7 @@ private struct RowContent: View {
             }
             .frame(minHeight: CatListSize.regular.height)
 
-        case .avatarListItem(let initials, let imageURL, let backgroundColor, let title, let subtitle, let newItemIndicator):
+        case .avatarListItem(let initials, let imageURL, let backgroundColor, let title, let subtitle, let newItemIndicator, let showChevron, let showDivider):
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
                     leadingAvatar(initials: initials, imageURL: imageURL, backgroundColor: backgroundColor)
@@ -180,12 +180,12 @@ private struct RowContent: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
-                        trailingCluster(newItemIndicator: newItemIndicator.wrappedValue)
+                        trailingCluster(newItemIndicator: newItemIndicator.wrappedValue, showChevron: showChevron)
                     }
                     .padding(.vertical, CatSpacing.spacingXl)
                     .padding(.trailing, CatSpacing.spacingXl)
                 }
-                if position.showDivider {
+                if position.showDivider && showDivider {
                     dividerLine()
                         .padding(.trailing, CatSpacing.spacingXl)
                         .padding(.leading, CatSpacing.spacing7xl)
@@ -215,8 +215,8 @@ private struct RowContent: View {
             .padding(.trailing, CatSpacing.spacingXl)
     }
 
-    /// New-item ellipse dot + chevron on the trailing edge.
-    private func trailingCluster(newItemIndicator: Bool) -> some View {
+    /// New-item ellipse dot + optional chevron on the trailing edge.
+    private func trailingCluster(newItemIndicator: Bool, showChevron: Bool) -> some View {
         HStack(spacing: CatSpacing.spacingXs) {
             if newItemIndicator {
                 Image("ellipse-1", bundle: .catalyst)
@@ -224,9 +224,11 @@ private struct RowContent: View {
                     .foregroundStyle(colors.ellipse)
             }
 
-            Image("ic_chevron-right-outlined-25", bundle: .catalyst)
-                .renderingMode(.template)
-                .foregroundStyle(colors.chevron)
+            if showChevron {
+                Image("ic_chevron-right-outlined-25", bundle: .catalyst)
+                    .renderingMode(.template)
+                    .foregroundStyle(colors.chevron)
+            }
         }
     }
 
@@ -329,6 +331,36 @@ private struct RowContent: View {
                 icon: Image("communities-outlined-25", bundle: .catalyst),
                 title: "Communities",
                 newItemIndicator: .constant(false)
+            ),
+            {}
+        ),
+    ])
+    .padding()
+    .background(CatColors.Ui.Background.canvas)
+}
+
+#Preview("Chevron and divider hidden") {
+    CatList(items: [
+        (
+            .listItem(
+                icon: Image("bookmarks-outlined-25", bundle: .catalyst),
+                title: "Bookmarks",
+                newItemIndicator: .constant(false),
+                showChevron: false,
+                showDivider: false
+            ),
+            {}
+        ),
+        (
+            .avatarListItem(
+                initials: "AB",
+                imageURL: nil,
+                backgroundColor: CatColors.Theme.Primary.fill,
+                title: "Alice Brown",
+                subtitle: "iOS Developer",
+                newItemIndicator: .constant(true),
+                showChevron: false,
+                showDivider: true
             ),
             {}
         ),
