@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/coyoapp/Catalyst/compare/v1.4.0...v1.5.0) (2026-11-23)
+
+
+### Features
+
+* **icons:** Add new icons for input bar ([2d445c0](https://github.com/coyoapp/Catalyst/commit/2d445c0fa442feda2aa173a9040639f281709d54))
+
 ## [1.4.0](https://github.com/coyoapp/Catalyst/compare/v1.3.0...v1.4.0) (2026-08-18)
 
 
